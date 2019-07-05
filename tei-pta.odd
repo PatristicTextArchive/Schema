@@ -10,7 +10,7 @@
                 <author xml:id="AvS">Annette von Stockhausen</author>
             </titleStmt>
             <editionStmt>
-                <edition>Version 1.0. Last updated on 2019-07-01.</edition>
+                <edition>Version 1.0. Last updated on 2019-07-05.</edition>
             </editionStmt>
             <publicationStmt>
                 <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -175,11 +175,12 @@
                             <gi>measure</gi> auch Höhe und Breite des Schriftraumes notiert
                         werden.</p>
                     <p>Innerhalb der <gi>handDesc</gi> werden Angaben zu den Schreibern der
-                        Handschrift notiert. In der <gi>scriptDesc</gi> können Angaben zur
-                        Schriftart notiert werden. In der <gi>decoDesc</gi> können Angaben zu
-                        Rubrizierungen, Initialien, Miniaturen, Schmuckleisten, etc. vermerkt
-                        werden. In der <gi>bindingDesc</gi> können Angaben zum Einband gemacht
-                        werden.</p>
+                        Handschrift notiert. Hier werden auch Angaben zur Interpunktion,
+                        Orthographie, Verwendung von Abkürzungen, Glossen, Subskriptionen, etc.
+                        aufgenommen. In der <gi>scriptDesc</gi> können Angaben zur Schriftart
+                        notiert werden. In der <gi>decoDesc</gi> können Angaben zu Rubrizierungen,
+                        Initialien, Miniaturen, Schmuckleisten, etc. vermerkt werden. In der
+                            <gi>bindingDesc</gi> können Angaben zum Einband gemacht werden.</p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
                         <physDesc>
                             <objectDesc>
@@ -265,7 +266,9 @@
                             <handDesc>
                                 <handNote n="1" corresp="#bast">1. <locus from="1r" to="13v"
                                         >1r-13v</locus>, <locus from="55v">55v</locus>, <locus
-                                        from="166r" to="167v">166r-167v</locus></handNote>
+                                        from="166r" to="167v">166r-167v</locus>. Weitere Angaben zur
+                                    Interpunktion, Orthographie, Verwendung von Abkürzungen,
+                                    Glossen, Subskriptionen, etc.</handNote>
                                 <!-- etc pp -->
                                 <handNote n="22" corresp="#text">22. <locus from="175v" to="178v"
                                         >175v-178v</locus>, [Erklärungen, wie Schreiber etc. Bsp.:
@@ -356,7 +359,38 @@
                 <p>Von den Handschriften werden diplomatische Transkriptionen angefertigt,
                     Orthographie (v.a. bzgl. Iota sub- oder abscriptum) und Interpunktion werden
                     nicht normalisiert.</p>
-                <p>Oberstes Element der Transkription ist <tag>div type="transcription"</tag>.</p>
+                <p>Oberstes Element der Transkription ist <tag>div type="transcription"</tag>. </p>
+                <p><hi rend="underline">TODO: </hi>Bei Bedarf, z.B. bei Randkatenen, können weitere
+                    Gliederungselemente zur Unterscheidung der verschiedenen Komponenten eingeführt
+                    werden; ggfs ist den einzelnen Segmenten jeweils eine <att>xml-id</att>
+                    zuzuweisen, um die Bezüge zwischen den korrespondieren Teilen (Text, Kommentar)
+                    auszeichnen zu können.</p>
+                <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                    <div type="transcription">
+                        <div type="surface">
+                            <pb n="112v"/>
+                            <div type="text">
+                                <seg xml:id="alpha"><g type="obelos"/> Εν ἀρχῇ ἐποίησεν ὁ θεὸς τὸν
+                                    οὐρανὸν καὶ τὴν γῆν.</seg>
+                                <seg xml:id="beta">ἡ δὲ γῆ ἦν ἀόρατος καὶ ἀκατασκεύαστος, καὶ σκότος
+                                    ἐπάνω τῆς <seg xml:id="a">ἀβύσσου</seg>, καὶ πνεῦμα θεοῦ
+                                    ἐπεφέρετο ἐπάνω τοῦ ὕδατος.</seg>
+                            </div>
+                            <div type="commentary" place="inner_margin">
+                                <seg corresp="#alpha"><g type="obelos"/> Kommentar</seg>
+                                <seg corresp="#beta">Kommentar</seg>
+                            </div>
+                            <div type="commentary" place="outer_margin">
+                                <seg corresp="#a">Worterklärung</seg>
+                            </div>
+                        </div>
+                    </div>
+                </egXML>
+                <p><hi rend="ul">Alternatives Vorgehen: anstelle der hier vorgestellten semantischen
+                        Beschreibung eine graphische entsprechend </hi><ref
+                        target="https://www.tei-c.org/release/doc/tei-p5-doc/de/html/PH.html#PHFAX"
+                            ><hi rend="ul">TEI-Guidelines 11.1 Digital Facsimiles</hi></ref><hi
+                        rend="ul">.</hi></p>
                 <p>Der Header der Transkriptionsdatei enthält kurze Angaben zur Handschrift
                     (mindestens <gi>msIdentifier</gi>, ggfs. zu den Händen). Für die ausführliche
                     Beschreibung wird im Element <gi>msDesc</gi> (<att>corresp</att>) auf die
@@ -534,11 +568,11 @@
                     <head>Lücke im Text</head>
                     <p>Lücken im Text werden ebenfalls mit <gi>gap</gi> angebeben. Dem Attribut
                             <att>reason</att> wird der Wert <val>damage</val> (physische
-                        Beschädigung) oder <val>lacuna</val> (vom Schreiber frei gelassen)
+                        Beschädigung) oder <val>fenestra</val> (vom Schreiber frei gelassen)
                         zugewiesen. Der (geschätzte) Umfang (<att>quantity</att>) wird in Buchstaben
                             (<att>unit</att> mit <val>character</val>) angegeben.</p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <gap reason="lost" quantity="10" unit="character"/>
+                        <gap reason="fenestra" quantity="10" unit="character"/>
                     </egXML>
                     <p>Wenn durch die Zerstörung von Text durch den Schreiber (Rasur) eine Lücke
                         entsteht, wird diese mit <gi>del</gi> ausgezeichnet:</p>
@@ -573,7 +607,7 @@
                 <div>
                     <head>Diple und Paragraphos</head>
                     <p>Diple (einfach oder doppelt), meist zur Markierung von Zitaten verwendet,
-                        wird mit Hilfe von <tag>g type="doubled_diple"/</tag> bzw. <tag>g
+                        wird mit Hilfe von <tag>g type="diple"/</tag> bzw. <tag>g
                             type="doubled_diple"/</tag> vermerkt. </p>
                     <p>In der Handschrift mit Paragraphos am Rand markierte Zeilen werden durch
                             <tag>g type="paragraphos"/</tag> markiert.</p>
@@ -605,7 +639,13 @@
                 </div>
                 <div xml:id="Xc07e77ef82996228f6b785116f6008c30d9dfc0">
                     <head>Angabe und Beschreibung der Handschriften (und Papyri)</head>
-                    <p>Die Daten speisen sich aus der Handschriftendatenbank. </p>
+                    <p>Die Daten speisen sich aus der Handschriftendatenbank. Folgende Angaben
+                        werden übernommen: Der Inhalt von <gi>msIdentifier</gi>, von
+                            <gi>msContents</gi> der Inhalt des <gi>msItem</gi>-Elements des edierten
+                        Textes, aus der <gi>physDesc</gi> der Inhalt der Elemente <gi>material</gi>,
+                            <gi>extent</gi>, <gi>foliation</gi>, <gi>layout</gi>, <gi>handDesc</gi>,
+                        aus der <gi>history</gi> den Inhalt der Elemente <gi>origin</gi>,
+                            <gi>provenance</gi>.</p>
                     <p><hi rend="underline">TODO: Wie werden die Daten aus der Hs-Datenbank gezogen
                             und welche Eingabe ist hier nötig?</hi></p>
                     <p>Sind zu Einzelfragen — wie etwa zur Feststellung der Verwandtschaft der
@@ -621,40 +661,6 @@
                         <hi rend="underline">TODO: Graphikformat für Stemma, das dann eingebunden
                             und ggfs. vorher noch bearbeitet werden kann.</hi>
                     </p>
-                    <div>
-                        <head>Erstellung eines Stemmas mit Hilfe des Computers</head>
-                        <p><hi rend="underline">Ggfs. hier herausnehmen</hi></p>
-                        <p>Für die Rekonstruktion des Stemmas wird wie bei der Kollation ein
-                            Programm zur Unterstützung herangezogen. Dabei werden – den Überlegungen
-                            von Ben Salemans folgend – mit Hilfe zweier XSLT-Skripte
-                                (<code>xml2type2var.xsl</code> und <code>xml2nexus.xsl</code>) aus
-                            der TEI-XML-kodierten Edition (die im Folgenden beschriebenen Schritt
-                            müssen also in einer freilich noch vorläufigen Fassung schon einmal
-                            durchgeführt worden sein) von Salemans so genannte "Type2-Varianten"
-                            (ausschließlich einfache Variationen vom Typ AB:CD, nicht AB:CD:DE, also
-                            nur <gi>app</gi>-Elemente mit einer <gi>rdg</gi> neben dem Lemma;
-                            Homoioteuleton-verursachte und orthographische Lesarten werden ebenfalls
-                            übergangen) extrahiert.</p>
-                        <p>Die Transformation mit <code>xml2type2var.xsl</code> dient dabei vor
-                            allem dem Editor und gibt die den Kriterien entsprechenden Varianten in
-                            der Form <code>Aktuelle App-Eintrag-Nr./Gesamtzahl der App-Einträge:
-                                Lesart lem|Lesart rdg (leer, wenn om.): Handschriften
-                                lem|Handschriften rdg</code> aus, während die Transformation mit
-                                <code>xml2nexus.xsl</code> die Daten im Nexus-Format ausgibt, das
-                            von einem Phylogenetik-Programm wie <ref
-                                target="http://paup.phylosolutions.com/">PAUP</ref> oder (hier
-                            verwendet) <ref target="http://www.splitstree.org">SplitsTree</ref>
-                            eingelesen werden kann. Durch die Auswahl der extrahierten Lesarten
-                            (evtl. sollten auch Umstellungen noch übergangen werden) wird dabei kein
-                            rein statistisches Modell bedient, sondern dem Modell der Kladistik
-                            gefolgt.</p>
-                        <p>Das Phylogenetik-Programm erstellt auf Grund der zur Verfügung gestellten
-                            Daten dann einen <hi rend="italic">unrooted tree</hi>, der für die
-                            weiteren stemmatischen Überlegungen verwendet wird. Dabei werden die
-                            stemmatischen Thesen mit Hilfe von an die Editions-Datei gestellten
-                            XPath-Abfragen überprüft. Am Ende des Prozesses steht die Bestimmung der
-                            Wurzel des Baumes und damit ein Stemma im klassischen Sinne.</p>
-                    </div>
                 </div>
                 <div xml:id="X46b50124a57d40a5f28dcd8ea6cc8cc1cde2184">
                     <head>Aufzählung und Wertung der indirekten Überlieferungsquellen</head>
@@ -755,8 +761,7 @@
                                 Trema, Enklitika, Apostroph/Elisionen, Zahlzeichen, Worttrennung,
                                 nomina sacra) normalisiert.</item>
                             <item>Auch die Interpunktion wird normalisiert: Punkt, Komma, Semikolon,
-                                Fragezeichen, Parenthese (<hi rend="underline">in Klammern oder
-                                    Gedankenstrichen?</hi>)</item>
+                                Fragezeichen, Gedankenstrich(e) (Parenthese; Anakoluth).</item>
                         </list>
                     </div>
                     <div xml:id="auszeichnung-der-textstruktur">
@@ -788,20 +793,19 @@
                     <div xml:id="X6d639c253fef3c0c718826743fe4e776c550ab6">
                         <head>Auszeichnung von Bibel- und anderen Zitaten (inkl.
                             Anspielungen)</head>
-                        <p>(Bibel)zitate werden mit <gi>quote</gi> ausgezeichnet. Zitate erhalten
-                            ein Attribut <att>type</att>: Es wird zwischen markierten
+                        <p>(Bibel)zitate werden mit <gi>quote</gi> ausgezeichnet. Bei biblischen Kommentaren erhalten
+                            Lemma-Zitate den Wert <val>lemma</val>. Zitate können ein Attribut <att>type</att> erhalten, so dass zwischen markierten
                                 (<val>marked</val>) und nicht-markierten (<val>unmarked</val>)
-                            Zitaten unterschieden, Paraphrasen erhalten den Wert
-                                <val>paraphrase</val>. Bei biblischen Kommentaren erhalten
-                            Lemma-Zitate den Wert <val>lemma</val>.</p>
+                            Zitaten unterschieden werden kann, Paraphrasen erhalten den Wert
+                                <val>paraphrase</val>. </p>
                         <p>Explizite Zitate unter Anführung des Autors des Zitates werden mit dem
                                 <gi>cit</gi>-Element ausgezeichnet und die anführende Phrase darin
                             mit dem <gi>ref</gi>-Element. Einschübe im Zitat (z.B. "sagte") werden
                             mit <tag>seg type="insertion"</tag> ausgezeichnet.</p>
                         <p>Anspielungen (z.B. auf biblische Geschichten und Ereignisse) werden mit
                                 <tag>seg type="allusion"</tag> ausgezeichnet.</p>
-                        <p>Falsche Zitate werden mit <tag>seg type="fq"</tag>, Pseudo-Zitate mit
-                                <tag>seg type="psq"</tag> ausgezeichnet.</p>
+                        <p>Außerdem können Pseudo-Zitate ausgezeichnet werden; dies geschieht mit
+                                <tag>seg type="psq"</tag>.</p>
                         <p>Die jeweilige Bibelstelle wird im <tag>ref decls="biblical"</tag>-Element
                             als <att>cRef</att> nach folgender (entsprechend den im Projekt <ref
                                 target="http://www.biblindex.mom.fr/en/biblical/content"
@@ -823,8 +827,7 @@
                     </div>
                     <div xml:id="auszeichung-direkter-rede">
                         <head>Auszeichung direkter Rede</head>
-                        <p>Direkte Rede, sofern es sich nicht gleichzeitig um ein (Bibel-)Zitat
-                            handelt, wird mit Hilfe von <gi>said</gi> ausgezeichnet.</p>
+                        <p>Direkte Rede wird mit Hilfe von <gi>said</gi> ausgezeichnet.</p>
                     </div>
                     <div xml:id="auszeichnung-von-namen-und-orten">
                         <head>Auszeichnung von Namen und Orten</head>
@@ -845,28 +848,14 @@
                             URL) verwiesen.</p>
                     </div>
                     <div xml:id="auszeichnung-intertextueller-bezüge">
-                        <head>Auszeichnung intertextueller Bezüge</head>
-                        <p><hi rend="underline">Auszeichnen? Momentan noch sehr auf den casus
-                                Severian bezogen.</hi></p>
-                        <p>Neben den Textzeugen im eigentlichen Sinn gibt es auch Textbearbeitungen
-                            (z.B. Eklogen, aber auch Übersetzungen ins Lateinische oder Armenische),
-                            die textkritisch nicht verwertbar sind, aber von der Rezeption von
-                            Texten zeugen.</p>
-                        <p>Solche Texte, die in einer intertextuellen Beziehung zum edierten Text
-                            stehen, aber für die Edition als Zeugen nicht herangezogen werden,
-                            werden als eigene XML-Datei aufgenommen. Die Beziehung zur Edition wird
-                            durch <gi>seg</gi>-Elemente und mit Hilfe von
-                            <att>corresp</att>-Attributen hergestellt, auch um eine parallele
-                            Darstellung bei der Präsentation zu ermöglichen. Die
-                            <gi>seg</gi>-Elemente erhalten eine <att>xml:id</att> in der Struktur
-                                <code>it-CPG/CPL-Nr-Ziffer</code>, wobei "it" für Intertextualität
-                            steht. Verwendet wird außerdem <tag>seq type="reused"</tag> und <tag>seg
-                                type="reuse"</tag> zur Markierung des verwendeten und verwendenden
-                            Textes.</p>
-                        <p>
-                            <hi rend="underline">TODO: Noch spezifizieren für Testimonia und ggfs.
-                                für Textparallelen</hi>
+                        <head>Auszeichnung von Similia und Quellen</head>
+                        <p>Similia werden mit <tag>seg type="similar"</tag>, Quellen mit <tag>seg type="source</tag> ausgezeichnet. Die Fundstelle wird innerhalb des <gi>seg</gi>-Elementes in einem <gi>ref</gi>-Element angegeben.  
                         </p>
+                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                            <seg type="similar"> ἵνα εἰς βάθος διαδῷ τὴν οἰκείαν
+                                ἐνέργειαν ἡ βαφή<ref>Athanasius, decr. 12,1</ref></seg>
+                        </egXML>
+                        <p><hi rend="underline">TODO: cRef-System für antike Schriften</hi></p>
                     </div>
                     <div xml:id="auszeichnung-der-varianten">
                         <head>Auszeichnung der Varianten</head>
@@ -935,6 +924,7 @@
                                 oder Homoiarkton zurückzuführen sind, werden als
                                     <tag>@type="homoioteleuton"</tag> oder
                                     <tag>@type="homoiarkton</tag> ausgezeichnet.</item>
+                            <item>Diplographien werden als <tag>@type="diplography"</tag> ausgezeichnet.</item>
                         </list>
                         <egXML xmlns="http://www.tei-c.org/ns/Examples">
                             <app type="textcritical">
@@ -1041,7 +1031,7 @@
                                 werden als <tag>@cause="correction"</tag> ausgezeichnet. Vorschläge
                                 von Konjekturen (<hi rend="italic">proposuit</hi> oder <hi
                                     rend="italic">dubitanter</hi>) werden als
-                                    <tag>@cause="proposition"</tag> ausgezeichnet. Der Autor einer
+                                    <tag>@cause="proposition"</tag> ausgezeichnet, ggfs. kann der Wahrscheinlichkeitsgrad des Zutreffens im Attribut <att>cert</att> festgehalten werden (mögliche Werte: <val>low</val>, <val>medium</val>, <val>high</val>). Der Autor einer
                                 Konjektur/Emendatio (oder Korrektur) wrd mit <att>resp</att> bzw.
                                 (im Falle einer aus einer Edition übernommenen Konjektur) mit
                                     <att>source</att> angegeben.</p>
@@ -1054,7 +1044,7 @@
                             </egXML>
                         </div>
                         <div>
-                            <head>Ergänzungen</head>
+                            <head>Ergänzungen uznd Löschungen</head>
                             <p>Vom Editor (oder einem anderen Konjektor) ergänzter Text wird mit
                                     <gi>supplied</gi> ausgezeichnet, gelöschter Text mit
                                     <gi>del</gi>. Korrupter (nicht zu rekonstruierender) Text wird
@@ -1074,6 +1064,15 @@
                             <p>Textersetzungen werden in <gi>del</gi>- und <gi>add</gi>-Elementen
                                 innerhalb eines <gi>subst</gi>-Elementes ausgezeichnet. Expungierter
                                 Text wird als <tag>@rend="expunction"</tag> ausgezeichnet.</p>
+                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                                <app type="textcritical">
+                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">ἔχωμεν</lem>
+                                    <rdg wit="#Ha">ἔχ<subst>
+                                        <del hand="m2">ο</del>
+                                        <add hand="m2" place="above">ω</add>
+                                    </subst>μεν</rdg>
+                                </app>
+                            </egXML>
                         </div>
                         <div xml:id="nested">
                             <head>Ineinander geschachtelte Varianten</head>
@@ -1104,7 +1103,7 @@
                     <div xml:id="Bezeugung">
                         <head>Bezeugung des Textes</head>
                         <p>Die Bezeugung des Textes durch Handschriften wird durch eigene
-                            Apparateinträge (<tag>app @type="textcritical"</tag>) unter Verwendung
+                            Apparateinträge (<tag>app @type="witnesses"</tag>) unter Verwendung
                             von <gi>witStart</gi>, <gi>witEnd</gi>, <gi>lacunaStart</gi>,
                                 <gi>lacunaEnd</gi> vermerkt. </p>
                         <p><hi rend="underline">TODO Das von TEI hierfür zur Verfügung gestellte
@@ -1291,8 +1290,9 @@
                                     <valItem ident="damage">
                                         <desc>Physical damage</desc>
                                     </valItem>
-                                    <valItem ident="lacuna">
-                                        <desc>Free space as product by the scribe</desc>
+                                    <valItem ident="fenestra">
+                                        <desc>Free space inmidst of text, left blank by the
+                                            scribe</desc>
                                     </valItem>
                                     <valItem ident="illegible">
                                         <desc>Traces of text remains on the surface but cannot be

@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2019-07-01T15:12:44Z. .
+Schema generated from ODD source 2019-07-05T14:05:39Z. .
 TEI Edition: Version 3.3.0. Last updated on
 	31st January 2018, revision f4d8439
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
@@ -3417,8 +3417,8 @@ Normalization 12. Critical Apparatus]</a:documentation>
             <choice>
                <value>damage</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Physical damage</a:documentation>
-               <value>lacuna</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Free space as product by the scribe</a:documentation>
+               <value>fenestra</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Free space inmidst of text, left blank by the scribe</a:documentation>
                <value>illegible</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Traces of text remains on the surface but cannot be interpreted</a:documentation>
             </choice>
