@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2019-07-05T14:05:39Z. .
+Schema generated from ODD source 2019-08-12T11:56:17Z. .
 TEI Edition: Version 3.3.0. Last updated on
 	31st January 2018, revision f4d8439
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
@@ -2186,28 +2186,40 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
    </define>
    <define name="tei_model.labelLike">
       <choice>
+         <ref name="tei_desc"/>
          <ref name="tei_label"/>
       </choice>
    </define>
    <define name="tei_model.labelLike_alternation">
       <choice>
+         <ref name="tei_desc"/>
          <ref name="tei_label"/>
       </choice>
    </define>
    <define name="tei_model.labelLike_sequence">
+      <ref name="tei_desc"/>
       <ref name="tei_label"/>
    </define>
    <define name="tei_model.labelLike_sequenceOptional">
+      <optional>
+         <ref name="tei_desc"/>
+      </optional>
       <optional>
          <ref name="tei_label"/>
       </optional>
    </define>
    <define name="tei_model.labelLike_sequenceOptionalRepeatable">
       <zeroOrMore>
+         <ref name="tei_desc"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_label"/>
       </zeroOrMore>
    </define>
    <define name="tei_model.labelLike_sequenceRepeatable">
+      <oneOrMore>
+         <ref name="tei_desc"/>
+      </oneOrMore>
       <oneOrMore>
          <ref name="tei_label"/>
       </oneOrMore>
@@ -2574,7 +2586,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       </choice>
    </define>
    <define name="tei_model.descLike">
-      <notAllowed/>
+      <choice>
+         <ref name="tei_desc"/>
+      </choice>
    </define>
    <define name="tei_model.quoteLike">
       <choice>
@@ -3339,6 +3353,16 @@ Suggested values include: 1] initial; 2] ekthesis; 3] overline</a:documentation>
          <empty/>
       </element>
    </define>
+   <define name="tei_desc">
+      <element name="desc">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(Beschreibung) enthält eine kurze Beschreibung des Objekts, das von seinem übergeordneten Element annotiert wird, üblicherweise einem Dokumentationselement oder einer Einheit. [22.4.1. Description of Components]</a:documentation>
+         <ref name="tei_macro.limitedContent"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.translatable.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_gloss">
       <element name="gloss">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies a phrase or word used to provide a gloss or definition for some other word or phrase. [3.3.4. Terms, Glosses, Equivalents, and Descriptions 22.4.1. Description of Components]</a:documentation>
@@ -3421,6 +3445,8 @@ Normalization 12. Critical Apparatus]</a:documentation>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Free space inmidst of text, left blank by the scribe</a:documentation>
                <value>illegible</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Traces of text remains on the surface but cannot be interpreted</a:documentation>
+               <value>missing</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Editor thinks that there is text missing, even if there are no physical traces in a manuscript</a:documentation>
             </choice>
          </attribute>
          <optional>
@@ -3737,7 +3763,7 @@ Measures]</a:documentation>
             <choice>
                <value>siglum</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
-               <value>nomSec</value>
+               <value>nomSac</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             </choice>
          </attribute>
@@ -9478,6 +9504,9 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
    <define name="tei_relation">
       <element name="relation">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"> (relationship) describes any kind of relationship or linkage amongst a specified group of places, events, persons, objects or other items. [13.3.2.3. Personal Relationships]</a:documentation>
+         <optional>
+            <ref name="tei_desc"/>
+         </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   id="tei-pta-relation-reforkeyorname-constraint-assert-17">
             <rule context="tei:relation">
@@ -9800,6 +9829,10 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">zur Auszeichnung von Korrekturen kleinerer Fehler, die nicht die Höhe einer Konjektur erreichen</a:documentation>
                   <value>proposition</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">zur Auszeichnung von Vorschlägen für Konjekturen (sc. /proposuit/ oder /dubitanter/)</a:documentation>
+                  <value>deletion</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">zur Auszeichnung von Tilgungen</a:documentation>
+                  <value>addition</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">zur Auszeichnung von Hinzupügungen</a:documentation>
                </choice>
             </attribute>
          </optional>

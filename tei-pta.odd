@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-    xmlns:rng="http://relaxng.org/ns/structure/1.0">
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -10,7 +8,7 @@
                 <author xml:id="AvS">Annette von Stockhausen</author>
             </titleStmt>
             <editionStmt>
-                <edition>Version 1.0. Last updated on 2019-07-05.</edition>
+                <edition>Version 1.0. Last updated on 2019-08-12.</edition>
             </editionStmt>
             <publicationStmt>
                 <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -37,8 +35,7 @@
                         for more details.</p>
 
                     <p>You should have received a copy of the GNU Affero General Public License
-                        along with this program. If not, see <ptr
-                            target="https://www.gnu.org/licenses/"/>.</p>
+                        along with this program. If not, see <ptr target="https://www.gnu.org/licenses/"/>.</p>
                 </availability>
             </publicationStmt>
             <sourceDesc>
@@ -70,8 +67,7 @@
                     Projektordner) verwaltet.</p>
                 <p>Für jede <hi rend="bold">Transkription</hi> einer Handschrift wird eine Datei
                         <code>CPG****-**Handschriftenkürzel**-transcript.xml</code> angelegt. Die
-                    Transkription folgt den im Kapitel <ref target="#transcriptionen"
-                        >Handschriftentranskription</ref> dargelegten Regeln.</p>
+                    Transkription folgt den im Kapitel <ref target="#transcriptionen">Handschriftentranskription</ref> dargelegten Regeln.</p>
                 <p>Für jede Handschrift, die für die Edition verwendet wird, wird im Ordner
                         <code>Handschriften</code> eine <hi rend="bold">
                         Handschriftenbeschreibung</hi> (<code>**Handschriftenkürzel**.xml</code>) in
@@ -90,16 +86,13 @@
             <div xml:id="handschriften">
                 <head>Beschreibung der Handschriften</head>
                 <p>Jede Handschrift erhält im Root-Element eine <att>xml-id</att>. Im Falle von
-                    griechischen Handschriften wird auf die <ref
-                        target="http://www.diktyon.org/en/identifiants-du-reseau/manuscrits/"
-                        >Diktyon-Id</ref> zurückgegriffen. <hi rend="ul">IDs für lateinische, etc.
+                    griechischen Handschriften wird auf die <ref target="http://www.diktyon.org/en/identifiants-du-reseau/manuscrits/">Diktyon-Id</ref> zurückgegriffen. <hi rend="ul">IDs für lateinische, etc.
                         Handschriften?</hi></p>
                 <p><hi rend="ul">Vgl. Template für Handschriftenbeschreibung</hi></p>
                 <p><hi rend="ul">Verlinkung aus den Handschriftenbeschreibungen auf listWit in der
                         jeweiligen Editionsdatei und Verlinkung eines Auszugs aus den Daten in die
                         jeweilige Praefatio-Datei. Kurze Angaben werden auch in die jeweilige
-                        </hi><ref target="#transcriptionen"><hi rend="ul"
-                        >Transkriptionsdatei</hi></ref><hi rend="ul"> übernommen .</hi></p>
+                        </hi><ref target="#transcriptionen"><hi rend="ul">Transkriptionsdatei</hi></ref><hi rend="ul"> übernommen .</hi></p>
                 <p>Die Handschriftenbeschreibung steht im <gi>body</gi> der Datei innerhalb des
                     Elementes <gi>msDesc</gi>.</p>
                 <div>
@@ -136,11 +129,9 @@
                         <msContents>
                             <summary>[grobe Inhaltsübersicht]</summary>
                             <textLang>[Schreibsprache]</textLang>
-                            <msItem n="1" corresp="Verweis_auf_id_im_Werkregister"
-                                xml:id="für-zusammengesetzte-Handschriften">
+                            <msItem n="1" corresp="Verweis_auf_id_im_Werkregister" xml:id="für-zusammengesetzte-Handschriften">
                                 <locus from="2r" to="36r">2r-36r </locus>
-                                <note>mit <ref target="#w23cfaa95-c661-4fc8-ad66-88895c437e14"
-                                        type="EnthaltenesWerk">dem Kommentar des Theodoros
+                                <note>mit <ref target="#w23cfaa95-c661-4fc8-ad66-88895c437e14" type="EnthaltenesWerk">dem Kommentar des Theodoros
                                         Metochites</ref> (ab f. 1v)</note>
                                 <rubric>[Überschrift]</rubric>
                                 <incipit>[Anfang/Prolog]</incipit>
@@ -192,14 +183,9 @@
                                             <locus from="1r" to="5v"/>Pergament</material>
                                         <!-- ### WASSERZEICHEN ### -->
                                         <watermark>[Wasserzeichenbeschreibung etc.] <!-- onlineVerweis -->
-                                            <ref type="piccard"
-                                                target="https://www.wasserzeichen-online.de/?ref=DE8100-PO-151547"
-                                                >151547</ref>
+                                            <ref type="piccard" target="https://www.wasserzeichen-online.de/?ref=DE8100-PO-151547">151547</ref>
                                         </watermark>
-                                        <watermark>Erklärung zum Wasserzeichen, vgl. auch <ref
-                                                cRef="151547" type="Piccard-Online"/> oder auch <ref
-                                                type="print" corresp="Verweis zum Werkregister, wenn
-                                                vorhanden">Briquet,
+                                        <watermark>Erklärung zum Wasserzeichen, vgl. auch <ref cRef="151547" type="Piccard-Online"/> oder auch <ref type="print" corresp="Verweis zum Werkregister, wenn                                                 vorhanden">Briquet,
                                             Augsburg....</ref><!-- für Drucke -->
                                         </watermark>
                                         <!-- bibl für Wasserzeichen, die nicht ins Werkregister gehören? -->
@@ -264,16 +250,12 @@
                             </objectDesc>
                             <!-- Hände, Angabe zum Kopist -->
                             <handDesc>
-                                <handNote n="1" corresp="#bast">1. <locus from="1r" to="13v"
-                                        >1r-13v</locus>, <locus from="55v">55v</locus>, <locus
-                                        from="166r" to="167v">166r-167v</locus>. Weitere Angaben zur
+                                <handNote n="1" corresp="#bast">1. <locus from="1r" to="13v">1r-13v</locus>, <locus from="55v">55v</locus>, <locus from="166r" to="167v">166r-167v</locus>. Weitere Angaben zur
                                     Interpunktion, Orthographie, Verwendung von Abkürzungen,
                                     Glossen, Subskriptionen, etc.</handNote>
                                 <!-- etc pp -->
-                                <handNote n="22" corresp="#text">22. <locus from="175v" to="178v"
-                                        >175v-178v</locus>, [Erklärungen, wie Schreiber etc. Bsp.:
-                                    Schreiberin: <persName key="link">Clara</persName>, vgl. <locus
-                                        from="22v">22v</locus>]</handNote>
+                                <handNote n="22" corresp="#text">22. <locus from="175v" to="178v">175v-178v</locus>, [Erklärungen, wie Schreiber etc. Bsp.:
+                                    Schreiberin: <persName key="link">Clara</persName>, vgl. <locus from="22v">22v</locus>]</handNote>
                                 <handNote n="3"/>
                             </handDesc>
                             <scriptDesc>
@@ -296,8 +278,7 @@
                                 <decoNote type="lombarde">[Anfangsbuchst]</decoNote>
                                 <!-- andersfarbige "Initiale" -> meist runder -->
                                 <decoNote type="headline">[Überschriften]</decoNote>
-                                <decoNote type="illustration"
-                                    >[Illustrationen/Illumination]</decoNote>
+                                <decoNote type="illustration">[Illustrationen/Illumination]</decoNote>
                                 <!-- ganzes Bild -->
                                 <decoNote type="ink">[Farbangaben zur Tinte]</decoNote>
                                 <decoNote type="margin">[Bemerkungen zum Rand]</decoNote>
@@ -318,8 +299,7 @@
                     <p>Angaben zur Provienz der Handschrift werden innerhalb von <gi>msDesc</gi> im
                         Element <gi>history</gi> vorgenommen.</p>
                     <p>Im Element <gi>origin</gi> werden mit Hilfe der Elemente <gi>origDate</gi>
-                        und <gi>origPlace</gi> die Datierung (Angabe auch als <ref
-                            target="https://en.wikipedia.org/wiki/ISO_8601">ISO-Date</ref> im
+                        und <gi>origPlace</gi> die Datierung (Angabe auch als <ref target="https://en.wikipedia.org/wiki/ISO_8601">ISO-Date</ref> im
                         Attribut <att>notBefore</att> und <att>notAfter</att> bzw. <att>when</att>)
                         und der Herkunftsort (soweit möglich, <hi rend="ul">mit Verweis auf
                             Pleiades-ID</hi>) angegeben; weitere Informationen dazu können als
@@ -333,8 +313,7 @@
                         <history>
                             <origin>
                                 <!-- ### DATIERUNG ###-->
-                                <origDate notBefore="ISO-Date" notAfter="ISO-Date"
-                                    >[Datierung]</origDate>
+                                <origDate notBefore="ISO-Date" notAfter="ISO-Date">[Datierung]</origDate>
                                 <!-- ### Herkunft ###-->
                                 <origPlace>[Herkunft]</origPlace>
                                 <!-- ### GESCHICHTE; Enstehung/ Herkunft ### -->
@@ -387,10 +366,7 @@
                     </div>
                 </egXML>
                 <p><hi rend="ul">Alternatives Vorgehen: anstelle der hier vorgestellten semantischen
-                        Beschreibung eine graphische entsprechend </hi><ref
-                        target="https://www.tei-c.org/release/doc/tei-p5-doc/de/html/PH.html#PHFAX"
-                            ><hi rend="ul">TEI-Guidelines 11.1 Digital Facsimiles</hi></ref><hi
-                        rend="ul">.</hi></p>
+                        Beschreibung eine graphische entsprechend </hi><ref target="https://www.tei-c.org/release/doc/tei-p5-doc/de/html/PH.html#PHFAX"><hi rend="ul">TEI-Guidelines 11.1 Digital Facsimiles</hi></ref><hi rend="ul">.</hi></p>
                 <p>Der Header der Transkriptionsdatei enthält kurze Angaben zur Handschrift
                     (mindestens <gi>msIdentifier</gi>, ggfs. zu den Händen). Für die ausführliche
                     Beschreibung wird im Element <gi>msDesc</gi> (<att>corresp</att>) auf die
@@ -459,9 +435,7 @@
                         Faksimile.</p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples"> θησαυροὶ, ψυχὰς εὐφραίνοντες·<lb/>
                          ἐννοίας φωτίζοντες· τὴν οἰ<lb break="no"/>
-                         κουμένην ἐπιστρέφοντες πᾶσαν·<pb n="227r"
-                            facs="https://digitalcollections.nlg.gr/iiif/3001/EBE0253455.tif/full/full/0/default.jpg"
-                        /> τοῦ ἀδὰμ τὴν πτωχείαν πλουτί<lb break="no"/>
+                         κουμένην ἐπιστρέφοντες πᾶσαν·<pb n="227r" facs="https://digitalcollections.nlg.gr/iiif/3001/EBE0253455.tif/full/full/0/default.jpg"/> τοῦ ἀδὰμ τὴν πτωχείαν πλουτί<lb break="no"/>
                          ζοντες· εἰς πολλὴν γὰρ κατηνέ<lb break="no"/>
                          χθη ταπείνωσιν, τὸ πρωτότυπον<cb/>
                     </egXML>
@@ -512,8 +486,7 @@
                         unterschieden werden sollten. Ist nicht zu entscheiden, von welcher Hand
                         eine Korrektur vorgenommen worden ist, wird dieser der Wert
                             <val>unknown</val> zugewiesen.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples"> γηΐ<del rend="erasure"
-                            hand="#m2">ω</del>νων </egXML>
+                    <egXML xmlns="http://www.tei-c.org/ns/Examples"> γηΐ<del rend="erasure" hand="#m2">ω</del>νων </egXML>
                 </div>
                 <div>
                     <head>Korrekturen</head>
@@ -577,8 +550,7 @@
                     <p>Wenn durch die Zerstörung von Text durch den Schreiber (Rasur) eine Lücke
                         entsteht, wird diese mit <gi>del</gi> ausgezeichnet:</p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <del rend="erasure"><gap reason="illegible" quantity="10" unit="character"
-                            /></del>
+                        <del rend="erasure"><gap reason="illegible" quantity="10" unit="character"/></del>
                     </egXML>
                 </div>
                 <div>
@@ -615,15 +587,13 @@
                 <div>
                     <head>DSL</head>
                     <p>Zur einfacheren Erstellung der Transkription kann diese auch als
-                        Plaintext-Datei mit Hilfe der Transkriptions-DSL (im <ref
-                            target="#transkriptions-dsl">Anhang</ref>) erstellt werden, die per
+                        Plaintext-Datei mit Hilfe der Transkriptions-DSL (im <ref target="#transkriptions-dsl">Anhang</ref>) erstellt werden, die per
                         Python-Skript <code>Convert_Transkription_XML.py</code> in TEI-XML
                         konvertiert wird.</p>
                 </div>
                 <div>
                     <head>Kollationierung</head>
-                    <p>Die Handschriftentranskriptionen können mit Hilfe von <ref
-                            target="https://collatex.net/">CollateX</ref> kollationiert werden.</p>
+                    <p>Die Handschriftentranskriptionen können mit Hilfe von <ref target="https://collatex.net/">CollateX</ref> kollationiert werden.</p>
                 </div>
             </div>
             <div xml:id="praefatio">
@@ -712,12 +682,10 @@
                                 <head>Hyparchetyp <abbr type="siglum">α</abbr></head>
                                 <witness xml:id="N" corresp="Link_zur_Transkriptionsdatei">
                                     <abbr type="siglum">N</abbr>
-                                    <name>Codex Neapolitanus V A 8</name>, <origDate
-                                        notBefore="1401" notAfter="1500">s. XV</origDate></witness>
+                                    <name>Codex Neapolitanus V A 8</name>, <origDate notBefore="1401" notAfter="1500">s. XV</origDate></witness>
                                 <witness xml:id="G">
                                     <abbr type="siglum">G</abbr>
-                                    <name>Codex Gaddianus pl. 90, 12 inf.</name>, <origDate
-                                        notBefore="1401" notAfter="1500">s. XV</origDate></witness>
+                                    <name>Codex Gaddianus pl. 90, 12 inf.</name>, <origDate notBefore="1401" notAfter="1500">s. XV</origDate></witness>
                             </listWit>
                             <listWit xml:id="b">
                                 <head>Hyparchetyp <abbr type="siglum">β</abbr></head>
@@ -807,9 +775,7 @@
                         <p>Außerdem können Pseudo-Zitate ausgezeichnet werden; dies geschieht mit
                                 <tag>seg type="psq"</tag>.</p>
                         <p>Die jeweilige Bibelstelle wird im <tag>ref decls="biblical"</tag>-Element
-                            als <att>cRef</att> nach folgender (entsprechend den im Projekt <ref
-                                target="http://www.biblindex.mom.fr/en/biblical/content"
-                                >BiblIndex</ref> verwendeten Abkürzungen) Struktur angegeben
+                            als <att>cRef</att> nach folgender (entsprechend den im Projekt <ref target="http://www.biblindex.mom.fr/en/biblical/content">BiblIndex</ref> verwendeten Abkürzungen) Struktur angegeben
                             (angeführt im <gi>teiHeader</gi> unter <tag>refsDecl
                                 xml:id="biblical"</tag>): Septuaginta-Zitate als
                                 <code>LXX:Buch:Kapitel:Vers</code> (Gn,Ex,Lv,Nm,Dt,Jos A,Jos B,Judg
@@ -1029,22 +995,20 @@
                                 um eine vom Editor nicht übernommene Konjektur. Korrekturen
                                 kleinerer Fehler, die nicht die Höhe einer Konjektur erreichen,
                                 werden als <tag>@cause="correction"</tag> ausgezeichnet. Vorschläge
-                                von Konjekturen (<hi rend="italic">proposuit</hi> oder <hi
-                                    rend="italic">dubitanter</hi>) werden als
-                                    <tag>@cause="proposition"</tag> ausgezeichnet, ggfs. kann der Wahrscheinlichkeitsgrad des Zutreffens im Attribut <att>cert</att> festgehalten werden (mögliche Werte: <val>low</val>, <val>medium</val>, <val>high</val>). Der Autor einer
+                                von Konjekturen (<hi rend="italic">proposuit</hi> oder <hi rend="italic">dubitanter</hi>) werden als
+                                <tag>@cause="proposition"</tag> ausgezeichnet, ggfs. kann der Wahrscheinlichkeitsgrad des Zutreffens im Attribut <att>cert</att> festgehalten werden (mögliche Werte: <val>low</val>, <val>medium</val>, <val>high</val>). Tilgungen durch Konjektur werden als <tag>@cause="deletion"</tag> ausgezeichnet. Der Autor einer
                                 Konjektur/Emendatio (oder Korrektur) wrd mit <att>resp</att> bzw.
                                 (im Falle einer aus einer Edition übernommenen Konjektur) mit
                                     <att>source</att> angegeben.</p>
                             <egXML xmlns="http://www.tei-c.org/ns/Examples">
                                 <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
-                                        >ψευδόμενος</lem>
+                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">ψευδόμενος</lem>
                                     <rdg wit="#Sav" cause="conjecture">ἀδικῶν</rdg>
                                 </app>
                             </egXML>
                         </div>
                         <div>
-                            <head>Ergänzungen uznd Löschungen</head>
+                            <head>Ergänzungen und Löschungen</head>
                             <p>Vom Editor (oder einem anderen Konjektor) ergänzter Text wird mit
                                     <gi>supplied</gi> ausgezeichnet, gelöschter Text mit
                                     <gi>del</gi>. Korrupter (nicht zu rekonstruierender) Text wird
@@ -1054,8 +1018,22 @@
                                     <lem resp="#AvS" cause="conjecture">
                                         <supplied reason="omitted">οὐκ</supplied>
                                     </lem>
-                                    <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
-                                        cause="omission"/>
+                                    <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab" cause="omission"/>
+                                </app>
+                            </egXML>
+                        </div>
+                        <div>
+                            <head>Lücken im Text</head>
+                            <p>Vom Editor vermutete Lücken im überlieferten Textbestand werden mit
+                                <tag>gap reason="missing"</tag> ausgezeichnet. Die vermutete Ausdehnung der Lücke kann mit Hilfe von <tag>unit="character" quantity="10"</tag> kann angegeben werden. Wird die Feststellung einer Lücke von einem früheren Editor übernommen, so wird die Quelle als <att>source</att> bzw. als <att>resp</att> angeführt.</p>                             
+                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                                Ταῦτα λέγω εἰς <gap reason="missing"/> ση τοὺς καταφεύγοντας κατέλαβεν τότε κατακλυσμός, 
+                                </egXML>
+                            <p>Von anderen Editoren vermutete (und nicht übernommene) Lücken werden in einem Apparateintrag als <gi>rdg</gi> ausgezeichnet mit <tag>@cause="lacuna_indicavit"</tag>.</p>
+                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
+                                <app type="textcritical">
+                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"/>
+                                    <rdg wit="#Sav" cause="lacuna_indicavit"/>
                                 </app>
                             </egXML>
                         </div>
@@ -1084,8 +1062,7 @@
                             <egXML xmlns="http://www.tei-c.org/ns/Examples">
                                 <app type="textcritical">
                                     <lem>οὐδεμίαν <app type="textcritical">
-                                            <lem wit="#Pt #Pc #Pa #Be #Pd #Ma #My #Ha #Va"
-                                                >εὑρήσεις</lem>
+                                            <lem wit="#Pt #Pc #Pa #Be #Pd #Ma #My #Ha #Va">εὑρήσεις</lem>
                                             <rdg wit="#Pb" type="orthographic">εὑρήσῃς</rdg>
                                         </app></lem>
                                     <rdg wit="#Ab" cause="omission"/>
@@ -1125,34 +1102,17 @@
                 <head>Dokumentation des Schemas</head>
                 <schemaSpec ident="tei-pta" docLang="de" prefix="tei_" start="TEI" xml:lang="de">
                     <!--       MODULES USED BY THE PTA SCHEMA       -->
-                    <moduleRef key="core" except="binaryObject corr desc email headItem headLabel
-                        measureGrp media meeting orig postBox postCode q rs term textLang"/>
+                    <moduleRef key="core" except="binaryObject corr email headItem headLabel                         measureGrp media meeting orig postBox postCode q rs term textLang"/>
                     <moduleRef key="tei"/>
-                    <moduleRef key="header" except="abstract appInfo application catDesc catRef
-                        category                         classCode classDecl correction creation
-                        edition editionStmt hyphenation                         interpretation
-                        keywords namespace rendition samplingDecl schemaRef styleDefDecl
-                        tagUsage tagsDecl taxonomy textClass xenoData"/>
-                    <moduleRef key="textstructure" except="argument byline closer dateline div1 div2
-                        div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle
-                        epigraph floatingText imprimatur opener postscript salute signed titlePage
-                        titlePart trailer"/>
-                    <moduleRef key="transcr" except="am damage damageSpan ex fw line listTranspose
-                        metamark mod redo restore secl sourceDoc surplus
-                        transpose undo"/>
+                    <moduleRef key="header" except="abstract appInfo application catDesc catRef                         category                         classCode classDecl correction creation                         edition editionStmt hyphenation                         interpretation                         keywords namespace rendition samplingDecl schemaRef styleDefDecl                         tagUsage tagsDecl taxonomy textClass xenoData"/>
+                    <moduleRef key="textstructure" except="argument byline closer dateline div1 div2                         div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle                         epigraph floatingText imprimatur opener postscript salute signed titlePage                         titlePart trailer"/>
+                    <moduleRef key="transcr" except="am damage damageSpan ex fw line listTranspose                         metamark mod redo restore secl sourceDoc surplus                         transpose undo"/>
                     <moduleRef key="analysis" except="cl interp interpGrp span spanGrp"/>
                     <moduleRef key="certainty"/>
-                    <moduleRef key="gaiji" except="char charDecl charName charProp localName mapping
-                        unicodeName value"/>
-                    <moduleRef key="linking" except="ab alt altGrp joinGrp link linkGrp timeline
-                        when"/>
-                    <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry
-                        musicNotation objectType seal sealDesc stamp summary typeDesc   typeNote"/>
-                    <moduleRef key="namesdates" except="affiliation age bloc climate district
-                        education                         faith langKnowledge langKnown listNym
-                        listObject listOrg listRelation nameLink                         nationality
-                        nym occupation offset org population region residence sex
-                        socecStatus state terrain trait"/>
+                    <moduleRef key="gaiji" except="char charDecl charName charProp localName mapping                         unicodeName value"/>
+                    <moduleRef key="linking" except="ab alt altGrp joinGrp link linkGrp timeline                         when"/>
+                    <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry                         musicNotation objectType seal sealDesc stamp summary typeDesc   typeNote"/>
+                    <moduleRef key="namesdates" except="affiliation age bloc climate district                         education                         faith langKnowledge langKnown listNym                         listObject listOrg listRelation nameLink                         nationality                         nym occupation offset org population region residence sex                         socecStatus state terrain trait"/>
                     <moduleRef key="textcrit" except="wit"/>
                     <moduleRef key="figures" except="cell formula notatedMusic row table"/>
                     <!--        CHANGED ELEMENT SPECS        -->
@@ -1210,8 +1170,7 @@
                         <constraintSpec scheme="isoschematron" ident="div">
                             <constraint>
                                 <sch:rule context="tei:div">
-                                    <sch:report test="@type != 'textpart' and parent::tei:div and
-                                        @type!=parent::tei:div/@type"> Divs other than
+                                    <sch:report test="@type != 'textpart' and parent::tei:div and                                         @type!=parent::tei:div/@type"> Divs other than
                                         @type=textpart may not nest in divs of different @type
                                     </sch:report>
                                 </sch:rule>
@@ -1277,8 +1236,7 @@
                                         both</sch:report>
                                     <sch:report test="@quantity and not(@unit)">If gap has @quantity
                                         then @unit is required</sch:report>
-                                    <sch:report test="not(@reason='ellipsis') and
-                                        ancestor::tei:supplied[not(@reason='undefined')]">gap may
+                                    <sch:report test="not(@reason='ellipsis') and                                         ancestor::tei:supplied[not(@reason='undefined')]">gap may
                                         not appear within supplied text</sch:report>
                                 </sch:rule>
                             </constraint>
@@ -1297,6 +1255,9 @@
                                     <valItem ident="illegible">
                                         <desc>Traces of text remains on the surface but cannot be
                                             interpreted</desc>
+                                    </valItem>
+                                    <valItem ident="missing">
+                                        <desc>Editor thinks that there is text missing, even if there are no physical traces in a manuscript</desc>
                                     </valItem>
                                 </valList>
                             </attDef>
@@ -1520,6 +1481,12 @@
                                         <desc>zur Auszeichnung von Vorschlägen für Konjekturen (sc.
                                             /proposuit/ oder /dubitanter/)</desc>
                                     </valItem>
+                                    <valItem ident="deletion">
+                                        <desc>zur Auszeichnung von Tilgungen</desc>
+                                    </valItem>
+                                    <valItem ident="addition">
+                                        <desc>zur Auszeichnung von Hinzupügungen</desc>
+                                    </valItem>
                                 </valList>
                             </attDef>
                             <attDef ident="ana" mode="delete"/>
@@ -1642,7 +1609,7 @@
                                     sacrum.</desc>
                                 <valList type="closed" mode="replace">
                                     <valItem ident="siglum"/>
-                                    <valItem ident="nomSec"/>
+                                    <valItem ident="nomSac"/>
                                 </valList>
                             </attDef>
                         </attList>
@@ -1715,8 +1682,7 @@
                 <div xml:id="zitate">
                     <head>Zitate</head>
                     <p rend="First Paragraph">In der Handschrift mit Diple markierte Zitate werden
-                        durch <code>@</code> (Griechische Tastatur: <code>"</code>) <hi
-                            rend="italic">und folgendem Leerzeichen</hi> nach dem
+                        durch <code>@</code> (Griechische Tastatur: <code>"</code>) <hi rend="italic">und folgendem Leerzeichen</hi> nach dem
                         Zeilumbruchszeichen markiert.</p>
                 </div>
                 <div xml:id="paragraphos">
