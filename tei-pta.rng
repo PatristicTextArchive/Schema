@@ -5,7 +5,7 @@
          xmlns:teix="http://www.tei-c.org/ns/Examples"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2019-12-13T14:26:26Z. .
+Schema generated from ODD source 2019-12-13T14:39:27Z. .
 TEI Edition: Version 3.3.0. Last updated on
 	31st January 2018, revision f4d8439
 TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.3.0/
@@ -1897,6 +1897,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="tei_unclear"/>
          <ref name="tei_handShift"/>
          <ref name="tei_supplied"/>
+         <ref name="tei_surplus"/>
          <ref name="tei_retrace"/>
       </choice>
    </define>
@@ -1909,6 +1910,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="tei_unclear"/>
          <ref name="tei_handShift"/>
          <ref name="tei_supplied"/>
+         <ref name="tei_surplus"/>
          <ref name="tei_retrace"/>
       </choice>
    </define>
@@ -1920,6 +1922,7 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       <ref name="tei_unclear"/>
       <ref name="tei_handShift"/>
       <ref name="tei_supplied"/>
+      <ref name="tei_surplus"/>
       <ref name="tei_retrace"/>
    </define>
    <define name="tei_model.pPart.transcriptional_sequenceOptional">
@@ -1943,6 +1946,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       </optional>
       <optional>
          <ref name="tei_supplied"/>
+      </optional>
+      <optional>
+         <ref name="tei_surplus"/>
       </optional>
       <optional>
          <ref name="tei_retrace"/>
@@ -1971,6 +1977,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
          <ref name="tei_supplied"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tei_surplus"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_retrace"/>
       </zeroOrMore>
    </define>
@@ -1995,6 +2004,9 @@ Suggested values include: 1] volume; 2] issue; 3] page; 4] line; 5] chapter; 6] 
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_supplied"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_surplus"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_retrace"/>
@@ -6709,6 +6721,28 @@ Suggested values include: 1] parallel; 2] previouseditor</a:documentation>
          <optional>
             <attribute name="reason">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">one or more words indicating why the text has had to be supplied, e.g. overbinding, faded-ink, lost-folio, omitted-in-original.</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="token">
+                        <param name="pattern">(\p{L}|\p{N}|\p{P}|\p{S})+</param>
+                     </data>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_surplus">
+      <element name="surplus">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">marks text present in the source which the editor believes to be superfluous or redundant. [11.3.3.1. Damage, Illegibility, and Supplied Text]</a:documentation>
+         <ref name="tei_macro.paraContent"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.editLike.attributes"/>
+         <ref name="tei_att.dimensions.attributes"/>
+         <optional>
+            <attribute name="reason">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">one or more words indicating why this text is believed to be superfluous, e.g. repeated, interpolated etc.</a:documentation>
                <list>
                   <oneOrMore>
                      <data type="token">
