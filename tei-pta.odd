@@ -1,1847 +1,574 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-    xmlns:rng="http://relaxng.org/ns/structure/1.0">
-    <teiHeader>
-        <fileDesc>
-            <titleStmt>
-                <title>Encoding Critical Editions for the Patristic Text Archive</title>
-                <funder>BBAW</funder>
-                <author xml:id="AvS">Annette von Stockhausen</author>
-            </titleStmt>
-            <editionStmt>
-                <edition>Version 1.1. Last updated on 2019-10-25.</edition>
-            </editionStmt>
-            <publicationStmt>
-                <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
-                <address>
-                    <addrLine>Akademienvorhaben Die alexandrinische und antiochenische Bibelexegese
-                        in der Spätantike</addrLine>
-                    <addrLine>Jaegerstr. 22/23</addrLine>
-                    <addrLine>D-10117 Berlin</addrLine>
-                    <addrLine>Email: annette.von_stockhausen@bbaw.de</addrLine>
-                </address>
-                <date>2019</date>
-                <availability>
-                    <licence target="https://www.gnu.org/licenses/agpl.html">Distributed under a GNU
-                        Affero General Public License.</licence>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Encoding Critical Editions for the Patristic Text Archive (PTA)</title>
+        <funder>BBAW</funder>
+        <author xml:id="AvS">Annette von Stockhausen</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>Version 1.3. Last updated on 2020-04-02.</edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
+        <date>2020</date>
+        <availability>
+          <licence target="https://www.gnu.org/licenses/agpl.html">Distributed under a GNU Affero General Public License.</licence>
 
-                    <p>This program is free software: you can redistribute it and/or modify it under
-                        the terms of the GNU Affero General Public License as published by the Free
-                        Software Foundation, either version 3 of the License, or (at your option)
-                        any later version.</p>
+          <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 
-                    <p>This program is distributed in the hope that it will be useful, but WITHOUT
-                        ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-                        FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License
-                        for more details.</p>
+          <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
 
-                    <p>You should have received a copy of the GNU Affero General Public License
-                        along with this program. If not, see <ptr
-                            target="https://www.gnu.org/licenses/"/>.</p>
-                </availability>
-            </publicationStmt>
-            <sourceDesc>
-                <p>born digital</p>
-            </sourceDesc>
-        </fileDesc>
-        <revisionDesc>
-            <change who="#AvS" when="2019-10-25">Added new documentation prior missing; changes in
-                setup of edition</change>
-            <change who="#AvS" when="2019-07-01">Documentation completed.</change>
-            <change who="#AvS" when="2019-05-16">Added documentation; removed all elements not
-                used.</change>
-            <change who="#AvS" when="2019-05-09">Additions and corrections, added descriptions of
-                elements</change>
-            <change who="#AvS" when="2018-08-30">Adapted from EpiDoc Schema (added textcrit
-                module)</change>
-        </revisionDesc>
-    </teiHeader>
-    <text>
-        <front>
-            <divGen type="toc"/>
-        </front>
-        <body>
-            <div xml:id="vorwort">
-                <head>Vorwort</head>
-                <p><hi rend="ul">TODO: Einleitendes zum Schema und zur Dokumentation</hi></p>
-            </div>
-            <div xml:id="dateien">
-                <head>Dateien-Struktur jeder Edition</head>
-                <p>Jede Edition wird in einer eXist-Datenbank oder einem eigenen Projektordner
-                    verwaltet.</p>
-                <p>Für jede <hi rend="bold">Transkription</hi> einer Handschrift wird eine Datei
-                    angelegt, deren Name aus einer normierten Werk-ID (CPG, CPL, BHG,
-                    Pinakes-Oeuvre, ...) besteht, einem Kürzel für die Handschrift (Wortteile werden
-                    durch Unterstrich miteinander verbunden) und dem Wort "transcript"; die drei
-                    Namensbestandteile werden durch Bindestrich miteinander verbunden:
-                        <code>CPG****-**Handschriftenkürzel**-transcript.xml</code> Die
-                    Transkription folgt den im Kapitel <ref target="#transcriptionen"
-                        >Handschriftentranskription</ref> dargelegten Regeln.</p>
-                <p>Für jede Handschrift, die für die Edition verwendet wird, wird in einem Ordner
-                        <code>Handschriften</code> eine <hi rend="bold">
-                        Handschriftenbeschreibung</hi> (<code>**Handschriftenkürzel**.xml</code>) in
-                    einem nach dem Aufbewahrungsort der Handschrift benannten Unterordner angelegt.
-                    Die Beschreibung folgt den im Kapitel <ref target="#handschriften">Beschreibung
-                        der Handschriften</ref> dargelegten Regeln. Auf eine explizite und
-                    umfassende Handschriftenbeschreibung kann ggfs. verzichtet werden; in diesem
-                    Fall sind die <ref target="edition-header">unten</ref> aufgeführten
-                    Mindesangaben im <gi>teiHeader</gi> aufzunehmen.</p>
-                <p>Für jeden Text wird für die <hi rend="bold">kritische Edition</hi> eine Datei
-                    angelegt (<code>CPG****-Edition.xml</code>). Die Kodierung folgt den im Kapitel
-                        <ref target="#edition">Edition</ref> dargelegten Regeln.</p>
-                <p>All üblicherweise in der <hi rend="bold">Praefatio</hi> abgehandelten Punkte (s.
-                        <ref target="#praefatio">Praefatio</ref>) werden entweder in einer eigenen
-                    Datei <code>CPG****-Praefatio.xml</code> niedergelegt oder innerhalb des
-                        <gi>text</gi>-Elementes im <gi>front</gi>-Element. </p>
-                <p>Das <hi rend="bold">Vorwort</hi> wird in einer eigenen Datei
-                        <code>CPG****-Vorwort.xml</code> erfaßt oder unter einer entsprechenden
-                    Überschrift ebenfalls innerhalb des <gi>text</gi>-Element im
-                    <gi>front</gi>-Element.</p>
-            </div>
-            <div xml:id="handschriften">
-                <head>Beschreibung der Handschriften</head>
-                <p>Wird auf eine explizite Handschriftenbeschreibung verzichtet, sind die <ref
-                        target="edition-header">unten</ref> aufgeführten Mindesangaben im
-                        <gi>teiHeader</gi> der Editionsdatei aufzunehmen. Andernfalls ist wie folgt
-                    vorzugehen:</p>
-                <p>Jede Handschrift erhält im Root-Element eine <att>xml-id</att>. Im Falle von
-                    griechischen Handschriften wird auf die <ref
-                        target="http://www.diktyon.org/en/identifiants-du-reseau/manuscrits/"
-                        >Diktyon-Id</ref> zurückgegriffen. <hi rend="ul">IDs für lateinische, etc.
-                        Handschriften?</hi></p>
-                <p><hi rend="ul">Vgl. Template für Handschriftenbeschreibung</hi></p>
-                <p><hi rend="ul">Verlinkung aus den Handschriftenbeschreibungen auf listWit in der
-                        jeweiligen Editionsdatei und Verlinkung eines Auszugs aus den Daten in die
-                        jeweilige Praefatio-Datei. Kurze Angaben werden auch in die jeweilige
-                        </hi><ref target="#transcriptionen"><hi rend="ul"
-                        >Transkriptionsdatei</hi></ref><hi rend="ul"> übernommen .</hi></p>
-                <p>Die Handschriftenbeschreibung steht im <gi>body</gi> der Datei innerhalb des
-                    Elementes <gi>msDesc</gi>.</p>
-                <div>
-                    <head>Bibliothek, Signatur (auch frühere Signaturen)</head>
-                    <p>Innerhalb des Elementes <gi>msDesc</gi> stehen an erster Stelle die die
-                        Handschriften identifizierenden Daten im Element <gi>msIdentifier</gi>:</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <msIdentifier>
-                            <country>Dänemark</country>
-                            <settlement>Kopenhagen</settlement>
-                            <repository>Det Kongelige Bibliotek</repository>
-                            <collection>Ε don. var.</collection>
-                            <idno>12,2°</idno>
-                            <altIdentifier n="old-id">
-                                <idno>Frühere Signatur</idno>
-                            </altIdentifier>
-                        </msIdentifier>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Inhalt, Incipit und Explicit</head>
-                    <p>Im Element <gi>msContents</gi> wird der Inhalt der Handschrift und ihre
-                        einzelnen Inhaltselement (<gi>msItem</gi>) beschrieben. Innerhalb des
-                        einzelnen Inhaltselements (das mit Hilfe des Attributes <att>n</att>
-                        nummeriert wird) werden die Folia als <gi>locus</gi>, die Überschrift in der
-                        Handschrift als <gi>rubric</gi>, die ersten Worte des Textes als
-                            <gi>incipit</gi>, die letzten Worte des Textes als <gi>explicit</gi> und
-                        ggfs. der Text eines Kolophon als <gi>colophon</gi> angegegeben. Auf den
-                        entsprechenden Eintrag (sc. deren <att>xml-id</att>) im Werkregister wird im
-                        Element <gi>msItem</gi> per Attribut <att>corresp</att> verwiesen. Mit dem
-                        Element <gi>filiation</gi> kann auf Bezüge zu anderen Handschriften
-                        verwiesen werden.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <msContents>
-                            <summary>[grobe Inhaltsübersicht]</summary>
-                            <textLang>[Schreibsprache]</textLang>
-                            <msItem n="1" corresp="Verweis_auf_id_im_Werkregister"
-                                xml:id="für-zusammengesetzte-Handschriften">
-                                <locus from="2r" to="36r">2r-36r </locus>
-                                <note>mit <ref target="#w23cfaa95-c661-4fc8-ad66-88895c437e14"
-                                        type="EnthaltenesWerk">dem Kommentar des Theodoros
-                                        Metochites</ref> (ab f. 1v)</note>
-                                <rubric>[Überschrift]</rubric>
-                                <incipit>[Anfang/Prolog]</incipit>
-                                <explicit>[Ende]</explicit>
-                                <colophon>[Nachschrift]</colophon>
-                                <filiation>[Bezüge zu anderen Handschriften]</filiation>
-                            </msItem> ... </msContents>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Physische Beschaffenheit</head>
-                    <p>Die physische Beschaffenheit der Handschrift wird im Element
-                            <gi>physDesc</gi> beschrieben. Innerhalb des Elementes <gi>physDesc</gi>
-                        teilt sich die Beschreibung in <gi>objectDesc</gi>, <gi>handDesc</gi>,
-                            <gi>scriptDesc</gi>, <gi>decoDesc</gi> und <gi>bindingDesc</gi> auf.</p>
-                    <p>Die Objektbeschreibung (<gi>objectDesc</gi>) ist in <gi>supportDesc</gi> und
-                            <gi>layoutDesc</gi> aufgeteilt.</p>
-                    <p>Innerhalb der <gi>supportDesc</gi> wird im Element <gi>support</gi> der
-                        Beschreibstoff (<gi>material</gi>) und evtl. vorhandene Wasserzeichen
-                            (<gi>watermark</gi>) angegeben. Im Element <gi>extent</gi> wird
-                        anschließend das Format der Handschrift (<gi>dimensions</gi>) und die Folio-
-                        bzw. Seitenzahl (<gi>measure</gi>) vermerkt. Im Element <gi>foliation</gi>
-                        folgen Angaben zur Foliierung und im Element <gi>collation</gi> Angaben zur
-                        Lagenstruktur. Innerhalb des Elementes <gi>collation</gi> können auch
-                        Angaben zu Kustoden/Reklamanten (<gi>catchwords</gi>) unter Angabe der Folia
-                            (<gi>locus</gi>) gemacht werden. Als letztes Element der
-                            <gi>supportDesc</gi> folgen im Element <gi>condition</gi> Angaben zum
-                        Erhaltungszustand.</p>
-                    <p>Innerhalb der <gi>layoutDesc</gi> werden im Element <gi>layout</gi> die
-                        Anzahl der Spalten (<att>columns</att>) und der Zeilen
-                            (<att>writtenLines</att>) angegeben; innerhalb des Elementes können mit
-                            <gi>measure</gi> auch Höhe und Breite des Schriftraumes notiert
-                        werden.</p>
-                    <p>Innerhalb der <gi>handDesc</gi> werden Angaben zu den Schreibern der
-                        Handschrift notiert. Hier werden auch Angaben zur Interpunktion,
-                        Orthographie, Verwendung von Abkürzungen, Glossen, Subskriptionen, etc.
-                        aufgenommen. In der <gi>scriptDesc</gi> können Angaben zur Schriftart
-                        notiert werden. In der <gi>decoDesc</gi> können Angaben zu Rubrizierungen,
-                        Initialien, Miniaturen, Schmuckleisten, etc. vermerkt werden. In der
-                            <gi>bindingDesc</gi> können Angaben zum Einband gemacht werden.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <physDesc>
-                            <objectDesc>
-                                <supportDesc>
-                                    <support>
-                                        <!-- ### BESCHREIBSTOFF ### -->
-                                        <material>Papier</material>
-                                        <material>
-                                            <locus from="1r" to="5v"/>Pergament</material>
-                                        <!-- ### WASSERZEICHEN ### -->
-                                        <watermark>[Wasserzeichenbeschreibung etc.] <!-- onlineVerweis -->
-                                            <ref type="piccard"
-                                                target="https://www.wasserzeichen-online.de/?ref=DE8100-PO-151547"
-                                                >151547</ref>
-                                        </watermark>
-                                        <watermark>Erklärung zum Wasserzeichen, vgl. auch <ref
-                                                cRef="151547" type="Piccard-Online"/> oder auch <ref
-                                                type="print" corresp="Verweis zum Werkregister, wenn
-                                                vorhanden">Briquet,
-                                            Augsburg....</ref><!-- für Drucke -->
-                                        </watermark>
-                                        <!-- bibl für Wasserzeichen, die nicht ins Werkregister gehören? -->
-                                    </support>
-                                    <extent>
-                                        <!-- ### FORMAT Buch, Blatt ### -->
-                                        <dimensions type="leaf" unit="cm"><!-- mm oder cm -->
-                                            <height>[Höhe]</height>
-                                            <width>[Breite]</width>
-                                        </dimensions>
-                                        <!-- ### BLATTZAHL ### -->
-                                        <measure type="numLeaves">[Blattanzahl]</measure>
-                                        <measure type="numFolio">[Folien]</measure>
-                                    </extent>
-                                    <!-- Foliierung -->
-                                    <foliation>
-                                        <p>[Kommentar zur Foliierung]</p>
-                                    </foliation>
-                                    <!-- ### LAGEN, Struktur ### -->
-                                    <!-- mit Formel -->
-                                    <collation>
-                                        <!-- wenn gewünscht -->
-                                        <formula><!-- evtl. mit regEx eingrenzen -->[Lagenstruktur]</formula>
-                                        <p>
-                                            <locus>[]</locus>[Lagen + Erklärung zu den Lagen]</p>
-                                        <p>
-                                            <locus>[]</locus>[Lagen + Erklärung zu den Lagen]</p>
-                                        <!-- Reklamanten -->
-                                        <catchwords>
-                                            <locus/>[Kustode/Reklamanten] als Fließtext</catchwords>
-                                        <catchwords>[<!-- Unterscheidung zu griech. Kustoden? -->]</catchwords>
-                                        <!-- Lagensignatur -->
-                                        <signatures>
-                                            <locus/>[Lagensignierung]</signatures>
-                                    </collation>
-                                    <!-- ohne Formel -->
-                                    <!--<collation>
-                        <p>[Lagen + Erklärung zu den Lagen]</p>
-                     </collation>-->
-                                    <!-- Erhaltungszustand -->
-                                    <condition n="good">
-                                        <!-- Wert für schlecht, mittel, gut, überwiegend... -->
-                                        <p>[Erhaltungszustand]</p>
-                                        <p>[wenn mehrere Absätze]</p>
-                                    </condition>
-                                </supportDesc>
-                                <layoutDesc>
-                                    <layout>
-                                        <locus/>
-                                    </layout>
-                                    <layout columns="2" writtenLines="26 28"><!-- Spalte & Zeile zusammengefasst -->
-                                        <!-- Schriftraum -->
-                                        <measure>
-                                            <dimensions type="written" unit="cm"><!-- mm -->
-                                                <height>[Höhe Schriftraum]</height>
-                                                <width>[Breite Schriftraum]</width>
-                                            </dimensions>
-                                        </measure>
-                                        <note>[Erklärungen, wenn nötig, im Fließtext]</note>
-                                    </layout>
-                                </layoutDesc>
-                            </objectDesc>
-                            <!-- Hände, Angabe zum Kopist -->
-                            <handDesc>
-                                <handNote n="1" corresp="#bast">1. <locus from="1r" to="13v"
-                                        >1r-13v</locus>, <locus from="55v">55v</locus>, <locus
-                                        from="166r" to="167v">166r-167v</locus>. Weitere Angaben zur
-                                    Interpunktion, Orthographie, Verwendung von Abkürzungen,
-                                    Glossen, Subskriptionen, etc.</handNote>
-                                <!-- etc pp -->
-                                <handNote n="22" corresp="#text">22. <locus from="175v" to="178v"
-                                        >175v-178v</locus>, [Erklärungen, wie Schreiber etc. Bsp.:
-                                    Schreiberin: <persName key="link">Clara</persName>, vgl. <locus
-                                        from="22v">22v</locus>]</handNote>
-                                <handNote n="3"/>
-                            </handDesc>
-                            <scriptDesc>
-                                <scriptNote n="1" xml:id="text">Textualis</scriptNote>
-                                <scriptNote n="2" xml:id="bast">Bastard</scriptNote>
-                            </scriptDesc>
-                            <!-- Gotthelf -->
-                            <!-- Workflow: Erst Schrift eingeben, dann Hände und speichern zwischendurch -->
-                            <!-- Schrift -->
-                            <!-- ### RUBRIZIERUNG, INITIALEN, MINIATUREN, ANFANGSBUCHST, ÜBERSCHRIFTEN, SONSTIGE ILLUSTRATIONEN ### -->
-                            <decoDesc>
-                                <!-- Unterschiede mit Elke/Lydia abklären -->
-                                <decoNote type="rubric">
-                                    <locus>[optional]</locus>[Rubrizierung]</decoNote>
-                                <!-- Rotfärbung -->
-                                <decoNote type="initial">[Initialen]</decoNote>
-                                <!-- grafisch gestaltelter Anfangsbuchstabe -->
-                                <decoNote type="miniatur">[Miniatur]</decoNote>
-                                <!-- von Initiale unabhängige figürliche Ausgestaltung -->
-                                <decoNote type="lombarde">[Anfangsbuchst]</decoNote>
-                                <!-- andersfarbige "Initiale" -> meist runder -->
-                                <decoNote type="headline">[Überschriften]</decoNote>
-                                <decoNote type="illustration"
-                                    >[Illustrationen/Illumination]</decoNote>
-                                <!-- ganzes Bild -->
-                                <decoNote type="ink">[Farbangaben zur Tinte]</decoNote>
-                                <decoNote type="margin">[Bemerkungen zum Rand]</decoNote>
-                            </decoDesc>
-                            <!-- ### @EINBAND ### -->
-                            <bindingDesc n="good"><!-- s. Erhaltungszustand -->
-                                <binding>
-                                    <p>[Fließtext zum Einband]</p>
-                                </binding>
-                                <!-- schreiber/kopist, owner -> CAGB-Website @role für persName überall => Werte?  -->
-                            </bindingDesc>
-                        </physDesc>
-                    </egXML>
-
-                </div>
-                <div>
-                    <head>Provenienz, frühere Besitzer</head>
-                    <p>Angaben zur Provienz der Handschrift werden innerhalb von <gi>msDesc</gi> im
-                        Element <gi>history</gi> vorgenommen.</p>
-                    <p>Im Element <gi>origin</gi> werden mit Hilfe der Elemente <gi>origDate</gi>
-                        und <gi>origPlace</gi> die Datierung (Angabe auch als <ref
-                            target="https://en.wikipedia.org/wiki/ISO_8601">ISO-Date</ref> im
-                        Attribut <att>notBefore</att> und <att>notAfter</att> bzw. <att>when</att>)
-                        und der Herkunftsort (soweit möglich, <hi rend="ul">mit Verweis auf
-                            Pleiades-ID</hi>) angegeben; weitere Informationen dazu können als
-                        Fließtext innerhalb eines <gi>p</gi>-Elementes niedergelegt werden.</p>
-                    <p>Im Element <gi>provenance</gi> können Informationen zur Geschichte der
-                        Handschrift festgehalten werden.</p>
-                    <p>Im Element <gi>acquisition</gi> schließlich kann festgehalten werden, wie die
-                        Handschrift in die aktuell besitzende Bibliothek gelangt ist.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <!-- ### @Herkunft/ Geschichte ### -->
-                        <history>
-                            <origin>
-                                <!-- ### DATIERUNG ###-->
-                                <origDate notBefore="ISO-Date" notAfter="ISO-Date"
-                                    >[Datierung]</origDate>
-                                <!-- ### Herkunft ###-->
-                                <origPlace>[Herkunft]</origPlace>
-                                <!-- ### GESCHICHTE; Enstehung/ Herkunft ### -->
-                                <p>[Für weitere Informationen, wenn dies an dieser Stelle notwendig
-                                    ist]</p>
-                                <p n="origPrimary">[Geschichte]</p>
-                            </origin>
-                            <!-- ### PROVENIENZ ###-->
-                            <provenance>
-                                <p>[Provenienz]</p>
-                                <!-- mehrere <p> erlaubt -->
-                            </provenance>
-                            <acquisition>
-                                <p>Text</p>
-                            </acquisition>
-                        </history>
-                    </egXML>
-                </div>
-            </div>
-            <div xml:id="transcriptionen">
-                <head>Handschriftentranskription</head>
-                <p>Von den Handschriften werden diplomatische Transkriptionen angefertigt,
-                    Orthographie (v.a. bzgl. Iota sub- oder abscriptum) und Interpunktion werden
-                    nicht normalisiert.</p>
-                <p>Oberstes Element der Transkription ist <tag>div type="transcription"</tag>. </p>
-                <p><hi rend="underline">TODO: </hi>Bei Bedarf, z.B. bei Randkatenen, können weitere
-                    Gliederungselemente zur Unterscheidung der verschiedenen Komponenten eingeführt
-                    werden; ggfs ist den einzelnen Segmenten jeweils eine <att>xml-id</att>
-                    zuzuweisen, um die Bezüge zwischen den korrespondieren Teilen (Text, Kommentar)
-                    auszeichnen zu können.</p>
-                <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                    <div type="transcription">
-                        <div type="surface">
-                            <pb n="112v"/>
-                            <div type="text">
-                                <seg xml:id="alpha"><g type="obelos"/> Εν ἀρχῇ ἐποίησεν ὁ θεὸς τὸν
-                                    οὐρανὸν καὶ τὴν γῆν.</seg>
-                                <seg xml:id="beta">ἡ δὲ γῆ ἦν ἀόρατος καὶ ἀκατασκεύαστος, καὶ σκότος
-                                    ἐπάνω τῆς <seg xml:id="a">ἀβύσσου</seg>, καὶ πνεῦμα θεοῦ
-                                    ἐπεφέρετο ἐπάνω τοῦ ὕδατος.</seg>
-                            </div>
-                            <div type="commentary" place="inner_margin">
-                                <seg corresp="#alpha"><g type="obelos"/> Kommentar</seg>
-                                <seg corresp="#beta">Kommentar</seg>
-                            </div>
-                            <div type="commentary" place="outer_margin">
-                                <seg corresp="#a">Worterklärung</seg>
-                            </div>
-                        </div>
-                    </div>
-                </egXML>
-                <p><hi rend="ul">Alternatives Vorgehen: anstelle der hier vorgestellten semantischen
-                        Beschreibung eine graphische entsprechend </hi><ref
-                        target="https://www.tei-c.org/release/doc/tei-p5-doc/de/html/PH.html#PHFAX"
-                            ><hi rend="ul">TEI-Guidelines 11.1 Digital Facsimiles</hi></ref><hi
-                        rend="ul">.</hi></p>
-                <p>Der Header der Transkriptionsdatei enthält kurze Angaben zur Handschrift
-                    (mindestens <gi>msIdentifier</gi>, ggfs. zu den Händen). Für die ausführliche
-                    Beschreibung wird im Element <gi>msDesc</gi> (<att>corresp</att>) auf die
-                    entsprechende Datei in der Handschriftendatenbank verwiesen.</p>
-                <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                    <msDesc corresp="Verweis auf ID in Handschriftendatenbank">
-                        <msIdentifier>
-                            <settlement>Athen</settlement>
-                            <repository>Ethnikê Bibliothêkê tês Hellados (EBE)</repository>
-                            <idno>253</idno>
-                            <altIdentifier type="diktyon">
-                                <idno>2549</idno>
-                            </altIdentifier>
-                        </msIdentifier>
-                        <physDesc>
-                            <handDesc>
-                                <p>
-                                    <listPerson>
-                                        <person xml:id="m1">Schreiber</person>
-                                        <person xml:id="m2">Erster Korrektor</person>
-                                        <person xml:id="mr">Manus recentior</person>
-                                    </listPerson>
-                                </p>
-                            </handDesc>
-                        </physDesc>
-                    </msDesc>
-                </egXML>
-                <div>
-                    <head>Titel/Lemma</head>
-                    <p>Titel werden mit dem Element <gi>title</gi> innerhalb des Elementes
-                            <gi>head</gi> ausgezeichnet:</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <head>
-                            <title>Τοῦ αὐτοῦ ὁμιλία</title>
-                        </head>
-                    </egXML>
-                    <p>Bei biblischen Kommentaren wird (jeweils innerhalb eines durch <tag>div
-                            type="textpart" subtype="exegesis"</tag> ausgezeichneten Abschnitt) das
-                        Lemma als Element <gi>title</gi> mit <att>type</att> (Wert:
-                        <val>lemma</val>) innerhalb des Elementes <gi>head</gi> ausgezeichnet:</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <div type="textpart" subtype="exegesis">
-                            <head>
-                                <title type="lemma">ἐν παντὶ λόγω καὶ πάση γνώσει</title>
-                            </head>
-                            <p>Auslegung dazu</p>
-                        </div>
-                        <div type="textpart" subtype="exegesis">
-                            <head>
-                                <title type="lemma">καθὼς τὸ μαρτύριον τοῦ Χριστοῦ ἐβεβαιώθη ἐν
-                                    ὑμῖν</title>
-                            </head>
-                            <p>Auslegung dazu</p>
-                        </div>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Umbrüche</head>
-                    <p>Zeilenumbrüche werden mit <gi>lb</gi>, Spaltenumbrüche mit <gi>cb</gi> und
-                        Seitenumbrüche mit <gi>pb</gi> ausgezeichnet.</p>
-                    <p>Befindet sich ein Umbruch innerhalb eines Wortes, erhält das jeweilige
-                        Element das Attribut <att>break</att> und den Wert <val>no</val>.</p>
-                    <p>Beim Seitenumbruch erhält das Element das Attribut <att>n</att> für die
-                        Eingabe der Seitennummerierung und - wo vorhanden - das Attribut
-                            <att>facs</att> für die Eingabe des Links auf ein digitales
-                        Faksimile.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples"> θησαυροὶ, ψυχὰς εὐφραίνοντες·<lb/>
-                         ἐννοίας φωτίζοντες· τὴν οἰ<lb break="no"/>
-                         κουμένην ἐπιστρέφοντες πᾶσαν·<pb n="227r"
-                            facs="https://digitalcollections.nlg.gr/iiif/3001/EBE0253455.tif/full/full/0/default.jpg"
-                        /> τοῦ ἀδὰμ τὴν πτωχείαν πλουτί<lb break="no"/>
-                         ζοντες· εἰς πολλὴν γὰρ κατηνέ<lb break="no"/>
-                         χθη ταπείνωσιν, τὸ πρωτότυπον<cb/>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Zeichensetzung</head>
-                    <p>Die Interpunktion wird – ohne explizite Auszeichnung – wie in der Handschrift
-                        vorhanden transkribiert.</p>
-                    <p><hi rend="underline">ALTERNATIVE: Auszeichnung mit <gi>pc</gi>. Zu
-                            verwendende Zeichen ...</hi></p>
-                </div>
-                <div>
-                    <head>Initialen und Ektheseis</head>
-                    <p>Initialen und Ektheseis werden mit dem Element <gi>hi</gi> ausgezeichnet. Im
-                        Attribut <att>rend</att> wird angeben, ob es sich um eine Initiale
-                            (<val>initial</val>) oder um eine Ekthesis (<val>ekthesis</val>)
-                        handelt.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <hi rend="ekthesis">θ</hi>ησαυροὶ, ψυχὰς εὐφραίνοντες· </egXML>
-                </div>
-                <div>
-                    <head>Absätze</head>
-                    <p>Absätze werden – soweit in der Handschrift vorhanden – durch <gi>p</gi>
-                        markiert. Jede Transkription enthält unterhalb von <tag>div
-                            type="transcription"</tag> mindestens ein <gi>p</gi>-Element.</p>
-                </div>
-                <div>
-                    <head>Marginalien</head>
-                    <p>Marginalien werden in der Transkription als <gi>note</gi> ausgezeichnet,
-                        wobei das Element im Text möglichst nahe zu der Stelle eingeführt wird, an
-                        der sich die Marginalien befindet.</p>
-                    <p>Die Position der Marginalie wird im Attribut <att>place</att> angegeben.
-                        Erlaubte Werte sind <val>top</val>, <val>bottom</val>,
-                            <val>margin_inner</val> und <val>margin_outer</val>.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <note place="top">ΛΓ'</note>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Getilgter Text</head>
-                    <p>Vom Schreiber oder einem späteren Korrektor getilgter Text wird mit
-                            <gi>del</gi> ausgezeichnet. Die Art der Tilgung wird im Attribut
-                            <att>rend</att> angegeben. Erlaubte Werte sind <val>erasure</val>,
-                            <val>strikethrough</val> und <val>expunction</val>.</p>
-                    <p>Stammt eine Tilgung nicht vom Schreiber, kann dies durch das Attribut
-                            <att>hand</att> angegeben werden, wobei die Korrektoren (<val>#m2</val>,
-                            <val>#m3</val>,… - allgemein <val>#mr</val> für manus recentior)
-                        unterschieden werden sollten. Ist nicht zu entscheiden, von welcher Hand
-                        eine Korrektur vorgenommen worden ist, wird dieser der Wert
-                            <val>unknown</val> zugewiesen.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples"> γηΐ<del rend="erasure"
-                            hand="#m2">ω</del>νων </egXML>
-                </div>
-                <div>
-                    <head>Korrekturen</head>
-                    <p>Korrekturen werden mit <gi>subst</gi> gekennzeichnet. Stammt eine Korrektur
-                        nicht vom Schreiber, kann dies durch das Attribut <att>hand</att> angegeben
-                        werden, wobei die Korrektoren (<val>#m2</val>, <val>#m3</val>,… - allgemein
-                            <val>#mr</val> für manus recentior) unterschieden werden sollten. Ist
-                        nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden
-                        ist, wird dieser der Wert <val>unknown</val> zugewiesen.</p>
-                    <p>Innerhalb dieses Elementes wird der getilgte Text wird mit <gi>del</gi>
-                        ausgezeichnet. Die Art der Tilgung wird im Attribut <att>rend</att>
-                        angegeben. Erlaubte Werte sind <val>marker</val> (zu ersetzender Text mit
-                        Marker (sc. dotted obelus o.ä.) markiert), <val>erasure</val>,
-                            <val>strikethrough</val> und <val>expunction</val>.</p>
-                    <p>Der hinzugefügte Text wird mit <gi>add</gi> ausgezeichnet. Der Ort der
-                        Hinzufügung wird im Attribut <att>place</att> angegeben. Erlaubte Werte sind
-                            <val>above</val>, <val>inline</val> und <val>margin</val>.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <subst hand="#m2">
-                            <del rend="erasure">getilgter Text</del>
-                            <add place="above">ersetzter Text</add>
-                        </subst>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Hinzugefügter Text</head>
-                    <p>Hinzugefügter Text, der nicht mit einer Korrektur einhergeht, wird mit
-                            <gi>add</gi> ausgezeichnet. Der Ort der Hinzufügung wird im Attribut
-                            <att>place</att> angegeben. Erlaubte Werte sind <val>above</val>,
-                            <val>inline</val> und <val>margin</val>.</p>
-                    <p>Stammt eine Hinzufügung nicht vom Schreiber, kann dies durch das Attribut
-                            <att>hand</att> angegeben werden, wobei die Korrektoren (<val>#m2</val>,
-                            <val>#m3</val>,… - allgemein <val>#mr</val> für manus recentior)
-                        unterschieden werden sollten. Ist nicht zu entscheiden, von welcher Hand
-                        eine Korrektur vorgenommen worden ist, wird dieser der Wert
-                            <val>unknown</val> zugewiesen.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <add place="above" hand="#m2">hinzugefügter Text</add>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Nicht lesbarer Text</head>
-                    <p>Nicht lesbarer Text wird mit <gi>gap</gi> angebeben. Dem Attribut
-                            <att>reason</att> wird der Wert <val>illegible</val> zugewiesen. Der
-                        (geschätzte) Umfang (<att>quantity</att>) wird in Buchstaben
-                            (<att>unit</att> mit <val>character</val>) angegeben.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <gap reason="illegible" quantity="10" unit="character"/>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Lücke im Text</head>
-                    <p>Lücken im Text werden ebenfalls mit <gi>gap</gi> angebeben. Dem Attribut
-                            <att>reason</att> wird der Wert <val>damage</val> (physische
-                        Beschädigung) oder <val>fenestra</val> (vom Schreiber frei gelassen)
-                        zugewiesen. Der (geschätzte) Umfang (<att>quantity</att>) wird in Buchstaben
-                            (<att>unit</att> mit <val>character</val>, <val>line</val> oder
-                            <val>page</val>) angegeben.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <gap reason="fenestra" quantity="10" unit="character"/>
-                    </egXML>
-                    <p>Wenn durch die Zerstörung von Text durch den Schreiber (Rasur) eine Lücke
-                        entsteht, wird diese mit <gi>del</gi> ausgezeichnet:</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <del rend="erasure"><gap reason="illegible" quantity="10" unit="character"
-                            /></del>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Unsichere Lesung</head>
-                    <p>Ist ein Text nicht sicher zu entziffern, wird er mit <gi>unclear</gi>
-                        markiert.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <unclear>unsicher</unclear>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Wechsel des Schreibers</head>
-                    <p>TODO <gi>handShift</gi></p>
-                </div>
-                <div>
-                    <head>Nomina sacra</head>
-                    <p>Nomina sacra werden innerhalb eines <gi>choice</gi>-Elemente als
-                            <gi>abbr</gi> vom <att>type</att>
-                        <val>nomSac</val> aufgenommen und die Abkürzung im Element <gi>expan</gi>
-                        notiert.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <choice>
-                            <expan>πνεύματι</expan>
-                            <abbr type="nomSac">
-                                <hi rend="overline">πνι</hi>
-                            </abbr>
-                        </choice>
-                    </egXML>
-                </div>
-                <div>
-                    <head>Diple und Paragraphos</head>
-                    <p>Diple (einfach oder doppelt), meist zur Markierung von Zitaten verwendet,
-                        wird mit Hilfe von <tag>g type="diple"/</tag> bzw. <tag>g
-                            type="doubled_diple"/</tag> vermerkt. </p>
-                    <p>In der Handschrift mit Paragraphos am Rand markierte Zeilen werden durch
-                            <tag>g type="paragraphos"/</tag> markiert.</p>
-                </div>
-                <div>
-                    <head>DSL</head>
-                    <p>Zur einfacheren Erstellung der Transkription kann diese auch als
-                        Plaintext-Datei mit Hilfe der Transkriptions-DSL (im <ref
-                            target="#transkriptions-dsl">Anhang</ref>) erstellt werden, die per
-                        Python-Skript <code>Convert_Transkription_XML.py</code> in TEI-XML
-                        konvertiert wird.</p>
-                </div>
-                <div>
-                    <head>Kollationierung</head>
-                    <p>Die Handschriftentranskriptionen können mit Hilfe von <ref
-                            target="https://collatex.net/">CollateX</ref> kollationiert werden.</p>
-                </div>
-            </div>
-            <div xml:id="praefatio">
-                <head>Praefatio</head>
-                <p rend="First Paragraph">Die Einleitung soll alles enthalten, was zum Verständnis
-                    des folgenden Textes und Apparates notwendig ist, nämlich:</p>
-                <div xml:id="Xd3361ec61ff8d34c28054cc79e754ac4a7643c4">
-                    <head>Antike Zeugnisse über Autor und seine Schrift(en)</head>
-                    <p>Ausführlichere Untersuchungen über die Echtheitsfragen und andere
-                        literaturgeschichtliche Probleme gehören dabei normalerweise nicht in die
-                        Einleitung, aber ihre Ergebnisse sollten in jedem Falle knapp zusammengefaßt
-                        und mitgeteilt werden.</p>
-                </div>
-                <div xml:id="Xc07e77ef82996228f6b785116f6008c30d9dfc0">
-                    <head>Angabe und Beschreibung der Handschriften (und Papyri)</head>
-                    <p>Die Daten speisen sich aus der Handschriftendatenbank. Folgende Angaben
-                        werden übernommen: Der Inhalt von <gi>msIdentifier</gi>, von
-                            <gi>msContents</gi> der Inhalt des <gi>msItem</gi>-Elements des edierten
-                        Textes, aus der <gi>physDesc</gi> der Inhalt der Elemente <gi>material</gi>,
-                            <gi>extent</gi>, <gi>foliation</gi>, <gi>layout</gi>, <gi>handDesc</gi>,
-                        aus der <gi>history</gi> den Inhalt der Elemente <gi>origin</gi>,
-                            <gi>provenance</gi>.</p>
-                    <p><hi rend="underline">TODO: Wie werden die Daten aus der Hs-Datenbank gezogen
-                            und welche Eingabe ist hier nötig?</hi></p>
-                    <p>Sind zu Einzelfragen — wie etwa zur Feststellung der Verwandtschaft der
-                        einzelnen Handschriften zueinander — eingehendere Untersuchungen notwendig,
-                        so sind sie an anderer Stelle, vor allem aber in den „Texten und
-                        Untersuchungen” als dem Archiv der Ausgabe, zu publizieren und in der
-                        Einleitung lediglich ihre Ergebnisse festzuhalten.</p>
-                </div>
-                <div xml:id="X2255aecdbb8bee1e8351dd583157f15eba49529">
-                    <head>Abschätzung ihres kritischen Wertes und Bezeichnung ihres gegenseitigen
-                        Verhältnisses (in der Regel unter Beifügung eines Stemmas)</head>
-                    <p>
-                        <hi rend="underline">TODO: Graphikformat für Stemma, das dann eingebunden
-                            und ggfs. vorher noch bearbeitet werden kann.</hi>
-                    </p>
-                </div>
-                <div xml:id="X46b50124a57d40a5f28dcd8ea6cc8cc1cde2184">
-                    <head>Aufzählung und Wertung der indirekten Überlieferungsquellen</head>
-                    <p>Angeführt werden sollen <emph>antike Übersetzungen</emph> und die
-                            <emph>sonstige indirekte Überlieferung</emph>.</p>
-                </div>
-                <div xml:id="Xd53f817cb15c86f9c39ff01bb900fcbf09f5151">
-                    <head>Aufzählung und Würdigung der früheren Ausgaben</head>
-                    <p>Die bibliographischen Daten der früheren Ausgaben werden dabei als
-                            <code>bibl</code> (ggfs. in einer <code>listBibl</code>) kodiert.</p>
-                </div>
-                <div xml:id="übersetzungen-der-schrift">
-                    <head>Übersetzungen der Schrift in moderne Sprachen</head>
-                    <p>Die bibliographischen Daten der Übersetzungen werden dabei als
-                            <code>bibl</code> (ggfs. in einer <code>listBibl</code>) kodiert.</p>
-                </div>
-                <div xml:id="X9ac948ed15c8afc4ac1fc66dfc2fa3d9c109526">
-                    <head>Auskunft über angewendete Editionsprinzipien</head>
-                    <p><hi rend="ul">Verweis auf die angewendeten Kodierungsregeln, sc. das Schema
-                            hier.</hi></p>
-                </div>
-            </div>
-            <div xml:id="edition">
-                <head>Edition</head>
-                <div xml:id="status">
-                    <head>Angabe des Status einer Edition und der vorgenommenen Annotationen</head>
-                    <p>Im <gi>teiHeader</gi> wird in der <gi>revisionDesc</gi> im Attribut
-                            <att>status</att> der Status der Edition angebeben. Möglich sind
-                        folgende Werte: <val>critical-edition-with-app</val>,
-                            <val>critical-edition-no-app</val>,
-                        <val>critical-edition-outdated</val>, and <val>pre-critical-edition</val>. </p>
-                    <p>Im Element <gi>interpretation</gi> (innerhalb der <gi>editorialDecl</gi> in
-                        der <gi>encodingDesc</gi>) werden die vorgenommenen Annotationen jeweils in
-                        einem <gi>p</gi> vermerkt. Das <gi>p</gi>-Element erhält eine
-                            <att>xml-id</att> mit einem der folgenden Werte:
-                            <val>biblical-quotations</val>, <val>places</val>, <val>persons</val>,
-                        and <val>linguistic</val>.</p>
-                    <p>Dadurch können Nutzer der Edition schnell erkennen, was sie von der Edition
-                        zu erwarten haben.</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <teiHeader> ... <encodingDesc>
-                                <editorialDecl>
-                                    <interpretation>
-                                        <p xml:id="biblical-quotations">Bibelzitate sind
-                                            ausgezeichnet und nachgewiesen.</p>
-                                        <p xml:id="places">Orte sind ausgezeichnet und mit Normdaten
-                                            versehen.</p>
-                                        <p xml:id="persons">Personen sind ausgezeichnet und mit
-                                            Normdaten versehen.</p>
-                                    </interpretation>
-                                </editorialDecl>
-                            </encodingDesc>
-                        </teiHeader>
-                    </egXML>
-                </div>
-                <div xml:id="edition-header">
-                    <head>Siglen</head>
-                    <p>Im Header der Editionsdatei wird in der <gi>sourceDesc</gi> die Handschriften
-                        (als <gi>witness</gi> in einer <gi>listWit</gi>) und die früheren Editionen
-                        (und Konjektoren) (als <gi>bibl</gi> in einer <gi>listBibl</gi>) angeführt,
-                        die in der Edition verwendet werden. Aus diesen Einträgen kann ein
-                        Conspectus siglorum generiert werden.</p>
-                    <p>Die Datei mit der Transkription der Handschrift wird im jeweiligen
-                            <gi>witness</gi> via <att>corresp</att> verlinkt. Alle Einträge erhalten
-                        eine maschinenlesbare <att>xml-id</att> und im <tag>abbr
-                        type="siglum"</tag>-Element eine menschlesbare Sigle, wobei Sigle und xml-id
-                        soweit möglich identisch sind.</p>
-                    <p>Der übliche lateinische Name der Handschrift wird mit <gi>name</gi>
-                        ausgezeichnet, die Datierung der Handschrift mit <gi>origDate</gi> (mit
-                        iso-date-Angabe in den Attributen <att>notBefore</att> und
-                            <att>notAfter</att> bzw. <att>when</att>) und die Folia/Seiten, auf
-                        denen sich der edierte Text befindet, werden mit <gi>locus</gi>
-                        ausgezeichnet.</p>
-                    <p>Handschriftenfamilien und Hyparchetypen können als eigene <gi>listWit</gi>
-                        (mit eigenem <gi>head</gi>) ausgezeichnet werden, die eine <att>xml:id</att>
-                        für die Familie bekommt (und analog eine Sigle).</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <listWit>
-                            <listWit xml:id="a">
-                                <head>Hyparchetyp <abbr type="siglum">α</abbr></head>
-                                <witness xml:id="N" corresp="Link_zur_Transkriptionsdatei">
-                                    <abbr type="siglum">N</abbr>
-                                    <name>Codex Neapolitanus V A 8</name>, <origDate
-                                        notBefore="1401" notAfter="1500">s. XV</origDate></witness>
-                                <witness xml:id="G">
-                                    <abbr type="siglum">G</abbr>
-                                    <name>Codex Gaddianus pl. 90, 12 inf.</name>, <origDate
-                                        notBefore="1401" notAfter="1500">s. XV</origDate></witness>
-                            </listWit>
-                            <listWit xml:id="b">
-                                <head>Hyparchetyp <abbr type="siglum">β</abbr></head>
-                                <witness>...</witness>
-                            </listWit>
-                        </listWit>
-                    </egXML>
-
-                    <p>Bei früheren Editionen wird analog vorgegangen:</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <listBibl>
-                            <bibl xml:id="Sav">
-                                <abbr type="siglum">Sav.</abbr>
-                                <editor>Savile, Henry</editor>, <title>Chrysostomi Opera</title>,
-                                    <pubPlace>Eton</pubPlace>: <publisher>apud Christophorum
-                                    Froschouerum</publisher>, <date when="1637">1637</date>. </bibl>
-                        </listBibl>
-                    </egXML>
-
-                    <p>Konjektoren, deren Konjekturen nicht im obigen Sinne bibliographiert werden
-                        können, werden folgendermaßen aufgenommen:</p>
-                    <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <person xml:id="AvS">
-                            <persName ref="http://d-nb.info/gnd/124321291">
-                                <abbr type="siglum">AvS</abbr>
-                                <forename>Annette</forename>
-                                <surname>von Stockhausen</surname>
-                            </persName>
-                            <!-- ggfs. angeben -->
-                            <note>Zitiert in <ref target="#Sav">Savile</ref>.</note>
-                        </person>
-                    </egXML>
-                </div>
-                <div xml:id="text">
-                    <head>Text</head>
-                    <div xml:id="normalisierung">
-                        <head>Normalisierung</head>
-                        <list type="unordered">
-                            <item>Für die Edition sollte die Rechtschreibung (Großschreibung,
-                                ν-ephelkystikon, σ: οὕτως, Iota subscriptum/adscriptum, ρρ : ῤῥ,
-                                Trema, Enklitika, Apostroph/Elisionen, Zahlzeichen, Worttrennung,
-                                nomina sacra) normalisiert werden.</item>
-                            <item>Auch die Interpunktion sollte modernen Gewohnheiten folgend
-                                normalisiert werden: Punkt, Komma, Semikolon, Fragezeichen,
-                                Gedankenstrich(e) (Parenthese; Anakoluth).</item>
-                        </list>
-                        <p>Abweichungen sind möglich. Der Umfang der Normalisierung wird im
-                                <gi>teiHeader</gi> in der <gi>encodingDesc</gi> angegeben:</p>
-                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                            <teiHeader> ... <encodingDesc>
-                                    <editorialDecl>
-                                        <normalization>
-                                            <p><!--Angabe der Normalisierung-->
-                                            </p>
-                                        </normalization>
-                                    </editorialDecl>
-                                </encodingDesc>
-                            </teiHeader>
-                        </egXML>
-                    </div>
-                    <div xml:id="auszeichnung-der-textstruktur">
-                        <head>Auszeichnung der Textstruktur</head>
-                        <p>Die vom Editor rekonstruierte Textstruktur wird mit Hilfe von
-                                <gi>div</gi>- und <gi>p</gi>-Elementen ausgezeichnet und folgt den
-                                <ref target="http://capitains.org/">CTS-Guidelines</ref>:</p>
-                        <list type="unordered">
-                            <item>(sofern einschlägig) Buch (nummeriert): <tag>div type="textpart"
-                                    subtype="book" n="1"</tag></item>
-                            <item>(sofern einschlägig) Kapitel (nummeriert): <tag>div
-                                    type="textpart" subtype="chapter" n="1"</tag></item>
-                            <item>(sofern einschlägig) Fragment (nummeriert): <tag>div
-                                    type="textpart" subtype="fragment" n="1"</tag></item>
-                            <item>(sofern einschlägig) Auslegung zu Bibelstelle (Bibelstelle):
-                                    <tag>div type="textpart" subtype="exegesis" n="Gen:1:1"</tag>
-                                (geht das so?)</item>
-                            <item>Unterabschnitte (nummeriert): <tag>div type="textpart"
-                                    subtype="section" n="1"</tag></item>
-                            <item>Paragraphen (nicht nummeriert): <gi>p</gi></item>
-                        </list>
-                    </div>
-                    <div xml:id="Xa1ba6bcaa5afc14cc40f6fbe92b7caa1fc9cf4a">
-                        <head>Auszeichnung weiterer struktureller Elemente</head>
-                        <p>Die Seitenumbrüche in den Handschriften (ausschließlich in den
-                            nicht-eliminierten Handschriften) und früheren Editionen werden mit
-                                <tag>pb n="Folio" edRef="#xml:id"/</tag> ausgezeichnet.</p>
-                    </div>
-                    <div xml:id="X6d639c253fef3c0c718826743fe4e776c550ab6">
-                        <head>Auszeichnung von Bibel- und anderen Zitaten (inkl.
-                            Anspielungen)</head>
-                        <p>(Bibel)zitate werden mit <gi>quote</gi> ausgezeichnet. Bei biblischen
-                            Kommentaren erhalten Lemma-Zitate den Wert <val>lemma</val>. Zitate
-                            können ein Attribut <att>type</att> erhalten, so dass zwischen
-                            markierten (<val>marked</val>) und nicht-markierten
-                            (<val>unmarked</val>) Zitaten unterschieden werden kann, Paraphrasen
-                            erhalten den Wert <val>paraphrase</val>. </p>
-                        <p>Explizite Zitate unter Anführung des Autors des Zitates werden mit dem
-                                <gi>cit</gi>-Element ausgezeichnet und die anführende Phrase darin
-                            mit dem <gi>ref</gi>-Element. Einschübe im Zitat (z.B. "sagte") werden
-                            mit <tag>seg type="insertion"</tag> ausgezeichnet.</p>
-                        <p>Anspielungen (z.B. auf biblische Geschichten und Ereignisse) werden mit
-                                <tag>seg type="allusion"</tag> ausgezeichnet.</p>
-                        <p>Außerdem können Pseudo-Zitate ausgezeichnet werden; dies geschieht mit
-                                <tag>seg type="psq"</tag>.</p>
-                        <p>Die jeweilige Bibelstelle wird im <tag>ref decls="biblical"</tag>-Element
-                            als <att>cRef</att> nach folgender (entsprechend den im Projekt <ref
-                                target="http://www.biblindex.mom.fr/en/biblical/content"
-                                >BiblIndex</ref> verwendeten Abkürzungen) Struktur angegeben
-                            (angeführt im <gi>teiHeader</gi> unter <tag>refsDecl
-                                xml:id="biblical"</tag>): Septuaginta-Zitate als
-                                <code>LXX:Buch:Kapitel:Vers</code> (Gn,Ex,Lv,Nm,Dt,Jos A,Jos B,Judg
-                            A,Judg B,Rt,1 S,2 S,1 K,2 K,1 Ch,2 Ch, 3 Ezr,Ezr-Ne,Est,Jdt,Tb,1 M,2 M,3
-                            M,4 M,Ps,Od,Pr,Eccl,Song,Jb,Wis,Si,Ps
-                            Sol,Hos,Am,Mi,Jl,Ob,Jon,Na,Hab,Ze,Hag,Za,Ml,Is,Jr,Ba,Lm,Ep
-                            Jr,Eze,Sus,Sus Th,Dn,Dn Th,Bel,Bel Th), neutestamentliche Zitate als
-                                <code>GNT:Buch:Kapitel:Vers</code> (Mt,Mk,Lk,Jn,Ac,Rm,1 Co,2
-                            Co,Ga,Ep,Ph,Col,1 Th,2 Th,1 Tm,2 Tm,Tt,Phm,He,Ja,1 P,2 P,1 Jn,2 Jn,3
-                            Jn,Jude,Rev).</p>
-                        <p>
-                            <hi rend="underline">TODO: Kürzel und Verweissystem für Zitate aus
-                                anderen Schriften: Griechisch LSJ und Lampe, Latein TLL?</hi>
-                        </p>
-                    </div>
-                    <div xml:id="auszeichung-direkter-rede">
-                        <head>Auszeichung direkter Rede</head>
-                        <p>Direkte Rede wird mit Hilfe von <gi>said</gi> ausgezeichnet.</p>
-                    </div>
-                    <div xml:id="auszeichnung-von-namen-und-orten">
-                        <head>Auszeichnung von Namen und Orten</head>
-                        <p>Namen werden mit <gi>persName</gi> ausgezeichnet. Im Fall von biblischen
-                            Personen wird <tag>@type="biblical"</tag> und <tag>@key="im Deutschen
-                                übliche Namensform"</tag> hinzugefügt (<hi rend="ul">zukünftig:
-                                eigene Normdatei in Zusammenarbeit mit Österr.
-                            Bibelübersetzer</hi>?, bei allen anderen im Attribut
-                            <att>xml:id</att>auf die ID in der Datei <code>Personen.xml</code>
-                            verwiesen, in der auch soweit möglich der entsprechende GND-Eintrag
-                            referenziert wird.</p>
-                        <p>
-                            <hi rend="underline">TODO: Auch so verfahren bei Namen von Autoren, wenn
-                                sie im das Zitat einleitenden Text genannt werden?</hi>
-                        </p>
-                        <p>Orte werden mit <gi>placeName</gi> ausgezeichnet, im
-                            <att>ref</att>-Attribut wird auf die Pleiades-ID (in Form der kompletten
-                            URL) verwiesen.</p>
-                    </div>
-                    <div xml:id="auszeichnung-intertextueller-bezüge">
-                        <head>Auszeichnung von Similia und Quellen</head>
-                        <p>Similia werden mit <tag>seg type="similar"</tag>, Quellen mit <tag>seg
-                                type="source</tag> ausgezeichnet. Die Fundstelle wird innerhalb des
-                                <gi>seg</gi>-Elementes in einem <gi>ref</gi>-Element angegeben. </p>
-                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                            <seg type="similar"> ἵνα εἰς βάθος διαδῷ τὴν οἰκείαν ἐνέργειαν ἡ
-                                    βαφή<ref>Athanasius, decr. 12,1</ref></seg>
-                        </egXML>
-                        <p><hi rend="underline">TODO: cRef-System für antike Schriften</hi></p>
-                    </div>
-                    <div xml:id="auszeichnung-der-varianten">
-                        <head>Auszeichnung der Varianten</head>
-                        <p>Die Varianten werden nach der <code>parallel-segmentation</code>-Methode
-                            kodiert.</p>
-                        <p>Die Auszeichnung der Varianten spiegelt die im Editionsprozess erfolgten
-                            editorischen Entscheidungen (Beurteilung der Varianten und der
-                            stemmatischen Zusammenhänge) wieder und ist <hi rend="italic">keine</hi>
-                            neutrale Beschreibung des Überlieferungsbestandes.</p>
-                        <p>In ihrer Genese zusammengehörige Variantenteile sollten (solange die
-                            Variantenträger identisch sind) möglichst zusammengefaßt werden. Eine
-                            Ausnahme bilden allerdings insbesondere durch solche Zusammenfassungen
-                            entstehende Überlappungen (s.u.); hier sind ggfs. trotz der genetischen
-                            Zusammengehörigkeit kleinere Einheiten zu wählen.</p>
-                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                            <app type="textcritical">
-                                <lem wit="#Pt #Pc #Pa #Be #Pb #Pd #Ma #My #Va #Ab">καὶ νῦν</lem>
-                                <rdg wit="#Ha" cause="omission"/>
-                            </app>
-                        </egXML>
-                        <p>und nicht:</p>
-                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                            <app type="textcritical">
-                                <lem wit="#Pt #Pc #Pa #Be #Pb #Pd #Ma #My #Va #Ab">νῦν</lem>
-                                <rdg wit="#Ha" cause="omission"/>
-                            </app>
-                            <app type="textcritical">
-                                <lem wit="#Pt #Pc #Pa #Be #Pb #Pd #Ma #My #Va #Ab">νῦν</lem>
-                                <rdg wit="#Ha" cause="omission"/>
-                            </app>
-                        </egXML>
-                        <p>Die Varianten werden innerhalb des <gi>app</gi>-Elements
-                                (<tag>@type="textcritical"</tag>) wie folgt ausgezeichnet:</p>
-                        <list type="unordered">
-                            <item>Der rekonstruierte Text wird als <gi>lem</gi> ausgezeichnet, die
-                                als sekundär eingeschätzte Varianten als <gi>rdg</gi>. Alle im
-                                folgenden beschriebenen Arten von Varianten setzen die Einschätzung
-                                von Varianten als primär oder sekundär voraus.</item>
-                            <item>Alle Variantenträger werden als <att>wit</att> im <gi>lem</gi>-
-                                und in den <gi>rdg</gi>-Elementen ausgezeichnet (sc. positiver
-                                Apparat in der Eingabe – nicht unbedingt in der Präsentation). Im
-                                Fall von Konjekturen wird an Stelle von <att>wit</att>
-                                <att>resp</att> bzw. im Falle von Editionen <att>source</att>
-                                verwendet.</item>
-                            <item>Bei mehreren Varianten sollen die <gi>rdg</gi>-Einträge so gereiht
-                                werden, dass sie desto früher angeführt werden, je näher sie (nach
-                                Einschätzung des Editors) am <gi>lem</gi>-Text stehen</item>
-                            <item>Zusammengehörige Varianten können auch als <gi>rdgGrp</gi>
-                                zusammengefaßt werden.</item>
-                            <item>Alle Variantenträger sollten innerhalb des Attributes
-                                    <att>wit</att> in einer einheitlichen Reihenfolge (und unter
-                                Berücksichtigung stemmatischer Zusammenhänge) präsentiert
-                                werden.</item>
-                            <item>Auch im Zuge der Erstellung der Edition als Abschriften
-                                eliminierte Handschriften werden (als <att>wit</att>) angeführt
-                                (diese werden aber für die Präsentation der Edition
-                                ausgefiltert).</item>
-                            <item>Orthographische, mit großer Wahrscheinlichkeit auf Itazismus
-                                beruhende Varianten werden als <tag>@type="orthographic"</tag>
-                                ausgezeichnet. Diese können für die Präsentation ausgefiltert
-                                werden. <app type="textcritical">
-                                    <lem wit="#Pc #Pa #Be #Pb #My #Va">ἐρέαν</lem>
-                                    <rdg wit="#Pt #Pd #Ma #Ha #Ab" type="orthographic">ἐραίαν</rdg>
-                                </app></item>
-                            <item>Varianten, die (nach Einschätzung des Editors) auf Homoioteleuton
-                                oder Homoiarkton zurückzuführen sind, werden als
-                                    <tag>@type="homoioteleuton"</tag> oder
-                                    <tag>@type="homoiarkton</tag> ausgezeichnet.</item>
-                            <item>Diplographien werden als <tag>@type="diplography"</tag>
-                                ausgezeichnet.</item>
-                        </list>
-                        <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                            <app type="textcritical">
-                                <lem wit="#My #Pd #Pc #Pt #Ab">ὁμιλία</lem>
-                                <rdg source="#Mayer_1908" cause="conjecture">διάλογος</rdg>
-                                <rdgGrp>
-                                    <rdg wit="#Ha">λόγος περὶ πίστεως καὶ</rdg>
-                                    <rdg wit="#Pa #Be">λόγος πάνυ ὠφέλιμος περὶ πίστεως καὶ</rdg>
-                                </rdgGrp>
-                                <rdg wit="#Ma #Pb #Va" cause="omission"/>
-                            </app>
-                        </egXML>
-                        <div>
-                            <head>Hinzufügungen</head>
-                            <p>Hinzufügungen, auch Dittographien und andere Wiederholungen, werden
-                                im Element <gi>rdg</gi>als <tag>@cause="addition"</tag>
-                                ausgezeichnet. Das Element <gi>lem</gi> bleibt leer
-                                ("self-closing").</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pt #Pc #Pd #Ma #My"/>
-                                    <rdg wit="#Ha #Pa #Be" cause="addition">καὶ περὶ τοῦ ἁγίου
-                                        πνεύματος</rdg>
-                                    <rdg wit="#Pb #Va" cause="addition">λόγος πάνυ ὠφέλιμος</rdg>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Auslassungen</head>
-                            <p>Auslassungen werden als <tag>@cause="omission"</tag> ausgezeichnet.
-                                Das Element ist leer ("self-closing").</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha">ἀπεικάζεται καὶ</lem>
-                                    <rdg wit="#Pt #Pc #Pd #Ma #My #Ab" cause="omission"/>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Löschungen</head>
-                            <p>Löschungen werden als <tag>@cause="deletion"</tag> ausgezeichnet,
-                                wobei (im Gegensatz zur Handschriftentranskription) nicht
-                                differenziert wird, wie der Text gelöscht worden ist. Sie werden von
-                                Auslassungen dadurch unterschieden, dass sie auf einen Eingriff des
-                                Schreibers der jeweiligen Handschrift zurückzuführen sind. Das
-                                Element ist leer ("self-closing").</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">καὶ</lem>
-                                    <rdg wit="#Pb" cause="deletion"/>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Nicht lesbarer Text</head>
-                            <p>Nicht lesbarer Text wird als <tag>@cause="illegible"</tag>
-                                ausgezeichnet. Das Element ist leer ("self-closing").</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pt #Pc #Pa #Be #Pb #Pd #Ma #My #Va #Ab">καὶ</lem>
-                                    <rdg wit="#Ha" cause="illegible"/>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Umstellungen</head>
-                            <p>Umstellungen werden als <tag>@cause="transposition"</tag>
-                                ausgezeichnet.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha">τὰ τοῦ θεοῦ</lem>
-                                    <rdg wit="#Pt #Pc #Pd #Ma #My #Ab" cause="transposition">τοῦ
-                                        θεοῦ τὰ</rdg>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Korrekturen</head>
-                            <p>Korrekturen werden als <tag>@cause="correction"</tag> ausgezeichnet.
-                                Außerdem kann das <gi>rdg</gi>-Element das Attribut <att>hand</att>
-                                enthalten, wobei der Schreiber (m1) und Korrektoren (m2/m3/… - allg.
-                                "mr" für manus recentior) unterschieden werden sollten. Ist nicht zu
-                                entscheiden, von welcher Hand eine Korrektur vorgenommen worden ist,
-                                wird diese als <tag>@hand="unknown"</tag> angegeben. Der Ort der
-                                Korrektur wird im Attribut <att>style</att> vermerkt; mögliche Werte
-                                sind <val>above</val>, <val>inline</val> und <val>margin</val>.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Pb #Ha #Va">ὁ γενναῖος ἐκεῖνος</lem>
-                                    <rdg wit="#Be" cause="transposition">ἐκεῖνος ὁ γενναῖος</rdg>
-                                    <rdg wit="#Be" cause="correction" hand="m1" style="inline">ὁ
-                                        γενναῖος ἐκεῖνος</rdg>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Konjekturen</head>
-                            <p>Konjekturen werden als <tag>@cause="conjecture"</tag> ausgezeichnet:
-                                Erfolgt dies im <gi>lem</gi>-Element handelt es sich um eine
-                                Emendation, erfolgt dies im <gi>rdg</gi>-Element, so handelt es sich
-                                um eine vom Editor nicht übernommene Konjektur. Korrekturen
-                                kleinerer Fehler, die nicht die Höhe einer Konjektur erreichen,
-                                werden als <tag>@cause="correction"</tag> ausgezeichnet. Vorschläge
-                                von Konjekturen (<hi rend="italic">proposuit</hi> oder <hi
-                                    rend="italic">dubitanter</hi>) werden als
-                                    <tag>@cause="proposition"</tag> ausgezeichnet, ggfs. kann der
-                                Wahrscheinlichkeitsgrad des Zutreffens im Attribut <att>cert</att>
-                                festgehalten werden (mögliche Werte: <val>low</val>,
-                                    <val>medium</val>, <val>high</val>). Tilgungen durch Konjektur
-                                werden als <tag>@cause="deletion"</tag> ausgezeichnet. Der Autor
-                                einer Konjektur/Emendatio (oder Korrektur) wrd mit <att>resp</att>
-                                bzw. (im Falle einer aus einer Edition übernommenen Konjektur) mit
-                                    <att>source</att> angegeben.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
-                                        >ψευδόμενος</lem>
-                                    <rdg wit="#Sav" cause="conjecture">ἀδικῶν</rdg>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Ergänzungen und Löschungen</head>
-                            <p>Vom Editor (oder einem anderen Konjektor) ergänzter Text wird mit
-                                    <gi>supplied</gi> ausgezeichnet, gelöschter Text mit
-                                    <gi>surplus</gi>. Korrupter (nicht zu rekonstruierender) Text
-                                wird mit <tag>seg type="corrupt"</tag> ausgezeichnet.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem resp="#AvS" cause="conjecture">
-                                        <supplied reason="omitted">οὐκ</supplied>
-                                    </lem>
-                                    <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
-                                        cause="omission"/>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Lücken im Text</head>
-                            <p>Vom Editor vermutete Lücken im überlieferten Textbestand werden mit
-                                    <tag>gap reason="missing"</tag> ausgezeichnet. Die vermutete
-                                Ausdehnung der Lücke kann mit Hilfe von <tag>unit="character"
-                                    quantity="10"</tag> kann angegeben werden. Wird die Feststellung
-                                einer Lücke von einem früheren Editor übernommen, so wird die Quelle
-                                als <att>source</att> bzw. als <att>resp</att> angeführt.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples"> Ταῦτα λέγω εἰς <gap
-                                    reason="missing"/> ση τοὺς καταφεύγοντας κατέλαβεν τότε
-                                κατακλυσμός, </egXML>
-                            <p>Von anderen Editoren vermutete (und nicht übernommene) Lücken werden
-                                in einem Apparateintrag als <gi>rdg</gi> ausgezeichnet mit
-                                    <tag>@cause="lacuna_indicavit"</tag>.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"/>
-                                    <rdg wit="#Sav" cause="lacuna_indicavit"/>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Textersetzungen</head>
-                            <p>Textersetzungen werden in <gi>del</gi>- und <gi>add</gi>-Elementen
-                                innerhalb eines <gi>subst</gi>-Elementes ausgezeichnet. Expungierter
-                                Text wird als <tag>@rend="expunction"</tag> ausgezeichnet.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
-                                        >ἔχωμεν</lem>
-                                    <rdg wit="#Ha">ἔχ<subst>
-                                            <del hand="m2">ο</del>
-                                            <add hand="m2" place="above">ω</add>
-                                        </subst>μεν</rdg>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div>
-                            <head>Crux</head>
-                            <p>Nicht emendierbarer verderbter Text (Crux) wird mit Hilfe von
-                                    <gi>sic</gi> ausgezeichnet. Das Element kann dabei sowohl den
-                                verderbten Text oder als selbst-schließendes Element die Stelle der
-                                Verderbnis markieren.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples"> καὶ ὅσα ὁ νόμος
-                                    <sic>διαγορεύει</sic>, ὅσα προφῆται <sic/> θεσπίζουσιν </egXML>
-                        </div>
-                        <div xml:id="nested">
-                            <head>Ineinander geschachtelte Varianten</head>
-                            <p>Varianten können auch ineinander geschachtelt werden. Das Lemma des
-                                übergreifenden Apparatus-Eintrages erhält in diesem Fall kein
-                                    <att>wit</att>-Attribut, der innere Apparatus-Eintrag muss im
-                                    <gi>lem</gi>-Element (= im rekonstruierten Text) des äußeren
-                                Apparatus-Eintrag stehen.</p>
-                            <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                                <app type="textcritical">
-                                    <lem>οὐδεμίαν <app type="textcritical">
-                                            <lem wit="#Pt #Pc #Pa #Be #Pd #Ma #My #Ha #Va"
-                                                >εὑρήσεις</lem>
-                                            <rdg wit="#Pb" type="orthographic">εὑρήσῃς</rdg>
-                                        </app></lem>
-                                    <rdg wit="#Ab" cause="omission"/>
-                                </app>
-                            </egXML>
-                        </div>
-                        <div xml:id="overlap">
-                            <head>Sich überlappende Varianten</head>
-                            <p>Bei sich überlappenden Varianten muss die Überlappung der Einträge
-                                durch das Setzen von Ankern <gi>anchor</gi>, denen ein Attribut
-                                    <att>xml:id</att> zugewiesen wird, aufgelöst werden.</p>
-                            <p><hi rend="underline">TODO: Beispiel</hi></p>
-                        </div>
-                    </div>
-                    <div xml:id="Bezeugung">
-                        <head>Bezeugung des Textes</head>
-                        <p>Die Bezeugung des Textes durch Handschriften wird durch eigene
-                            Apparateinträge (<tag>app @type="witnesses"</tag>) unter Verwendung von
-                                <gi>witStart</gi>, <gi>witEnd</gi>, <gi>lacunaStart</gi>,
-                                <gi>lacunaEnd</gi> vermerkt. </p>
-                        <p><hi rend="underline">TODO Das von TEI hierfür zur Verfügung gestellte
-                                Vokabular ist nicht befriedigend/ausreichend.</hi></p>
-                    </div>
-                    <div xml:id="textkritischer-kommentar">
-                        <head>Textkritischer Kommentar</head>
-                        <p>
-                            <hi rend="underline">TODO: LDLT verwendet</hi>
-                            <tag>div type="commentary"</tag>
-                            <hi rend="underline">mit</hi>
-                            <tag>note type="commentary" target="Link auf App"</tag>
-                            <hi rend="underline">für ausführlichere textkritische Kommentare</hi>
-                        </p>
-                        <p><gi>note</gi> innerhalb von <gi>app</gi>, bzw. <gi>witDetail</gi>
-                            innerhalb von <gi>app</gi>, wenn sich der Kommentar auf eine Handschrift
-                            bezieht. Verlinkung per <att>xml:id</att> des <gi>lem</gi> oder
-                                <gi>rdg</gi>.</p>
-                    </div>
-                </div>
-            </div>
-            <div xml:id="elemente">
-                <head>Dokumentation des Schemas</head>
-                <schemaSpec ident="tei-pta" docLang="de" prefix="tei_" start="TEI" xml:lang="de">
-                    <!--       MODULES USED BY THE PTA SCHEMA       -->
-                    <moduleRef key="core" except="binaryObject corr email headItem headLabel
-                        measureGrp media meeting orig postBox postCode q rs term textLang"/>
-                    <moduleRef key="tei"/>
-                    <moduleRef key="header" except="abstract appInfo application catDesc catRef
-                        category classCode classDecl correction creation edition editionStmt
-                        hyphenation  keywords namespace rendition samplingDecl schemaRef
-                        styleDefDecl tagUsage tagsDecl taxonomy textClass xenoData"/>
-                    <moduleRef key="textstructure" except="argument byline closer dateline div1 div2
-                        div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle
-                        epigraph floatingText imprimatur opener postscript salute signed titlePage
-                        titlePart trailer"/>
-                    <moduleRef key="transcr" except="am damage damageSpan ex fw line listTranspose
-                        metamark mod redo restore secl sourceDoc surplus
-                        transpose undo"/>
-                    <moduleRef key="analysis" except="cl interp interpGrp span spanGrp"/>
-                    <moduleRef key="certainty"/>
-                    <moduleRef key="gaiji" except="char charDecl charName charProp localName mapping
-                        unicodeName value"/>
-                    <moduleRef key="linking" except="ab alt altGrp joinGrp link linkGrp timeline
-                        when"/>
-                    <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry
-                        musicNotation objectType seal sealDesc stamp summary typeDesc   typeNote"/>
-                    <moduleRef key="namesdates" except="affiliation age bloc climate district
-                        education                         faith langKnowledge langKnown listNym
-                        listObject listOrg listRelation nameLink                         nationality
-                        nym occupation offset org population region residence sex
-                        socecStatus state terrain trait"/>
-                    <moduleRef key="textcrit" except="wit"/>
-                    <moduleRef key="figures" except="cell formula notatedMusic row table"/>
-                    <!--        CHANGED ELEMENT SPECS        -->
-                    <elementSpec ident="add" module="core" mode="change">
-                        <attList>
-                            <!-- constraining values of add/@place -->
-                            <attDef ident="place" mode="change">
-                                <valList type="closed">
-                                    <valItem ident="above"/>
-                                    <valItem ident="inline"/>
-                                    <valItem ident="margin"/>
-                                </valList>
-                            </attDef>
-                            <attDef ident="ana" mode="delete"/>
-                            <attDef ident="atLeast" mode="delete"/>
-                            <attDef ident="atMost" mode="delete"/>
-                            <attDef ident="cause" mode="delete"/>
-                            <attDef ident="cert" mode="delete"/>
-                            <attDef ident="change" mode="delete"/>
-                            <attDef ident="confidence" mode="delete"/>
-                            <attDef ident="copyOf" mode="delete"/>
-                            <attDef ident="corresp" mode="delete"/>
-                            <attDef ident="evidence" mode="delete"/>
-                            <attDef ident="exclude" mode="delete"/>
-                            <attDef ident="extent" mode="delete"/>
-                            <attDef ident="facs" mode="delete"/>
-                            <attDef ident="instant" mode="delete"/>
-                            <attDef ident="max" mode="delete"/>
-                            <attDef ident="min" mode="delete"/>
-                            <attDef ident="n" mode="delete"/>
-                            <attDef ident="next" mode="delete"/>
-                            <attDef ident="precision" mode="delete"/>
-                            <attDef ident="prev" mode="delete"/>
-                            <attDef ident="quantity" mode="delete"/>
-                            <attDef ident="rend" mode="delete"/>
-                            <attDef ident="rendition" mode="delete"/>
-                            <attDef ident="resp" mode="delete"/>
-                            <attDef ident="sameAs" mode="delete"/>
-                            <attDef ident="scope" mode="delete"/>
-                            <attDef ident="seq" mode="delete"/>
-                            <attDef ident="source" mode="delete"/>
-                            <attDef ident="status" mode="delete"/>
-                            <attDef ident="style" mode="delete"/>
-                            <attDef ident="subtype" mode="delete"/>
-                            <attDef ident="synch" mode="delete"/>
-                            <attDef ident="type" mode="delete"/>
-                            <attDef ident="unit" mode="delete"/>
-                            <attDef ident="xml:base" mode="delete"/>
-                            <attDef ident="xml:lang" mode="delete"/>
-                            <attDef ident="xml:space" mode="delete"/>
-                        </attList>
-                    </elementSpec>
-                    <!-- constraining values of div/@type -->
-                    <elementSpec ident="div" mode="change" module="textstructure">
-                        <constraintSpec scheme="isoschematron" ident="div">
-                            <constraint>
-                                <sch:rule context="tei:div">
-                                    <sch:report test="@type != 'textpart' and parent::tei:div and
-                                        @type!=parent::tei:div/@type"> Divs other than
-                                        @type=textpart may not nest in divs of different @type
-                                    </sch:report>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
-                        <attList>
-                            <attDef ident="type" mode="replace" usage="req">
-                                <valList type="closed">
-                                    <valItem ident="commentary">
-                                        <desc>to contain the textcritical commentary to the
-                                            edition</desc>
-                                    </valItem>
-                                    <valItem ident="edition">
-                                        <desc>to contain the text of the edition itself; may include
-                                            multiple text-parts</desc>
-                                    </valItem>
-                                    <valItem ident="praefatio">
-                                        <desc>to contain the Praefatio to an edition</desc>
-                                    </valItem>
-                                    <valItem ident="section">
-                                        <desc>used to divide a div[type=praefatio] into multiple
-                                            parts</desc>
-                                    </valItem>
-                                    <valItem ident="textpart">
-                                        <desc>used to divide a div[type=edition] into multiple parts
-                                            (fragments, columns, faces, etc.)</desc>
-                                    </valItem>
-                                    <valItem ident="translation">
-                                        <desc>to contain a translation of the text into one or more
-                                            modern languages</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                            <attDef ident="subtype" mode="change">
-                                <desc>zur Auszeichnung der Textstruktur</desc>
-                                <valList type="open" mode="replace">
-                                    <valItem ident="book">
-                                        <desc>Buch</desc>
-                                    </valItem>
-                                    <valItem ident="chapter">
-                                        <desc>Kapitel</desc>
-                                    </valItem>
-                                    <valItem ident="fragment">
-                                        <desc>Fragment</desc>
-                                    </valItem>
-                                    <valItem ident="exegesis">
-                                        <desc>(Kommentierte) Bibelstelle eines Kommentars</desc>
-                                    </valItem>
-                                    <valItem ident="section">
-                                        <desc>Abschnitt</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="gap" module="core" mode="change">
-                        <!-- testing for <gap> with both quantity/extent, no unit, or contained in supplied -->
-                        <constraintSpec ident="gap" scheme="isoschematron">
-                            <constraint>
-                                <sch:rule context="tei:gap">
-                                    <sch:report test="@quantity and @extent">gap may have @quantity
-                                        (a figure) or @extent (a descriptive text value) but not
-                                        both</sch:report>
-                                    <sch:report test="@quantity and not(@unit)">If gap has @quantity
-                                        then @unit is required</sch:report>
-                                    <sch:report test="not(@reason='ellipsis') and
-                                        ancestor::tei:supplied[not(@reason='undefined')]">gap may
-                                        not appear within supplied text</sch:report>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
-                        <!-- constraining values of gap/@reason -->
-                        <attList>
-                            <attDef ident="reason" mode="replace" usage="req">
-                                <valList type="closed">
-                                    <valItem ident="damage">
-                                        <desc>Physical damage</desc>
-                                    </valItem>
-                                    <valItem ident="fenestra">
-                                        <desc>Free space inmidst of text, left blank by the
-                                            scribe</desc>
-                                    </valItem>
-                                    <valItem ident="illegible">
-                                        <desc>Traces of text remains on the surface but cannot be
-                                            interpreted</desc>
-                                    </valItem>
-                                    <valItem ident="missing">
-                                        <desc>Editor thinks that there is text missing, even if
-                                            there are no physical traces in a manuscript</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                            <!-- removing gap/@dur (not needed in PTA) -->
-                            <attDef ident="dur" mode="delete"/>
-                        </attList>
-                    </elementSpec>
-                    <!-- suggesting but not constraining values of hi/@rend -->
-                    <elementSpec ident="hi" module="core" mode="change">
-                        <attList>
-                            <attDef ident="rend" mode="replace" usage="req">
-                                <datatype maxOccurs="5">
-                                    <rng:ref name="data.word"/>
-                                </datatype>
-                                <valList type="semi">
-                                    <valItem ident="initial">
-                                        <desc>Initiale</desc>
-                                    </valItem>
-                                    <valItem ident="ekthesis">
-                                        <desc>Ekthesis</desc>
-                                    </valItem>
-                                    <valItem ident="overline">
-                                        <desc>Linie über Buchstaben</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="lb" mode="change" module="core">
-                        <!-- offer value "no" for lb/@break -->
-                        <attList>
-                            <attDef ident="break" mode="replace" usage="opt">
-                                <datatype>
-                                    <rng:ref name="data.enumerated"/>
-                                </datatype>
-                                <valList type="semi">
-                                    <valItem ident="no">
-                                        <desc>this linebreak should not be taken as a word-break,
-                                            i.e. word would be hyphenated in a printed text</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <!-- adding temporary customization of <m> (2015-06-16), to be removed once TEI have implemented this -->
-                    <elementSpec ident="m" module="analysis" mode="change">
-                        <content>
-                            <zeroOrMore xmlns="http://relaxng.org/ns/structure/1.0">
-                                <choice>
-                                    <text/>
-                                    <ref name="model.gLike"/>
-                                    <ref name="model.hiLike"/>
-                                    <ref name="seg"/>
-                                    <ref name="m"/>
-                                    <ref name="c"/>
-                                    <ref name="model.global"/>
-                                </choice>
-                            </zeroOrMore>
-                        </content>
-                    </elementSpec>
-                    <!-- suggested attribute values for origDate/@evidence -->
-                    <elementSpec ident="origDate" module="msdescription" mode="change">
-                        <attList>
-                            <attDef ident="evidence" mode="replace" usage="opt">
-                                <datatype maxOccurs="6">
-                                    <rng:ref name="data.word"/>
-                                </datatype>
-                                <valList type="semi">
-                                    <valItem ident="lettering">
-                                        <desc>Text dated palaeographically</desc>
-                                    </valItem>
-                                    <valItem ident="nomenclature">
-                                        <desc>Text dated by nomenclature or onomastics</desc>
-                                    </valItem>
-                                    <valItem ident="prosopography">
-                                        <desc>Text dated by known persons named or implied within
-                                            it</desc>
-                                    </valItem>
-                                    <valItem ident="reign">
-                                        <desc>Text dated by the reign of an emperor or other
-                                            ruler</desc>
-                                    </valItem>
-                                    <valItem ident="titulature">
-                                        <desc>Text dated by the use of official titles</desc>
-                                    </valItem>
-                                    <valItem ident="internal-date">
-                                        <desc>Text dated by explicit internal date</desc>
-                                    </valItem>
-                                    <valItem ident="context">
-                                        <desc>Archaeological, epigraphic, iconographic or other
-                                            context of the text support</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="space" module="transcr" mode="change">
-                        <!-- testing for <space> with both quantity/extent or no unit -->
-                        <constraintSpec ident="space" scheme="isoschematron">
-                            <constraint>
-                                <sch:rule context="tei:space">
-                                    <sch:report test="@quantity and @extent">space may have
-                                        @quantity (a figure) or @extent (a descriptive text value)
-                                        but not both</sch:report>
-                                    <sch:report test="@quantity and not(@unit)">If space has
-                                        @quantity then @unit is required</sch:report>
-                                </sch:rule>
-                            </constraint>
-                        </constraintSpec>
-                    </elementSpec>
-                    <elementSpec ident="supplied" module="transcr" mode="change">
-                        <attList>
-                            <!-- suggested attribute list for supplied/@evidence -->
-                            <attDef ident="evidence" mode="replace" usage="opt">
-                                <datatype maxOccurs="1">
-                                    <rng:ref name="data.word"/>
-                                </datatype>
-                                <valList type="semi">
-                                    <valItem ident="parallel">
-                                        <desc>Characters supplied from a parallel version of this
-                                            text, absent from this one</desc>
-                                    </valItem>
-                                    <valItem ident="previouseditor">
-                                        <desc>Characters visible to a previous editor, now
-                                            lost/unclear due to damage</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <!-- modifying <unclear> because in EpiDoc it should not contain anything but text and <g/> -->
-                    <elementSpec ident="unclear" module="core" mode="change">
-                        <desc>Character that cannot be identified unambiguously outside of its
-                            context. May contain character data and <gi>g</gi> only.</desc>
-                        <content>
-                            <rng:ref name="macro.xtext"/>
-                        </content>
-                    </elementSpec>
-                    <!--       CHANGING ATTRIBUTE CLASSES         -->
-                    <!--<classSpec type="atts" ident="att.datable.custom" mode="change">
-                    <constraintSpec scheme="isoschematron" ident="datable.custom">
-                         <constraint>
-                             <sch:rule context="tei:*[contains(@datingMethod,'julian')]">
-                                 <sch:report test="@when-custom[not(matches(.,'-?(\d{4})(-\d{2}(-\d{2})?)?'))]">
-                                     in Julian dating method @when-custom must be a date in the form [-]YYYY[-MM[-DD]]</sch:report>
-                                 <sch:report test="@notBefore-custom[not(matches(.,'-?(\d{4})(-\d{2}(-\d{2})?)?'))]">
-                                     in Julian dating method @notBefore-custom must be a date in the form [-]YYYY[-MM[-DD]]</sch:report>
-                                 <sch:report test="@notAfter-custom[not(matches(.,'-?(\d{4})(-\d{2}(-\d{2})?)?'))]">
-                                     in Julian dating method @notAfter-custom must be a date in the form [-]YYYY[-MM[-DD]]</sch:report>
-                             </sch:rule>
-                         </constraint>
-                     </constraintSpec>
-                </classSpec>-->
-                    <classSpec type="atts" ident="att.dimensions" mode="change">
-                        <attList>
-                            <attDef ident="precision" mode="replace">
-                                <valList type="closed">
-                                    <valItem ident="low"/>
-                                    <valItem ident="medium"/>
-                                    <valItem ident="high"/>
-                                </valList>
-                            </attDef>
-                            <attDef ident="unit" mode="change">
-                                <valList type="semi" mode="replace">
-                                    <valItem ident="character"/>
-                                    <valItem ident="line"/>
-                                    <valItem ident="metre"/>
-                                    <valItem ident="cm"/>
-                                    <valItem ident="mm"/>
-                                </valList>
-                            </attDef>
-                            <attDef ident="extent" mode="change">
-                                <valList type="semi" mode="replace">
-                                    <valItem ident="unknown"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </classSpec>
-                    <classSpec type="atts" ident="att.responsibility" mode="change">
-                        <attList>
-                            <attDef ident="cert" mode="replace">
-                                <valList type="closed">
-                                    <valItem ident="low"/>
-                                    <valItem ident="high"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </classSpec>
-                    <elementSpec ident="app" module="textcrit" mode="change">
-                        <!-- Changing attribute list: only @type is allowed -->
-                        <attList>
-                            <attDef ident="ana" mode="delete"/>
-                            <attDef ident="resp" mode="delete"/>
-                            <attDef ident="source" mode="delete"/>
-                            <attDef ident="type" mode="change" usage="req">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="textcritical">
-                                        <desc>für textkritischen Apparat</desc>
-                                    </valItem>
-                                    <valItem ident="witnesses">
-                                        <desc>für Angabe der Bezeugung, besonders von
-                                            Bezeugungswechseln im Text</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="lem" module="textcrit" mode="change">
-                        <!-- Changing attribute list: only @cause is allowed -->
-                        <attList>
-                            <attDef ident="cause" mode="change">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="conjecture">
-                                        <desc>zur Auszeichnung von Konjekturen</desc>
-                                    </valItem>
-                                    <valItem ident="correction">
-                                        <desc>zur Auszeichnung von Korrekturen kleinerer Fehler, die
-                                            nicht die Höhe einer Konjektur erreichen</desc>
-                                    </valItem>
-                                    <valItem ident="proposition">
-                                        <desc>zur Auszeichnung von Vorschlägen für Konjekturen (sc.
-                                            /proposuit/ oder /dubitanter/)</desc>
-                                    </valItem>
-                                    <valItem ident="deletion">
-                                        <desc>zur Auszeichnung von Tilgungen</desc>
-                                    </valItem>
-                                    <valItem ident="addition">
-                                        <desc>zur Auszeichnung von Hinzupügungen</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                            <attDef ident="ana" mode="delete"/>
-                            <attDef ident="type" mode="delete"/>
-                            <attDef ident="cert" mode="delete"/>
-                            <attDef ident="change" mode="delete"/>
-                            <attDef ident="exclude" mode="delete"/>
-                            <attDef ident="rendition" mode="delete"/>
-                            <attDef ident="require" mode="delete"/>
-                            <attDef ident="select" mode="delete"/>
-                            <attDef ident="style" mode="delete"/>
-                            <attDef ident="synch" mode="delete"/>
-                            <attDef ident="resp" mode="change">
-                                <desc>zur Angabe des verantwortlichen Konjektors. </desc>
-                            </attDef>
-                            <attDef ident="source" mode="change">
-                                <desc>zur Angabe der Quelle einer Konjektur (in einer
-                                    Edition)</desc>
-                            </attDef>
-                            <attDef ident="wit" mode="change">
-                                <desc>Zur Angabe der überliefernden Handschrift(en)</desc>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="rdg" module="textcrit" mode="change">
-                        <attList>
-                            <attDef ident="cause" mode="change">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="addition">
-                                        <desc>zur Auszeichnung von Hinzufügungen (auch von
-                                            Dittographien und anderen Wiederholungen)</desc>
-                                    </valItem>
-                                    <valItem ident="deletion">
-                                        <desc>zur Auszeichnung von Löschungen</desc>
-                                    </valItem>
-                                    <valItem ident="omission">
-                                        <desc>zur Auszeichnung von Auslassungen</desc>
-                                    </valItem>
-                                    <valItem ident="illegible">
-                                        <desc>zur Auszeichnung von nicht lesbarem Text</desc>
-                                    </valItem>
-                                    <valItem ident="transposition">
-                                        <desc>zur Auszeichung von Umstellungen</desc>
-                                    </valItem>
-                                    <valItem ident="correction">
-                                        <desc>zur Auszeichnung von Korrekturen kleinerer Fehler, die
-                                            nicht die Höhe einer Konjektur erreichen</desc>
-                                    </valItem>
-                                    <valItem ident="conjecture">
-                                        <desc>zur Auszeichnung von Konjekturen</desc>
-                                    </valItem>
-                                    <valItem ident="proposition">
-                                        <desc>zur Auszeichnung von Vorschlägen für Konjekturen (sc.
-                                            /proposuit/ oder /dubitanter/)</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                            <attDef ident="type" mode="change">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="orthographic">
-                                        <desc>zur Auszeichnung von orthographischen, mit großer
-                                            Wahrscheinlichkeit auf Itazismus beruhenden
-                                            Varianten</desc>
-                                    </valItem>
-                                    <valItem ident="homoiarkton">
-                                        <desc>zur Auszeichnung von mit großer Wahrscheinlichkeit auf
-                                            Homoiarkton beruhenden Varianten</desc>
-                                    </valItem>
-                                    <valItem ident="homoioteleuton">
-                                        <desc>zur Auszeichnung von mit großer Wahrscheinlichkeit auf
-                                            Homoioteleuton beruhenden Varianten</desc>
-                                    </valItem>
-                                    <valItem ident="margin">
-                                        <desc>zur Auszeichnung von in margine stehenden
-                                            Varianten</desc>
-                                    </valItem>
-                                    <valItem ident="supralinear">
-                                        <desc>zur Auszeichnung von über der Zeile stehenden
-                                            Varianten</desc>
-                                    </valItem>
-                                </valList>
-                            </attDef>
-                            <attDef ident="style" mode="delete"/>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="cb" module="core" mode="change">
-                        <attList>
-                            <attDef ident="break" mode="change">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="no"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="pb" module="core" mode="change">
-                        <attList>
-                            <attDef ident="break" mode="change">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="no"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="del" module="core" mode="change">
-                        <attList>
-                            <attDef ident="rend" mode="change">
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="erasure"/>
-                                    <valItem ident="strikethrough"/>
-                                    <valItem ident="expunction"/>
-                                    <valItem ident="undefined"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                    <elementSpec ident="abbr" module="core" mode="change">
-                        <attList>
-                            <attDef ident="type" mode="change" usage="req">
-                                <desc>Klassifikation der Abkürzung als Siglum oder als Nomen
-                                    sacrum.</desc>
-                                <valList type="closed" mode="replace">
-                                    <valItem ident="siglum"/>
-                                    <valItem ident="nomSac"/>
-                                </valList>
-                            </attDef>
-                        </attList>
-                    </elementSpec>
-                </schemaSpec>
-            </div>
-        </body>
-        <back>
-            <div xml:id="transkriptions-dsl">
-                <head>Transkriptionsrichtlinien (Transkriptions-DSL)</head>
-                <div>
-                    <p>Am Beginn jeder Datei wird notiert:</p>
-                    <p><code>TEXT: Autor Titel Nummer des Buches</code></p>
-                    <p><code>HS: Sigle (Handschrift)</code></p>
-                    <p><code>PDF: S. Seitenzahl in PDF</code></p>
-                </div>
-                <div xml:id="titellemma">
-                    <head>Titel/Lemma</head>
-                    <p rend="First Paragraph">Wird mit <code>0Lemma/Titel0</code> ausgezeichnet.</p>
-                </div>
-                <div xml:id="umbrüche">
-                    <head>Umbrüche</head>
-                    <list type="unordered">
-                        <item>Zeilenumbruch: <code>/</code> (Griechiche Tastatur: -Leerzeichen)
-                            (Leerzeichen davor und danach, im Wort ohne Leerzeichen davor oder
-                            danach)</item>
-                        <item>Spaltenumbruch: <code>//</code> (Leerzeichen davor und danach, im Wort
-                            ohne Leerzeichen davor oder danach)</item>
-                        <item>Seitenumbruch: <code>///(Folioangabe)</code> (Leerzeichen davor und
-                            danach, im Wort ohne Leerzeichen davor oder danach)</item>
-                    </list>
-                </div>
-                <div xml:id="zeichensetzung">
-                    <head>Zeichensetzung</head>
-                    <p>Wird - ohne explizite Auszeichnung - wie in der Handschrift angegeben.
-                        (Hochpunkt: Shift AltGr +)</p>
-                </div>
-                <div xml:id="initialen-und-ektheseis">
-                    <head>Initialen und Ektheseis</head>
-                    <list type="unordered">
-                        <item>Initialen: <code>1Buchstabe1</code></item>
-                        <item>Ektheseis: <code>2Buchstabe2</code></item>
-                    </list>
-                </div>
-                <div xml:id="absätze">
-                    <head>Absätze</head>
-                    <p rend="First Paragraph">Absätze werden durch eine leere Zeile markiert.</p>
-                </div>
-                <div xml:id="besondere-texte">
-                    <head>Besondere Texte</head>
-                    <list type="unordered">
-                        <item>Marginalien:
-                                <code>3Text~Position:1=oben/2=unten/3=innen/4=außen~3</code> (~:
-                            Griechische Tastatur = ^Leerzeichen)</item>
-                        <item>getilgter Text:
-                                <code>4TextTextText~1=Rasur/2=durchgestrichen/3=expungiert~-4</code></item>
-                        <item>Korrektur: <code>4ersetzter Text (fällt ggfs.
-                                weg)~0=Verweiszeichen/1=Rasur/2=durchgestrichen/3=expungiert/4=ohne
-                                Zeichen~korrigierender Text~Position:1=über der Zeile/2=in der
-                                Zeile/3=Rand~4</code></item>
-                        <item>hinzugefügter Text (ohne Korrektur): <code>5hinzugefügter
-                                Text~Position:1=über der Zeile/2=in der Zeile/3=Rand~5</code></item>
-                        <item>Lücke im Text: <code>6...geschätzte Anzahl der
-                            Buchstaben...6</code></item>
-                        <item>Nicht lesbarer Text: <code>7...Anzahl der Buchstaben...7</code></item>
-                        <item>Unsichere Lesung: <code>8gelesener Text8</code></item>
-                        <item>Nomina sacra: <code>9Abkürzung~Auflösung9</code></item>
-                    </list>
-                </div>
-                <div xml:id="zitate">
-                    <head>Zitate</head>
-                    <p rend="First Paragraph">In der Handschrift mit Diple markierte Zitate werden
-                        durch <code>@</code> (Griechische Tastatur: <code>"</code>) <hi
-                            rend="italic">und folgendem Leerzeichen</hi> nach dem
-                        Zeilumbruchszeichen markiert.</p>
-                </div>
-                <div xml:id="paragraphos">
-                    <head>Paragraphos</head>
-                    <p rend="First Paragraph">In der Handschrift mit Paragraphos am Rand markierte
-                        Zeilen werden durch <code>--</code><hi rend="italic">und folgendem
-                            Leerzeichen</hi> nach dem Zeilenumbruchszeichen markiert.</p>
-                </div>
-            </div>
-        </back>
-    </text>
+          <p>You should have received a copy of the GNU Affero General Public License along with this program. If not, see
+            <ptr target="https://www.gnu.org/licenses/"/>.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>born digital</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change who="#AvS" when="2020-04-02">(Temporarily) removed guidelines from ODD.</change>
+      <change who="#AvS" when="2020-03-25">Language for descriptions changed to English.</change>
+      <change who="#AvS" when="2020-03-04">Reworked documentation; small changes on elements.</change>
+      <change who="#AvS" when="2019-12-17">Reworked documentation; small changes on elements.</change>
+      <change who="#AvS" when="2019-10-25">Added new documentation prior missing; changes in setup of edition</change>
+      <change who="#AvS" when="2019-07-01">Documentation completed.</change>
+      <change who="#AvS" when="2019-05-16">Added documentation; removed all elements not used.</change>
+      <change who="#AvS" when="2019-05-09">Additions and corrections, added descriptions of elements</change>
+      <change who="#AvS" when="2018-08-30">Adapted from EpiDoc Schema (added textcrit module)</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div xml:id="elemente">
+        <head>Dokumentation des Schemas</head>
+        <schemaSpec ident="tei-pta" prefix="tei_" start="TEI" xml:lang="en">
+          <!-- MODULES USED BY THE PTA SCHEMA -->
+          <moduleRef key="core" except="binaryObject corr email headItem headLabel measureGrp media meeting orig postBox postCode q rs term textLang"/>
+          <moduleRef key="tei"/>
+          <moduleRef
+            key="header"
+            except="abstract appInfo application catDesc catRef category classCode classDecl edition hyphenation  keywords namespace rendition samplingDecl schemaRef styleDefDecl tagUsage tagsDecl taxonomy textClass xenoData"/>
+          <moduleRef
+            key="textstructure"
+            except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText imprimatur opener postscript salute signed titlePage titlePart trailer"/>
+          <moduleRef key="transcr" except="am damage damageSpan ex fw line listTranspose metamark mod redo restore secl sourceDoc transpose undo"/>
+          <moduleRef key="analysis" except="cl interp interpGrp span spanGrp"/>
+          <moduleRef key="certainty"/>
+          <moduleRef key="gaiji" except="char charDecl charName charProp localName mapping unicodeName value"/>
+          <moduleRef key="linking" except="ab alt altGrp joinGrp link linkGrp timeline when"/>
+          <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry musicNotation objectType seal sealDesc stamp summary typeDesc typeNote"/>
+          <moduleRef
+            key="namesdates"
+            except="affiliation age bloc climate district education faith langKnowledge langKnown listNym listObject listOrg listRelation nameLink nationality nym occupation offset org population region residence sex socecStatus state terrain trait"/>
+          <moduleRef key="textcrit" except="wit"/>
+          <moduleRef key="figures" except="cell formula notatedMusic row table"/>
+          <!-- CHANGED ELEMENT SPECS -->
+          <elementSpec ident="add" module="core" mode="change">
+            <attList>
+              <!-- constraining values of add/@place -->
+              <attDef ident="place" mode="change">
+                <valList type="closed">
+                  <valItem ident="above"/>
+                  <valItem ident="inline"/>
+                  <valItem ident="margin"/>
+                </valList>
+              </attDef>
+              <attDef ident="ana" mode="delete"/>
+              <attDef ident="atLeast" mode="delete"/>
+              <attDef ident="atMost" mode="delete"/>
+              <attDef ident="cause" mode="delete"/>
+              <attDef ident="cert" mode="delete"/>
+              <attDef ident="change" mode="delete"/>
+              <attDef ident="confidence" mode="delete"/>
+              <attDef ident="copyOf" mode="delete"/>
+              <attDef ident="corresp" mode="delete"/>
+              <attDef ident="evidence" mode="delete"/>
+              <attDef ident="exclude" mode="delete"/>
+              <attDef ident="extent" mode="delete"/>
+              <attDef ident="facs" mode="delete"/>
+              <attDef ident="instant" mode="delete"/>
+              <attDef ident="max" mode="delete"/>
+              <attDef ident="min" mode="delete"/>
+              <attDef ident="n" mode="delete"/>
+              <attDef ident="next" mode="delete"/>
+              <attDef ident="precision" mode="delete"/>
+              <attDef ident="prev" mode="delete"/>
+              <attDef ident="quantity" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
+              <attDef ident="rendition" mode="delete"/>
+              <attDef ident="resp" mode="delete"/>
+              <attDef ident="sameAs" mode="delete"/>
+              <attDef ident="scope" mode="delete"/>
+              <attDef ident="seq" mode="delete"/>
+              <attDef ident="source" mode="delete"/>
+              <attDef ident="status" mode="delete"/>
+              <attDef ident="style" mode="delete"/>
+              <attDef ident="subtype" mode="delete"/>
+              <attDef ident="synch" mode="delete"/>
+              <attDef ident="type" mode="delete"/>
+              <attDef ident="unit" mode="delete"/>
+              <attDef ident="xml:base" mode="delete"/>
+              <attDef ident="xml:lang" mode="delete"/>
+              <attDef ident="xml:space" mode="delete"/>
+            </attList>
+          </elementSpec>
+          <!-- constraining values of div/@type -->
+          <elementSpec ident="div" mode="change" module="textstructure">
+            <constraintSpec scheme="isoschematron" ident="div">
+              <constraint>
+                <sch:rule context="tei:div">
+                  <sch:report test="@type != 'textpart' or @type != 'section' and parent::tei:div and @type!=parent::tei:div/@type">
+                    Divs other than @type=textpart or @type=section may not nest in divs of different @type
+                  </sch:report>
+                  <sch:report test="@subtype and not(@type='textpart')">
+                    @subtype may only be used together with @type=textpart
+                  </sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <attList>
+              <attDef ident="type" mode="replace" usage="req">
+                <valList type="closed">
+                  <valItem ident="commentary">
+                    <desc>to contain the commentary to the edition</desc>
+                  </valItem>
+                  <valItem ident="transcription">
+                    <desc>to contain the transcription of a text in a manuscript</desc>
+                  </valItem>
+                  <valItem ident="edition">
+                    <desc>to contain the text of the edition itself; may include multiple text-parts</desc>
+                  </valItem>
+                  <valItem ident="translation">
+                    <desc>to contain a translation of the text into one or more modern languages</desc>
+                  </valItem>
+                  <valItem ident="praefatio">
+                    <desc>to contain the Praefatio to an edition</desc>
+                  </valItem>
+                  <valItem ident="section">
+                    <desc>used to divide a div[type=praefatio] into multiple parts</desc>
+                  </valItem>
+                  <valItem ident="textpart">
+                    <desc>used to divide a div[type=edition] into multiple parts (fragments, columns, faces, etc.)</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="subtype" mode="change">
+                <desc>for the description of the text structure</desc>
+                <valList type="closed" mode="replace">
+                  <valItem ident="book">
+                    <desc>Book</desc>
+                  </valItem>
+                  <valItem ident="chapter">
+                    <desc>Chapter</desc>
+                  </valItem>
+                  <valItem ident="section">
+                    <desc>Section</desc>
+                  </valItem>
+                  <valItem ident="fragment">
+                    <desc>Fragment</desc>
+                  </valItem>
+                  <valItem ident="commented">
+                    <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary)</desc>
+                  </valItem>
+                  <valItem ident="commentary">
+                    <desc>Exegesis of a Biblical verse or a commentary to a text</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="gap" module="core" mode="change">
+            <!-- testing for <gap> with both quantity/extent, no unit, or contained in supplied -->
+            <constraintSpec ident="gap" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:gap">
+                  <sch:report test="@quantity and @extent">gap may have @quantity (a figure) or @extent (a descriptive text value) but not both</sch:report>
+                  <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report>
+                  <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <!-- constraining values of gap/@reason -->
+            <attList>
+              <attDef ident="reason" mode="replace" usage="req">
+                <valList type="closed">
+                  <valItem ident="damage">
+                    <desc>Physical damage</desc>
+                  </valItem>
+                  <valItem ident="fenestra">
+                    <desc>Free space inmidst of text, left blank by the scribe</desc>
+                  </valItem>
+                  <valItem ident="illegible">
+                    <desc>Traces of text remains on the surface but cannot be interpreted</desc>
+                  </valItem>
+                  <valItem ident="missing">
+                    <desc>Editor thinks that there is text missing, even if there are no physical traces in a manuscript</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <!-- removing gap/@dur (not needed in PTA) -->
+              <attDef ident="dur" mode="delete"/>
+            </attList>
+          </elementSpec>
+          <!-- suggesting but not constraining values of hi/@rend -->
+          <elementSpec ident="hi" module="core" mode="change">
+            <attList>
+              <attDef ident="rend" mode="replace" usage="req">
+                <datatype maxOccurs="5">
+                  <rng:ref name="data.word"/>
+                </datatype>
+                <valList type="semi">
+                  <valItem ident="initial">
+                    <desc>Initial</desc>
+                  </valItem>
+                  <valItem ident="ekthesis">
+                    <desc>Ekthesis</desc>
+                  </valItem>
+                  <valItem ident="overline">
+                    <desc>Line over a letter</desc>
+                  </valItem>
+		  <valItem ident="rubricated">
+                    <desc>is rubricated</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="lb" mode="change" module="core">
+            <!-- offer value "no" for lb/@break -->
+            <attList>
+              <attDef ident="break" mode="replace" usage="opt">
+                <datatype>
+                  <rng:ref name="data.enumerated"/>
+                </datatype>
+                <valList type="semi">
+                  <valItem ident="no">
+                    <desc>this linebreak should not be taken as a word-break, i.e. word would be hyphenated in a printed text</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="note" module="core" mode="change">
+            <attList>
+              <!-- constraining values of note/@place -->
+              <attDef ident="place" mode="replace" usage="opt">
+                <valList type="closed">
+                  <valItem ident="top">
+                    <desc>On top of page (without further specification)</desc>
+                  </valItem>
+                  <valItem ident="top_inner">
+                    <desc>On top of page (inner margin)</desc>
+                  </valItem>
+                  <valItem ident="top_outer">
+                    <desc>On top of page (outer margin)</desc>
+                  </valItem>
+                  <valItem ident="top_center">
+                    <desc>On top of page (centered)</desc>
+                  </valItem>
+                  <valItem ident="bottom">
+                    <desc>On bottom of page (without further specification)</desc>
+                  </valItem>
+                  <valItem ident="bottom_inner">
+                    <desc>On bottom of page (inner margin)</desc>
+                  </valItem>
+                  <valItem ident="bottom_outer">
+                    <desc>On bottom of page (outer margin)</desc>
+                  </valItem>
+                  <valItem ident="bottom_center">
+                    <desc>On bottom of page (centered)</desc>
+                  </valItem>
+                  <valItem ident="margin_inner">
+                    <desc>On the inner margin</desc>
+                  </valItem>
+                  <valItem ident="margin_outer">
+                    <desc>On the outer margin</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="ana" mode="delete"/>
+              <attDef ident="rendition" mode="delete"/>
+            </attList>
+          </elementSpec>
+          <!-- suggested attribute values for origDate/@evidence -->
+          <elementSpec ident="origDate" module="msdescription" mode="change">
+            <attList>
+              <attDef ident="evidence" mode="replace" usage="opt">
+                <datatype maxOccurs="6">
+                  <rng:ref name="data.word"/>
+                </datatype>
+                <valList type="semi">
+                  <valItem ident="lettering">
+                    <desc>Text dated palaeographically</desc>
+                  </valItem>
+                  <valItem ident="nomenclature">
+                    <desc>Text dated by nomenclature or onomastics</desc>
+                  </valItem>
+                  <valItem ident="prosopography">
+                    <desc>Text dated by known persons named or implied within it</desc>
+                  </valItem>
+                  <valItem ident="reign">
+                    <desc>Text dated by the reign of an emperor or other ruler</desc>
+                  </valItem>
+                  <valItem ident="titulature">
+                    <desc>Text dated by the use of official titles</desc>
+                  </valItem>
+                  <valItem ident="internal-date">
+                    <desc>Text dated by explicit internal date</desc>
+                  </valItem>
+                  <valItem ident="context">
+                    <desc>Archaeological, epigraphic, iconographic or other context of the text support</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="space" module="transcr" mode="change">
+            <!-- testing for <space> with both quantity/extent or no unit -->
+            <constraintSpec ident="space" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:space">
+                  <sch:report test="@quantity and @extent">space may have @quantity (a figure) or @extent (a descriptive text value) but not both</sch:report>
+                  <sch:report test="@quantity and not(@unit)">If space has @quantity then @unit is required</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+          </elementSpec>
+          <!-- modifying <unclear> because in EpiDoc it should not contain anything but text and <g/> -->
+          <elementSpec ident="unclear" module="core" mode="change">
+            <desc>Character that cannot be identified unambiguously outside of its context. May contain character data and
+              <gi>g</gi>
+              only.</desc>
+            <content>
+              <rng:ref name="macro.xtext"/>
+            </content>
+          </elementSpec>
+          <!-- CHANGING ATTRIBUTE CLASSES -->
+          <classSpec type="atts" ident="att.dimensions" mode="change">
+            <attList>
+              <attDef ident="precision" mode="replace">
+                <valList type="closed">
+                  <valItem ident="low"/>
+                  <valItem ident="medium"/>
+                  <valItem ident="high"/>
+                </valList>
+              </attDef>
+              <attDef ident="unit" mode="change">
+                <valList type="semi" mode="replace">
+                  <valItem ident="character"/>
+                  <valItem ident="line"/>
+                  <valItem ident="metre"/>
+                  <valItem ident="cm"/>
+                  <valItem ident="mm"/>
+                </valList>
+              </attDef>
+              <attDef ident="extent" mode="change">
+                <valList type="semi" mode="replace">
+                  <valItem ident="unknown"/>
+                </valList>
+              </attDef>
+            </attList>
+          </classSpec>
+          <classSpec type="atts" ident="att.responsibility" mode="change">
+            <attList>
+              <attDef ident="cert" mode="replace">
+                <valList type="closed">
+                  <valItem ident="low"/>
+                  <valItem ident="high"/>
+                </valList>
+              </attDef>
+            </attList>
+          </classSpec>
+          <elementSpec ident="app" module="textcrit" mode="change">
+            <!-- Changing attribute list: only @type is allowed -->
+            <attList>
+              <attDef ident="ana" mode="delete"/>
+              <attDef ident="resp" mode="delete"/>
+              <attDef ident="source" mode="delete"/>
+              <attDef ident="type" mode="change" usage="req">
+                <valList type="closed" mode="replace">
+                  <valItem ident="textcritical">
+                    <desc>for textcritical apparatus</desc>
+                  </valItem>
+                  <valItem ident="witnesses">
+                    <desc>for indication of witnesses (especially for the indication of change of witnesses in the text)</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="lem" module="textcrit" mode="change">
+            <!-- Changing attribute list: only @cause is allowed -->
+            <attList>
+              <attDef ident="cause" mode="change">
+                <valList type="closed" mode="replace">
+                  <valItem ident="conjecture">
+                    <desc>variant is a conjecture (sc. /coniecit/)</desc>
+                  </valItem>
+                  <valItem ident="correction">
+                    <desc>variant is a correction of an error (for example spelling error), not as far reaching as a conjecture (sc. /correxit/)</desc>
+                  </valItem>
+                  <valItem ident="proposition">
+                    <desc>variant is a proposition of a conjecture (sc. /proposuit/ oder /dubitanter/)</desc>
+                  </valItem>
+                  <valItem ident="deletion">
+                    <desc>variant is a deletion (by an editor or a scribe in contrast to an omission)</desc>
+                  </valItem>
+                  <valItem ident="addition">
+                    <desc>variant is an addition</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="ana" mode="delete"/>
+              <attDef ident="type" mode="delete"/>
+              <attDef ident="cert" mode="delete"/>
+              <attDef ident="change" mode="delete"/>
+              <attDef ident="exclude" mode="delete"/>
+              <attDef ident="rendition" mode="delete"/>
+              <attDef ident="require" mode="delete"/>
+              <attDef ident="select" mode="delete"/>
+              <attDef ident="style" mode="delete"/>
+              <attDef ident="synch" mode="delete"/>
+              <attDef ident="resp" mode="change">
+                <desc>indicates the one responsible (editor, not in a printed edition)</desc>
+              </attDef>
+              <attDef ident="source" mode="change">
+                <desc>indicates the source of a variant (an earlier edition)</desc>
+              </attDef>
+              <attDef ident="wit" mode="change">
+                <desc>indicates the witness (manuscript)</desc>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="rdg" module="textcrit" mode="change">
+            <attList>
+              <attDef ident="cause" mode="change">
+                <valList type="closed" mode="replace">
+                  <valItem ident="addition">
+                    <desc>cause for variant is an addition</desc>
+                  </valItem>
+                  <valItem ident="deletion">
+                    <desc>cause for variant is a deletion</desc>
+                  </valItem>
+                  <valItem ident="omission">
+                    <desc>cause for variant is an omission</desc>
+                  </valItem>
+                  <valItem ident="illegible">
+                    <desc>text is illegible</desc>
+                  </valItem>
+                  <valItem ident="transposition">
+                    <desc>cause for variant is a transposition</desc>
+                  </valItem>
+                  <valItem ident="correction">
+                    <desc>cause for variant is a correction (of a small error in the manuscript tradition)</desc>
+                  </valItem>
+                  <valItem ident="conjecture">
+                    <desc>cause for variant is a conjecture</desc>
+                  </valItem>
+                  <valItem ident="proposition">
+                    <desc>proposes a conjecture (sc. /proposuit/ or /dubitanter/)</desc>
+                  </valItem>
+                  <valItem ident="lacunam_indicavit">
+                    <desc>conjecture of a gap</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="type" mode="change">
+                <valList type="closed" mode="replace">
+		  <desc>provides analysis of some sort of variants</desc>
+                  <valItem ident="orthographic">
+                    <desc>marks a variant which is only orthographic (for example because of itacism)</desc>
+                  </valItem>
+                  <valItem ident="homoiarkton">
+                    <desc>marks a variant which is probably caused by homoiarkton</desc>
+                  </valItem>
+                  <valItem ident="homoioteleuton">
+                    <desc>marks a variant which is probably caused by homoioteleuton</desc>
+                  </valItem>
+                  <valItem ident="dittography">
+                    <desc>marks a variant which is probably caused by dittography</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="style" mode="change">
+                <valList type="closed" mode="replace">
+                  <desc>provides location of corrections</desc>
+                  <valItem ident="supralinear">
+                    <desc>above the line</desc>
+                  </valItem>
+                  <valItem ident="marginal">
+                    <desc>in the margin</desc>
+                  </valItem>
+                  <valItem ident="inline">
+                    <desc>inline</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="cb" module="core" mode="change">
+            <attList>
+              <attDef ident="break" mode="change">
+                <valList type="closed" mode="replace">
+                  <valItem ident="no"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="pb" module="core" mode="change">
+            <attList>
+              <attDef ident="break" mode="change">
+                <valList type="closed" mode="replace">
+                  <valItem ident="no"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="del" module="core" mode="change">
+            <attList>
+              <attDef ident="rend" mode="change">
+                <valList type="closed" mode="replace">
+		  <valItem ident="unmarked">
+		    <desc>text to be replaced is not marked explicitly</desc>
+		  </valItem>
+		  <valItem ident="marker">
+		    <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
+		  </valItem>
+                  <valItem ident="erasure"/>
+                  <valItem ident="strikethrough"/>
+                  <valItem ident="overwrite"/>
+                  <valItem ident="expunction"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="abbr" module="core" mode="change">
+            <attList>
+              <attDef ident="type" mode="change" usage="req">
+                <valList type="closed" mode="replace">
+                  <valItem ident="siglum">
+                    <desc>classifies abbreviation as siglum</desc>
+		  </valItem>
+                  <valItem ident="nomSac">
+                    <desc>classifies an abbreviation as nomen sacrum</desc>
+		  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+	  <elementSpec ident="msIdentifier" module="msdescription" mode="change">
+            <attList>
+              <attDef ident="xml:id" mode="change" usage="req">
+		<desc>needs an id to be used by CollateX</desc>
+              </attDef>
+            </attList>
+          </elementSpec>
+        </schemaSpec>
+      </div>
+    </body>
+  </text>
 </TEI>
