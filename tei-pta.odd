@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 2.0α. Last updated on 2020-07-30.</edition>
+        <edition>Version 2.0β. Last updated on 2021-02-04.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2021-02-04">edition, am, ex, damage, damageSpan allowed; new attributes for div and hi; corrected encoding errors</change>
       <change who="#AvS" when="2020-07-30">charDecl, classDecl, taxonomy, textClass, keywords, orig, corr, ab allowed; new attributes for div; added values for hi and usage changed from req to rec</change>
       <change who="#AvS" when="2020-04-02">(Temporarily) removed guidelines from ODD.</change>
       <change who="#AvS" when="2020-03-25">Language for descriptions changed to English.</change>
@@ -52,11 +53,11 @@
           <moduleRef key="tei"/>
           <moduleRef
             key="header"
-            except="abstract appInfo application catDesc catRef category classCode edition hyphenation namespace rendition samplingDecl schemaRef styleDefDecl tagUsage tagsDecl xenoData"/>
+            except="abstract appInfo application catDesc catRef category classCode hyphenation namespace rendition samplingDecl schemaRef styleDefDecl tagUsage tagsDecl xenoData"/>
           <moduleRef
             key="textstructure"
             except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText imprimatur opener postscript salute signed titlePage titlePart trailer"/>
-          <moduleRef key="transcr" except="am damage damageSpan ex fw line listTranspose metamark mod redo restore secl sourceDoc transpose undo"/>
+          <moduleRef key="transcr" except="fw line listTranspose metamark mod redo restore secl sourceDoc transpose undo"/>
           <moduleRef key="analysis" except="cl interp interpGrp span spanGrp"/>
           <moduleRef key="certainty"/>
           <moduleRef key="gaiji" except="char charName charProp localName mapping unicodeName value"/>
@@ -163,8 +164,17 @@
                   <valItem ident="book">
                     <desc>Book</desc>
                   </valItem>
+                  <valItem ident="homily">
+                    <desc>Homily</desc>
+                  </valItem>
                   <valItem ident="chapter">
                     <desc>Chapter</desc>
+                  </valItem>
+                  <valItem ident="subdok">
+                    <desc>Document belonging to a document of higher-order</desc>
+                  </valItem>
+                  <valItem ident="praefatio">
+                    <desc>Preface to a book (n="praefatio")</desc>
                   </valItem>
                   <valItem ident="section">
                     <desc>Section</desc>
@@ -182,13 +192,13 @@
                     <desc>Subdivision of a commentary</desc>
                   </valItem>
                   <valItem ident="hypopsalmos">
-                    <desc>Short invocation in manuscripts of the Psalms</desc>
+                    <desc>Short invocation in manuscripts of the Psalms (n="hypopsalmos")</desc>
                   </valItem>
                   <valItem ident="hypothesis">
-                    <desc>Short introduction to a Psalm in manuscripts of the Psalms</desc>
+                    <desc>Short introduction to a Psalm in manuscripts of the Psalms (n="hypothesis")</desc>
                   </valItem>
                   <valItem ident="perioche">
-                    <desc>Short summary of a Psalm (by Eusebius of Caesarea) in manuscripts of the Psalms</desc>
+                    <desc>Short summary of a Psalm (by Eusebius of Caesarea) in manuscripts of the Psalms (n="perioche")</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -241,11 +251,17 @@
                   <valItem ident="ekthesis">
                     <desc>Ekthesis</desc>
                   </valItem>
-                  <valItem ident="overline">
-                    <desc>Line over a letter</desc>
+                  <valItem ident="majuscule">
+                    <desc>in uppercase/capitals</desc>
                   </valItem>
 		              <valItem ident="rubricated">
                     <desc>is rubricated</desc>
+                  </valItem>
+                  <valItem ident="overline">
+                    <desc>Line over a letter</desc>
+                  </valItem>
+                  <valItem ident="underline">
+                    <desc>Line under a letter</desc>
                   </valItem>
 		              <valItem ident="subscript">
                     <desc>rendition as subscript</desc>
@@ -501,7 +517,6 @@
               </attDef>
               <attDef ident="type" mode="change">
                 <valList type="closed" mode="replace">
-		  <desc>provides analysis of some sort of variants</desc>
                   <valItem ident="orthographic">
                     <desc>marks a variant which is only orthographic (for example because of itacism)</desc>
                   </valItem>
@@ -518,7 +533,6 @@
               </attDef>
               <attDef ident="style" mode="change">
                 <valList type="closed" mode="replace">
-                  <desc>provides location of corrections</desc>
                   <valItem ident="supralinear">
                     <desc>above the line</desc>
                   </valItem>
