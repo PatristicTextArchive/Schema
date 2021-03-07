@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri
+      name="http://www.tei-c.org/ns/1.0"
+      uri="tei_pta.xsd" />
+  <uri name="http://www.isocat.org/ns/dcr" uri="tei_pta_dcr.xsd"/>
+  <uri name="http://www.w3.org/XML/1998/namespace" uri="tei_pta_xml.xsd"/>
+</catalog>

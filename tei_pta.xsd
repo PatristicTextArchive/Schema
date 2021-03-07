@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.tei-c.org/ns/1.0" xmlns:dcr="http://www.isocat.org/ns/dcr" xmlns:tei="http://www.tei-c.org/ns/1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.tei-c.org/ns/1.0" xmlns:dcr="http://www.isocat.org/ns/dcr" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:tei="http://www.tei-c.org/ns/1.0">
   <xs:import namespace="http://www.isocat.org/ns/dcr" schemaLocation="tei_pta_dcr.xsd"/>
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="tei_pta_xml.xsd"/>
   <!--
@@ -10532,30 +10532,7 @@ Suggested values include: 1] 1.0.1; 2] 1.1; 3] 2.0; 4] 2.1; 5] 3.0; 6] 3.1; 7] 3
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="tei:licence"/>
         <xs:group minOccurs="0" maxOccurs="unbounded" ref="tei:model.annotationPart.body"/>
       </xs:sequence>
-      <xs:attributeGroup ref="tei:att.global.attribute.n"/>
-      <xs:attributeGroup ref="tei:att.global.attribute.xmllang"/>
-      <xs:attributeGroup ref="tei:att.global.attribute.xmlbase"/>
-      <xs:attributeGroup ref="tei:att.global.attribute.xmlspace"/>
-      <xs:attributeGroup ref="tei:att.global.rendition.attribute.rend"/>
-      <xs:attributeGroup ref="tei:att.global.rendition.attribute.style"/>
-      <xs:attributeGroup ref="tei:att.global.rendition.attribute.rendition"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.corresp"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.synch"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.sameAs"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.copyOf"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.next"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.prev"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.exclude"/>
-      <xs:attributeGroup ref="tei:att.global.linking.attribute.select"/>
-      <xs:attributeGroup ref="tei:att.global.analytic.attribute.ana"/>
-      <xs:attributeGroup ref="tei:att.global.facs.attribute.facs"/>
-      <xs:attributeGroup ref="tei:att.global.change.attribute.change"/>
-      <xs:attributeGroup ref="tei:att.global.responsibility.attribute.cert"/>
-      <xs:attributeGroup ref="tei:att.global.responsibility.attribute.resp"/>
-      <xs:attributeGroup ref="tei:att.global.source.attribute.source"/>
-      <xs:attributeGroup ref="tei:att.pointing.attribute.targetLang"/>
-      <xs:attributeGroup ref="tei:att.pointing.attribute.evaluate"/>
-      <xs:attributeGroup ref="xml:id"/>
+      <xs:attributeGroup ref="tei:att.global.attributes"/>
       <xs:attribute name="target" use="required">
         <xs:annotation>
           <xs:documentation>specifies the destination of the reference by supplying one or more URI References</xs:documentation>
