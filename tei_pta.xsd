@@ -7228,6 +7228,11 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
                 <xs:documentation>Chapter</xs:documentation>
               </xs:annotation>
             </xs:enumeration>
+            <xs:enumeration value="verse">
+              <xs:annotation>
+                <xs:documentation>Verse</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="subdok">
               <xs:annotation>
                 <xs:documentation>Document belonging to a document of higher-order</xs:documentation>

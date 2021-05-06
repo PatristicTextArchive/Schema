@@ -47,9 +47,9 @@
     <body>
       <div xml:id="elemente">
         <head>Dokumentation des Schemas</head>
-        <schemaSpec ident="tei-pta" prefix="tei_" start="TEI" xml:lang="en">
+        <schemaSpec ident="tei-pta" docLang="en" prefix="tei_" start="TEI" xml:lang="en" source="https://www.tei-c.org/Vault/P5/4.2.1/xml/tei/odd/p5subset.xml">
           <!-- MODULES USED BY THE PTA SCHEMA -->
-          <moduleRef key="core" except="binaryObject email headItem headLabel measureGrp media meeting postBox postCode q rs textLang"/>
+          <moduleRef key="core" except="binaryObject email headItem headLabel measureGrp media meeting postBox postCode q rb rt ruby textLang"/>
           <moduleRef key="tei"/>
           <moduleRef
             key="header"
@@ -65,7 +65,7 @@
           <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry musicNotation objectType seal sealDesc stamp summary typeDesc typeNote"/>
           <moduleRef
             key="namesdates"
-            except="affiliation age bloc climate district education faith langKnowledge langKnown listNym listObject listOrg listRelation nameLink nationality nym occupation offset org population region residence sex socecStatus state terrain trait"/>
+            except="affiliation age bloc climate district education faith langKnowledge langKnown listNym listObject listOrg listRelation nameLink nationality nym occupation offset org population persPronouns region residence sex socecStatus state terrain trait"/>
           <moduleRef key="textcrit" except="wit"/>
           <moduleRef key="figures" except="cell formula notatedMusic row table"/>
           <!-- CHANGED ELEMENT SPECS -->
@@ -169,6 +169,9 @@
                   </valItem>
                   <valItem ident="chapter">
                     <desc>Chapter</desc>
+                  </valItem>
+                  <valItem ident="verse">
+                    <desc>Verse</desc>
                   </valItem>
                   <valItem ident="subdok">
                     <desc>Document belonging to a document of higher-order</desc>
