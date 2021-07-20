@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2021-07-20">add telota:doctype as allowed </change>
       <change who="#AvS" when="2021-02-04">edition, am, ex, damage, damageSpan allowed; new attributes for div and hi; corrected encoding errors</change>
       <change who="#AvS" when="2020-07-30">charDecl, classDecl, taxonomy, textClass, keywords, orig, corr, ab allowed; new attributes for div; added values for hi and usage changed from req to rec</change>
       <change who="#AvS" when="2020-04-02">(Temporarily) removed guidelines from ODD.</change>
@@ -69,6 +70,17 @@
           <moduleRef key="textcrit" except="wit"/>
           <moduleRef key="figures" except="cell formula notatedMusic row table"/>
           <!-- CHANGED ELEMENT SPECS -->
+          <elementSpec ident="TEI" mode="change">
+            <attList>
+              <attDef ident="doctype" ns="http://www.telota.de" mode="add" usage="opt">
+                <desc>doctype used by ediarum</desc>
+                <valList type="closed">
+                  <valItem ident="transcription"/>
+                  <valItem ident="edition"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
           <elementSpec ident="add" module="core" mode="change">
             <attList>
               <!-- constraining values of add/@place -->
