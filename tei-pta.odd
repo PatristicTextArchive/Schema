@@ -195,6 +195,9 @@
                   <valItem ident="section">
                     <desc>Section</desc>
                   </valItem>
+                  <valItem ident="subsection">
+                    <desc>Subsection</desc>
+                  </valItem>
                   <valItem ident="fragment">
                     <desc>Fragment</desc>
                   </valItem>
