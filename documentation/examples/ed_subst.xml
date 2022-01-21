@@ -1,0 +1,7 @@
+<app type="textcritical">
+ <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">ἔχωμεν</lem>
+ <rdg wit="#Ha">ἔχ<subst hand="#m2">
+   <del>ο</del>
+   <add place="above">ω</add>
+  </subst>μεν</rdg>
+</app>

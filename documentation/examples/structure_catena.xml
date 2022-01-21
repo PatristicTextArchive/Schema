@@ -1,0 +1,22 @@
+<div type="edition" xml:lang="grc" n="urn:cts:pta:pta0013.pta003.pta-MsPs">
+  <pb n="112v"/>
+  <div type="textpart" subtype="commented" n="Gen:1:1–2">
+   <seg xml:id="alpha">
+    <g type="obelos"/> Εν ἀρχῇ ἐποίησεν ὁ θεὸς τὸν
+       οὐρανὸν καὶ τὴν γῆν.</seg>
+   <seg xml:id="beta">ἡ δὲ γῆ ἦν ἀόρατος καὶ ἀκατασκεύαστος, καὶ 
+       σκότος ἐπάνω τῆς <seg xml:id="a">ἀβύσσου</seg>, καὶ 
+       πνεῦμα θεοῦ ἐπεφέρετο ἐπάνω τοῦ ὕδατος.</seg>
+   <div type="textpart" subtype="commentary" n="A">
+      <head>
+       <title type="lemma">Εὐσεβίου·</title>
+      </head>
+      <seg corresp="#alpha">
+       <g type="obelos"/>Kommentar</seg>
+      <seg corresp="#beta">Kommentar</seg>
+   </div>
+   <div type="textpart" subtype="commentary" n="B">
+      <seg corresp="#a">Worterklärung</seg>
+   </div>
+  </div>
+</div>

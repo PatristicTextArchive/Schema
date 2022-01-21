@@ -1,0 +1,26 @@
+<sourceDesc>
+<msDesc>
+ <msIdentifier xml:id="Athen_253">
+  <settlement>Athen</settlement>
+  <repository>Ethnikê Bibliothêkê tês Hellados (EBE)</repository>
+  <idno>253</idno>
+  <altIdentifier type="diktyon">
+   <idno>2549</idno>
+  </altIdentifier>
+ </msIdentifier>
+ <physDesc>
+    <objectDesc>
+        <layoutDesc>
+            <layout columns="3">
+                <p>Der Text setzt sich aus kommentiertem Text, einer inneren und einer äußerem Kommentarspalte zusammen.</p>
+            </layout>
+        </layoutDesc>
+    </objectDesc>
+    <handDesc hands="3">
+        <handNote xml:id="m1">Schreiber</handNote>
+        <handNote xml:id="m2">Erster Korrektor</handNote>
+        <handNote xml:id="mr">Manus recentior</handNote>
+    </handDesc>
+ </physDesc>
+</msDesc>
+</sourceDesc>

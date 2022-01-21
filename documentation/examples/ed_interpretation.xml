@@ -1,0 +1,16 @@
+<editorialDecl>
+  <interpretation>
+    <p xml:id="biblical-quotations">
+    Bibelzitate sind ausgezeichnet und nach den oben angeführten Grundsätzen nachgewiesen.
+    </p>
+    <p xml:id="places">
+    Orte sind ausgezeichnet und mit den IDs des <ref target="https://pleiades.stoa.org/">Pleiades Gazetteers</ref>
+referenziert.
+    </p>
+    <p xml:id="persons">
+    Personen sind ausgezeichnet. Biblische Personen sind mit den IDs der <ref target="https://github.com/tyndale/STEPBible-Data">TIPNR - Tyndale Individualised Proper Names with all References</ref>-Liste, alle übrigen Personen und Gruppen mit den IDs der
+<ref target="https://lobid.org/gnd">GND</ref> referenziert.
+    </p>
+  </interpretation>
+  ...
+</editorialDecl>

@@ -1,0 +1,9 @@
+<app type="textcritical">
+ <lem>οὐδεμίαν 
+  <app type="textcritical">
+   <lem wit="#Pt #Pc #Pa #Be #Pd #Ma #My #Ha #Va">εὑρήσεις</lem>
+   <rdg wit="#Pb" type="orthographic">εὑρήσῃς</rdg>
+  </app>
+ </lem>
+ <rdg wit="#Ab" cause="omission"/>
+</app>

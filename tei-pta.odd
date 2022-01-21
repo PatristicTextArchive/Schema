@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 2.0β. Last updated on 2021-02-04.</edition>
+        <edition>Version 2.0. Last updated on 2022-02-25.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2022-02-25">del commentaryfragment as value for subtype, delete some attributes</change>
+      <change who="#AvS" when="2022-02-18">underline as attr for del allowed</change>
       <change who="#AvS" when="2022-01-10">stamp allowed</change>
       <change who="#AvS" when="2021-07-20">add telota:doctype as allowed </change>
       <change who="#AvS" when="2021-02-04">edition, am, ex, damage, damageSpan allowed; new attributes for div and hi; corrected encoding errors</change>
@@ -206,9 +208,6 @@
                   </valItem>
                   <valItem ident="commentary">
                     <desc>Exegesis of a Biblical verse or a commentary to a text</desc>
-                  </valItem>
-                  <valItem ident="commentaryfragment">
-                    <desc>Subdivision of a commentary</desc>
                   </valItem>
                   <valItem ident="hypopsalmos">
                     <desc>Short invocation in manuscripts of the Psalms (n="hypopsalmos")</desc>
@@ -418,9 +417,9 @@
                 <valList type="semi" mode="replace">
                   <valItem ident="character"/>
                   <valItem ident="line"/>
+                  <valItem ident="page"/>
+                  <valItem ident="word"/>
                   <valItem ident="metre"/>
-                  <valItem ident="cm"/>
-                  <valItem ident="mm"/>
                 </valList>
               </attDef>
               <attDef ident="extent" mode="change">
@@ -597,8 +596,12 @@
                   <valItem ident="strikethrough"/>
                   <valItem ident="overwrite"/>
                   <valItem ident="expunction"/>
+                  <valItem ident="underline"/>
                 </valList>
               </attDef>
+              <attDef ident="cause" mode="delete"/>
+              <attDef ident="unit" mode="delete"/>
+              <attDef ident="quantity" mode="delete"/>
             </attList>
           </elementSpec>
           <elementSpec ident="abbr" module="core" mode="change">

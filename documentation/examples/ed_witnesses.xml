@@ -1,0 +1,7 @@
+<app type="witnesses">
+    <rdg wit="#Ecl114"><witStart/>μεμαρτύρητο</rdg>
+</app>
+...
+<app type="witnesses">
+ <rdg wit="#Pa #Be">εἰ<lacunaEnd/></rdg>
+</app>

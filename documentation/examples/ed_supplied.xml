@@ -1,0 +1,5 @@
+<app type="textcritical">
+ <lem resp="#AvS" cause="addition"><supplied>οὐκ</supplied></lem>
+ <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
+  cause="omission"/>
+</app>

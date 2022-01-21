@@ -1,0 +1,23 @@
+<listWit>
+ <listWit xml:id="a">
+  <head>Hyparchetyp <abbr type="siglum">α</abbr>
+  </head>
+  <witness xml:id="La" corresp="pta0013.pta003.pta-MsLa.xml">
+    <abbr type="siglum">La</abbr>
+    <name corresp="388.1418.0412.xml">Laurentianus Plut. IV 12</name>
+    <origDate notBefore="1401" notAfter="1500">s. XV</origDate>
+    <locus>f. 131v–133v</locus>
+  </witness>
+  <witness xml:id="Vi" source="#La" corresp="pta0013.pta003.pta-MsVi.xml">
+    <abbr type="siglum">Vi</abbr>
+    <name corresp="1297.1341.0190.xml">Vindobonensis theol. gr. 190</name>
+    <origDate notBefore="1451" notAfter="1500">s. XV (2. H.)</origDate>
+    <locus>f. 113r–115r</locus>
+  </witness>
+ </listWit>
+ <listWit xml:id="b">
+  <head>Hyparchetyp <abbr type="siglum">β</abbr>
+  </head>
+  <witness>...</witness>
+ </listWit>
+</listWit>

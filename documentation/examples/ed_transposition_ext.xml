@@ -1,0 +1,16 @@
+<div type="textpart" subtype="section" n="1">
+    <p>οὐδὲ γἁρ 
+    <app type="textcritical" xml:id="app1-1" next="#app1-2">
+        <lem wit="#Pt #Pb #My #Ha #Va #Ab">καλόν ἐστι</lem>
+        <rdg wit="#Pc #Pd Ma" cause="omission"/>
+    </app>
+    </p>
+</div>
+<div type="textpart" subtype="section" n="2">
+    <p>τὸ ἔξω τοῦ οἴκου τοῦ θεοῦ πολιτεύεσθαι
+    <app type="textcritical" xml:id="app1-2" prev="#app1-1">
+        <lem wit="#Pt #Pb #My #Ha #Va #Ab"/>
+        <rdg wit="#Pc #Pd #Ma" cause="addition">καλόν ἐστι</rdg>
+    </app>
+      </p>
+</div>
