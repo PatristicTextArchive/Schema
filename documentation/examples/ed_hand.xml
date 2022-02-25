@@ -1,0 +1,5 @@
+<app type="textcritical">
+ <lem wit="#Pa #Pb #Ha #Va" xml:id="lem178">ὁ γενναῖος ἐκεῖνος</lem>
+ <rdg wit="#Be" varSeq="1" cause="transposition">ἐκεῖνος ὁ γενναῖος</rdg>
+ <rdg wit="#Be" varSeq="2" hand="m2" style="supralinear" copyOf="#lem178"/>
+</app>

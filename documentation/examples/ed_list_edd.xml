@@ -1,0 +1,11 @@
+<listPerson>
+<person xml:id="AvS">
+ <persName ref="http://d-nb.info/gnd/124321291">
+  <abbr type="siglum">AvS</abbr>
+  <forename>Annette</forename>
+  <surname>von Stockhausen</surname>
+ </persName>
+ <!-- ggfs. angeben -->
+ <note>Zitiert in <ref target="#Sav">Savile</ref>.</note>
+</person>
+</listPerson>

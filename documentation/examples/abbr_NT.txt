@@ -1,0 +1,4 @@
+Mt, Mk, Lk, Jn, Act, Rom, 1Cor, 2Cor,
+Gal, Eph, Phil, Col, 1Th, 2Th, 1Tim,
+2Tim, Tt, Phm, Heb, Jak, 1P, 2P, 1Jn,
+2Jn, 3Jn, Jud, Rev.

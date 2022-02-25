@@ -1,0 +1,8 @@
+<app type="textcritical">
+ <lem resp="#AvS" cause="deletion"/>
+ <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">οὐκ</rdg>
+</app>
+<app type="textcritical">
+ <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">οὐκ</lem>
+ <rdg source="#Sav" cause="deletion"><surplus>οὐκ</surplus></rdg>
+</app>
