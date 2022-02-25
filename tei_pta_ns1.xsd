@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.telota.de" xmlns:dcr="http://www.isocat.org/ns/dcr" xmlns:ns1="http://www.telota.de" xmlns:tei="http://www.tei-c.org/ns/1.0">
+  <xs:import namespace="http://www.isocat.org/ns/dcr" schemaLocation="tei_pta_dcr.xsd"/>
+  <xs:import namespace="http://www.tei-c.org/ns/1.0" schemaLocation="tei_pta.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="tei_pta_xml.xsd"/>
+  <xs:attribute name="doctype">
+    <xs:annotation>
+      <xs:documentation>doctype used by ediarum</xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="transcription">
+          <xs:annotation>
+            <xs:documentation/>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="edition">
+          <xs:annotation>
+            <xs:documentation/>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+</xs:schema>
