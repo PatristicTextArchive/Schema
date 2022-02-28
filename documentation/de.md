@@ -4,83 +4,49 @@ Die Editionsrichtlinien für das PTA sind in einem Schema festgehalten, das die 
 
 Durch die Wahl der Auszeichnungssprache TEI-XML für die Kodierung der digitalen kritischen Edition ist ein fundamentaler Unterschied zur klassischen kritischen Edition, wie wir sie aus unseren gedruckten Ausgaben kennen, markiert, nämlich die Unterscheidung zwischen der Kodierung der Edition im digitalen Format und ihrer Präsentation im Druck, im Internet, als E-Book, etc. Die Edition im eigentlichen Sinn sind die in TEI-XML kodierten Daten, von denen zu erwarten ist, dass sie langzeitverfügbar und rezipierbar bleiben, während es sich bei ihrer Präsentation im Druck oder auch im Internet um im Informationsgehalt reduzierte (oder auch angereicherte) Erscheinungsformen dieser Daten handelt, die zumal im Falle der Online-Präsentation dem fortwährenden Wandel der Technologie unterworfen sind.
 
-Festzuhalten sind auf jeden Fall die Vorteile einer kritischen digitalen
-Edition, wie sie im Folgenden definiert und exemplifiziert wird:
+Festzuhalten sind auf jeden Fall die Vorteile einer kritischen digitalen Edition, wie sie im Folgenden definiert und exemplifiziert wird:
 
-1.  Die Erstellung von Volltext-Transkriptionen (anstelle der    Aufzeichnung nur von Lesarten in einer Kollationstabelle) und die Publikation auch dieser Forschungsdaten als Teil der digitalen Edition erhöhen die Nachvollziehbarkeit der von der Editorin     gefällten textkritischen Entscheidungen und ermöglichen überhaupt erst eine umfängliche Überprüfung, die weit über das in der     Praefatio einer gedruckten Edition an Varianten Präsentierte hinausgeht, da es dort ja immer um die Konzentration von Information auf möglichst knappen Raum geht.
+1.  Die Erstellung von Volltext-Transkriptionen (anstelle der Aufzeichnung nur von Lesarten in einer Kollationstabelle) und die Publikation auch dieser Forschungsdaten als Teil der digitalen Edition erhöhen die Nachvollziehbarkeit der von der Editorin gefällten textkritischen Entscheidungen und ermöglichen überhaupt erst eine umfängliche Überprüfung, die weit über das in der Praefatio einer gedruckten Edition an Varianten Präsentierte hinausgeht, da es dort ja immer um die Konzentration von Information auf möglichst knappen Raum geht.
 
 2.  Die der *constitutio textus* zugrunde liegenden Entscheidungen können durch textkritische Kommentare *in situ* erläutert werden. Auch dies erhöht die Transparenz der Edition.
 
 3.  Durch die gleichzeitige Bereitstellung von Handschriftentranskription *und* kritischer Edition bleibt die Edition für unterschiedliche editionsphilologische Ansätze offen.
 
-4.  Durch die strikte Trennung von Daten (mit dem Fokus auf Vollständigkeit) und Präsentation der Daten (in einer für das     jeweilige Medium und den jeweiligen Zweck bzw. die jeweilige Fragestellung getroffenen Auswahl an präsentierten Phänomenen)   können auf Basis eines Datensatzes ganz unterschiedliche Darstellungsweisen gewählt werden, die zusätzlich durch weitere    Daten anderer Herkunft noch angereichert werden können.
+4.  Durch die strikte Trennung von Daten (mit dem Fokus auf Vollständigkeit) und Präsentation der Daten (in einer für das jeweilige Medium und den jeweiligen Zweck bzw. die jeweilige Fragestellung getroffenen Auswahl an präsentierten Phänomenen) können auf Basis eines Datensatzes ganz unterschiedliche Darstellungsweisen gewählt werden, die zusätzlich durch weitere Daten anderer Herkunft noch angereichert werden können.
 
 ## Aufbau einer digitalen Edition nach TEI {#aufbau}
 
 > In diesen Richtlinien werden folgende Schreibkonventionen verwendet: Mit `<element>` sind XML-Elemente gemeint, mit `@attribut` XML-Attribute und mit `Wert` die den Attributen zugeschriebenen Werte; `#` in einem Wert bedeutet, dass es sich um einen an anderer Stelle in der TEI-Datei, normalerweise dem `<teiHeader>`, definierten Identifikator handelt, auf den an dieser Stelle verwiesen wird.
 
-TEI-Dateien sind grundsätzlich zweigeteilt: Sie enthalten einen
-Abschnitt [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) mit allen Metadaten und einen Abschnitt [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
-mit der Edition.
+TEI-Dateien sind grundsätzlich zweigeteilt: Sie enthalten einen Abschnitt [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) mit allen Metadaten und einen Abschnitt [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html) mit der Edition.
 
-Alle Dateien (Transkriptionen, Edition oder Übersetzungen) enthalten im
-`<teiHeader>` die folgenden Metadaten:
+Alle Dateien (Transkriptionen, Edition oder Übersetzungen) enthalten im `<teiHeader>` die folgenden Metadaten:
 
 @import "examples/teiHeader.xml" {class="line-numbers"}
 
 
-Der Abschnitt `<fileDesc>` enthält die bibliographischen Angaben zur
-Datei, insbesondere Angaben 
+Der Abschnitt `<fileDesc>` enthält die bibliographischen Angaben zur Datei, insbesondere Angaben 
 - zum Titel (`<titleStmt>`)
 - zur Veröffentlichung (`<publicationStmt>`). Anzupassen sind in diesem Abschnitt vor allem die IDs (`<idno>`) (u.a. CPG, CPL, BHG, Pinakes-Oeuvre), da dadurch die Austauschbarkeit und Verlinkung der Daten ernmöglicht wird. 
-- zu den Quellen
-(`<sourceDesc>`). In diesem Abschnitt unterscheiden sich die Angaben in den drei Arten von Dateien (Transkription, kritische Edition, Übersetzung) signifikant. 
+- zu den Quellen (`<sourceDesc>`). 
 
-Der Abschnitt `<encodingDesc>` bietet alle
-Angaben, die die Kodierung der Datei betreffen, und enthält in jedem
-Fall ein Element `<refsDecl>`, das die Gliederungsstruktur der Datei
-entsprechend den [„CapiTainS Guidelines“](http://capitains.org/) definiert.
+In diesem Abschnitt unterscheiden sich die Angaben in den drei Arten von Dateien (Transkription, kritische Edition, Übersetzung) signifikant. 
 
-Informationen
-zur Datierung (`<date>`) und Verortung (`placeName`) des Textes werden
-im Element `<creation>` und zur Gattung (unter Verwendung der Texttypenklassifikation von 
-    <https://www.comphistsem.org/46.html>) im Element `<textClass>`
-innerhalb des Abschnittes `<profileDesc>` geboten. 
+Der Abschnitt `<encodingDesc>` bietet alle Angaben, die die Kodierung der Datei betreffen, und enthält in jedem Fall ein Element `<refsDecl>`, das die Gliederungsstruktur der Datei entsprechend den [„CapiTainS Guidelines“](http://capitains.org/) definiert.
 
-Da es sich bei digitalen Editionen im Gegensatz zu gedruckten Editionen um potentiell sehr fluide Daten handeln kann, ist es von großer Bedeutsamkeit, dass im Abschnitt `<revisionDesc>` alle signifikanten Änderungen an der Datei
-und ihre Urheber festgehalten werden, und so die Versionsgeschichte der einzelnen Dateien auch losgelöst vom [Git-Repositorium des PTA](https://github.com/PatristicTextArchive/pta_data/) nachvollziehbar bleibt. 
+Informationen zur Datierung (`<date>`) und Verortung (`placeName`) des Textes werden im Element `<creation>` und zur Gattung (unter Verwendung der Texttypenklassifikation von <https://www.comphistsem.org/46.html>) im Element `<textClass>` innerhalb des Abschnittes `<profileDesc>` geboten. 
+
+Da es sich bei digitalen Editionen im Gegensatz zu gedruckten Editionen um potentiell sehr fluide Daten handeln kann, ist es von großer Bedeutsamkeit, dass im Abschnitt `<revisionDesc>` alle signifikanten Änderungen an der Datei und ihre Urheber festgehalten werden, und so die Versionsgeschichte der einzelnen Dateien auch losgelöst vom [Git-Repositorium des PTA](https://github.com/PatristicTextArchive/pta_data/) nachvollziehbar bleibt. 
 
 ## Transkription der Überlieferungsträger
 
-Handschriften sind Zeugen eines spezifischen Überlieferungsstadiums
-eines Textes. Im Gegensatz zum klassischen „Lachmannschen“ Ansatz, bei
-dem in der Praxis nur die Varianten zu einem Vorlagentext notiert
-werden, ist es für digitale Editionen – durchaus auch unter Aufnahme
-des Grundgedankens der „New Philology" einer Wertschätzung jedes
-einzelnen Überlieferungsträgers – angebracht und zudem auch
-arbeitsökonomisch durchaus sinnvoll, jeweils den gesamten Text zu
-transkribieren und dann in einem zweiten Schritt die Kollation der
-Zeugen mit Hilfe des Computers durchzuführen. 
+Handschriften sind Zeugen eines spezifischen Überlieferungsstadiums eines Textes. Im Gegensatz zum klassischen „Lachmannschen“ Ansatz, bei dem in der Praxis nur die Varianten zu einem Vorlagentext notiert werden, ist es für digitale Editionen – durchaus auch unter Aufnahme des Grundgedankens der „New Philology" einer Wertschätzung jedes einzelnen Überlieferungsträgers – angebracht und zudem auch arbeitsökonomisch durchaus sinnvoll, jeweils den gesamten Text zu transkribieren und dann in einem zweiten Schritt die Kollation der Zeugen mit Hilfe des Computers durchzuführen. 
 
-> Im Berliner Akademienvorhaben wird dafür das Programm [CollateX](https://web.archive.org/web/20200329141404/https://collatex.net/) verwendet, wobei die Transkriptionsdateien mit Hilfe eines     Python-Skripts (<https://github.com/PatristicTextArchive/collator>) in das für CollateX nötige Eingabeformat konvertiert werden. Kleinere Fehler bei der Ausrichtung der Kollationstabelle können  dabei nachträglich manuell korrigiert werden.
+> Im Berliner Akademienvorhaben wird dafür das Programm [CollateX](https://web.archive.org/web/20200329141404/https://collatex.net/) verwendet, wobei die Transkriptionsdateien mit Hilfe eines Python-Skripts (<https://github.com/PatristicTextArchive/collator>) in das für CollateX nötige Eingabeformat konvertiert werden. Kleinere Fehler bei der Ausrichtung der Kollationstabelle können dabei nachträglich manuell korrigiert werden.
 
-Auch die Transkriptionen sind somit Editionen und das Ergebnis von
-Interpretation. Sie unterscheiden sich von der kritischen Edition (s.u.)
-aber dadurch, dass sie einem diplomatischen (dokumentarischen)
-Editionsparadigma folgen: Die in der Handschrift vorfindlichen
-Phänomene wie Schreibung der Worte, Akzentsetzung, Interpunktion
-und Worttrennung werden bei der Transkription grundsätzlich nicht
-normalisiert, d.h. nicht ggfs. korrigiert. Außerdem werden Seiten-,
-Columnen- und Zeilenumbrüche, Initialen und Ektheseis, Marginalien,
-Abkürzungen, Markierungen, Rubriken, Tilgungen, Hinzufügungen – auch in
-diachroner Betrachtung (sc. im Blick auf Schreiberwechsel) –
-aufgenommen, dabei aber nicht entsprechend ihrer visuellen Erscheinung,
-sondern entsprechend ihrer Semantik ausgezeichnet und das heißt einer
-Deutung unterzogen. Auch Phänomene, die nicht gedeutet werden können,
-wie z.B. nicht zu entziffernder Text, werden als solche markiert und
-damit auch Unsicherheiten nicht verdeckt.
+Auch die Transkriptionen sind somit Editionen und das Ergebnis von Interpretation. Sie unterscheiden sich von der kritischen Edition (s.u.) aber dadurch, dass sie einem diplomatischen (dokumentarischen) Editionsparadigma folgen: Die in der Handschrift vorfindlichen Phänomene wie Schreibung der Worte, Akzentsetzung, Interpunktion und Worttrennung werden bei der Transkription grundsätzlich nicht normalisiert, d.h. nicht ggfs. korrigiert. Außerdem werden Seiten-, Columnen- und Zeilenumbrüche, Initialen und Ektheseis, Marginalien, Abkürzungen, Markierungen, Rubriken, Tilgungen, Hinzufügungen – auch in diachroner Betrachtung (sc. im Blick auf Schreiberwechsel) – aufgenommen, dabei aber nicht entsprechend ihrer visuellen Erscheinung, sondern entsprechend ihrer Semantik ausgezeichnet und das heißt einer Deutung unterzogen. Auch Phänomene, die nicht gedeutet werden können, wie z.B. nicht zu entziffernder Text, werden als solche markiert und damit auch Unsicherheiten nicht verdeckt.
 
-Ggfs. können in den Metadaten der Transkriptionen nähere Angaben gemacht werden, inwieweit Phänomene aufgenommen werden oder nicht. 
+Ggfs. können in den Metadaten der Transkriptionen (im Element `<editorialDecl>` im Abschnitt `<encodingDesc>`) nähere Angaben gemacht werden, inwieweit Phänomene aufgenommen werden oder nicht. 
 
 ### Metadaten der Transkription {#meta_transkription}
 
@@ -356,8 +322,8 @@ Ist eine ausführlichere Beschreibung der Handschrift nötig oder
 erwünscht, weil z.B. eine Werkausgabe eines Autors erarbeitet wird und
 Handschriften aus diesem Grund für mehrere Texte relevant sind, so ist
 es sinnvoll, diese in eine eigene Datei und unter möglichst
-vollständiger Ausschöpfung der in den TEI-Richtlinien im Kapitel
-„Manuscript Description“ beschriebenen Elemente auszulagern und auf
+vollständiger Ausschöpfung der in den [TEI-Richtlinien im Kapitel
+„Manuscript Description“](https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html) beschriebenen Elemente auszulagern und auf
 diese dann im Attribut `@corresp` des Elements `<name>` zu verweisen. 
 
 > Für die an der BBAW erstellten Editionen werden solche (auf den Inhalt fokussierte) Handschriftenbeschreibungen standardmäßig angelegt, die unter eindeutigen Handschriften-IDs auf <https://pta.bbaw.de/manuscripts/> angeführt werden.
@@ -530,6 +496,7 @@ möglich sind:
 -   Perioche (nicht nummeriert): `<div type="textpart" subtype="perioche" n="perioche">` 
 
 Absätze innerhalb dieser Unterabschnitte werden mit Hilfe des Elements `<p>` ausgezeichnet. Jedes Element `<div>` enthält mindestens ein Element `<p>`.
+
 ##### Auszeichnung weiterer struktureller Elemente
 
 Die Seitenumbrüche in den Handschriften und früheren Editionen werden nach Bedarf
@@ -590,8 +557,7 @@ Nicht-biblische Personen, die im PTA-Register fehlen, können nach [Rücksprache
 Im Attribut `@key` wird die `org_id` der [PTA-Oranganisationen-Liste](https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_orgs.json) angegeben. Organisationen, die im PTA-Register fehlen, können nach [Rücksprache](mailto:annette.von_stockhausen@bbaw.de) ergänzt werden.
 
 **Orte** werden mit Hilfe des Elementes `<placeName>` ausgezeichnet, im
-Attribut `@ref` wird auf die ID des Pleiades-Gazetteers (in Form der
-kompletten URL) verwiesen.
+Attribut `@ref` wird auf die ID des [Pleiades-Gazetteers](https://pleiades.stoa.org/) (in Form der kompletten URL) verwiesen.
 
 @import "examples/ed_placeName.xml" {class="line-numbers"}
 
@@ -817,3 +783,5 @@ Innerhalb eines Ordners `data` erhält jeder Autor (oder jede Werkgruppe) einen 
 
 Die Dateinamen folgen den CTS URNs und sind folgendermaßen aufgebaut: Das Kürzel „pta0013“ steht dabei für den Autor Amphilochius und „pta003“ für das Werk „Epistula synodalis“. Der letzte Teil der URN identifiziert die spezifische „Edition" eines Werkes: Im Beispiel sind das die
 kritische Edition des griechischen Textes (pta-grc1), die deutsche Übersetzung (pta-deu1) und die Transkriptionen der vier Handschriften (pta-MsLa, pta-MsPg, pta-MsPs, pta-MsVi).
+
+Die Zuteilung neuer IDs für bisher nicht vorhandene Autoren und/oder Werke erfolgt nach [Rücksprache](mailto:annette.von_stockhausen@bbaw.de).
