@@ -1,0 +1,20 @@
+{
+  "creators": [{
+    "name": "von Stockhausen, Annette",
+    "affiliation": "Berlin-Brandenburgische Akademie der Wissenschaften",
+    "orcid": "0000-0001-5382-6322",
+    "gnd": "124321291"
+  }],
+  "title": "TEI-Schema für das Patristische Textarchiv (PTA)",
+  "description": "This dataset contains the TEI-Schema and its documentation",
+  "keywords": [
+    "TEI-XML",
+    "Digital Edition",
+    "Christianity",
+    "Antiquity",
+    "Open Access"
+  ],
+  "upload_type": "dataset",
+  "access_right": "open"
+}
+
