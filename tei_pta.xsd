@@ -3246,6 +3246,11 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
                         <xs:documentation>used to divide a div[type=praefatio] into multiple parts</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
+                  <xs:enumeration value="subsection">
+                     <xs:annotation>
+                        <xs:documentation>used to divide a div[type=praefatio]/div[type=section] into multiple parts</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
                   <xs:enumeration value="textpart">
                      <xs:annotation>
                         <xs:documentation>used to divide a div[type=edition] into multiple parts (fragments, columns, faces, etc.)</xs:documentation>

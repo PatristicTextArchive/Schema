@@ -452,7 +452,9 @@ moderne Sprachen genannt und in ihrem kritischen Wert gewürdigt werden.
 Grundsätzlich ist es dabei sinnvoll, die Angaben, die im `<teiHeader>`
 gemacht wurden, zu verlinken.
 
-Unterabschnitte können mit Hilfe von `<div type="section" n="1">` eingerichtet werden, die im Element `<head>` auch eigene Überschriften enthalten können.
+Unterabschnitte können mit Hilfe von `<div type="section" n="1">` (und 
+diesem untergeordnet `<div type="subsection" n="1">`) eingerichtet werden, 
+die im Element `<head>` auch eigene Überschriften enthalten können.
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
 

@@ -581,7 +581,8 @@ languages should be mentioned and appreciated in their critical value.
 In principle, it makes sense to link the information given in the
 `<teiHeader>`.
 
-Subsections can be set up using `<div type="section" n="1">`, which can
+Subsections can be set up using `<div type="section" n="1">` (and 
+`<div type="subsection" n="1">` for subdivisions), which can
 also contain their own headings in a `<head>` element.
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
