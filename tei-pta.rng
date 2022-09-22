@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2022-09-22T10:20:22Z. .
+Schema generated from ODD source 2022-09-22T14:42:02Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -6666,7 +6666,7 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
                <sch:report test="@type != 'textpart' or @type != 'section' and parent::tei:div and @type!=parent::tei:div/@type">
                     Divs other than @type=textpart or @type=section may not nest in divs of different @type
                   </sch:report>
-               <sch:report test="@type = 'section' or @type = 'subsection' and not(parent::tei:div/@type='praefatio')">
+               <sch:report test="@type = 'section' or @type = 'subsection' and not(ancestor::tei:div/@type='praefatio')">
                     @type=section or @type=subsection may only be used in praefatio
                   </sch:report>
                <sch:report test="@subtype and not(@type='textpart')">

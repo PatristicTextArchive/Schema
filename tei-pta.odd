@@ -142,7 +142,7 @@
                   <sch:report test="@type != 'textpart' or @type != 'section' and parent::tei:div and @type!=parent::tei:div/@type">
                     Divs other than @type=textpart or @type=section may not nest in divs of different @type
                   </sch:report>
-                  <sch:report test="@type = 'section' or @type = 'subsection' and not(parent::tei:div/@type='praefatio')">
+                  <sch:report test="@type = 'section' or @type = 'subsection' and not(ancestor::tei:div/@type='praefatio')">
                     @type=section or @type=subsection may only be used in praefatio
                   </sch:report>
                   <sch:report test="@subtype and not(@type='textpart')">
