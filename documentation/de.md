@@ -599,7 +599,7 @@ Der Text der Variante ist immer in seinem vollen Wortlaut anzugeben und unter ke
 Varianten können ein Attribut `@type` erhalten, mit dessen Hilfe die Editorin dem Rezipienten der Edition eine Analyse der Variante zur Verfügung stellt und die dadurch für die Präsentation auch leicht zu filtern sind. Folgende Werte dieses Attributes sind möglich:
 
 -   `orthographic`, wenn eine Variante vom Editor als nur die     Schreibweise betreffende, d.h.  beispielsweise bei griechischen   Handschriften mit großer  Wahrscheinlichkeit auf Itazismus beruhende Variante interpretiert wird.
--   `homoioteleuton` oder `homoiarkton`, wenn eine Variante nach Einschätzung der Editorin auf Homoioteleuton oder Homoiarkton zurückzuführen ist.
+-   `homoioteleuton` oder `homoiarkton` oder `saut_du_meme`, wenn eine Variante nach Einschätzung der Editorin auf Homoioteleuton oder Homoiarkton oder einen saut du même au même zurückzuführen ist.
 -   `dittography`, wenn eine Variante als Dittographie gedeutet wird.
 
 @import "examples/ed_textcritical_type.xml" {class="line-numbers"}
@@ -638,7 +638,9 @@ Das Element `<rdg>` ist wiederum ohne Textinhalt („self-closing“).
 
 Nicht lesbarer Text wird als `<@cause="illegible">` ausgezeichnet. Das Element `<rdg>` ist ohne Textinhalt („self-closing“).
 
+###### Lücke im Text einer Handschrift
 
+Eine Lücke im Text einer Handschrift wird entsprechend den Transkriptionsregeln als `<@cause="damage">` (Beschädigung) als `<@cause="fenestra">` (freigelassen) oder als `<@cause="deletion">` (Tilgung) ausgezeichnet. Das Element `<rdg>` ist ohne Textinhalt („self-closing“).
 
 ###### Umstellungen
 
@@ -720,12 +722,7 @@ selbst-schließendes („leeres“) Element die Stelle der Verderbnis markieren.
 
 ###### Varianten innerhalb von Varianten
 
-Varianten können auch ineinander geschachtelt werden. Das Lemma des
-übergreifenden Apparatus-Eintrages erhält in diesem Fall kein Attribut
-`@wit`, da sich die Bezeugung aus den `@wit`-Attributen der Elemente
-<lem> und <rdg> des inneren Apparat-Eintrages errechnen lässt.
-
-Der innere `<app>`-Eintrag muss unbedingt im Element `<lem>`, d.h. im rekonstruierten Text, des äußeren Apparatus-Eintrages stehen, keinesfalls im Element `<rdg>`.
+Varianten können auch ineinander geschachtelt werden, d.h. ein `<lem>`- oder ein `<rdg>`-Element können ihrerseits eine Variante (`<app>`) enthalten. Das `wit`-Attribut des übergeordneten `<app>`-Elementes enthält dabei *alle* Siglen des untergeordeneten `<app>`-Elementes, also sowohl des `<lem>`- als auch des `<rdg>`-Elementes:
 
 @import "examples/ed_app-in-app.xml" {class="line-numbers"}
 

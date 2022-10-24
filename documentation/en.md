@@ -785,8 +785,8 @@ following values of this attribute are possible:
 -   `orthographic`, when a variant is interpreted by the editor as
     affecting only the spelling, i.e., in the case of Greek manuscripts,
     for example, as most likely being due to itacism.
--   `homoioteleuton` or `homoiarkton` if, in the opinion of the editor,
-    a variant is due to homoioteleuton or homoiarkton.
+-   `homoioteleuton` or `homoiarkton` or `saut_du_meme` if, in the opinion of the editor,
+    a variant is due to homoioteleuton or homoiarkton or a saut du même au même.
 -   `dittography`, when a variant is interpreted as a dittography.
 
 @import "examples/ed_textcritical_type.xml" {class="line-numbers"}
@@ -833,6 +833,10 @@ content (“self-closing”).
 
 Unreadable text is marked as `<@cause="illegible">`. The element
 `<rdg>` is without text content (“self-closing”).
+
+###### Gap in text of a manuscript
+
+A gap im text of a manuscripts is (following the rules for transcription) marked as `<@cause="damage">` (damage) als `<@cause="fenestra">` (intentional gap) oder als `<@cause="deletion">` (deleted). The element `<rdg>` is without text content (“self-closing”).
 
 ###### Transpositions
 
@@ -970,14 +974,7 @@ corruption as a self-closing (“empty”) element.
 
 ###### Variants within variants
 
-Variants can also be nested within each other. In this case, the lemma
-of the overlapping apparatus entry does not receive an `@wit` attribute,
-since the attestation can be calculated from the
-`@wit` attributes of the elements `<lem>` and `<rdg>` in the inner apparatus entry.
-
-The inner `<app>` element must necessarily be in the `<lem>` element, i.e.
-in the reconstructed text, of the outer apparatus entry, never in the
-`<rdg>` element.
+Variants can also be nested within each other, i.e. a `<lem>` or a `<rdg>` element can enclose a variant (`<app>`). The `wit` attribute of the outer `<app>` element includes *all* sigla of the inner `<app>` element (both of `<lem>` and of `<rdg>`):
 
 @import "examples/ed_app-in-app.xml" {class="line-numbers"}
 

@@ -12977,6 +12977,11 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
                         <xs:documentation>marks a variant which is probably caused by homoioteleuton</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
+                  <xs:enumeration value="saut_du_meme">
+                     <xs:annotation>
+                        <xs:documentation>marks a variant which is probably caused by a saut du même au même</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
                   <xs:enumeration value="dittography">
                      <xs:annotation>
                         <xs:documentation>marks a variant which is probably caused by dittography</xs:documentation>
@@ -13008,7 +13013,17 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
                   </xs:enumeration>
                   <xs:enumeration value="illegible">
                      <xs:annotation>
-                        <xs:documentation>text is illegible</xs:documentation>
+                        <xs:documentation>cause for variant is that the text is illegible</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="damage">
+                     <xs:annotation>
+                        <xs:documentation>cause for variant is that the text is physically damaged</xs:documentation>
+                     </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="fenestra">
+                     <xs:annotation>
+                        <xs:documentation>cause for variant is that there is fenestra in text (by scribe)</xs:documentation>
                      </xs:annotation>
                   </xs:enumeration>
                   <xs:enumeration value="transposition">

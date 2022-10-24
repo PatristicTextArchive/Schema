@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 2.1Alpha. Last updated on 2022-09-22.</edition>
+        <edition>Version 2.1Alpha. Last updated on 2022-10-24.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra for cause</change>
       <change who="#AvS" when="2022-08-23">allow subsection for praefatio</change>
       <change who="#AvS" when="2022-02-25">del commentaryfragment as value for subtype, delete some attributes</change>
       <change who="#AvS" when="2022-02-18">underline as attr for del allowed</change>
@@ -521,7 +522,13 @@
                     <desc>cause for variant is an omission</desc>
                   </valItem>
                   <valItem ident="illegible">
-                    <desc>text is illegible</desc>
+                    <desc>cause for variant is that the text is illegible</desc>
+                  </valItem>
+                  <valItem ident="damage">
+                    <desc>cause for variant is that the text is physically damaged</desc>
+                  </valItem>
+                  <valItem ident="fenestra">
+                    <desc>cause for variant is that there is fenestra in text (by scribe)</desc>
                   </valItem>
                   <valItem ident="transposition">
                     <desc>cause for variant is a transposition</desc>
@@ -550,6 +557,9 @@
                   </valItem>
                   <valItem ident="homoioteleuton">
                     <desc>marks a variant which is probably caused by homoioteleuton</desc>
+                  </valItem>
+                  <valItem ident="saut_du_meme">
+                    <desc>marks a variant which is probably caused by a saut du même au même</desc>
                   </valItem>
                   <valItem ident="dittography">
                     <desc>marks a variant which is probably caused by dittography</desc>
