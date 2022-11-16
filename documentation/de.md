@@ -626,7 +626,7 @@ Auslassungen werden als `<@cause="omission">` ausgezeichnet. Das Element
 
 ###### Löschungen
 
-Löschungen werden als `<@cause="deletion">` usgezeichnet, wobei (im Gegensatz zur Transkription) nicht mehr differenziert wird, wie der Text gelöscht worden ist, da diese Information jederzeit der Transkriptions-Datei zu entnehmen ist.
+Löschungen werden als `<@cause="deletion">` ausgezeichnet, wobei (im Gegensatz zur Transkription) nicht mehr differenziert wird, wie der Text gelöscht worden ist, da diese Information jederzeit der Transkriptions-Datei zu entnehmen ist.
 
 Löschungen werden von Auslassungen analytisch dadurch unterschieden,
 dass sie auf einen bewussten Eingriff des Schreibers der jeweiligen Handschrift zurückzuführen sind. 
@@ -687,7 +687,7 @@ festgehalten werden; mögliche Werte sind: `low`, `medium`, `high`.
 
 @import "examples/ed_proposition.xml" {class="line-numbers"}
 
-Vom Editor getilgter Text wird mit `<@cause="deletion">` im Element `<lem>` ausgezeichnet. Soll der getilgt Text angeführt werden, so wird er mit Hilfe des Elementes `<surplus>` ausgezeichnet; ansonsten
+Vom Editor getilgter Text wird mit `<@cause="deletion">` im Element `<lem>` ausgezeichnet. Soll der getilgte Text angeführt werden, so wird er mit Hilfe des Elementes `<surplus>` ausgezeichnet; ansonsten
 bleibt das Element ohne Textinhalt („self-closing“). Tilgungen durch andere Editoren werden ebenfalls als
 `<@cause="deletion">` ausgezeichnet. 
 
