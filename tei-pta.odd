@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
       <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra for cause</change>
       <change who="#AvS" when="2022-08-23">allow subsection for praefatio</change>
       <change who="#AvS" when="2022-02-25">del commentaryfragment as value for subtype, delete some attributes</change>
@@ -401,15 +402,6 @@
                 </sch:rule>
               </constraint>
             </constraintSpec>
-          </elementSpec>
-          <!-- modifying <unclear> because in EpiDoc it should not contain anything but text and <g/> -->
-          <elementSpec ident="unclear" module="core" mode="change">
-            <desc>Character that cannot be identified unambiguously outside of its context. May contain character data and
-              <gi>g</gi>
-              only.</desc>
-            <content>
-              <rng:ref name="macro.xtext"/>
-            </content>
           </elementSpec>
           <!-- CHANGING ATTRIBUTE CLASSES -->
           <classSpec type="atts" ident="att.dimensions" mode="change">
