@@ -1,5 +1,11 @@
 <app type="textcritical">
- <lem resp="#AvS" cause="addition"><supplied>οὐκ</supplied></lem>
+<lem resp="#AvS" cause="addition">οὐκ</lem>
+<rdg source="#Schwartz" cause="addition">μὴ</rdg>
  <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
   cause="omission"/>
+</app>
+
+<app type="textcritical">
+    <lem resp="#AvS" cause="conjecture">Σευηρι<supplied>αν</supplied>οῦ</lem>
+    <rdg wit="#P">Σευηρίου</rdg>
 </app>

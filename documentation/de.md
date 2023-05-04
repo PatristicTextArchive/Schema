@@ -22,7 +22,7 @@ TEI-Dateien sind grundsätzlich zweigeteilt: Sie enthalten einen Abschnitt [`<te
 
 Alle Dateien (Transkriptionen, Edition oder Übersetzungen) enthalten im `<teiHeader>` die folgenden Metadaten:
 
-@import "examples/teiHeader.xml" {class="line-numbers"}
+@import “examples/teiHeader.xml” {class=“line-numbers”}
 
 
 Der Abschnitt `<fileDesc>` enthält die bibliographischen Angaben zur Datei, insbesondere Angaben 
@@ -40,7 +40,7 @@ Da es sich bei digitalen Editionen im Gegensatz zu gedruckten Editionen um poten
 
 ## Transkription der Überlieferungsträger
 
-Handschriften sind Zeugen eines spezifischen Überlieferungsstadiums eines Textes. Im Gegensatz zum klassischen „Lachmannschen“ Ansatz, bei dem in der Praxis nur die Varianten zu einem Vorlagentext notiert werden, ist es für digitale Editionen – durchaus auch unter Aufnahme des Grundgedankens der „New Philology" einer Wertschätzung jedes einzelnen Überlieferungsträgers – angebracht und zudem auch arbeitsökonomisch durchaus sinnvoll, jeweils den gesamten Text zu transkribieren und dann in einem zweiten Schritt die Kollation der Zeugen mit Hilfe des Computers durchzuführen. 
+Handschriften sind Zeugen eines spezifischen Überlieferungsstadiums eines Textes. Im Gegensatz zum klassischen „Lachmannschen“ Ansatz, bei dem in der Praxis nur die Varianten zu einem Vorlagentext notiert werden, ist es für digitale Editionen – durchaus auch unter Aufnahme des Grundgedankens der „New Philology” einer Wertschätzung jedes einzelnen Überlieferungsträgers – angebracht und zudem auch arbeitsökonomisch durchaus sinnvoll, jeweils den gesamten Text zu transkribieren und dann in einem zweiten Schritt die Kollation der Zeugen mit Hilfe des Computers durchzuführen. 
 
 > Im Berliner Akademienvorhaben wird dafür das Programm [CollateX](https://web.archive.org/web/20200329141404/https://collatex.net/) verwendet, wobei die Transkriptionsdateien mit Hilfe eines Python-Skripts (<https://github.com/PatristicTextArchive/collator>) in das für CollateX nötige Eingabeformat konvertiert werden. Kleinere Fehler bei der Ausrichtung der Kollationstabelle können dabei nachträglich manuell korrigiert werden.
 
@@ -65,7 +65,7 @@ Handelt es sich bei der Handschrift z.B. um eine
 Randkatene, so kann das Layout im selben Abschnitt in der `<objectDesc>`
 innerhalb des Elements `<layoutDesc>` beschrieben werden.
 
-@import "examples/transc_metadata.xml" {class="line-numbers"}
+@import “examples/transc_metadata.xml” {class=“line-numbers”}
 
 ### Edition
 
@@ -86,14 +86,14 @@ kommentierten und einem kommentierenden Text unterschieden wird.
 
 Im Fall einer Katene kann das z.B. folgendermaßen aussehen:
 
-@import "examples/structure_catena.xml" {class="line-numbers"}
+@import “examples/structure_catena.xml” {class=“line-numbers”}
 
 Der Text wird dabei durch das Element <seg> weiter unterteilt,
 dem jeweils auch eine @xml-id zugewiesen wird, um so die Bezüge zwischen den korrespondieren Teilen (Text, Kommentar) auszeichnen zu können.
 
 Bei der Transkription kann mit Hilfe des Elementes `<milestone>` auf Gliederungen des Textes (angegeben mit Hilfe der Attribute `@unit` und `@n`) durch Editionen (angegeben mit `@edRef`) verwiesen werden: 
 
-@import "examples/milestone.xml" {class="line-numbers"}
+@import “examples/milestone.xml” {class=“line-numbers”}
 
 Bei Editionen, die im PTA vorhanden sind, ist der Wert des Attributes `@edRef` die URN der Edition (also z.B. `urn:cts:pta:pta0001.pta028.pta-grcBibex`).
 
@@ -107,7 +107,7 @@ entsprechend transkribiert.
 Titel werden mit dem Element `<title>` innerhalb des Elementes
 `<head>` ausgezeichnet:
 
-@import "examples/title_head.xml" {class="line-numbers"}
+@import “examples/title_head.xml” {class=“line-numbers”}
 
 #### Zeilen-, Spalten-, Seiten-, Bogenanfänge
 
@@ -121,7 +121,7 @@ Beim Seiten- (ggfs. auch beim Bogenanfang) erhält das Element das Attribut `@n`
 der Seitennummerierung und – wo vorhanden – das Attribut `@facs` für
 die Eingabe des Links auf ein digitales Faksimile.
 
-@import "examples/beginnings.xml" {class="line-numbers"}
+@import “examples/beginnings.xml” {class=“line-numbers”}
 
 #### Absätze
 
@@ -134,7 +134,7 @@ Initialen und Ektheseis werden mit dem Element `<hi>` ausgezeichnet. Im
 Attribut `@rend` wird angegeben, ob es sich um eine (mehrere Zeilen übergreifende) Initiale (`initial`)
 oder um eine Ekthesis (`ekthesis`) handelt.
 
-@import "examples/ekthesis_initiale.xml" {class="line-numbers"}
+@import “examples/ekthesis_initiale.xml” {class=“line-numbers”}
 
 #### Andere Hervorhebungen
 
@@ -157,7 +157,7 @@ Erlaubte Werte sind `top` (ggfs. näher spezifiert: `top_inner`,
 `top_center`, `top_outer`), `bottom` (`bottom_inner`, `bottom_center`,
 `bottom_outer`), `margin_inner` und `margin_outer`.
 
-@import "examples/notes_transcr.xml" {class="line-numbers"}
+@import “examples/notes_transcr.xml” {class=“line-numbers”}
 
 #### Getilgter Text
 
@@ -167,19 +167,19 @@ angegeben. Erlaubte Werte sind `erasure` (ausradiert), `strikethrough` (durchges
 und `expunction` (durch Auspunktieren).
 
 Stammt eine Tilgung nicht vom Schreiber, kann dies durch das Attribut
-`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, ... –
+`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, … –
 allgemein `#mr` für *manus recentior*; zur Angabe der Hände in den Metadaten s. [oben](#meta_transkription)) unterschieden werden sollten. Ist
 nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden
 ist, wird dem Attribut der Wert `unknown` zugewiesen.
 
-@import "examples/del_transcr.xml" {class="line-numbers"}
+@import “examples/del_transcr.xml” {class=“line-numbers”}
 
 #### Korrekturen
 
 Korrekturen (Worte, aber auch einzelne Buchstaben) werden mit dem Element `<subst>` gekennzeichnet.
 
 Stammt eine Korrektur nicht vom Schreiber, kann dies durch das Attribut
-`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, ... --
+`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, … --
 allgemein `#mr` für *manus recentior*, zur Angabe der Hände in den Metadaten s. [oben](#meta_transkription)) unterschieden werden sollten. Ist
 nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden
 ist, wird dem Attribut der Wert `unknown` zugewiesen.
@@ -194,8 +194,11 @@ Der *hinzugefügte Text* wird mit `<add>` ausgezeichnet. Der Ort der
 Hinzufügung wird mit Hilfe des Attributes `@place` angegeben. Erlaubte
 Werte sind `above` (darüber), `inline` (in der Zeile) und `margin` (am Rand).
 
-@import "examples/subst_transcr.xml" {class="line-numbers"}
+@import “examples/subst_transcr.xml” {class=“line-numbers”}
 
+Handelt es sich bei der Korrektur um ein Überschreiben bzw. Nachzeichnen des ursprünglichen Textes ohne Korrektur (Änderung des Textes), so ist besser das Element `<retrace>` zu verwenden:
+
+@import “examples/retrace.xml” {class=“line-numbers”}
 
 #### Hinzugefügter Text
 
@@ -205,12 +208,12 @@ Attribut `@place` angegeben. Erlaubte Werte sind `above` (darüber), `inline` (i
 `margin` (am Rand).
 
 Stammt eine Korrektur nicht vom Schreiber, kann dies durch das Attribut
-`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, ... –
+`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, … –
 allgemein `#mr` für *manus recentior*; zur Angabe der Hände in den Metadaten s. [oben](#meta_transkription)) unterschieden werden sollten. Ist
 nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden
 ist, wird dem Attribut der Wert `unknown` zugewiesen.
 
-@import "examples/add_transcr.xml" {class="line-numbers"}
+@import “examples/add_transcr.xml” {class=“line-numbers”}
 
 #### Nicht lesbarer Text
 
@@ -218,7 +221,7 @@ Nicht lesbarer Text wird mit dem selbstschließenden Element `<gap>` angegeben (
 `@reason` wird der Wert `illegible` (nicht lesbar) zugewiesen. Der (geschätzte) Umfang
 (`@quantity`) wird in Buchstaben (`@unit="character"`), ggfs. Zeilen (`@unit="line"`) angegeben.
 
-@import "examples/illegible_transcr.xml" {class="line-numbers"}
+@import “examples/illegible_transcr.xml” {class=“line-numbers”}
 
 #### Lücke im Text {#transcr_gap}
 
@@ -228,24 +231,24 @@ Beschädigung) oder `fenestra` (vom Schreiber freigelassen) zugewiesen.
 Der (geschätzte) Umfang (`@quantity`) wird in Buchstaben, Zeilen oder
 Seiten (`@unit` mit Wert `character`, `line` oder `page`) angegeben.
 
-@import "examples/gap_transcr.xml" {class="line-numbers"}
+@import “examples/gap_transcr.xml” {class=“line-numbers”}
 
 Ist eine Lücke jedoch durch die Zerstörung von Text durch den Schreiber
 (sc. Rasur: `@rend="erasure"`) entstanden, so wird diese mit dem Element
 `<del>` ausgezeichnet; ggfs. ist im Falle der Zerstörung durch eine andere Hand das Attribut
-`@hand` anzugeben, wobei die Korrektoren (`#m2`, `#m3`, ... –
+`@hand` anzugeben, wobei die Korrektoren (`#m2`, `#m3`, … –
 allgemein `#mr` für *manus recentior*; zur Angabe der Hände in den Metadaten s. [oben](#meta_transkription)) unterschieden werden sollten. Ist
 nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden
 ist, wird dem Attribut der Wert `unknown` zugewiesen.
 
-@import "examples/erasure_transcr.xml" {class="line-numbers"}
+@import “examples/erasure_transcr.xml” {class=“line-numbers”}
 
 #### Unsichere Lesung
 
 Ist ein Text nicht sicher zu entziffern, wird er mit dem Element
 `<unclear>` markiert.
 
-@import "examples/unclear_transcr.xml" {class="line-numbers"}
+@import “examples/unclear_transcr.xml” {class=“line-numbers”}
 
 #### Wechsel des Schreibers
 
@@ -256,7 +259,7 @@ Schreibmaterials), `@scribeRef` oder `@scriptRef`, wobei bei den
 letzteren Attributen auf die entsprechenden `@xml:id` im `<teiHeader>`
 (`<handDesc>`, s. [oben](#meta_transkription)) zu verweisen ist.
 
-@import "examples/handshift_transcr.xml" {class="line-numbers"}
+@import “examples/handshift_transcr.xml” {class=“line-numbers”}
 
 #### Nomina sacra
 
@@ -265,7 +268,7 @@ Nomina sacra *können* ausgezeichnet werden. Dafür wird innerhalb eines
 vom Wert `nomSac` aufgenommen und die aufgelöste Form im Element
 `<expan>` notiert.
 
-@import "examples/nomSac_transcr.xml" {class="line-numbers"}
+@import “examples/nomSac_transcr.xml” {class=“line-numbers”}
 
 #### Abkürzungen
 
@@ -273,13 +276,13 @@ Soll der Umstand der Abkürzung, nicht aber die abgekürzte Form selbst vermerkt
 
 > Auf die Notierung der abgekürzten Form wird an der BBAW aus Gründen der Umsetzbarkeit und des andernfalls anzusetzenden Zeitaufwandes bewußt verzichtet; sollen Abkürzungen umfassend aufgenommen werden, so ist analog zu den Nomina sacra vorzugehen.
 
-@import "examples/expan_transcr.xml" {class="line-numbers"}
+@import “examples/expan_transcr.xml” {class=“line-numbers”}
 
 #### Zahlen
 
 Zahlen werden mit dem Element `<num>` ausgezeichnet.
 
-@import "examples/num_transcr.xml" {class="line-numbers"}
+@import “examples/num_transcr.xml” {class=“line-numbers”}
 
 #### Diple und Paragraphos
 
@@ -287,7 +290,7 @@ Zitate werden in Handschriften oft mit einer Diple (einfach oder
 doppelt) am Rand markiert. Sie werden in der Transkription mit Hilfe von
 `<g type="diple"/>` bzw. `<g type="doubled_diple"/>` vermerkt. (Das Element `<quote>` findet in der Transkription *keine* Verwendung!)
 
-@import "examples/diple_transcr.xml" {class="line-numbers"}
+@import “examples/diple_transcr.xml” {class=“line-numbers”}
 
 In der Handschrift mit einem Paragraphos am Rand markierte Zeilen werden
 mit Hilfe von `<g type="paragraphos"/>` vermerkt.
@@ -338,20 +341,20 @@ Auch die indirekte Überlieferung oder alte wie moderne Übersetzungen
 sollten auf diese Art vermerkt werden, wenn auf sie in den
 Apparat-Einträgen der Edition verwiesen werden soll.
 
-@import "examples/ed_listWit.xml" {class="line-numbers"}
+@import “examples/ed_listWit.xml” {class=“line-numbers”}
 
 Entsprechend der Auflistung der Handschriften in einem Unterabschnitt
 `<listWit>` innerhalb des Abschnittes `<sourceDesc>` werden frühere
 Editionen in einem Unterabschnitt `<listBibl>` jeweils im Element
 `<bibl>` (oder `<biblStruct>`) angeführt:
 
-@import "examples/ed_listBibl.xml" {class="line-numbers"}
+@import “examples/ed_listBibl.xml” {class=“line-numbers”}
 
 Konjektoren, die nicht im obigen Sinne bibliographiert werden können,
 weil z.B. die Konjekturen mündlich übermittelt wurden oder sie in einer
 anderen Edition zitiert werden, werden folgendermaßen aufgenommen:
 
-@import "examples/ed_list_edd.xml" {class="line-numbers"}
+@import “examples/ed_list_edd.xml” {class=“line-numbers”}
 
 #### Kodierung von Bibelstellenangaben
 
@@ -360,15 +363,15 @@ Im Abschnitt `<encodingDesc>` wird in einem weiteren Element
 und menschenlesbar angegeben, nach welchem System Bibelstellen
 referenziert werden und wie diese Referenzen aufgelöst werden können.
 
-@import "examples/ed_refsDecl.xml" {class="line-numbers"}
+@import “examples/ed_refsDecl.xml” {class=“line-numbers”}
 
 Die im PTA verwendeten Abkürzungen für die Bücher des Alten Testamentes (LXX) sind:
 
-@import "examples/abbr_LXX.txt"
+@import “examples/abbr_LXX.txt”
 
 Die im PTA verwendeten Abkürzungen für die Bücher des Neuen Testamentes sind:
 
-@import "examples/abbr_NT.txt"
+@import “examples/abbr_NT.txt”
 
 Die Stellenangaben werden folgendermaßen gebildet:
 Bibl. Korpus (LXX, Hexapla, Vg oder NT):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
@@ -381,7 +384,7 @@ Abschnitt `<editorialDecl>` innerhalb des Unterabschnittes
 wurden. Dadurch können Nutzer der Edition schnell erkennen, was sie von
 der Edition zu erwarten haben. Anpassungen sind ggfs. vorzunehmen.
 
-@import "examples/ed_interpretation.xml" {class="line-numbers"}
+@import “examples/ed_interpretation.xml” {class=“line-numbers”}
 
 #### Normalisierung
 
@@ -390,7 +393,7 @@ Innerhalb des Abschnittes `<editorialDecl>` wird in den Unterabschnitten
 handschriftlich überlieferte Text in der kritischen Edition normalisiert
 worden ist. Anpassungen sind ggfs. vorzunehmen.
 
-@import "examples/ed_normalisation_punct.xml" {class="line-numbers"}
+@import “examples/ed_normalisation_punct.xml” {class=“line-numbers”}
 
 #### Art der Auszeichnung der Varianten
 
@@ -398,7 +401,7 @@ Als letztes Element im Abschnitt `<encodingDesc>` wird die Art der
 Auszeichnung der textkritischen Varianten angegeben. Der Eintrag *muss*
 lauten:
 
-@import "examples/ed_variantencoding.xml" {class="line-numbers"}
+@import “examples/ed_variantencoding.xml” {class=“line-numbers”}
 
 #### Status der Edition
 
@@ -435,7 +438,7 @@ besteht mindestens aus einem Element `<div>`, das den edierten Text enthält. Da
 - `@xml:lang` mit der Angabe der Sprache des edierten Textes unter Verwendung von [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
 - `@n` mit der URN der Datei, s. [unten](#dateistruktur).
 
-@import "examples/ed_div-edition.xml" {class="line-numbers"}
+@import “examples/ed_div-edition.xml” {class=“line-numbers”}
 
 Bei Neueditionen sollte der Edition ein Abschnitt
 `<div type="praefatio">` mit der Praefatio vorangehen.
@@ -454,7 +457,7 @@ gemacht wurden, zu verlinken.
 
 Unterabschnitte können mit Hilfe von `<div type="section" n="1">` eingerichtet werden, die im Element `<head>` auch eigene Überschriften enthalten können.
 
-@import "examples/ed_div_praefatio.xml" {class="line-numbers"}
+@import “examples/ed_div_praefatio.xml” {class=“line-numbers”}
 
 #### Text
 
@@ -504,7 +507,7 @@ mit Hilfe des Elementes `<pb>` angegeben; die Seitenangabe steht im
 Attribut `@n` und auf die Handschrift bzw. die Edition wird im Attribut
 `@edRef` verwiesen:
 
-@import "examples/ed_pb.xml" {class="line-numbers"}
+@import “examples/ed_pb.xml” {class=“line-numbers”}
 
 ##### Auszeichnung von Bibel- und anderen Zitaten (und Anspielungen)
 
@@ -518,7 +521,7 @@ anderen Zitaten zu differenzieren.
 
 Explizite Zitate unter Anführung des Autors des Zitates werden mit dem
 Element `<cit>` ausgezeichnet und die das Zitat anführende Phrase darin
-mit dem Element `<ref>`. Einschübe im Zitat (wie z.B. „sagte") werden
+mit dem Element `<ref>`. Einschübe im Zitat (wie z.B. „sagte”) werden
 mit Hilfe von `<seg type="insertion">` innerhalb des Zitates ausgezeichnet.
 
 Anspielungen (z.B. auf biblische Geschichten und Ereignisse) werden mit
@@ -531,7 +534,7 @@ Bei Bibelzitaten wird die jeweilige Bibelstelle innerhalb des Elementes
 `<ref>` mit Verweis auf die Spezifikationen im `<teiHeader>`
 (`@decls="#biblical"`) im Attribut `@cRef` angegeben.
 
-@import "examples/ed_quote.xml" {class="line-numbers"}
+@import “examples/ed_quote.xml” {class=“line-numbers”}
 
 ##### Auszeichnung von Similia und Quellen
 
@@ -539,13 +542,13 @@ Similia werden mit Hilfe von `<seg type="similar">`, Quellen (soweit kein Zitat 
 von `<seg type="source>` ausgezeichnet. Die Fundstelle wird innerhalb
 des `<seg>`-Elementes in einem `<ref>`-Element angegeben.
 
-@import "examples/ed_similia.xml" {class="line-numbers"}
+@import “examples/ed_similia.xml” {class=“line-numbers”}
 
 ##### Auszeichung direkter Rede
 
 Direkte Rede wird mit Hilfe des Elementes `<said>` ausgezeichnet.
 
-@import "examples/ed_said.xml" {class="line-numbers"}
+@import “examples/ed_said.xml” {class=“line-numbers”}
 
 ##### Auszeichnung von Personen, Organisationen und Orten
 
@@ -559,7 +562,7 @@ Im Attribut `@key` wird die `org_id` der [PTA-Oranganisationen-Liste](https://gi
 **Orte** werden mit Hilfe des Elementes `<placeName>` ausgezeichnet, im
 Attribut `@ref` wird auf die ID des [Pleiades-Gazetteers](https://pleiades.stoa.org/) (in Form der kompletten URL) verwiesen.
 
-@import "examples/ed_placeName.xml" {class="line-numbers"}
+@import “examples/ed_placeName.xml” {class=“line-numbers”}
 
 
 ##### Bezeugung des Textes
@@ -568,7 +571,7 @@ Die handschriftliche Bezeugung des Textes wird im Element `<app>` mit
 dem Attribut `@type="witnesses"` dokumentiert. Das Element enthält nur ein Element `<rdg>` mit dem Attribut `@wit`, in dem eines der
 selbst-schließenden Elemente `<witStart/>` (= Beginn eines Zeugen), `<witEnd/>` (= Ende eines Zeugen),`<lacunaStart/>` (= Beginn einer Lücke) oder `<lacunaEnd/>` (= Ende einer Lücke) eingefügt wird.
 
-@import "examples/ed_witnesses.xml" {class="line-numbers"}
+@import “examples/ed_witnesses.xml” {class=“line-numbers”}
 
 ##### Auszeichnung der Varianten
 
@@ -600,7 +603,7 @@ Varianten können ein Attribut `@type` erhalten, mit dessen Hilfe die Editorin d
 -   `homoioteleuton` oder `homoiarkton`, wenn eine Variante nach Einschätzung der Editorin auf Homoioteleuton oder Homoiarkton zurückzuführen ist.
 -   `dittography`, wenn eine Variante als Dittographie gedeutet wird.
 
-@import "examples/ed_textcritical_type.xml" {class="line-numbers"}
+@import “examples/ed_textcritical_type.xml” {class=“line-numbers”}
 
 ##### Analyse der Gründe für die Variation
 
@@ -613,14 +616,14 @@ Hinzufügungen, auch Dittographien und andere Wiederholungen, werden im
 Element `<rdg>` als `<@cause="addition">` ausgezeichnet. Das Element
 `<lem>` bliebt dabei ohne Textinhalt („self-closing“).
 
-@import "examples/ed_addition.xml" {class="line-numbers"}
+@import “examples/ed_addition.xml” {class=“line-numbers”}
 
 ###### Auslassungen
 
 Auslassungen werden als `<@cause="omission">` ausgezeichnet. Das Element
 `<rdg>` bleibt ohne Textinhalt („self-closing“).
 
-@import "examples/ed_omission.xml" {class="line-numbers"}
+@import “examples/ed_omission.xml” {class=“line-numbers”}
 
 ###### Löschungen
 
@@ -630,7 +633,7 @@ Löschungen werden von Auslassungen analytisch dadurch unterschieden,
 dass sie auf einen bewussten Eingriff des Schreibers der jeweiligen Handschrift zurückzuführen sind. 
 Das Element `<rdg>` ist wiederum ohne Textinhalt („self-closing“).
 
-@import "examples/ed_deletion.xml" {class="line-numbers"}
+@import “examples/ed_deletion.xml” {class=“line-numbers”}
 
 ###### Nicht lesbarer Text
 
@@ -642,11 +645,11 @@ Nicht lesbarer Text wird als `<@cause="illegible">` ausgezeichnet. Das Element `
 
 Umstellungen werden als `<@cause="transposition">` ausgezeichnet. Im Element `<rdg>` wird der umgestellte Text in seinem vollen Wortlaut (sc. nicht abgekürzt) wiedergegeben.
 
-@import "examples/ed_transposition.xml" {class="line-numbers"}
+@import “examples/ed_transposition.xml” {class=“line-numbers”}
 
 Umstellungen, die längere Textpassagen betreffen, werden – besonders wenn sie sich über strukturelle Einheiten hinweg erstrecken – als Auslassung und Hinzufügung ausgezeichnet, wobei beide `<app>`-Elemente jeweils ein Attribut `@xml:id` erhalten und auf das jeweils andere mit Hilfe der Attribute `@prev` und `@next` verwiesen wird.
 
-@import "examples/ed_transposition_ext.xml" {class="line-numbers"}
+@import “examples/ed_transposition_ext.xml” {class=“line-numbers”}
 
 ###### Korrekturen durch Schreiber
 
@@ -655,16 +658,16 @@ Korrekturen des Textes durch den Schreiber oder einen späteren Korrektor werden
 Ist eine durch Korrektur entstandene Variante mit einer anderen Variante identisch, so kann dieser anderen Variante ein eindeutiger Identifikator
 im Attribut `@xml:id` gegeben werden und die korrigierende Variante im Attribut `@copyOf` auf diesen Identifikator verweisen; das Element `<rdg>` ist in diesem Falle leer („self-closing”).
 
-Das Element `<rdg>` kann zusätzlich das Attribut `@hand` enthalten, wobei der Schreiber (`#m1`) und die Korrektoren (`#m2`, `#m3`, ... – allgemein `#mr` für *manus recentior*) unterschieden werden sollten. Ist nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden ist, erhält das Attribut den Wert `unknown`.
+Das Element `<rdg>` kann zusätzlich das Attribut `@hand` enthalten, wobei der Schreiber (`#m1`) und die Korrektoren (`#m2`, `#m3`, … – allgemein `#mr` für *manus recentior*) unterschieden werden sollten. Ist nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden ist, erhält das Attribut den Wert `unknown`.
 
 Der Ort der Korrektur wird mit Hilfe des Attributes `@style` angegeben; mögliche Werte sind `supralinear`, `marginal` und `inline`.
 
-@import "examples/ed_hand.xml" {class="line-numbers"}
+@import “examples/ed_hand.xml” {class=“line-numbers”}
 
 Mikroskopische Textersetzungen (wie z.B. die Ersetzung einzelner Buchstaben innerhalb eines Wortes) werden besser entsprechend dem Vorgehen bei der Handschriftentranskription innerhalb eines `<subst>`-Elementes mit dem Element `<del>` (ersetzter Text) und dem Element `<add>` (ergänzter Text) ausgezeichnet. Das Element `<subst>` erhält in diesem Fall das Attribut `@hand`. 
 Wird bei einer Korrektur nur Text hinzugefügt oder getilgt, so wird nur das Element `<add>` bzw. `<del>` verwendet und das Attribut `@hand` diesem Element beigefügt.
 
-@import "examples/ed_subst.xml" {class="line-numbers"}
+@import “examples/ed_subst.xml” {class=“line-numbers”}
 
 ###### Konjekturen durch Editoren
 
@@ -676,26 +679,28 @@ Korrekturen kleinerer Fehler (bzw. orthographische Normalisierungen),
 die nicht die Höhe einer Konjektur erreichen, werden mit
 `<@cause="correction">` ausgezeichnet.
 
-@import "examples/ed_correction.xml" {class="line-numbers"}
+@import “examples/ed_correction.xml” {class=“line-numbers”}
 
 Vorschläge von Konjekturen (*proposuit* oder *dubitanter*) werden im Element `<rdg>` als `<@cause="proposition">` ausgezeichnet. Ggfs. kann der Wahrscheinlichkeitsgrad des Zutreffens im Attribut `@cert`
 festgehalten werden; mögliche Werte sind: `low`, `medium`, `high`.
 
-@import "examples/ed_proposition.xml" {class="line-numbers"}
+@import “examples/ed_proposition.xml” {class=“line-numbers”}
 
 Vom Editor getilgter Text wird mit `<@cause="deletion">` im Element `<lem>` ausgezeichnet. Soll der getilgt Text angeführt werden, so wird er mit Hilfe des Elementes `<surplus>` ausgezeichnet; ansonsten
 bleibt das Element ohne Textinhalt („self-closing“). Tilgungen durch andere Editoren werden ebenfalls als
-`<@cause="deletion">` ausgezeichnet. 
+`<@cause="deletion">` ausgezeichnet, der getilgte Text wird mit Hilfe des Elements `<surplus>` ausgezeichnet. 
 
-@import "examples/ed_surplus.xml" {class="line-numbers"}
+@import “examples/ed_surplus.xml” {class=“line-numbers”}
 
-Durch Emendation hinzugefügter Text wird mit `<@cause="addition">` ausgezeichnet. Der hinzugefügte Text wird mit Hilfe des Elementes `<supplied>` ausgezeichnet.  Die handschriftlich überlieferte Variante wird im Element `<rdg>` mit `@cause="omission"` ausgezeichnet; das Element `<rdg>` bleibt ohne Textinhalt („self closing“). 
+Durch Emendation hinzugefügter Text wird mit `<@cause="addition">` ausgezeichnet.  Die handschriftlich überlieferte Varianten werden im Element `<rdg>` mit `@cause="omission"` ausgezeichnet; das Element `<rdg>` bleibt ohne Textinhalt („self closing“). 
 
-@import "examples/ed_supplied.xml" {class="line-numbers"}
+Der hinzugefügte Text wird mit Hilfe des Elementes `<supplied>` ausgezeichnet, um den Umfang der Hinzufügung deutlich zu machen, wenn in der handschriftlichen Überlieferung vorhandener Text ergänzt wird; in diesem Fall wird statt `<@cause="addition">` besser `<@cause="conjecture">`.
+
+@import “examples/ed_supplied.xml” {class=“line-numbers”}
 
 Auf den Autor einer Konjektur, Emendatio oder Korrektur wird im Attribut `@resp` bzw. im Falle einer aus einer Edition übernommenen Konjektur im Attribut `@source` verwiesen (im Gegensatz zum Attribut `@wit` für Handschriften).
 
-@import "examples/ed_resp.xml" {class="line-numbers"}
+@import “examples/ed_resp.xml” {class=“line-numbers”}
 
 ###### Lücken im Text
 
@@ -703,27 +708,22 @@ Von der Editorin vermutete Lücken im überlieferten Textbestand werden mit `<ga
 
 Wird die Feststellung einer Lücke von einem früheren Editor übernommen, so wird die Quelle im Attribut `@source` bzw. `@resp` angeführt.
 
-@import "examples/ed_gap.xml" {class="line-numbers"}
+@import “examples/ed_gap.xml” {class=“line-numbers”}
 
 Von anderen Editoren vermutete, aber nicht übernommene Lücken werden in einem Apparateintrag als `<rdg>` ausgezeichnet und erhalten das Attribut `@cause="lacunam_indicavit"`. Das Element ist ohne Textinhalt („self closing“).
 
-@import "examples/ed_lacuna.xml" {class="line-numbers"}
+@import “examples/ed_lacuna.xml” {class=“line-numbers”}
 
 ###### Crux
 
 Vom Editor nicht zu emendierender, aber sicher verderbter Text („Crux“) wird mit Hilfe des Elementes `<sic>` ausgezeichnet. Das Element kann dabei sowohl den verderbten Text umschließen oder als
 selbst-schließendes („leeres“) Element die Stelle der Verderbnis markieren.
 
-@import "examples/ed_crux.xml" {class="line-numbers"}
+@import “examples/ed_crux.xml” {class=“line-numbers”}
 
 ###### Varianten innerhalb von Varianten
 
-Varianten können auch ineinander geschachtelt werden. Das Lemma des
-übergreifenden Apparatus-Eintrages erhält in diesem Fall kein Attribut
-`@wit`, da sich die Bezeugung aus den `@wit`-Attributen der Elemente
-<lem> und <rdg> des inneren Apparat-Eintrages errechnen lässt.
-
-Der innere `<app>`-Eintrag muss unbedingt im Element `<lem>`, d.h. im rekonstruierten Text, des äußeren Apparatus-Eintrages stehen, keinesfalls im Element `<rdg>`.
+Varianten können auch ineinander geschachtelt werden, d.h. ein `<lem>`- oder ein `<rdg>`-Element können ihrerseits eine Variante (`<app>`) enthalten. Das `wit`-Attribut des übergeordneten `<app>`-Elementes enthält dabei *alle* Siglen des untergeordeneten `<app>`-Elementes, also sowohl des `<lem>`- als auch des `<rdg>`-Elementes:
 
 @import "examples/ed_app-in-app.xml" {class="line-numbers"}
 
@@ -733,11 +733,11 @@ In ihrer Genese zusammengehörige Variantenteile sollten, solange die
 Variantenträger identisch sind, zur Erhöhung der Lesbarkeit möglichst
 zusammengefasst werden.
 
-@import "examples/ed_schreibweise1.xml" {class="line-numbers"}
+@import “examples/ed_schreibweise1.xml” {class=“line-numbers”}
 
 und nicht:
 
-@import "examples/ed_schreibweise2.xml" {class="line-numbers"}
+@import “examples/ed_schreibweise2.xml” {class=“line-numbers”}
 
 ##### Überlappungen
 
@@ -748,19 +748,19 @@ Nach Möglichkeit sollte entsprechend der ebd. genannten Methode [„Fragmentati
 
 Überschneiden sich Elemente unterschiedlicher Kategorie, also z.B. eine textkritische Anmerkung und ein Zitat, so ist dem Element `<app>` der Vorrang einzuräumen und das Element `<quote>` aufzuteilen, wobei die zusammengehörigen Teile des Elementes mit Hilfe der Attribute `@prev` und `@next`, die auf die im Attribut `@xml:id` jeweils zugeteilte ID verweisen, miteinander verbunden werden:
 
-@import "examples/ed_prevnext.xml" {class="line-numbers"}
+@import “examples/ed_prevnext.xml” {class=“line-numbers”}
 
 Überschreitet eine Variante eine Gliederungsebene, so muss dieser der
 Vorrang eingeräumt und das Element `<app>` analog dem obigen Vorgehen
 aufgeteilt und untereinander verlinkt werden.
 
-@import "examples/ed_prevnext2.xml" {class="line-numbers"}
+@import “examples/ed_prevnext2.xml” {class=“line-numbers”}
 
 ##### Kommentierung textkritischer Entscheidungen
 
 Erscheint es nötig, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden. Das Element `<app>`, `<lem>` oder `<rdg>` erhält in diesem Fall ein Attribut `@xml:id`, auf das im Element `<note>` bzw. `<witDetail>` in einem Attribut `@target` verwiesen wird.
 
-@import "examples/ed_witDetail.xml" {class="line-numbers"}
+@import “examples/ed_witDetail.xml” {class=“line-numbers”}
 
 
 ## Dateien-Struktur jeder Edition {#dateistruktur}
@@ -781,7 +781,7 @@ Innerhalb eines Ordners `data` erhält jeder Autor (oder jede Werkgruppe) einen 
           |- pta0013.pta003.pta-MsPs.xml
           |- pta0013.pta003.pta-MsVi.xml
 
-Die Dateinamen folgen den CTS URNs und sind folgendermaßen aufgebaut: Das Kürzel „pta0013“ steht dabei für den Autor Amphilochius und „pta003“ für das Werk „Epistula synodalis“. Der letzte Teil der URN identifiziert die spezifische „Edition" eines Werkes: Im Beispiel sind das die
+Die Dateinamen folgen den CTS URNs und sind folgendermaßen aufgebaut: Das Kürzel „pta0013“ steht dabei für den Autor Amphilochius und „pta003“ für das Werk „Epistula synodalis“. Der letzte Teil der URN identifiziert die spezifische „Edition” eines Werkes: Im Beispiel sind das die
 kritische Edition des griechischen Textes (pta-grc1), die deutsche Übersetzung (pta-deu1) und die Transkriptionen der vier Handschriften (pta-MsLa, pta-MsPg, pta-MsPs, pta-MsVi).
 
 Die Zuteilung neuer IDs für bisher nicht vorhandene Autoren und/oder Werke erfolgt nach [Rücksprache](mailto:annette.von_stockhausen@bbaw.de).
