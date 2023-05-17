@@ -138,13 +138,15 @@ oder um eine Ekthesis (`ekthesis`) handelt.
 
 #### Andere Hervorhebungen
 
-Rubrizierter Text wird ebenfalls mit dem Element `<hi>` ausgezeichnet;
+*Rubrizierter* Text wird ebenfalls mit dem Element `<hi>` ausgezeichnet;
 das Attribut `@rend` erhält den Wert `rubricated`.
 
-Mit einer Linie über dem Buchstaben oder Wort hervorgehobener Text wird
+Mit einer *Linie über* dem Buchstaben oder Wort hervorgehobener Text wird
 mit `<hi rend="overline">` markiert.
 
-Unterstrichener Text wird mit `<hi rend="underline">` markiert.
+*Unterstrichener* Text wird mit `<hi rend="underline">` markiert.
+
+Durch Verwendung von *Großbuchstaben* hervorgehobener Text (z.B. Lemmata in Kommentaren) wird mit `<hi rend="majuscule">` markiert.
 
 #### Marginalien
 
@@ -335,7 +337,7 @@ Handschriftenfamilien und Hyparchetypen können innerhalb des Abschnittes
 `@listWit` in einem eigenen Unterabschnitt `<listWit>` mit eigenem
 Element `<head>` zusammengefaßt werden, der im Attribut `@xml:id` eine
 eigene maschienenlesbare ID für die Familie bekommt (und analog im
-Element `<abbr type="siglum">` eine menschenlesbare Sigle).
+Element `<abbr type="siglum">` eine menschenlesbare Sigle). Diese können auch im Attribut `@wit` einer Lesart verwendet werden; um falsche Angaben zu vermeiden, wird aber angeraten, jeweils alle einzelnen Handschriften anzuführen (und die Anzeige von Gruppensiglen bei der Weiterverarbeitung für den Druck oder die Webpräsentation zu berücksichtigen).
 
 Auch die indirekte Überlieferung oder alte wie moderne Übersetzungen
 sollten auf diese Art vermerkt werden, wenn auf sie in den
@@ -550,6 +552,12 @@ Direkte Rede wird mit Hilfe des Elementes `<said>` ausgezeichnet.
 
 @import “examples/ed_said.xml” {class=“line-numbers”}
 
+##### Auszeichnung von Dialogen
+
+Dialoge werden mit Hilfe des Elementes `<sp>` (anstelle von `<p>`) ausgezeichnet. Die jeweils sprechenden Personen werden mit Hilfe des Elementes `<speaker>` ausgezeichnet, das Gesprochene mit Hilfe von `<p>`.
+
+@import “examples/ed_speech.xml” {class=“lines-numbers”}
+
 ##### Auszeichnung von Personen, Organisationen und Orten
 
 **Personen** werden mit Hilfe des Elementes `<persName>` ausgezeichnet. Im Fall von biblischen Personen wird das Attribut `@type` mit dem Wert `biblical` verwendet, alle anderen Personen erhalten kein Attribut `@type`. 
@@ -725,7 +733,7 @@ selbst-schließendes („leeres“) Element die Stelle der Verderbnis markieren.
 
 Varianten können auch ineinander geschachtelt werden, d.h. ein `<lem>`- oder ein `<rdg>`-Element können ihrerseits eine Variante (`<app>`) enthalten. Das `wit`-Attribut des übergeordneten `<app>`-Elementes enthält dabei *alle* Siglen des untergeordeneten `<app>`-Elementes, also sowohl des `<lem>`- als auch des `<rdg>`-Elementes:
 
-@import "examples/ed_app-in-app.xml" {class="line-numbers"}
+@import “examples/ed_app-in-app.xml” {class=“line-numbers”}
 
 ##### Ökonomische Schreibweise
 

@@ -231,13 +231,15 @@ several lines) or an `ekthesis` (ekthesis).
 
 #### Other highlighting
 
-Rubricated text is also marked with the element `<hi>`; the attribute
+*Rubricated* text is also marked up with the element `<hi>`; the attribute
 `@rend` receives the value `rubricated`.
 
-Text highlighted with a line above the letter or word is marked with
+Text highlighted with a *line above* the letter or word is marked up with
 `<hi rend="overline">`.
 
-Underlined text is marked with `<hi rend="underline">`.
+*Underlined* text is marked up with `<hi rend="underline">`.
+
+Text in capitals (for example the lemmata in commentaries) is martked up with `<hi rend="majuscule">`.
 
 #### Marginalia
 
@@ -456,7 +458,7 @@ Manuscript families and hyparchetypes can be combined within the
 section `@listWit` in a separate subsection `<listWit>` with its own
 element `<head>`, which gets its own machine-readable ID for the family
 in the attribute `@xml:id` (and analogously a human-readable siglum in
-the element `<abbr type="siglum">`).
+the element `<abbr type="siglum">`). These could be also used in the attribute  `@wit` of a reading; it is advised, though, to refrain from that, but rather to use the sigla of the respective individual manuscripts to avoid errors. Group sigla could be produced in the course of generating print or web presentations.
 
 Indirect tradition or ancient as well as modern translations should also
 be noted in this way if they are to be referred to in the apparatus
@@ -688,6 +690,11 @@ Direct speech is marked up with the help of the `<said>` element.
 
 @import “examples/ed_said.xml” {class=“line-numbers”}
 
+##### Encoding of dialogue
+
+Dialogue is marked up with the help of `<sp>` (instead of `<p>`). For the person speaking `<speaker>` is used, the spoken text is marked up with `<p>`.
+
+@import “examples/ed_speech.xml” {class=“lines-numbers”}
 
 ##### Encoding of people, organisations and places
 

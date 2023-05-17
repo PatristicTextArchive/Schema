@@ -295,10 +295,10 @@
                     <desc>Ekthesis</desc>
                   </valItem>
                   <valItem ident="majuscule">
-                    <desc>in uppercase/capitals</desc>
+                    <desc>Word in uppercase/capitals</desc>
                   </valItem>
 		              <valItem ident="rubricated">
-                    <desc>is rubricated</desc>
+                    <desc>Word or letter is rubricated</desc>
                   </valItem>
                   <valItem ident="overline">
                     <desc>Line over a letter</desc>
