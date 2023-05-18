@@ -526,6 +526,16 @@
             </attList>
           </elementSpec>
           <elementSpec ident="rdg" module="textcrit" mode="change">
+              <!-- testing for <perrsName>, <orgName>, <placeName> within <rdg> -->
+            <constraintSpec ident="rdg" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:rdg">
+                  <sch:report test="descendant::tei:persName">rdg may not contain a annotated person</sch:report>
+                  <sch:report test="descendant::tei:placeName">rdg may not contain a annotated place</sch:report>
+                  <sch:report test="descendant::tei:orgName">rdg may not contain a annotated organisation</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="cause" mode="change">
                 <valList type="closed" mode="replace">
