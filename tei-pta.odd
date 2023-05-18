@@ -30,7 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2023-05-04"></change>
+      <change who="#AvS" when="2023-05-17"></change>
       <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
       <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
       <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra for cause</change>
@@ -618,15 +618,26 @@
             </attList>
           </elementSpec>
           <elementSpec ident="del" module="core" mode="change">
+            <!-- testing for @repurposed: only to be used within <subst> -->
+            <constraintSpec ident="del" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:del">
+                  <sch:report test="@repuposed and not(parent::tei:subst)">@repurposed may only used within a substitution</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="rend" mode="change">
                 <valList type="closed" mode="replace">
-		  <valItem ident="unmarked">
-		    <desc>text to be replaced is not marked explicitly</desc>
-		  </valItem>
-		  <valItem ident="marker">
-		    <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
-		  </valItem>
+		              <valItem ident="unmarked">
+		                <desc>text to be replaced is not marked explicitly</desc>
+		              </valItem>
+		              <valItem ident="marker">
+		                <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
+		              </valItem>
+                  <valItem ident="repurposed">
+                    <desc>for use with added diacritics: letter before correction, without diacritics</desc>
+                  </valItem>
                   <valItem ident="erasure"/>
                   <valItem ident="strikethrough"/>
                   <valItem ident="overwrite"/>
@@ -656,10 +667,10 @@
               </attDef>
             </attList>
           </elementSpec>
-	  <elementSpec ident="msIdentifier" module="msdescription" mode="change">
+	        <elementSpec ident="msIdentifier" module="msdescription" mode="change">
             <attList>
               <attDef ident="xml:id" mode="change" usage="req">
-		<desc>needs an id to be used by CollateX</desc>
+	            	<desc>needs an id to be used by CollateX</desc>
               </attDef>
             </attList>
           </elementSpec>

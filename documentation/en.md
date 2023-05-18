@@ -292,6 +292,10 @@ specified with the help of the `@place` attribute. Permitted values are
 
 @import “examples/subst_transcr.xml” {class=“line-numbers”}
 
+If the correction is the addition of diacritics to a letter, the letter without is marked with  `<del>` and the attribute `@rend` with the value `repurposed`, the letter with the added diacritic is marked with `<add>` and the attribute `@rend` with the value `inline`.
+
+@import “examples/subst_repurposed.xml” {class=“line-numbers”}
+
 If the correction is an overwriting or retracing of the original text without correction (change in text), it is better to use the element `<retrace>`:
 
 @import “examples/retrace.xml” {class=“line-numbers”}

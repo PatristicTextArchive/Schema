@@ -198,6 +198,10 @@ Werte sind `above` (darüber), `inline` (in der Zeile) und `margin` (am Rand).
 
 @import “examples/subst_transcr.xml” {class=“line-numbers”}
 
+Handelt es sich bei der Korrektur um die Hinzufügung von Diakritika zu Buchstaben, so wird der Buchstabe vor der Hinzufügung mit `<del>` und dem Attribut `@rend` mit dem Wert `repurposed` ausgezeichnet, nach der Hinzufügung mit `<add>` und dem Attribut `@rend` mit dem Wert `inline`.
+
+@import “examples/subst_repurposed.xml” {class=“line-numbers”}
+
 Handelt es sich bei der Korrektur um ein Überschreiben bzw. Nachzeichnen des ursprünglichen Textes ohne Korrektur (Änderung des Textes), so ist besser das Element `<retrace>` zu verwenden:
 
 @import “examples/retrace.xml” {class=“line-numbers”}
