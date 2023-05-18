@@ -1,4 +1,4 @@
-<app type="textcritical">
- <lem resp="#AvS" cause="correction">οὐκ</lem>
+<app type="variants">
+ <lem resp="#AvS" type="correction">οὐκ</lem>
  <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">οὐχ</rdg>
 </app>

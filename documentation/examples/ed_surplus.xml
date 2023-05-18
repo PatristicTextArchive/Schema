@@ -1,8 +1,8 @@
-<app type="textcritical">
- <lem resp="#AvS" cause="deletion"/>
+<app type="variants">
+ <lem resp="#AvS" type="deletion"/>
  <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">οὐκ</rdg>
 </app>
-<app type="textcritical">
+<app type="variants">
  <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">οὐκ</lem>
- <rdg source="#Sav" cause="deletion"><surplus>οὐκ</surplus></rdg>
+ <rdg source="#Sav" type="deletion"><surplus>οὐκ</surplus></rdg>
 </app>

@@ -1,5 +1,5 @@
-<app type="textcritical">
+<app type="variants">
  <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">ψευδόμενος</lem>
- <rdg source="#Savile1612" cause="conjecture">ἀδικῶν</rdg>
- <rdg resp="#AC" cause="conjecture">ψευσάμενος</rdg>
+ <rdg source="#Savile1612" type="conjecture">ἀδικῶν</rdg>
+ <rdg resp="#Ac" type="conjecture">ψευσάμενος</rdg>
 </app>

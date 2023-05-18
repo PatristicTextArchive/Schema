@@ -1,4 +1,4 @@
-<app type="textcritical">
+<app type="variants">
  <lem wit="#Pa #Be #Pb #Va #Ha">ἀπεικάζεται καὶ</lem>
- <rdg wit="#Pt #Pc #Pd #Ma #My #Ab" cause="omission"/>
+ <rdg wit="#Pt #Pc #Pd #Ma #My #Ab" type="omission"/>
 </app>

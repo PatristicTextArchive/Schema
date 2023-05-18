@@ -4,4 +4,5 @@ Est, Jdt, Tob, 1Mak, 2Mak, 3Mak, 4Mak,
 Ps, Oden, Prov, Eccl, Song, Job, Wis,
 Sir, PsSal, Hos, Am, Mi, Joel, Ob, Jon,
 Nah, Hab, Zeph, Hag, Sach, Mal, Is, Jr,
-Bar, Lam, EpistJer, Hes, Sus (Sus-LXX), Dn (Dn-LXX), Bel (Bel-LXX).
+Bar, Lam, EpistJer, Hes, Sus (Sus-LXX), 
+Dn (Dn-LXX), Bel (Bel-LXX).

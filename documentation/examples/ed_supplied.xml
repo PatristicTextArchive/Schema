@@ -1,11 +1,11 @@
-<app type="textcritical">
-<lem resp="#AvS" cause="addition">οὐκ</lem>
-<rdg source="#Schwartz" cause="addition">μὴ</rdg>
+<app type="variants">
+<lem resp="#AvS" type="addition">οὐκ</lem>
+<rdg source="#Schwartz" type="addition">μὴ</rdg>
  <rdg wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab"
-  cause="omission"/>
+  type="omission"/>
 </app>
 
-<app type="textcritical">
-    <lem resp="#AvS" cause="conjecture">Σευηρι<supplied>αν</supplied>οῦ</lem>
+<app type="variants">
+    <lem resp="#AvS" type="conjecture">Σευηρι<supplied>αν</supplied>οῦ</lem>
     <rdg wit="#P">Σευηρίου</rdg>
 </app>

@@ -1,4 +1,4 @@
-<app type="textcritical">
+<app type="variants">
  <lem wit="#Pt #Pc #Pa #Be #Pb #Pd #Ma #My #Va #Ab">καὶ νῦν</lem>
- <rdg wit="#Ha" cause="omission"/>
+ <rdg wit="#Ha" type="omission"/>
 </app>

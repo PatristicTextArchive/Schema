@@ -1,5 +1,5 @@
-<app type="textcritical">
+<app type="variants">
  <lem wit="#Pa #Be #Pb #Va #Ha">τὰ τοῦ θεοῦ</lem>
- <rdg wit="#Pt #Pc #Pd #Ma #My #Ab" cause="transposition">τοῦ
+ <rdg wit="#Pt #Pc #Pd #Ma #My #Ab" type="transposition">τοῦ
    θεοῦ τὰ</rdg>
 </app>

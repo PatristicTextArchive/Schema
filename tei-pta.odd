@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 2.0. Last updated on 2022-02-25.</edition>
+        <edition>Version 3.0. Last updated on 2022-05-17.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,7 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2023-05-17"></change>
+      <change who="#AvS" when="2023-05-17">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines; besides: XXX</change>
       <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
       <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
       <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra for cause</change>
@@ -454,16 +454,6 @@
               </attDef>
             </attList>
           </classSpec>
-          <classSpec type="atts" ident="att.responsibility" mode="change">
-            <attList>
-              <attDef ident="cert" mode="replace">
-                <valList type="closed">
-                  <valItem ident="low"/>
-                  <valItem ident="high"/>
-                </valList>
-              </attDef>
-            </attList>
-          </classSpec>
           <elementSpec ident="app" module="textcrit" mode="change">
             <!-- Changing attribute list: only @type is allowed -->
             <attList>
@@ -472,7 +462,7 @@
               <attDef ident="source" mode="delete"/>
               <attDef ident="type" mode="change" usage="req">
                 <valList type="closed" mode="replace">
-                  <valItem ident="textcritical">
+                  <valItem ident="variants">
                     <desc>for indication of text variation</desc>
                   </valItem>
                   <valItem ident="witnesses">
@@ -483,9 +473,9 @@
             </attList>
           </elementSpec>
           <elementSpec ident="lem" module="textcrit" mode="change">
-            <!-- Changing attribute list: only @cause is allowed -->
+            <!-- Changing attribute list: only @type is allowed -->
             <attList>
-              <attDef ident="cause" mode="change">
+              <attDef ident="type" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="conjecture">
                     <desc>variant is a conjecture (sc. /coniecit/)</desc>
@@ -505,7 +495,7 @@
                 </valList>
               </attDef>
               <attDef ident="ana" mode="delete"/>
-              <attDef ident="type" mode="delete"/>
+              <attDef ident="cause" mode="delete"/>
               <attDef ident="cert" mode="delete"/>
               <attDef ident="change" mode="delete"/>
               <attDef ident="exclude" mode="delete"/>
@@ -533,11 +523,12 @@
                   <sch:report test="descendant::tei:persName">rdg may not contain a annotated person</sch:report>
                   <sch:report test="descendant::tei:placeName">rdg may not contain a annotated place</sch:report>
                   <sch:report test="descendant::tei:orgName">rdg may not contain a annotated organisation</sch:report>
+                  <sch:report test="not(@type='proposition') and @cert">cert may only be used in case of a proposition</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
             <attList>
-              <attDef ident="cause" mode="change">
+              <attDef ident="type" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="addition">
                     <desc>cause for variant is an addition</desc>
@@ -568,7 +559,7 @@
                   </valItem>
                 </valList>
               </attDef>
-              <attDef ident="type" mode="change">
+              <attDef ident="cause" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="orthographic">
                     <desc>marks a variant which is only orthographic (for example because of itacism)</desc>
@@ -579,24 +570,38 @@
                   <valItem ident="homoioteleuton">
                     <desc>marks a variant which is probably caused by homoioteleuton</desc>
                   </valItem>
+                  <valItem ident="saut_du_meme">
+                    <desc>marks a variant which is probably caused by a saut du même au même</desc>
+                  </valItem>
                   <valItem ident="dittography">
                     <desc>marks a variant which is probably caused by dittography</desc>
                   </valItem>
                 </valList>
               </attDef>
-              <attDef ident="style" mode="change">
+              <attDef ident="resp" mode="change">
+                <desc>indicates the one responsible (editor, not in a printed edition)</desc>
+              </attDef>
+              <attDef ident="source" mode="change">
+                <desc>indicates the source of a variant (an earlier edition)</desc>
+              </attDef>
+              <attDef ident="wit" mode="change">
+                <desc>indicates the witness (manuscript)</desc>
+              </attDef>
+              <attDef ident="cert" mode="change">
+                <desc>indicates the certainty (for a proposition)</desc>
                 <valList type="closed" mode="replace">
-                  <valItem ident="supralinear">
-                    <desc>above the line</desc>
+                  <valItem ident="low">
+                    <desc>low certainty</desc>
                   </valItem>
-                  <valItem ident="marginal">
-                    <desc>in the margin</desc>
+                  <valItem ident="medium">
+                    <desc>medium certainty</desc>
                   </valItem>
-                  <valItem ident="inline">
-                    <desc>inline</desc>
+                  <valItem ident="high">
+                    <desc>high certainty</desc>
                   </valItem>
                 </valList>
               </attDef>
+              <attDef ident="style" mode="delete"/>
             </attList>
           </elementSpec>
           <elementSpec ident="cb" module="core" mode="change">
