@@ -136,11 +136,16 @@
         </xsl:element>
       </xsl:element>
     </xsl:element>
+    <xsl:element name="schemaRef" namespace="http://www.tei-c.org/ns/1.0">
+      <xsl:attribute name="key">v3</xsl:attribute>
+      <xsl:attribute name="url">https://raw.githubusercontent.com/PatristicTextArchive/Schema/master/tei-pta.rng</xsl:attribute>
+    </xsl:element>
   </xsl:template>
 
 
 
   <xsl:template match="//tei:profileDesc">
+    <xsl:param name="editionstatus"><xsl:value-of select="//tei:revisionDesc/@status"/></xsl:param>
     <xsl:element name="profileDesc" namespace="http://www.tei-c.org/ns/1.0">
       <xsl:copy-of select="//tei:creation"/>
       <xsl:element name="textClass" namespace="http://www.tei-c.org/ns/1.0">
@@ -148,7 +153,7 @@
         <xsl:element name="keywords" namespace="http://www.tei-c.org/ns/1.0">
           <xsl:attribute name="scheme">#editionstatus</xsl:attribute>
           <xsl:element name="term" namespace="http://www.tei-c.org/ns/1.0">
-            Edition status missing
+            <xsl:value-of select="$editionstatus"/>
           </xsl:element>
         </xsl:element>
       </xsl:element>
@@ -160,7 +165,7 @@
       <xsl:element name="revisionDesc" namespace="http://www.tei-c.org/ns/1.0">
         <xsl:attribute name="status">draft</xsl:attribute>
         <xsl:element name="change" namespace="http://www.tei-c.org/ns/1.0">
-          <xsl:attribute name="when">2023-05-19</xsl:attribute>
+          <xsl:attribute name="when">2023-05-22</xsl:attribute>
           <xsl:attribute name="who">#AvS</xsl:attribute>
           Updated file to comply with version 3.0 of <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/Schema</xsl:attribute>TEI-PTA-Schema</xsl:element>
         </xsl:element>
