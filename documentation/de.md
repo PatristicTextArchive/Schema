@@ -1,6 +1,6 @@
 Die Editionsrichtlinien für das PTA sind in einem Schema festgehalten, das die umfassenden und häufig redundanten Regelungen des TEI TEI-konform eingrenzt und das auch die Grundlage der folgenden Regeln und Beispiele ist.
 
-> Diese Editionsrichtlinien sind eine leicht gekürzte, aber auf Version 2.0 des Schemas hin aktualisierte Fassung von [Annette v. Stockhausen, Die Modellierung kritischer Editionen im digitalen Zeitalter, ZAC 24 (2020), 123–160](https://nbn-resolving.org/urn:nbn:de:kobv:b4-opus4-35237). Dieses Schema hat seinen Ursprung in den Epidoc Guidelines, hat diese aber erheblich erweitert und verändert. 
+> Diese Editionsrichtlinien sind eine leicht gekürzte, aber auf Version 3.0 des Schemas hin aktualisierte Fassung von [Annette v. Stockhausen, Die Modellierung kritischer Editionen im digitalen Zeitalter, ZAC 24 (2020), 123–160](https://nbn-resolving.org/urn:nbn:de:kobv:b4-opus4-35237). Dieses Schema hat seinen Ursprung in den Epidoc Guidelines, hat diese aber erheblich erweitert und verändert. 
 
 Durch die Wahl der Auszeichnungssprache TEI-XML für die Kodierung der digitalen kritischen Edition ist ein fundamentaler Unterschied zur klassischen kritischen Edition, wie wir sie aus unseren gedruckten Ausgaben kennen, markiert, nämlich die Unterscheidung zwischen der Kodierung der Edition im digitalen Format und ihrer Präsentation im Druck, im Internet, als E-Book, etc. Die Edition im eigentlichen Sinn sind die in TEI-XML kodierten Daten, von denen zu erwarten ist, dass sie langzeitverfügbar und rezipierbar bleiben, während es sich bei ihrer Präsentation im Druck oder auch im Internet um im Informationsgehalt reduzierte (oder auch angereicherte) Erscheinungsformen dieser Daten handelt, die zumal im Falle der Online-Präsentation dem fortwährenden Wandel der Technologie unterworfen sind.
 
@@ -395,6 +395,7 @@ Der Status der Annotationen ist folgendermaßen definiert:
 
 - `fully-annotated`: Alle Fälle eines Phänomens (z.B. Bibelzitate, Personen, Orte) werden mit dem entsprechenden Element markiert.
 - `partially-annotated`: Einige Fälle eines Phänomens (z.B. biblische Zitate, Personen, Orte) werden mit dem entsprechenden Element markiert.
+- `not-annotated`: Kein Fall eines Phänomens (z.B. biblische Zitate, Personen, Orte) ist mit dem entsprechenden Element markiert.
 
 Der Umfang der Identifikation mit Normdaten ist folgendermaßen definiert:
 
@@ -402,7 +403,6 @@ Der Umfang der Identifikation mit Normdaten ist folgendermaßen definiert:
 - `partially-identified`: Einige markierte Fälle eines Phänomens (z.B. biblische Zitate, Personen, Orte) werden mit den entsprechenden Normdaten identifiziert.
 - `not-identified`: Keine markierten Fälle eines Phänomens (z.B. Bibelzitate, Personen, Orte) werden mit den entsprechenden Normdaten identifiziert.
 
-Ist nichts annotiert, fällt der Abschnitt ersatzlos weg.
 #### Normalisierung
 
 Innerhalb des Abschnittes `<editorialDecl>` wird in den Unterabschnitten

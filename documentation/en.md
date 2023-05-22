@@ -4,7 +4,7 @@ in a TEI-compliant way and that is the basis of the following rules and
 examples.
 
 > These edition guidelines are a slightly abridged version (but *updated*
-> to version 2.0 of the schema) [of Annette v. Stockhausen, Die
+> to version 3.0 of the schema) [of Annette v. Stockhausen, Die
 > Modellierung kritischer Editionen im digitalen Zeitalter, ZAC 24
 > (2020),
 > 123-160](https://nbn-resolving.org/urn:nbn:de:kobv:b4-opus4-35237).
@@ -523,6 +523,7 @@ The annotation status is defined as follows:
 
 - `fully-annotated`: All instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.
 - `partially-annotated`: Some instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.
+- `not-annotated`: No instance of a phenomenon (e.g. biblical quotations, persons, places) is encoded with the respective element.
 
 The extension to which the annotations are identified with norm data is defined as follows:
 
@@ -530,7 +531,6 @@ The extension to which the annotations are identified with norm data is defined 
 - `partially-identified`: Some encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 - `not-identified`: No encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 
-If there are no annotations, the section is left out.
 
 #### Normalisation
 
