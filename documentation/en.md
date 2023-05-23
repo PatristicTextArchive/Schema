@@ -1,4 +1,4 @@
-The edition guidelines for the PTA are set out in a *schema* that narrows
+The edition guidelines for the PTA are set out in a [schema](https://doi.org/10.5281/zenodo.3737666) that narrows
 down the comprehensive and often redundant regulations of the TEI
 in a TEI-compliant way and that is the basis of the following rules and
 examples.
@@ -79,12 +79,11 @@ significantly.
 The `<encodingDesc>` section provides all the information concerning the
 encoding of the file and in each case contains an element `<refsDecl>`,
 which defines the outline structure of the file according to the
-[“CapiTainS Guidelines”](http://capitains.org/).
+[“CapiTainS Guidelines”](http://capitains.org/) ([cf. below](#dateistruktur)). The section ends with the element `<schemaRef>` which references the used schema.
 
 Information on the dating (`<date>`) and location (`placeName`) of the
 text is provided in the `<creation>` element and on the genre (using the
-text type classification of <https://www.comphistsem.org/46.html>) in the
-`<textClass>` element within the `<profileDesc>` section.
+text type classification of <https://www.comphistsem.org/46.html>) in the `<textClass>` element within the `<profileDesc>` section.
 
 Since digital editions, unlike printed editions, can be potentially very
 fluid data, it is of great importance that all significant changes to
@@ -154,7 +153,7 @@ described in the same section in the `<objectDesc>` within the
 
 The entire transcription is in the `<text>` part of the file in a
 `<div>` element. The element has the following attributes:
-- `type="edition"`
+- `@type="edition"`
 - `@xml:lang` indicating the language of the edited
 text using [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
 - `@n` indicating the URN of the file, see [below](#dateistruktur).
@@ -184,6 +183,8 @@ by editions (specified using `@edRef`):
 
 For editions that exist in the PTA, the value of the `@edRef `attribute
 is the URN of the edition (e.g. `urn:cts:pta:pta0001.pta028.pta-grcBibex`).
+
+The division of the transcripted text is following the division in the manuscript and not the artifical modern divisions introduced by editions.
 
 #### Punctuation
 
@@ -549,7 +550,7 @@ up of the text-critical variants. The entry *must* read:
 @import "examples/ed_variantencoding.xml" {class="line-numbers"}
 
 
-#### Type of edition
+#### Type of edition {#editionstatus}
 
 Within the `<profileDesc>` section, the type of edition is provided in the  `<textClass>` subsection in `<keywords scheme="#editionstatus">`. The element `<term>` has one of the following phrases:
 
@@ -569,6 +570,7 @@ Within the `<profileDesc>` section, the type of edition is provided in the  `<te
 -   `pre-critical-edition` for pre-modern editions (e.g. in the
     Patrologia Graeca or Latina).
 
+A special case is `metacritical-edition-with-app`, which is used for the [SBLGNT edition](https://www.sblgnt.com/) of the New Testament.
 #### Status of edition
 
 Finally, the element `<revisionDesc>` receives an attribute `@status`,
@@ -603,13 +605,14 @@ transmission as well as earlier editions and translations into modern
 languages should be mentioned and appreciated in their critical value.
 
 In principle, it makes sense to link the information given in the
-`<teiHeader>`.
+`<teiHeader>` by using the element `<ref>` and the attribut `@target`.
 
 Subsections can be set up using `<div type="section" n="1">`, which can
 also contain their own headings in a `<head>` element.
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
 
+For footnotes the element `<note>` is used. Bibliographic data that is not already defined in the `<teiHeader>` can be given at point by using the element `<bibl>`;  the attribut `@xml:id` may be used to reference entries like those. It is also possible to reference the text (or variants), if a `@xml:id` is provided with the respective element (for example `<seg>`, `<app>` or `<rdg>`).
 
 #### Text
 

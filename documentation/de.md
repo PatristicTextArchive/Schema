@@ -1,4 +1,4 @@
-Die Editionsrichtlinien für das PTA sind in einem Schema festgehalten, das die umfassenden und häufig redundanten Regelungen des TEI TEI-konform eingrenzt und das auch die Grundlage der folgenden Regeln und Beispiele ist.
+Die Editionsrichtlinien für das PTA sind in einem [Schema](https://doi.org/10.5281/zenodo.3737666) festgehalten, das die umfassenden und häufig redundanten Regelungen des TEI TEI-konform eingrenzt und das auch die Grundlage der folgenden Regeln und Beispiele ist.
 
 > Diese Editionsrichtlinien sind eine leicht gekürzte, aber auf Version 3.0 des Schemas hin aktualisierte Fassung von [Annette v. Stockhausen, Die Modellierung kritischer Editionen im digitalen Zeitalter, ZAC 24 (2020), 123–160](https://nbn-resolving.org/urn:nbn:de:kobv:b4-opus4-35237). Dieses Schema hat seinen Ursprung in den Epidoc Guidelines, hat diese aber erheblich erweitert und verändert. 
 
@@ -32,7 +32,7 @@ Der Abschnitt `<fileDesc>` enthält die bibliographischen Angaben zur Datei, ins
 
 In diesem Abschnitt unterscheiden sich die Angaben in den drei Arten von Dateien (Transkription, kritische Edition, Übersetzung) signifikant. 
 
-Der Abschnitt `<encodingDesc>` bietet alle Angaben, die die Kodierung der Datei betreffen, und enthält in jedem Fall ein Element `<refsDecl>`, das die Gliederungsstruktur der Datei entsprechend den [„CapiTainS Guidelines“](http://capitains.org/) definiert.
+Der Abschnitt `<encodingDesc>` bietet alle Angaben, die die Kodierung der Datei betreffen, und enthält in jedem Fall ein Element `<refsDecl>`, das die Gliederungsstruktur der Datei entsprechend den [„CapiTainS Guidelines“](http://capitains.org/) ([s. unten](#dateistruktur)) definiert. Dieser Abschnitt endet mit dem Element `<schemaRef>`, das auf das verwendete PTA-Schema verweist.
 
 Informationen zur Datierung (`<date>`) und Verortung (`placeName`) des Textes werden im Element `<creation>` und zur Gattung (unter Verwendung der Texttypenklassifikation von <https://www.comphistsem.org/46.html>) im Element `<textClass>` innerhalb des Abschnittes `<profileDesc>` geboten. 
 
@@ -71,7 +71,7 @@ innerhalb des Elements `<layoutDesc>` beschrieben werden.
 
 Die gesamte Transkription steht im `<text>`-Teil der Datei in einem
 Abschnitt `<div>`. Das Element hat die folgenden Attrribute: 
-- `type="edition"`
+- `@type="edition"`
 - `@xml:lang` mit der Angabe der Sprache des edierten Textes unter Verwendung von [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
 - `@n` mit der URN der Datei, s. [unten](#dateistruktur).
 
@@ -96,6 +96,8 @@ Bei der Transkription kann mit Hilfe des Elementes `<milestone>` auf Gliederunge
 @import "examples/milestone.xml" {class="line-numbers"}
 
 Bei Editionen, die im PTA vorhanden sind, ist der Wert des Attributes `@edRef` die URN der Edition (also z.B. `urn:cts:pta:pta0001.pta028.pta-grcBibex`).
+
+Die Gliederung des Textes in der Trasnkription folgt aber in jedem Fall den Gliederungselementen der Handschrift und nicht denen moderner Editionen.
 
 #### Zeichensetzung
 
@@ -178,7 +180,7 @@ ist, wird dem Attribut der Wert `unknown` zugewiesen.
 
 #### Korrekturen
 
-Korrekturen (Worte, aber auch einzelne Buchstaben) werden mit dem Element `<subst>` gekennzeichnet.
+Korrekturen (von Worten, aber auch einzelnen Buchstaben) werden mit dem Element `<subst>` gekennzeichnet.
 
 Stammt eine Korrektur nicht vom Schreiber, kann dies durch das Attribut
 `@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, … --
@@ -380,7 +382,7 @@ Die im PTA verwendeten Abkürzungen für die Bücher des Neuen Testamentes sind:
 @import "examples/abbr_NT.txt"
 
 Die Stellenangaben werden folgendermaßen gebildet:
-Bibl. Korpus (LXX, Hexapla, Vg oder NT):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
+Bibl. Korpus (LXX, Hexapla, Vg oder NA):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
 
 #### Angabe der ausgezeichneten Phänomene
 
@@ -420,7 +422,7 @@ lauten:
 
 @import "examples/ed_variantencoding.xml" {class="line-numbers"}
 
-#### Art der Edition
+#### Art der Edition {#editionstatus}
 
 Die Art der Edition wird innerhalb des Abschnittes `<profileDesc>` im Unterabschnitt `<textClass>` unter `<keywords scheme="#editionstatus">` angegeben. Das Element `<term>` kann folgende Inhalte annehmen:
 
@@ -441,6 +443,8 @@ Die Art der Edition wird innerhalb des Abschnittes `<profileDesc>` im Unterabsch
 
 -   `pre-critical-edition` für vormoderne Editionen (z.B. in der
     Patrologia Graeca oder Latina).
+
+Ein Sonderfall ist `metacritical-edition-with-app`, das für die [SBLGNT-Edition](https://www.sblgnt.com/) des neuen Testamentes Verwendung findet.
 
 #### Status der Edition
 
@@ -474,11 +478,15 @@ indirekte Überlieferung sowie früheren Ausgaben und Übersetzungen in
 moderne Sprachen genannt und in ihrem kritischen Wert gewürdigt werden.
 
 Grundsätzlich ist es dabei sinnvoll, die Angaben, die im `<teiHeader>`
-gemacht wurden, zu verlinken.
+gemacht wurden, mit Hilfe von Verweisen (mit dem Element `<ref>` und dem Attribut `@target`) zu verlinken.
 
 Unterabschnitte können mit Hilfe von `<div type="section" n="1">` eingerichtet werden, die im Element `<head>` auch eigene Überschriften enthalten können.
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
+
+Für Fußnoten wird das Element `<note>` verwendet. Bibliographische Angaben, die nicht im `<teiHeader>` definiert sind, können an Ort und Stelle mit Hilfe des Elements `<bibl>` (das Attribut `@xml:id` kann verwendet werden, um Verweise auf solche Titel zu ermöglichen) ausgezeichnet werden. Es sind auch Verweise auf den Text (bzw. Varianten) möglich, wenn eine `@xml:id` beim entsprechenden Element (z.B. `<seg>`, `<app>` oder `<rdg>`) gesetzt ist.
+
+@import "examples/ed_notes_praefatio.xml" {class="line-numbers"}
 
 #### Text
 
