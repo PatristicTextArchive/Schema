@@ -750,6 +750,13 @@ or `<lacunaEnd/>` (= end of a gap) is inserted.
 
 @import "examples/ed_witnesses.xml" {class="line-numbers"}
 
+The manuscripts witnessing the text are documented in the element `<app>` with the attribute `@type="witnesses"`. The element receives a unique identifier in the attribute `@xml:id`, in the attribute `@prev` or `@next` reference is made to the corresponding entry (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` and vice versa). If necessary, a reference to a corresponding text-critical variant or reading can be made in the attribute `@corresp`.
+The element contains only the element `<rdg>` with the attribute `@wit`, in which one of the self-closing elements `<witStart/>` (= beginning of a witness), `<witEnd/>` (= end of a witness), `<lacunaStart/>` (= beginning of a gap) or `<lacunaEnd/>` (= end of a gap) is inserted. The element does not contain any text, but is inserted (comparable to a milestone element like `<pb>`) at the appropriate place in the text: In the case of `<witStart>` and `<lacunaEnd>` it comes before the first word present in the witness or after the gap ends, in the case of `<witEnd>` and `<lacunaStart>` it comes after the last word present in the witness or before which the gap begins. 
+
+@import "examples/ed_witnesses.xml" {class="line-numbers"}
+
+(This somewhat awkward way of notation is necessary because according to the [TEI Guidelines](https://tei-c.org/Vault/P5/2.0.0/doc/tei-p5-doc/en/html/ref-model.rdgPart.html) the elements `<witStart/>`, `<lacunaStart/>`, `<witEnd/>`, `<lacunaEnd/>` are only allowed to be inside a `<rdg>` or `<lem>` in an `<app>` and the sensible [amendment request to allow these elements also outside in the text was rejected by the TEI Technical Council](https://github.com/TEIC/TEI/issues/301).)
+
 
 ##### Encoding the variants
 

@@ -603,10 +603,13 @@ Attribut `@ref` wird auf die ID des [Pleiades-Gazetteers](https://pleiades.stoa.
 ##### Bezeugung des Textes
 
 Die handschriftliche Bezeugung des Textes wird im Element `<app>` mit
-dem Attribut `@type="witnesses"` dokumentiert. Das Element enthält nur ein Element `<rdg>` mit dem Attribut `@wit`, in dem eines der
-selbst-schließenden Elemente `<witStart/>` (= Beginn eines Zeugen), `<witEnd/>` (= Ende eines Zeugen),`<lacunaStart/>` (= Beginn einer Lücke) oder `<lacunaEnd/>` (= Ende einer Lücke) eingefügt wird.
+dem Attribut `@type="witnesses"` dokumentiert. Das Element erhält im Attribut `@xml:id` einen eindeutigen Identifikator, im Attribut `@prev` bzw. `@next` wird auf den korrespondierenden Eintrag (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` und umgekehrt) verwiesen. Gegegebenenfalls kann im Attribut `@corresp` auf eine entsprechende textkritische Variante oder Lesart verwiesen werden, die dann ebenfalls einen eindeutigen Identifikator benötigt.
+Das Element enthält nur das Element `<rdg>` mit dem Attribut `@wit`, in dem eines der
+selbst-schließenden Elemente `<witStart/>` (= Beginn eines Zeugen), `<witEnd/>` (= Ende eines Zeugen), `<lacunaStart/>` (= Beginn einer Lücke) oder `<lacunaEnd/>` (= Ende einer Lücke) eingefügt wird. Das Element enthält keinen Text, sondern wird (vergleichbar mit einem Milestone-Element wie `<pb>`) an der passenden Stelle im Text eingefügt: In Fall von `<witStart>` und `<lacunaEnd>` steht es vor dem ersten Wort, das im Zeugen vorhanden ist bzw. nachdem die Lücke zu Ende ist, im Fall von `<witEnd>` und `<lacunaStart>` steht es nach dem letzten Wort, das im Zeugen vorhanden ist bzw. vor dem die Lücke beginnt. 
 
 @import "examples/ed_witnesses.xml" {class="line-numbers"}
+
+(Die etwas umständliche Art der Notation ist nötig, weil nach den [TEI-Richtlinien](https://tei-c.org/Vault/P5/2.0.0/doc/tei-p5-doc/en/html/ref-model.rdgPart.html) die Elemente `<witStart/>`, `<lacunaStart/>`, `<witEnd/>`, `<lacunaEnd/>` nur innerhalb eines `<rdg>` oder `<lem>` in einem `<app>` stehen dürfen und der sinvolle [Änderungswunsch, diese Elemente auch außerhalb im Text zuzulassen, vom TEI Technical Council zurückgewiesen wurde](https://github.com/TEIC/TEI/issues/301).)
 
 ##### Auszeichnung der Varianten
 

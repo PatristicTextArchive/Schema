@@ -1,7 +1,14 @@
-<app type="witnesses">
-    <rdg wit="#Ecl114"><witStart/>μεμαρτύρητο</rdg>
+<app type="textcritical">
+    <lem wit="#Pt #Pc #Pb #Pd #My #Ma #Ha #Va #Ab">ἀπαστράπτει</lem>
+    <rdg wit="#Pa #Be" xml:id="lac-Pa">ἀ</rdg>
+    <witDetail wit="#Pa" target="#lac-Pa">Blattausfall.</witDetail>
+</app> 
+<app type="witnesses" xml:id="x1" next="#x2" corresp="#lac-Pa">
+    <rdg wit="#Pa #Be"><lacunaStart/></rdg>
+</app> ... καθʼ ἑαυτὴν ἔσωσεν. 
+<app type="witnesses" xml:id="x2" prev="#x1" corresp="#lac-Pa">
+    <rdg wit="#Pa #Be"><lacunaEnd/></rdg>
 </app>
-...
-<app type="witnesses">
- <rdg wit="#Pa #Be">εἰ<lacunaEnd/></rdg>
-</app>
+<app type="witnesses" xml:id="x3" next="#x4">
+    <rdg wit="#Ecl114"><witStart/></rdg>
+</app> μεμαρτύρητο ...
