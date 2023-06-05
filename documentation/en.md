@@ -741,15 +741,6 @@ the attribute `@ref` the ID of the [Pleiades Gazetteer](https://pleiades.stoa.or
 
 ##### Text witnesses
 
-The manuscripts witnessing the text is documented in the element
-`<app>` with the attribute `@type="witnesses"`. The element contains
-only one element `<rdg>` with the attribute `@wit`, in which one of the
-self-closing elements `<witStart/>` (= beginning of a witness),
-`<witEnd/>` (= end of a witness), `<lacunaStart/>` (= beginning of a gap)
-or `<lacunaEnd/>` (= end of a gap) is inserted.
-
-@import "examples/ed_witnesses.xml" {class="line-numbers"}
-
 The manuscripts witnessing the text are documented in the element `<app>` with the attribute `@type="witnesses"`. The element receives a unique identifier in the attribute `@xml:id`, in the attribute `@prev` or `@next` reference is made to the corresponding entry (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` and vice versa). If necessary, a reference to a corresponding text-critical variant or reading can be made in the attribute `@corresp`.
 The element contains only the element `<rdg>` with the attribute `@wit`, in which one of the self-closing elements `<witStart/>` (= beginning of a witness), `<witEnd/>` (= end of a witness), `<lacunaStart/>` (= beginning of a gap) or `<lacunaEnd/>` (= end of a gap) is inserted. The element does not contain any text, but is inserted (comparable to a milestone element like `<pb>`) at the appropriate place in the text: In the case of `<witStart>` and `<lacunaEnd>` it comes before the first word present in the witness or after the gap ends, in the case of `<witEnd>` and `<lacunaStart>` it comes after the last word present in the witness or before which the gap begins. 
 

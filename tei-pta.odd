@@ -473,6 +473,13 @@
             </attList>
           </elementSpec>
           <elementSpec ident="lem" module="textcrit" mode="change">
+            <constraintSpec ident="lem" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:lem">
+                  <sch:assert test="@wit">The wit attribute of <sch:name/> is required.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <!-- Changing attribute list: only @type is allowed -->
             <attList>
               <attDef ident="type" mode="change">
@@ -520,6 +527,7 @@
             <constraintSpec ident="rdg" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:rdg">
+                  <sch:assert test="@wit">The wit attribute of <sch:name/> is required.</sch:assert>
                   <sch:report test="descendant::tei:persName">rdg may not contain a annotated person</sch:report>
                   <sch:report test="descendant::tei:placeName">rdg may not contain a annotated place</sch:report>
                   <sch:report test="descendant::tei:orgName">rdg may not contain a annotated organisation</sch:report>
