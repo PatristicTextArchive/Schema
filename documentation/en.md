@@ -695,6 +695,9 @@ For bible quotations, the respective bible passage is given within the
 
 @import "examples/ed_quote.xml" {class="line-numbers"}
 
+If non-biblical texts are cited, the passage reference is also indicated by means of the `<ref>` element: If the referenced text is available in the Patristic Text Archive, the PTA-URN is given with reference to the specifications in the `<teiHeader>` (`@decls="#pta"`) in the attribute `@cRef`. If the referenced text is present in the [Perseus Digital Library](https://scaife.perseus.org/), the CTS-URN with reference to the specifications in the `<teiHeader>` (`@decls="#perseus"`) is given in the attribute `@cRef`. If the referenced text is not available in either repository, the reference for the referenced text is given in the attribute `@source` in the form “Authorabbrev_Workabbrev_Location”; ancient Greek authors should be referenced according to the lists of [H. G. Liddell/R. Scott/H. S. Jones, A Greek - English Lexicon, Oxford ^9^1968](https://lsj.gr/wiki/Index:AuthorsWorks/All) and G. W. H. Lampe, A Patristic Greek Lexicon, Oxford ^3^1987, for Latin ones the abbreviations of the Thesaurus Linguae Latinae (cf. [Index librorum scriptorum inscriptionum ex quibus exempla afferuntur](https://thesaurus.badw.de/en/tll-digital/index/)) should be used, with dots in the abbreviations deleted without replacement.
+
+@import "examples/ed_quote_nonbiblical.xml" {class="line-numbers"}
 
 ##### Encoding of similia and sources
 

@@ -565,7 +565,7 @@ Bei Bibelzitaten wird die jeweilige Bibelstelle innerhalb des Elementes
 
 @import "examples/ed_quote.xml" {class="line-numbers"}
 
-Werden nicht-biblische Texte zitiert, so wird die Stellenreferenz ebenfalls mit Hilfe des Elements `<ref>` angegeben: Ist der referenzierte Text im Patristischen Textarchiv vorhanden, so wird die PTA-URN mit Verweis auf die Spezifikationen im `<teiHeader>` (`@decls="#pta"`) im Attribut `@cRef` angegeben. Ist der referenzierte Text in der [Perseus Digital Library](https://scaife.perseus.org/) vorhanden, so wird die CTS-URN mit Verweis auf die Spezifikationen im `<teiHeader>` (`@decls="#perseus"`) im Attribut `@cRef` angegeben. Ist der referenzierte Text in keinem der beiden Repositorien vorhanden, so wird die Stellenangabe für den referenzierten Text im Attribut `@source` in der Form „Autorkürzel_Werkkürzel_Stelle“ angegeben; antike griechische Autoren sollten dabei nach den Verzeichnissen von [H. G. Liddell/R. Scott/H. S. Jones, A Greek — English Lexicon, Oxford^9^1968](https://lsj.gr/wiki/Index:AuthorsWorks/All) und G. W. H. Lampe, A Patristic Greek Lexicon, Oxford ^3^1987 abgekürzt werden, für lateinische sollten die Abkürzungen des Thesaurus Linguae Latinae (cf. [Index librorum scriptorum inscriptionum ex quibus exempla afferuntur](https://thesaurus.badw.de/en/tll-digital/index/)) verwendet werden.
+Werden nicht-biblische Texte zitiert, so wird die Stellenreferenz ebenfalls mit Hilfe des Elements `<ref>` angegeben: Ist der referenzierte Text im Patristischen Textarchiv vorhanden, so wird die PTA-URN mit Verweis auf die Spezifikationen im `<teiHeader>` (`@decls="#pta"`) im Attribut `@cRef` angegeben. Ist der referenzierte Text in der [Perseus Digital Library](https://scaife.perseus.org/) vorhanden, so wird die CTS-URN mit Verweis auf die Spezifikationen im `<teiHeader>` (`@decls="#perseus"`) im Attribut `@cRef` angegeben. Ist der referenzierte Text in keinem der beiden Repositorien vorhanden, so wird die Stellenangabe für den referenzierten Text im Attribut `@source` in der Form „Autorkürzel_Werkkürzel_Stelle“ angegeben; antike griechische Autoren sollten dabei nach den Verzeichnissen von [H. G. Liddell/R. Scott/H. S. Jones, A Greek — English Lexicon, Oxford ^9^1968](https://lsj.gr/wiki/Index:AuthorsWorks/All) und G. W. H. Lampe, A Patristic Greek Lexicon, Oxford ^3^1987 abgekürzt werden, für lateinische sollten die Abkürzungen des Thesaurus Linguae Latinae (cf. [Index librorum scriptorum inscriptionum ex quibus exempla afferuntur](https://thesaurus.badw.de/en/tll-digital/index/)) verwendet werden, wobei Punkte in den Abkürzungen ersatzlos gestrichen werden.
 
 @import "examples/ed_quote_nonbiblical.xml" {class="line-numbers"}
 
@@ -587,7 +587,7 @@ Direkte Rede wird mit Hilfe des Elementes `<said>` ausgezeichnet.
 
 Dialoge werden mit Hilfe des Elementes `<sp>` (anstelle von `<p>`) ausgezeichnet. Die jeweils sprechenden Personen werden mit Hilfe des Elementes `<speaker>` ausgezeichnet, das Gesprochene mit Hilfe von `<p>`.
 
-@import “examples/ed_speech.xml” {class=“lines-numbers”}
+@import "examples/ed_speech.xml" {class="lines-numbers"}
 
 ##### Auszeichnung von Personen, Organisationen und Orten
 
