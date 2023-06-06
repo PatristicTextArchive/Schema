@@ -14,6 +14,26 @@
       <xsl:apply-templates select="node()|@* except @xml:space"/>
   </xsl:copy>
 </xsl:template>
+  
+  <xsl:template match="//tei:refsDecl[@xml:id = 'biblical']">
+    <xsl:copy-of select="//tei:refsDecl[@xml:id = 'biblical']"/>
+    <xsl:element name="refsDecl" namespace="http://www.tei-c.org/ns/1.0">
+      <xsl:attribute name="xml:id">pta</xsl:attribute>
+      <xsl:element name="cRefPattern" namespace="http://www.tei-c.org/ns/1.0">
+        <xsl:attribute name="matchPattern">(.+)</xsl:attribute>
+        <xsl:attribute name="replacementPattern">https://pta.bbaw.de/text/$1</xsl:attribute>
+        <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">References to PTA-CTS-URNs</xsl:element>
+      </xsl:element>
+    </xsl:element>
+    <xsl:element name="refsDecl" namespace="http://www.tei-c.org/ns/1.0">
+      <xsl:attribute name="xml:id">perseus</xsl:attribute>
+      <xsl:element name="cRefPattern" namespace="http://www.tei-c.org/ns/1.0">
+        <xsl:attribute name="matchPattern">(.+)</xsl:attribute>
+        <xsl:attribute name="replacementPattern">https://scaife.perseus.org/reader/$1</xsl:attribute>
+        <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">References to Perseus-CTS-URNs</xsl:element>
+      </xsl:element>
+    </xsl:element>
+  </xsl:template>
 
     <xsl:template match="//tei:editorialDecl">
       <xsl:element name="editorialDecl" namespace="http://www.tei-c.org/ns/1.0">
@@ -173,7 +193,7 @@
       </xsl:element>
     </xsl:template>
   
-  <xsl:template match="tei:app/@type">
+  <xsl:template match="//tei:app/@type">
     <xsl:param name="variants">variants</xsl:param>
     <xsl:param name="witnesses">witnesses</xsl:param>
     <xsl:if test="current()='textcritical'">
