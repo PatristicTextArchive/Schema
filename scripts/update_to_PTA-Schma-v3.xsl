@@ -261,5 +261,30 @@
     </xsl:attribute>
   </xsl:template>
   
+  <!-- transcriptions: add missing lb after pb and cb and cb after pb if two-column layout -->
+  <xsl:template match="tei:pb">
+    <xsl:copy-of select="//tei:pb"/>
+    <xsl:if test="child::tei:cb">
+      <xsl:element name="cb" namespace="http://www.tei-c.org/ns/1.0">
+        <xsl:attribute name="n">1</xsl:attribute>
+      </xsl:element>
+    </xsl:if>
+    <xsl:element name="lb" namespace="http://www.tei-c.org/ns/1.0"/>
+  </xsl:template>
+
+  <xsl:template match="tei:cb">
+    <xsl:choose>
+      <xsl:when test="preceding-sibling::tei:cb">
+        <xsl:element name="cb" namespace="http://www.tei-c.org/ns/1.0">
+          <xsl:attribute name="n"><xsl:value-of select="preceding-sibling::tei:cb/@n + 1"/></xsl:attribute>
+        </xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy-of select="//tei:cb"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:element name="lb" namespace="http://www.tei-c.org/ns/1.0"/>
+  </xsl:template>
+
 
 </xsl:stylesheet>
