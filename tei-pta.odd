@@ -163,6 +163,9 @@
                   <sch:report test="@subtype and not(@type='textpart')">
                     @subtype may only be used together with @type=textpart
                   </sch:report>
+                  <sch:report test="@ana and not(@subtype='commentary')">
+                    @ana may only be used together with @subtype=commentary
+                  </sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -226,19 +229,30 @@
                     <desc>Fragment</desc>
                   </valItem>
                   <valItem ident="commented">
-                    <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary)</desc>
+                    <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary or scholia)</desc>
                   </valItem>
                   <valItem ident="commentary">
                     <desc>Exegesis of a Biblical verse or a commentary to a text</desc>
                   </valItem>
-                  <valItem ident="hypopsalmos">
-                    <desc>Short invocation in manuscripts of the Psalms (n="hypopsalmos")</desc>
+                </valList>
+              </attDef>
+              <attDef ident="ana" mode="change">
+                <desc>for analysis of layout dependend structures in commentaries</desc>
+                <valList type="semi" mode="replace">
+                  <valItem ident="marginal">
+                    <desc>marginal commentary</desc>
                   </valItem>
-                  <valItem ident="hypothesis">
-                    <desc>Short introduction to a Psalm in manuscripts of the Psalms (n="hypothesis")</desc>
+                  <valItem ident="intercolumn">
+                    <desc>Commentary between column of commented text and other commentary</desc>
                   </valItem>
-                  <valItem ident="perioche">
-                    <desc>Short summary of a Psalm (by Eusebius of Caesarea) in manuscripts of the Psalms (n="perioche")</desc>
+                  <valItem ident="interlinear">
+                    <desc>interlinear commentary</desc>
+                  </valItem>
+                  <valItem ident="scholia">
+                    <desc>Scholia</desc>
+                  </valItem>
+                  <valItem ident="hexaplaric">
+                    <desc>Hexaplaric readings</desc>
                   </valItem>
                 </valList>
               </attDef>

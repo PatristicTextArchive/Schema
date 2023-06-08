@@ -158,7 +158,7 @@ The entire transcription is in the `<text>` part of the file in a
 text using [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
 - `@n` indicating the URN of the file, see [below](#dateistruktur).
 
-#### Mark-up of the structure of the text
+#### Mark-up of the structure of the text {#markup-transcription}
 
 Within this section, at least one subsection `<div>` with the attribute
 `@type="textpart"` is to be used, whereby the attribute `@subtype` may
@@ -173,7 +173,9 @@ In the case of a catena, for example, this may look like this:
 
 The text is further subdivided by the element `<seg>` to which an `@xml-id` is
 also assigned in each case in order to be able to mark the references
-between the corresponding parts (text, commentary).
+between the corresponding parts (text, commentary), while the referencing (commenting) element (`<seg>` or `<p>`) receives an attribute `@corresp`.
+
+In addition, the attribute `@ana` can be used for comments (`@subtype='commentary'`) to provide information on the location of the corresponding comment part on the page or its categorization. Possible values are: `marginal`, `interlinear`, `intercolumn`, `scholia`, `hexaplaric`; other values are allowed if necessary. 
 
 In the transcription, the `<milestone>` element can be used to refer to
 structuring of the text (specified using the `@unit` and `@n` attributes)
@@ -221,6 +223,10 @@ Paragraphs - as far as they are marked in the manuscript (e.g. by a gap)
 – are marked with the element `<p>`. Each transcription consists of at
 least one paragraph.
 
+#### Lists
+
+Lists (e.g. of names or tables of contents), if they are represented as such in the manuscript, are marked with the element `<list>`, the individual list entries with the element `<item>`. If a list has a highlighted heading, it is marked with the help of the element `<head>`.
+
 #### Initials and Ektheseis
 
 Initials and ektheseis are marked with the element `<hi>`. In the
@@ -251,7 +257,9 @@ marginalia is found.
 The position is specified in the `@place `attribute.
 Permitted values are `top` (if necessary, specified in more detail:
 `top_inner`, `top_center`, `top_outer`), `bottom` (`bottom_inner`,
-`bottom_center`, `bottom_outer`), `margin_inner` and `margin_outer`.
+`bottom_center`, `bottom_outer`), `margin_inner`, `margin_outer` and `intercolumn`.
+
+If a note does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr` for *manus recentior*; for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a note has been made, the attribute is assigned the value `unknown`.
 
 @import "examples/notes_transcr.xml" {class="line-numbers"}
 
@@ -612,7 +620,7 @@ also contain their own headings in a `<head>` element.
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
 
-For footnotes the element `<note>` is used. Bibliographic data that is not already defined in the `<teiHeader>` can be given at point by using the element `<bibl>`;  the attribut `@xml:id` may be used to reference entries like those. It is also possible to reference the text (or variants), if a `@xml:id` is provided with the respective element (for example `<seg>`, `<app>` or `<rdg>`).
+For footnotes the element `<note>` is used. Bibliographic data that is not already defined in the `<teiHeader>` can be given at point by using the element `<bibl>`;  the attribut `@xml:id` may be used to reference entries like those. It is also possible to reference the text (or variants), if a `@xml:id` is provided with the respective element (for example `<seg>`, `<app>` or `<rdg>`). Lists may also be used.
 
 #### Text
 
@@ -624,40 +632,36 @@ reconstructed by the editor (according to the specifications in the
 help of (also nested) subsections `<div>` of `@type="textpart"`, whereby
 the following values are possible for the attribute `@subtype`:
 
--   Book (numbered): `<div type="textpart" subtype="book" n="1">`
+-   Book: `<div type="textpart" subtype="book" n="1">`
 
--   Homily (numbered): `<div type="textpart" subtype="homily" n="1">`
+-   Homily: `<div type="textpart" subtype="homily" n="1">`
 
--   Chapter (numbered): `<div type="textpart" subtype="chapter" n="1">`
+-   Chapter: `<div type="textpart" subtype="chapter" n="1">`
 
--   Subdocument (numbered):
+-   Subdocument:
     `<div type="textpart" subtype="subdok" n="1">`
 
 -   Praefatio (non-numbered preface in the text):
     `<div type="textpart" subtype="praefatio" n="praefatio">`
 
--   Section (numbered): `<div type="textpart" subtype="section" n="1">`
+-   Section: `<div type="textpart" subtype="section" n="1">`
 
--   Fragment (numbered):
+-   Fragment:
     `<div type="textpart" subtype="fragment" n="1">`
 
--   Commented text (commented passage):
+-   Commented text:
     `<div type="textpart" subtype="commented" n="Gen_1_1">`
 
--   Commentary (annotated passage):
-    `<div type="textpart" subtype="commentary" n="Gen_1_1">`
+-   Commentary:
+    `<div type="textpart" subtype="commentary" n="Gen_1_1">` (cf. [above](#markup-transcription))
 
--   Hypopsalmos (unnumbered):
-    `<div type="textpart" subtype="hypopsalmos" n="hypopsalmos">`
-
--   Hypothesis (not numbered):
-    `<div type="textpart" subtype="hypothesis" n="hypothesis">`
-
--   Perioche (not numbered):
-    `<div type="textpart" subtype="perioche" n="perioche">`
+The `@n` attribute receives the reference indicator (which is used for citing the respective passage), usually a number, but text like “pr”, “hypopsalmos”, “hypothesis”, “perioche” etc. are also possible. Please note that the attribute may not contain whitespace, but only letters, numbers, symbols and punctuation signs.
 
 Paragraphs within these subsections are marked with the help of the
 `<p>` element. Each `<div>` element contains at least one `<p>` element.
+Lists are also allowed: They are marked (instead of `<p>`) with the element `<list>`, 
+the individual list entries with the element `<item>`. If a list has a heading, 
+it is marked with the help of the element `<head>`.
 
 ##### Marking up further structural elements
 

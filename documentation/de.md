@@ -75,7 +75,7 @@ Abschnitt `<div>`. Das Element hat die folgenden Attrribute:
 - `@xml:lang` mit der Angabe der Sprache des edierten Textes unter Verwendung von [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
 - `@n` mit der URN der Datei, s. [unten](#dateistruktur).
 
-#### Auszeichnung der Textstruktur
+#### Auszeichnung der Textstruktur {#markup-transcription}
 
 Innerhalb dieses Abschnittes ist zumindest ein Unterabschnitt `<div>`
 vom `@type="textpart"` zu verwenden, wobei das Attribut `@subtype`
@@ -88,8 +88,10 @@ Im Fall einer Katene kann das z.B. folgendermaßen aussehen:
 
 @import "examples/structure_catena.xml" {class="line-numbers"}
 
-Der Text wird dabei durch das Element <seg> weiter unterteilt,
-dem jeweils auch eine @xml-id zugewiesen wird, um so die Bezüge zwischen den korrespondieren Teilen (Text, Kommentar) auszeichnen zu können.
+Der Text wird dabei durch das Element `<seg>` weiter unterteilt,
+dem jeweils auch eine @xml-id zugewiesen wird, um mit Hilfe des Attributes `@corresp` im referenzierenden Element (`<seg>` oder `<p>`) die Bezüge zwischen den korrespondieren Teilen (Text, Kommentar) auszeichnen zu können.
+
+Zusätzlich kann bei Kommentaren (= `@subtype='commentary'`) das Attribut `@ana` verwendet werden, um Angaben zur Lokalisierung des entsprechenden Kommentarteils auf der Seite bzw. zu seiner  Kategorisierung zu machen. Mögliche Werte sind: `marginal`, `interlinear`, `intercolumn`, `scholia`, `hexaplaric`; andere Werte sind bei Bedarf erlaubt.
 
 Bei der Transkription kann mit Hilfe des Elementes `<milestone>` auf Gliederungen des Textes (angegeben mit Hilfe der Attribute `@unit` und `@n`) durch Editionen (angegeben mit `@edRef`) verwiesen werden: 
 
@@ -130,6 +132,10 @@ die Eingabe des Links auf ein digitales Faksimile.
 Absätze werden – soweit sie in der Handschrift (z.B. durch eine Lücke)
 markiert sind – mit dem Element `<p>` ausgezeichnet. Jede Transkription besteht aus mindestens einem Absatz.
 
+#### Listen
+
+Listen (z.B. von Namen oder Inhaltsverzeichnisse) werden, wenn sie in der Handschrift als solche dargestellt sind, mit dem Element `<list>`, die einzelnen Listeneinträge mit dem Element `<item>` ausgezeichnet. Hat eine Liste eine hervorgehobene Überschrift, so wird diese mit Hilfe des Elementes `<head>` ausgezeichnet. 
+
 #### Initialen und Ektheseis
 
 Initialen und Ektheseis werden mit dem Element `<hi>` ausgezeichnet. Im
@@ -159,7 +165,13 @@ an der sich die Marginalie befindet.
 Die Position der Marginalie wird im Attribut `@place` angegeben.
 Erlaubte Werte sind `top` (ggfs. näher spezifiert: `top_inner`,
 `top_center`, `top_outer`), `bottom` (`bottom_inner`, `bottom_center`,
-`bottom_outer`), `margin_inner` und `margin_outer`.
+`bottom_outer`), `margin_inner`, `margin_outer` und `intercolumn`.
+
+Stammt eine Marginalie nicht vom Schreiber, kann dies durch das Attribut
+`@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, … –
+allgemein `#mr` für *manus recentior*; zur Angabe der Hände in den Metadaten s. [oben](#meta_transkription)) unterschieden werden sollten. Ist
+nicht zu entscheiden, von welcher Hand eine Marginalie geschrieben worden
+ist, wird dem Attribut der Wert `unknown` zugewiesen.
 
 @import "examples/notes_transcr.xml" {class="line-numbers"}
 
@@ -484,7 +496,7 @@ Unterabschnitte können mit Hilfe von `<div type="section" n="1">` eingerichtet 
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
 
-Für Fußnoten wird das Element `<note>` verwendet. Bibliographische Angaben, die nicht im `<teiHeader>` definiert sind, können an Ort und Stelle mit Hilfe des Elements `<bibl>` (das Attribut `@xml:id` kann verwendet werden, um Verweise auf solche Titel zu ermöglichen) ausgezeichnet werden. Es sind auch Verweise auf den Text (bzw. Varianten) möglich, wenn eine `@xml:id` beim entsprechenden Element (z.B. `<seg>`, `<app>` oder `<rdg>`) gesetzt ist.
+Für Fußnoten wird das Element `<note>` verwendet. Bibliographische Angaben, die nicht im `<teiHeader>` definiert sind, können an Ort und Stelle mit Hilfe des Elements `<bibl>` (das Attribut `@xml:id` kann verwendet werden, um Verweise auf solche Titel zu ermöglichen) ausgezeichnet werden. Es sind auch Verweise auf den Text (bzw. Varianten) möglich, wenn eine `@xml:id` beim entsprechenden Element (z.B. `<seg>`, `<app>` oder `<rdg>`) gesetzt ist. Listen dürfen ebenfalls verwendet werden.
 
 @import "examples/ed_notes_praefatio.xml" {class="line-numbers"}
 
@@ -499,35 +511,32 @@ geschachtelten) Unterabschnitten `<div>` vom `@type="textpart"`
 ausgezeichnet, wobei folgende Werte für das Attribut `@subtype`
 möglich sind:
 
--   Buch (nummeriert): `<div type="textpart" subtype="book" n="1">`
+-   Buch: `<div type="textpart" subtype="book" n="1">`
 
--   Homilie (nummeriert): `<div type="textpart" subtype="homily" n="1">`
+-   Homilie: `<div type="textpart" subtype="homily" n="1">`
 
--   Kapitel (nummeriert):
+-   Kapitel:
     `<div type="textpart" subtype="chapter" n="1">`
 
--   Unterdokument (nummeriert): `<div type="textpart" subtype="subdok" n="1">`
+-   Unterdokument: `<div type="textpart" subtype="subdok" n="1">`
 
 -   Praefatio (nicht-nummeriertes Vorwort im Text): `<div type="textpart" subtype="praefatio" n="praefatio">`
 
--   Abschnitt (nummeriert):
+-   Abschnitt:
     `<div type="textpart" subtype="section" n="1">`
 
--   Fragment (nummeriert):
+-   Fragment:
     `<div type="textpart" subtype="fragment" n="1">`
 
--   Kommentierter Text (kommentierte Stelle): `<div type="textpart" subtype="commented" n="Gen_1_1">` 
+-   Kommentierter Text: `<div type="textpart" subtype="commented" n="Gen_1_1">` 
 
--   Kommentierung (kommentierte Stelle):
-    `<div type="textpart" subtype="commentary" n="Gen_1_1">` 
+-   Kommentierung:
+    `<div type="textpart" subtype="commentary" n="Gen_1_1">` (vgl. auch die Ausführungen [oben](#markup-transcription))
 
--   Hypopsalmos (nicht nummeriert): `<div type="textpart" subtype="hypopsalmos" n="hypopsalmos">` 
+Das Attribute `@n` enthält die Stellenreferenz, normalerweise eine Zahl, sie kann aber auch Text wie “pr”, “hypopsalmos”, “hypothesis”, “perioche” usw. enthalten. Sie darf aber kein Leerzeichen enthalten, sondern nur Buchstaben, Zahlen, Symboe und Interpunktionszeichen. 
 
--   Hypothesis (nicht nummeriert): `<div type="textpart" subtype="hypothesis" n="hypothesis">` 
+Absätze innerhalb dieser Unterabschnitte werden mit Hilfe des Elements `<p>` ausgezeichnet. Jedes Element `<div>` enthält mindestens ein Element `<p>`. Listen sind ebenfalls erlaubt: Sie werden (anstelle von `<p>`) mit dem Element `<list>`, die einzelnen Listeneinträge mit dem Element `<item>` ausgezeichnet. Hat eine Liste eine Überschrift, so wird diese mit Hilfe des Elementes `<head>` ausgezeichnet. 
 
--   Perioche (nicht nummeriert): `<div type="textpart" subtype="perioche" n="perioche">` 
-
-Absätze innerhalb dieser Unterabschnitte werden mit Hilfe des Elements `<p>` ausgezeichnet. Jedes Element `<div>` enthält mindestens ein Element `<p>`.
 
 ##### Auszeichnung weiterer struktureller Elemente
 
