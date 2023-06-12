@@ -16,10 +16,13 @@
 </xsl:template>
   <!-- transcriptions: add missing lb after pb and cb and cb after pb if two-column layout -->
   <xsl:template match="tei:pb">
-    <xsl:copy-of select="//tei:pb"/>
-    <xsl:if test="child::tei:cb">
+    <xsl:copy-of select="current()"/>
+    <xsl:if test="following::tei:cb">
       <xsl:element name="cb" namespace="http://www.tei-c.org/ns/1.0">
         <xsl:attribute name="n">1</xsl:attribute>
+        <xsl:if test="current()/@break">
+        <xsl:attribute name="break">no</xsl:attribute>
+      </xsl:if>
       </xsl:element>
     </xsl:if>
     <xsl:element name="lb" namespace="http://www.tei-c.org/ns/1.0">
@@ -31,13 +34,13 @@
 
   <xsl:template match="tei:cb">
     <xsl:choose>
-      <xsl:when test="preceding-sibling::tei:cb">
+      <xsl:when test="preceding::tei:cb[1]">
         <xsl:element name="cb" namespace="http://www.tei-c.org/ns/1.0">
-          <xsl:attribute name="n"><xsl:value-of select="preceding-sibling::tei:cb/@n + 1"/></xsl:attribute>
+          <xsl:attribute name="n">2</xsl:attribute>
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:copy-of select="//tei:cb"/>
+        <xsl:copy-of select="current()"/>
       </xsl:otherwise>
     </xsl:choose>
     <xsl:element name="lb" namespace="http://www.tei-c.org/ns/1.0">
