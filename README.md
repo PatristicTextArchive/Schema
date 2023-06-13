@@ -10,3 +10,5 @@ Derived from this file is tei-pta.rng.
 The schema is a living document and open for changes: notifications of errors, ideas for additions or adaptions for other edition scenaria are welcome.
 
 Documentation is to be found in the folder “documentation” (currently German and English).
+
+The folder “scripts” contains a xslt (together with a bash script) for updating files to v.3.0 of the schema.
