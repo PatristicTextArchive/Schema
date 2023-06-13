@@ -1,6 +1,6 @@
 <div type="textpart" subtype="section" n="1">
     <p>...
-    <app type="textcritical" xml:id="app1-1" next="#app1-2">
+    <app type="variants" xml:id="app1-1" next="#app1-2">
         <lem wit="#Pt #Pb #My #Ha #Va #Ab">οὐδὲ γάρ ἐστι καλὸν τὸ ἔξω τοῦ οἴκου τοῦ θεοῦ πολιτεύεσθαι.</lem>
         <rdg wit="#Pc #Pd #Ma">οὐδὲν</rdg>
     </app>
@@ -8,9 +8,9 @@
 </div>
 <div type="textpart" subtype="section" n="2">
     <p>
-    <app type="textcritical" xml:id="app1-2" prev="#app1-1">
+    <app type="variants" xml:id="app1-2" prev="#app1-1">
         <lem wit="#Pt #Pb #My #Ha #Va #Ab">εὑρήσεις</lem>
-        <rdg wit="#Pc #Pd #Ma" type="orthographic">εὑρήσης</rdg>
+        <rdg wit="#Pc #Pd #Ma" cause="orthographic">εὑρήσης</rdg>
     </app>
     ...
     </p>

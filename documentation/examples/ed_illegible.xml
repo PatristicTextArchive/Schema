@@ -1,4 +1,4 @@
-<app type="textcritical">
+<app type="variants">
  <lem wit="#Pt #Pc #Pa #Be #Pb #Pd #Ma #My #Va #Ab">καὶ</lem>
- <rdg wit="#Ha" cause="illegible"/>
+ <rdg wit="#Ha" type="illegible"/>
 </app>

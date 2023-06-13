@@ -1,16 +1,15 @@
 <editorialDecl>
   <interpretation>
-    <p xml:id="biblical-quotations">
-    Bibelzitate sind ausgezeichnet und nach den oben angeführten Grundsätzen nachgewiesen.
-    </p>
-    <p xml:id="places">
-    Orte sind ausgezeichnet und mit den IDs des <ref target="https://pleiades.stoa.org/">Pleiades Gazetteers</ref>
-referenziert.
-    </p>
-    <p xml:id="persons">
-    Personen sind ausgezeichnet. Biblische Personen sind mit den IDs der <ref target="https://github.com/tyndale/STEPBible-Data">TIPNR - Tyndale Individualised Proper Names with all References</ref>-Liste, alle übrigen Personen und Gruppen mit den IDs der
-<ref target="https://lobid.org/gnd">GND</ref> referenziert.
-    </p>
-  </interpretation>
+    <p>This file is encoded according to the guidelines of the Patristic Text Archive (PTA). See https://pta.bbaw.de/project/encoding-guidelines and https://doi.org/10.5281/zenodo.3737666.</p>
+    <p xml:id="biblical-quotations"
+       ana="fully/partially/not-annotated fully/partially/not-identified">Biblical quotations are fully/partially annotated and/but not fully/partially referenced. References follow the scheme declared <ref target="#biblical">above</ref>. 
+             </p>
+    <p xml:id="places"
+       ana="fully/partially/not-annotated fully/partially/not-identified">Places are fully/partially annotated and/but not fully/partially referenced with <ref target="https://pleiades.stoa.org/">Pleiades Gazetteer</ref> IDs.</p>
+    <p xml:id="persons"
+       ana="fully/partially/not-annotated fully/partially/not-identified">Persons are fully/partially annotated and/but not fully/partially referenced with IDs according to the <ref target="https://github.com/PatristicTextArchive/tipnr_data">TIPNR - Tyndale Individualised Proper Names with all References</ref> list for biblical persons and IDs of <ref target="https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json">PTA persons index</ref> for all other persons.</p>
+    <p xml:id="groups"
+       ana="fully/partially/not-annotated fully/partially/not-identified">Groups of persons and organisations are fully/partially annotated and/but not fully/partially referenced with IDs according to the IDs of <ref target="https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_groups.json">PTA groups index</ref> for all other groups.</p>
+ </interpretation>
   ...
 </editorialDecl>

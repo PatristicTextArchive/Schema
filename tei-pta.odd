@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 2.1Alpha. Last updated on 2022-10-24.</edition>
+        <edition>Version 3.0. Last updated on 2022-05-22.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines - v3. Other more minor changes and updates</change>
+      <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
       <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
       <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra for cause</change>
       <change who="#AvS" when="2022-08-23">allow subsection for praefatio</change>
@@ -60,7 +62,7 @@
           <moduleRef key="tei"/>
           <moduleRef
             key="header"
-            except="abstract appInfo application catDesc catRef category classCode hyphenation namespace rendition samplingDecl schemaRef styleDefDecl tagUsage tagsDecl xenoData"/>
+            except="abstract appInfo application classCode hyphenation namespace rendition samplingDecl styleDefDecl tagUsage tagsDecl xenoData"/>
           <moduleRef
             key="textstructure"
             except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText imprimatur opener postscript salute signed titlePage titlePart trailer"/>
@@ -83,6 +85,23 @@
                 <valList type="closed">
                   <valItem ident="transcription"/>
                   <valItem ident="edition"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="revisionDesc" mode="change">
+            <attList>
+              <attDef ident="status" mode="change">
+                <valList type="closed">
+                  <valItem ident="draft">
+                    <desc>Draft version: work in progress</desc>
+                  </valItem>
+                  <valItem ident="unfinished">
+                    <desc>Work not yet finished: for example annotations need to be done</desc>
+                  </valItem>
+                  <valItem ident="approved">
+                    <desc>Approved (final) version</desc>
+                  </valItem>
                 </valList>
               </attDef>
             </attList>
@@ -141,14 +160,11 @@
             <constraintSpec scheme="isoschematron" ident="div">
               <constraint>
                 <sch:rule context="tei:div">
-                  <sch:report test="@type != 'textpart' or @type != 'section' and parent::tei:div and @type!=parent::tei:div/@type">
-                    Divs other than @type=textpart or @type=section may not nest in divs of different @type
-                  </sch:report>
-                  <sch:report test="@type = 'section' or @type = 'subsection' and not(ancestor::tei:div/@type='praefatio')">
-                    @type=section or @type=subsection may only be used in praefatio
-                  </sch:report>
                   <sch:report test="@subtype and not(@type='textpart')">
                     @subtype may only be used together with @type=textpart
+                  </sch:report>
+                  <sch:report test="@ana and not(@subtype='commentary')">
+                    @ana may only be used together with @subtype=commentary
                   </sch:report>
                 </sch:rule>
               </constraint>
@@ -185,6 +201,9 @@
               <attDef ident="subtype" mode="change">
                 <desc>for the description of the text structure</desc>
                 <valList type="closed" mode="replace">
+                  <valItem ident="part">
+                    <desc>Part</desc>
+                  </valItem>
                   <valItem ident="book">
                     <desc>Book</desc>
                   </valItem>
@@ -213,19 +232,30 @@
                     <desc>Fragment</desc>
                   </valItem>
                   <valItem ident="commented">
-                    <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary)</desc>
+                    <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary or scholia)</desc>
                   </valItem>
                   <valItem ident="commentary">
                     <desc>Exegesis of a Biblical verse or a commentary to a text</desc>
                   </valItem>
-                  <valItem ident="hypopsalmos">
-                    <desc>Short invocation in manuscripts of the Psalms (n="hypopsalmos")</desc>
+                </valList>
+              </attDef>
+              <attDef ident="ana" mode="change">
+                <desc>for analysis of layout dependend structures in commentaries</desc>
+                <valList type="semi" mode="replace">
+                  <valItem ident="marginal">
+                    <desc>marginal commentary</desc>
                   </valItem>
-                  <valItem ident="hypothesis">
-                    <desc>Short introduction to a Psalm in manuscripts of the Psalms (n="hypothesis")</desc>
+                  <valItem ident="intercolumn">
+                    <desc>Commentary between column of commented text and other commentary</desc>
                   </valItem>
-                  <valItem ident="perioche">
-                    <desc>Short summary of a Psalm (by Eusebius of Caesarea) in manuscripts of the Psalms (n="perioche")</desc>
+                  <valItem ident="interlinear">
+                    <desc>interlinear commentary</desc>
+                  </valItem>
+                  <valItem ident="scholia">
+                    <desc>Scholia</desc>
+                  </valItem>
+                  <valItem ident="hexaplaric">
+                    <desc>Hexaplaric readings</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -279,10 +309,10 @@
                     <desc>Ekthesis</desc>
                   </valItem>
                   <valItem ident="majuscule">
-                    <desc>in uppercase/capitals</desc>
+                    <desc>Word in uppercase/capitals</desc>
                   </valItem>
 		              <valItem ident="rubricated">
-                    <desc>is rubricated</desc>
+                    <desc>Word or letter is rubricated</desc>
                   </valItem>
                   <valItem ident="overline">
                     <desc>Line over a letter</desc>
@@ -429,16 +459,6 @@
               </attDef>
             </attList>
           </classSpec>
-          <classSpec type="atts" ident="att.responsibility" mode="change">
-            <attList>
-              <attDef ident="cert" mode="replace">
-                <valList type="closed">
-                  <valItem ident="low"/>
-                  <valItem ident="high"/>
-                </valList>
-              </attDef>
-            </attList>
-          </classSpec>
           <elementSpec ident="app" module="textcrit" mode="change">
             <!-- Changing attribute list: only @type is allowed -->
             <attList>
@@ -447,8 +467,8 @@
               <attDef ident="source" mode="delete"/>
               <attDef ident="type" mode="change" usage="req">
                 <valList type="closed" mode="replace">
-                  <valItem ident="textcritical">
-                    <desc>for textcritical apparatus</desc>
+                  <valItem ident="variants">
+                    <desc>for indication of text variation</desc>
                   </valItem>
                   <valItem ident="witnesses">
                     <desc>for indication of witnesses (especially for the indication of change of witnesses in the text)</desc>
@@ -458,9 +478,16 @@
             </attList>
           </elementSpec>
           <elementSpec ident="lem" module="textcrit" mode="change">
-            <!-- Changing attribute list: only @cause is allowed -->
+            <constraintSpec ident="lem" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:lem">
+                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of <sch:name/> is required.</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <!-- Changing attribute list: only @type is allowed -->
             <attList>
-              <attDef ident="cause" mode="change">
+              <attDef ident="type" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="conjecture">
                     <desc>variant is a conjecture (sc. /coniecit/)</desc>
@@ -480,7 +507,7 @@
                 </valList>
               </attDef>
               <attDef ident="ana" mode="delete"/>
-              <attDef ident="type" mode="delete"/>
+              <attDef ident="cause" mode="delete"/>
               <attDef ident="cert" mode="delete"/>
               <attDef ident="change" mode="delete"/>
               <attDef ident="exclude" mode="delete"/>
@@ -501,8 +528,20 @@
             </attList>
           </elementSpec>
           <elementSpec ident="rdg" module="textcrit" mode="change">
+              <!-- testing for <persName>, <orgName>, <placeName> within <rdg> and usage of @cert-->
+            <constraintSpec ident="rdg" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:rdg">
+                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of <sch:name/> is required.</sch:assert>
+                  <sch:report test="descendant::tei:persName">rdg may not contain a annotated person</sch:report>
+                  <sch:report test="descendant::tei:placeName">rdg may not contain a annotated place</sch:report>
+                  <sch:report test="descendant::tei:orgName">rdg may not contain a annotated organisation</sch:report>
+                  <sch:report test="@cert and not(@type='proposition')">cert may only be used in case of a proposition</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
-              <attDef ident="cause" mode="change">
+              <attDef ident="type" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="addition">
                     <desc>cause for variant is an addition</desc>
@@ -539,7 +578,7 @@
                   </valItem>
                 </valList>
               </attDef>
-              <attDef ident="type" mode="change">
+              <attDef ident="cause" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="orthographic">
                     <desc>marks a variant which is only orthographic (for example because of itacism)</desc>
@@ -558,19 +597,30 @@
                   </valItem>
                 </valList>
               </attDef>
-              <attDef ident="style" mode="change">
+              <attDef ident="resp" mode="change">
+                <desc>indicates the one responsible (editor, not in a printed edition)</desc>
+              </attDef>
+              <attDef ident="source" mode="change">
+                <desc>indicates the source of a variant (an earlier edition)</desc>
+              </attDef>
+              <attDef ident="wit" mode="change">
+                <desc>indicates the witness (manuscript)</desc>
+              </attDef>
+              <attDef ident="cert" mode="change">
+                <desc>indicates the certainty (for a proposition)</desc>
                 <valList type="closed" mode="replace">
-                  <valItem ident="supralinear">
-                    <desc>above the line</desc>
+                  <valItem ident="low">
+                    <desc>low certainty</desc>
                   </valItem>
-                  <valItem ident="marginal">
-                    <desc>in the margin</desc>
+                  <valItem ident="medium">
+                    <desc>medium certainty</desc>
                   </valItem>
-                  <valItem ident="inline">
-                    <desc>inline</desc>
+                  <valItem ident="high">
+                    <desc>high certainty</desc>
                   </valItem>
                 </valList>
               </attDef>
+              <attDef ident="style" mode="delete"/>
             </attList>
           </elementSpec>
           <elementSpec ident="cb" module="core" mode="change">
@@ -592,15 +642,26 @@
             </attList>
           </elementSpec>
           <elementSpec ident="del" module="core" mode="change">
+            <!-- testing for @repurposed: only to be used within <subst> -->
+            <constraintSpec ident="del" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:del">
+                  <sch:report test="@repurposed and not(parent::tei:subst)">@repurposed may only used within a substitution</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="rend" mode="change">
                 <valList type="closed" mode="replace">
-		  <valItem ident="unmarked">
-		    <desc>text to be replaced is not marked explicitly</desc>
-		  </valItem>
-		  <valItem ident="marker">
-		    <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
-		  </valItem>
+		              <valItem ident="unmarked">
+		                <desc>text to be replaced is not marked explicitly</desc>
+		              </valItem>
+		              <valItem ident="marker">
+		                <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
+		              </valItem>
+                  <valItem ident="repurposed">
+                    <desc>for use with added diacritics: letter before correction, without diacritics</desc>
+                  </valItem>
                   <valItem ident="erasure"/>
                   <valItem ident="strikethrough"/>
                   <valItem ident="overwrite"/>
@@ -619,18 +680,21 @@
                 <valList type="closed" mode="replace">
                   <valItem ident="siglum">
                     <desc>classifies abbreviation as siglum</desc>
-		  </valItem>
+		              </valItem>
                   <valItem ident="nomSac">
                     <desc>classifies an abbreviation as nomen sacrum</desc>
-		  </valItem>
+		              </valItem>
+                  <valItem ident="suspension">
+                    <desc>classifies an abbreviation as suspension (providing only the first letters and omitting the rest)</desc>
+		              </valItem>
                 </valList>
               </attDef>
             </attList>
           </elementSpec>
-	  <elementSpec ident="msIdentifier" module="msdescription" mode="change">
+	        <elementSpec ident="msIdentifier" module="msdescription" mode="change">
             <attList>
               <attDef ident="xml:id" mode="change" usage="req">
-		<desc>needs an id to be used by CollateX</desc>
+	            	<desc>needs an id to be used by CollateX</desc>
               </attDef>
             </attList>
           </elementSpec>

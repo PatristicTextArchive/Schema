@@ -1,11 +1,11 @@
-<app type="textcritical">
-  <lem source="#Sav" cause="conjecture">νομογράφῳ</lem>
+<app type="variants">
+  <lem source="#Sav" type="conjecture">νομογράφῳ</lem>
   <rdgGrp>
     <rdg wit="#Be #Ab">τῷ νόμῳ γράφει</rdg>
-    <rdg wit="#Pt #Pa #Pb #Pd #Ma #Ha #Va" type="orthographic">τῷ νομῳ γράφει</rdg>
+    <rdg wit="#Pt #Pa #Pb #Pd #Ma #Ha #Va" cause="orthographic">τῷ νομῳ γράφει</rdg>
   </rdgGrp>
   <rdgGrp>
     <rdg wit="#Pc">τὸν νόμον γράφει</rdg>
-    <rdg wit="#My" type="orthographic">τὸν νόμων γράφει</rdg>
+    <rdg wit="#My" cause="orthographic">τὸν νόμων γράφει</rdg>
   </rdgGrp>
 </app>

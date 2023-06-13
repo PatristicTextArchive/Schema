@@ -29,15 +29,21 @@
       <refsDecl n="CTS">
         <cRefPattern n="section" matchPattern="(.+)" replacementPattern="#xpath(/tei:TEI/tei:text/tei:body/tei:div[@type='edition']/tei:div[@n='$1'])"/>
       </refsDecl>
+      <schemaRef key="v3" url="https://raw.githubusercontent.com/PatristicTextArchive/Schema/master/tei-pta.rng"/>
     </encodingDesc>
     <profileDesc>
       <creation>
-          <date>Date of creation</date>
-          <placeName>Place or region of creation</placeName>
+          <date><!--Date of creation--></date>
+          <placeName><!--Place or region of creation--></placeName>
       </creation>
       <textClass>
-        Genre of text according to https://www.comphistsem.org/46.html
-      </textClass>
+        <keywords scheme="#comphistsem">
+           <term><!--Genre missing--></term>
+        </keywords>
+        <keywords scheme="#editionstatus">
+           <term><!--Edition status missing--></term>
+        </keywords>
+     </textClass>
     </profileDesc>
     <revisionDesc>
       <change who="#AvS" when="2019-02-05">Transkription des Textes anhand des Mikrofilms im Besitz des CNRS</change>

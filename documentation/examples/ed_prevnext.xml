@@ -1,9 +1,13 @@
 <p>Διὰ τί ἐσαλεύθησαν θεμέλιοι τῆς δημιουργίας; 
 <quote xml:id="qu1-1" next="#qu1-2">Τί σοι ἐστί,</quote>
-<app type="textcritical">
+<app type="variants">
   <lem wit="#Pc #Pt #My">
-    <quote xml:id="qu1-2" prev="#qu1-1">θάλασσα, ὅτι ἔφυγες;<ref decls="#biblical" cRef="LXX:Ps:113:3"/></quote> τί ἔλυσας τὸν ὅρον τοῦ νομοθέτου, τοῦ κελεύσαντός σοι <quote xml:id="qu2-1" next="#qu2-2">Μέχρι τούτου ἐλεύσῃ</quote>
+    <quote xml:id="qu1-2" prev="#qu1-1">θάλασσα, ὅτι ἔφυγες;
+    <ref decls="#biblical" cRef="LXX:Ps:113:3"/></quote> 
+    τί ἔλυσας τὸν ὅρον τοῦ νομοθέτου, τοῦ κελεύσαντός σοι 
+    <quote xml:id="qu2-1" next="#qu2-2">Μέχρι τούτου ἐλεύσῃ</quote>
   </lem>
-  <rdg wit="#Pd" cause="omission"/>
+  <rdg wit="#Pd" type="omission"/>
 </app>
-<quote xml:id="qu2-2" prev="#qu2-1">καὶ οὐχ ὑπερβήσῃ<ref decls="#biblical" cRef="LXX:Job:38:11"/></quote>;</p>
+<quote xml:id="qu2-2" prev="#qu2-1">καὶ οὐχ ὑπερβήσῃ
+<ref decls="#biblical" cRef="LXX:Job:38:11"/></quote>;</p>
