@@ -1,5 +1,6 @@
-<app type="variants">
+<app type="variants" xml:id="var1">
   <lem wit="#Pt #Pc #Pb #Pd #My #Ma #Ha #Va #Ab">ἀπαστράπτει</lem>
   <rdg wit="#Pa #Be" xml:id="lac-Pa">ἀ</rdg>
   <witDetail wit="#Pa" target="#lac-Pa">Blattausfall.</witDetail>
+  <note target="#var1">Sich auf die gesamte Variante beziehende Anmerkung</note>
 </app>

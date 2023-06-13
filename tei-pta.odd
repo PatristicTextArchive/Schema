@@ -190,6 +190,9 @@
                   <valItem ident="section">
                     <desc>used to divide a div[type=praefatio] into multiple parts</desc>
                   </valItem>
+                  <valItem ident="subsection">
+                    <desc>used to divide a div[type=praefatio]/div[type=section] into multiple parts</desc>
+                  </valItem>
                   <valItem ident="textpart">
                     <desc>used to divide a div[type=edition] into multiple parts (fragments, columns, faces, etc.)</desc>
                   </valItem>
@@ -430,15 +433,6 @@
               </constraint>
             </constraintSpec>
           </elementSpec>
-          <!-- modifying <unclear> because in EpiDoc it should not contain anything but text and <g/> -->
-          <elementSpec ident="unclear" module="core" mode="change">
-            <desc>Character that cannot be identified unambiguously outside of its context. May contain character data and
-              <gi>g</gi>
-              only.</desc>
-            <content>
-              <rng:ref name="macro.xtext"/>
-            </content>
-          </elementSpec>
           <!-- CHANGING ATTRIBUTE CLASSES -->
           <classSpec type="atts" ident="att.dimensions" mode="change">
             <attList>
@@ -559,7 +553,13 @@
                     <desc>cause for variant is an omission</desc>
                   </valItem>
                   <valItem ident="illegible">
-                    <desc>text is illegible</desc>
+                    <desc>cause for variant is that the text is illegible</desc>
+                  </valItem>
+                  <valItem ident="damage">
+                    <desc>cause for variant is that the text is physically damaged</desc>
+                  </valItem>
+                  <valItem ident="fenestra">
+                    <desc>cause for variant is that there is fenestra in text (by scribe)</desc>
                   </valItem>
                   <valItem ident="transposition">
                     <desc>cause for variant is a transposition</desc>

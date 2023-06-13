@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-06-06T10:36:22Z. .
+Schema generated from ODD source 2023-06-13T12:13:30Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -3996,8 +3996,8 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
    </define>
    <define name="tei_unclear">
       <element name="unclear">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(unclear) Character that cannot be identified unambiguously outside of its context. May contain character data and <code xmlns="http://www.w3.org/1999/xhtml">&lt;g&gt;</code> only. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.5.3. Additions, Deletions, and Omissions]</a:documentation>
-         <ref name="tei_macro.xtext"/>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(unclear) contains a word, phrase, or passage which cannot be transcribed with certainty because it is illegible or inaudible in the source. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.5.3. Additions, Deletions, and Omissions]</a:documentation>
+         <ref name="tei_macro.paraContent"/>
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.editLike.attributes"/>
          <ref name="tei_att.dimensions.attributes"/>
@@ -6770,10 +6770,13 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
                <sch:report test="@subtype and not(@type='textpart')">
                     @subtype may only be used together with @type=textpart
                   </sch:report>
+               <sch:report test="@ana and not(@subtype='commentary')">
+                    @ana may only be used together with @subtype=commentary
+                  </sch:report>
             </sch:rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-div-abstractModel-structure-l-constraint-report-18">
+                  id="tei-pta-div-abstractModel-structure-l-constraint-report-19">
             <rule context="tei:div">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6783,7 +6786,7 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-div-abstractModel-structure-p-constraint-report-19">
+                  id="tei-pta-div-abstractModel-structure-p-constraint-report-20">
             <rule context="tei:div">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -6792,10 +6795,53 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
       </report>
             </rule>
          </pattern>
-         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.attribute.xmlbase"/>
+         <ref name="tei_att.global.attribute.xmlspace"/>
+         <ref name="tei_att.global.rendition.attribute.rend"/>
+         <ref name="tei_att.global.rendition.attribute.style"/>
+         <ref name="tei_att.global.rendition.attribute.rendition"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
+         <ref name="tei_att.global.linking.attribute.synch"/>
+         <ref name="tei_att.global.linking.attribute.sameAs"/>
+         <ref name="tei_att.global.linking.attribute.copyOf"/>
+         <ref name="tei_att.global.linking.attribute.next"/>
+         <ref name="tei_att.global.linking.attribute.prev"/>
+         <ref name="tei_att.global.linking.attribute.exclude"/>
+         <ref name="tei_att.global.linking.attribute.select"/>
+         <ref name="tei_att.global.facs.attribute.facs"/>
+         <ref name="tei_att.global.change.attribute.change"/>
+         <ref name="tei_att.global.responsibility.attribute.cert"/>
+         <ref name="tei_att.global.responsibility.attribute.resp"/>
+         <ref name="tei_att.global.source.attribute.source"/>
          <ref name="tei_att.divLike.attributes"/>
          <ref name="tei_att.declaring.attributes"/>
          <ref name="tei_att.written.attributes"/>
+         <optional>
+            <attribute name="ana">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(analysis) for analysis of layout dependend structures in commentaries
+Suggested values include: 1] marginal; 2] intercolumn; 3] interlinear; 4] scholia; 5] hexaplaric</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>marginal</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">marginal commentary</a:documentation>
+                        <value>intercolumn</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Commentary between column of commented text and other commentary</a:documentation>
+                        <value>interlinear</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">interlinear commentary</a:documentation>
+                        <value>scholia</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Scholia</a:documentation>
+                        <value>hexaplaric</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric readings</a:documentation>
+                        <data type="anyURI"/>
+                     </choice>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
          <attribute name="type">
             <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
             <choice>
@@ -6811,6 +6857,8 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">to contain the Praefatio to an edition</a:documentation>
                <value>section</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">used to divide a div[type=praefatio] into multiple parts</a:documentation>
+               <value>subsection</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">used to divide a div[type=praefatio]/div[type=section] into multiple parts</a:documentation>
                <value>textpart</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">used to divide a div[type=edition] into multiple parts (fragments, columns, faces, etc.)</a:documentation>
             </choice>
@@ -6840,15 +6888,9 @@ Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] 
                   <value>fragment</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Fragment</a:documentation>
                   <value>commented</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Biblical verses or text, which is commented on (comment in @subtype=commentary)</a:documentation>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Biblical verses or text, which is commented on (comment in @subtype=commentary or scholia)</a:documentation>
                   <value>commentary</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Exegesis of a Biblical verse or a commentary to a text</a:documentation>
-                  <value>hypopsalmos</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Short invocation in manuscripts of the Psalms (n="hypopsalmos")</a:documentation>
-                  <value>hypothesis</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Short introduction to a Psalm in manuscripts of the Psalms (n="hypothesis")</a:documentation>
-                  <value>perioche</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Short summary of a Psalm (by Eusebius of Caesarea) in manuscripts of the Psalms (n="perioche")</a:documentation>
                </choice>
             </attribute>
          </optional>
@@ -7675,7 +7717,7 @@ The @spanTo attribute of <name/> is required.</assert>
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(s-unit) contains a sentence-like division of a text. [17.1. Linguistic Segment Categories 8.4.1. Segmentation]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-s-noNestedS-constraint-report-23">
+                  id="tei-pta-s-noNestedS-constraint-report-24">
             <rule context="tei:s">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8897,7 +8939,7 @@ Suggested values include: 1] 1.0.1; 2] 1.1; 3] 2.0; 4] 2.1; 5] 3.0; 6] 3.1; 7] 3
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(anonymous block) contains any arbitrary component-level unit of text, acting as an anonymous container for phrase or inter level elements analogous to, but without the semantic baggage of, a paragraph. [16.3. Blocks, Segments, and Anchors]</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-ab-abstractModel-structure-ab-constraint-report-24">
+                  id="tei-pta-ab-abstractModel-structure-ab-constraint-report-25">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -8908,7 +8950,7 @@ Suggested values include: 1] 1.0.1; 2] 1.1; 3] 2.0; 4] 2.1; 5] 3.0; 6] 3.1; 7] 3
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-ab-abstractModel-structure-l-constraint-report-25">
+                  id="tei-pta-ab-abstractModel-structure-l-constraint-report-26">
             <rule context="tei:ab">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -9238,7 +9280,7 @@ You must supply at least two values for @target on <name/>
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-dimensions-duplicateDim-constraint-report-26">
+                  id="tei-pta-dimensions-duplicateDim-constraint-report-27">
             <rule context="tei:dimensions">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -9609,7 +9651,7 @@ Suggested values include: 1] lettering; 2] nomenclature; 3] prosopography; 4] re
             </zeroOrMore>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-msIdentifier-msId_minimal-constraint-report-29">
+                  id="tei-pta-msIdentifier-msId_minimal-constraint-report-30">
             <rule context="tei:msIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -11269,7 +11311,7 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-relation-activemutual-constraint-report-30">
+                  id="tei-pta-relation-activemutual-constraint-report-31">
             <rule context="tei:relation">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -11278,7 +11320,7 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
             </rule>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-relation-activepassive-constraint-report-31">
+                  id="tei-pta-relation-activepassive-constraint-report-32">
             <rule context="tei:relation">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -11412,7 +11454,7 @@ Sample values include: 1] proclaimed; 2] assumed; 3] verified; 4] clinical; 5] b
             </choice>
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  id="tei-pta-objectIdentifier-objectIdentifier_minimal-constraint-report-32">
+                  id="tei-pta-objectIdentifier-objectIdentifier_minimal-constraint-report-33">
             <rule context="tei:objectIdentifier">
                <report xmlns:rng="http://relaxng.org/ns/structure/1.0"
                        xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -11616,7 +11658,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem">
-               <sch:assert test="@wit|@resp|@source">The wit attribute of <sch:name/> is required.</sch:assert>
+               <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of <sch:name/> is required.</sch:assert>
             </sch:rule>
          </pattern>
          <ref name="tei_att.global.attribute.xmlid"/>
@@ -11704,7 +11746,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                       xmlns:rng="http://relaxng.org/ns/structure/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg">
-               <sch:assert test="@wit">The wit attribute of <sch:name/> is required.</sch:assert>
+               <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of <sch:name/> is required.</sch:assert>
                <sch:report test="descendant::tei:persName">rdg may not contain a annotated person</sch:report>
                <sch:report test="descendant::tei:placeName">rdg may not contain a annotated place</sch:report>
                <sch:report test="descendant::tei:orgName">rdg may not contain a annotated organisation</sch:report>
@@ -11776,7 +11818,11 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                   <value>omission</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cause for variant is an omission</a:documentation>
                   <value>illegible</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">text is illegible</a:documentation>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cause for variant is that the text is illegible</a:documentation>
+                  <value>damage</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cause for variant is that the text is physically damaged</a:documentation>
+                  <value>fenestra</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cause for variant is that there is fenestra in text (by scribe)</a:documentation>
                   <value>transposition</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">cause for variant is a transposition</a:documentation>
                   <value>correction</value>

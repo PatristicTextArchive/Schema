@@ -2,5 +2,9 @@
     <div type="section" n="1">
         <head>Vorbemerkung</head>
         <p>Text</p>
+        <div type="subsection" n="1">
+            <head>Überschrift</head>
+            <p>Text</p>
+        </div>
     </div>
 </div>

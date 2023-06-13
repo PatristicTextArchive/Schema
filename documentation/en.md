@@ -540,6 +540,10 @@ Unreadable text is marked as `<@type="illegible">`. The element `<rdg>` is witho
 
 @import "examples/ed_illegible.xml" {class="line-numbers"}
 
+###### Gap in text of a manuscript
+
+A gap im text of a manuscripts is (following the rules for transcription) marked as `<@type="damage">` (damage) als `<@type="fenestra">` (intentional gap) oder als `<@type="deletion">` (deleted). The element `<rdg>` is without text content (“self-closing”).
+
 ###### Transpositions
 
 Transpositions are marked as `<@type="transposition">`. In the `<rdg>` element, the transposed text is reproduced in its full wording (sc. not abbreviated).

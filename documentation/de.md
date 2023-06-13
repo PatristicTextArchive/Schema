@@ -380,7 +380,9 @@ Die Praefatio bietet in einem Fließtext alles, was zum Verständnis des folgend
 
 Grundsätzlich ist es dabei sinnvoll, die Angaben, die im `<teiHeader>` gemacht wurden, mit Hilfe von Verweisen (mit dem Element `<ref>` und dem Attribut `@target`) zu verlinken.
 
-Unterabschnitte können mit Hilfe von `<div type="section" n="1">` eingerichtet werden, die im Element `<head>` auch eigene Überschriften enthalten können.
+Unterabschnitte können mit Hilfe von `<div type="section" n="1">` (und 
+diesem untergeordnet `<div type="subsection" n="1">`) eingerichtet werden, 
+die im Element `<head>` auch eigene Überschriften enthalten können.
 
 @import "examples/ed_div_praefatio.xml" {class="line-numbers"}
 
@@ -555,6 +557,10 @@ Nicht lesbarer Text wird als `<@type="illegible">` ausgezeichnet. Das Element `<
 
 @import "examples/ed_illegible.xml" {class="line-numbers"}
 
+###### Lücke im Text einer Handschrift
+
+Eine Lücke im Text einer Handschrift wird entsprechend den Transkriptionsregeln als `<@type="damage">` (Beschädigung) als `<@type="fenestra">` (freigelassen) oder als `<@type="deletion">` (Tilgung) ausgezeichnet. Das Element `<rdg>` ist ohne Textinhalt („self-closing“).
+
 ###### Umstellungen
 
 Umstellungen werden als `<@type="transposition">` ausgezeichnet. Im Element `<rdg>` wird der umgestellte Text in seinem vollen Wortlaut (sc. nicht abgekürzt) wiedergegeben.
@@ -685,7 +691,7 @@ Innerhalb eines Ordners `data` erhält jeder Autor (oder jede Werkgruppe) einen 
           |- pta0013.pta003.pta-MsPs.xml
           |- pta0013.pta003.pta-MsVi.xml
 
-Die Dateinamen folgen den CTS URNs und sind folgendermaßen aufgebaut: Das Kürzel „pta0013“ steht dabei für den Autor Amphilochius und „pta003“ für das Werk „Epistula synodalis“. Der letzte Teil der URN identifiziert die spezifische „Edition” eines Werkes: Im Beispiel sind das die
+Die Dateinamen folgen den CTS URNs und sind folgendermaßen aufgebaut: Das Kürzel „pta0013“ steht dabei für den Autor Amphilochius und „pta003“ für das Werk „Epistula synodalis“. Der letzte Teil der URN identifiziert die spezifische „Edition“ eines Werkes: Im Beispiel sind das die
 kritische Edition des griechischen Textes (pta-grc1), die deutsche Übersetzung (pta-deu1) und die Transkriptionen der vier Handschriften (pta-MsLa, pta-MsPg, pta-MsPs, pta-MsVi).
 
 Die Zuteilung neuer IDs für bisher nicht vorhandene Autoren und/oder Werke erfolgt nach [Rücksprache](mailto:annette.von_stockhausen@bbaw.de).
