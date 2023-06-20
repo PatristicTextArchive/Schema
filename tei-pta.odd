@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and @cert for unclear</change>
       <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines - v3. Other more minor changes and updates</change>
       <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
       <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
@@ -112,6 +113,7 @@
               <attDef ident="place" mode="change">
                 <valList type="closed">
                   <valItem ident="above"/>
+                  <valItem ident="below"/>
                   <valItem ident="inline"/>
                   <valItem ident="margin"/>
                 </valList>
@@ -256,6 +258,34 @@
                   </valItem>
                   <valItem ident="hexaplaric">
                     <desc>Hexaplaric readings</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="unclear" module="core" mode="change">
+            <attList>
+              <attDef ident="reason" mode="replace" usage="req">
+                <valList type="closed">
+                  <valItem ident="damage">
+                    <desc>Physical damage</desc>
+                  </valItem>
+                  <valItem ident="illegible">
+                    <desc>Traces of text remains on the surface but are hard to interpret</desc>
+                  </valItem>
+                  <valItem ident="retraced">
+                    <desc>Text is unclear due to retracing</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="cert" mode="change" usage="req">
+                <desc>indicates the certainty (for a proposition)</desc>
+                <valList type="closed" mode="replace">
+                  <valItem ident="low">
+                    <desc>low certainty</desc>
+                  </valItem>
+                  <valItem ident="high">
+                    <desc>high certainty</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -611,9 +641,6 @@
                 <valList type="closed" mode="replace">
                   <valItem ident="low">
                     <desc>low certainty</desc>
-                  </valItem>
-                  <valItem ident="medium">
-                    <desc>medium certainty</desc>
                   </valItem>
                   <valItem ident="high">
                     <desc>high certainty</desc>

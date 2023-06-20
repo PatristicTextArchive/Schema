@@ -162,7 +162,7 @@ If a correction does not originate from the scribe, this can be indicated by the
 
 Within this element, the deleted *text* is marked with `<del>`. The type of deletion is specified in the `@rend` attribute. Permitted values are `unmarked` (the text to be replaced is not explicitly marked at all), `marker` (the text to be replaced is marked with a character, e.g. an obelus or similar), `erasure`, `strikethrough`, `overwrite` and `expunction`.
 
-The *added text* is marked with `<add>`. The place of the addition is specified with the help of the `@place` attribute. Permitted values are `above`, `inline` and `margin`.
+The *added text* is marked with `<add>`. The place of the addition is specified with the help of the `@place` attribute. Permitted values are `above`, `below`, `inline` and `margin`.
 
 @import "examples/subst_transcr.xml" {class="line-numbers"}
 
@@ -176,7 +176,7 @@ If the correction is an overwriting or retracing of the original text without co
 
 #### Added text {#addition}
 
-Added text that is not accompanied by a correction is marked with the `<add>` element. The location of the addition is specified in the `@place` attribute. Permitted values are `above`, `inline` and `margin`.
+Added text that is not accompanied by a correction is marked with the `<add>` element. The location of the addition is specified in the `@place` attribute. Permitted values are `above`, `below`, `inline` and `margin`.
 
 If a correction does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*; for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
 
@@ -192,7 +192,7 @@ Unreadable text is specified with the self-closing element `<gap>` (for other us
 
 #### Gap in the text {#transcr_gap}
 
-A gap in the text is also indicated with the `<gap>` element. The attribute `@reason` is in this case assigned the value `damage` (physical damage) or `fenestra` (left blank by the writer). The (estimated) amount (`@quantity`) is indicated in letters, lines or pages (`@unit` with value `character`, `line` or `page`). 
+A gap in the text is also indicated with the `<gap>` element. The attribute `@reason` is in this case assigned the value `damage` (physical damage) or `fenestra` (left blank by the writer). The (estimated) amount (`@quantity`) is indicated in letters, lines or pages (`@unit` with value `character`, `word`, `line` or `page`). 
 
 @import "examples/gap_transcr.xml" {class="line-numbers"}
 
@@ -204,7 +204,7 @@ If, however, a gap has been created by the destruction of text by the scribe (sc
 
 #### Unclear reading {#unclear}
 
-If a text cannot be deciphered with certainty, it is marked with the `<unclear>` element.
+If a text cannot be deciphered with certainty, it is marked with the `<unclear>` element. The attribute `@reason` indicates the reason for the uncertain reading by the values `damage` (physical damage), `illegible` (not readable) or `retraced` (text traced). How secure the reading is is indicated by means of the attribute `@cert`, which can take the values `low` and `high`.
 
 @import "examples/unclear_transcr.xml" {class="line-numbers"}
 

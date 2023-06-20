@@ -179,7 +179,7 @@ Innerhalb dieses Elementes wird der *getilgte Text* mit `<del>`
 ausgezeichnet. Die Art der Tilgung wird im Attribut `@rend` angegeben.
 Erlaubte Werte sind `unmarked` (der zu ersetzende Text ist überhaupt nicht explizit markiert), `marker` (der zu ersetzende Text ist mit einem Zeichen, z.B. einem Obelus o.ä., markiert), `erasure` (ausradiert), `strikethrough` (durchgestrichen), `overwrite` (durch Überschreiben) und `expunction` (durch Auspunktieren).
 
-Der *hinzugefügte Text* wird mit `<add>` ausgezeichnet. Der Ort der Hinzufügung wird mit Hilfe des Attributes `@place` angegeben. Erlaubte Werte sind `above` (darüber), `inline` (in der Zeile) und `margin` (am Rand).
+Der *hinzugefügte Text* wird mit `<add>` ausgezeichnet. Der Ort der Hinzufügung wird mit Hilfe des Attributes `@place` angegeben. Erlaubte Werte sind `above` (darüber), `below` (darunter), `inline` (in der Zeile) und `margin` (am Rand).
 
 @import "examples/subst_transcr.xml" {class="line-numbers"}
 
@@ -193,7 +193,7 @@ Handelt es sich bei der Korrektur um ein Überschreiben bzw. Nachzeichnen des ur
 
 #### Hinzugefügter Text
 
-Hinzugefügter Text, der nicht mit einer Korrektur einhergeht, wird mit dem Element `<add>` ausgezeichnet. Der Ort der Hinzufügung wird im Attribut `@place` angegeben. Erlaubte Werte sind `above` (darüber), `inline` (in der Zeile) und `margin` (am Rand).
+Hinzugefügter Text, der nicht mit einer Korrektur einhergeht, wird mit dem Element `<add>` ausgezeichnet. Der Ort der Hinzufügung wird im Attribut `@place` angegeben. Erlaubte Werte sind `above` (darüber), `below` (darunter), `inline` (in der Zeile) und `margin` (am Rand).
 
 Stammt eine Korrektur nicht vom Schreiber, kann dies durch das Attribut `@hand` angegeben werden, wobei die Korrektoren (`#m2`, `#m3`, … – allgemein `#mr` für *manus recentior*; zur Angabe der Hände in den Metadaten s. [oben](#meta_transkription)) unterschieden werden sollten. Ist nicht zu entscheiden, von welcher Hand eine Korrektur vorgenommen worden ist, wird dem Attribut der Wert `unknown` zugewiesen.
 
@@ -207,7 +207,7 @@ Nicht lesbarer Text wird mit dem selbstschließenden Element `<gap>` angegeben (
 
 #### Lücke im Text {#transcr_gap}
 
-Eine Lücke im Text wird ebenfalls mit dem Element `<gap>` angebeben. Dem Attribut `@reason` wird in diesem Fall der Wert `damage` (physische Beschädigung) oder `fenestra` (vom Schreiber freigelassen) zugewiesen. Der (geschätzte) Umfang (`@quantity`) wird in Buchstaben, Zeilen oder Seiten (`@unit` mit Wert `character`, `line` oder `page`) angegeben.
+Eine Lücke im Text wird ebenfalls mit dem Element `<gap>` angebeben. Dem Attribut `@reason` wird in diesem Fall der Wert `damage` (physische Beschädigung) oder `fenestra` (vom Schreiber freigelassen) zugewiesen. Der (geschätzte) Umfang (`@quantity`) wird in Buchstaben, Zeilen oder Seiten (`@unit` mit Wert `character`, `word`, `line` oder `page`) angegeben.
 
 @import "examples/gap_transcr.xml" {class="line-numbers"}
 
@@ -218,7 +218,7 @@ Ist eine Lücke jedoch durch die Zerstörung von Text durch den Schreiber (sc. R
 #### Unsichere Lesung
 
 Ist ein Text nicht sicher zu entziffern, wird er mit dem Element
-`<unclear>` markiert.
+`<unclear>` markiert. Das Attribut `@reason` gibt den Grund für die unsichere Lesung durch die Werte `damage` (physische Beschädigung), `illegible` (nicht lesbar) oder `retraced` (Text nachgezeichnet) an. Wie sicher die Lesung ist, wird mit Hilfe des Attributs `@cert` angegeben, das die Werte `low` und `high` annehmen kann.
 
 @import "examples/unclear_transcr.xml" {class="line-numbers"}
 
