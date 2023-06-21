@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2023-06-13T12:13:30Z. .
+Schema generated from ODD source 2023-06-21T09:50:03Z. .
 TEI Edition: Version 4.2.1. Last updated on
 	1st March 2021, revision 654a5c551
 TEI Edition Location: https://www.tei-c.org/Vault/P5/Version 4.2.1/
@@ -3998,34 +3998,49 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
       <element name="unclear">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(unclear) contains a word, phrase, or passage which cannot be transcribed with certainty because it is illegible or inaudible in the source. [11.3.3.1. Damage, Illegibility, and Supplied Text 3.5.3. Additions, Deletions, and Omissions]</a:documentation>
          <ref name="tei_macro.paraContent"/>
-         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.attribute.xmlbase"/>
+         <ref name="tei_att.global.attribute.xmlspace"/>
+         <ref name="tei_att.global.rendition.attribute.rend"/>
+         <ref name="tei_att.global.rendition.attribute.style"/>
+         <ref name="tei_att.global.rendition.attribute.rendition"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
+         <ref name="tei_att.global.linking.attribute.synch"/>
+         <ref name="tei_att.global.linking.attribute.sameAs"/>
+         <ref name="tei_att.global.linking.attribute.copyOf"/>
+         <ref name="tei_att.global.linking.attribute.next"/>
+         <ref name="tei_att.global.linking.attribute.prev"/>
+         <ref name="tei_att.global.linking.attribute.exclude"/>
+         <ref name="tei_att.global.linking.attribute.select"/>
+         <ref name="tei_att.global.analytic.attribute.ana"/>
+         <ref name="tei_att.global.facs.attribute.facs"/>
+         <ref name="tei_att.global.change.attribute.change"/>
+         <ref name="tei_att.global.responsibility.attribute.resp"/>
+         <ref name="tei_att.global.source.attribute.source"/>
          <ref name="tei_att.editLike.attributes"/>
          <ref name="tei_att.dimensions.attributes"/>
-         <optional>
-            <attribute name="reason">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates why the material is hard to transcribe.
-Suggested values include: 1] illegible (illegible); 2] inaudible (inaudible); 3] faded (faded); 4] background_noise (background_noise); 5] eccentric_ductus (eccentric_ductus)</a:documentation>
-               <list>
-                  <oneOrMore>
-                     <choice>
-                        <value>illegible</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(illegible) </a:documentation>
-                        <value>inaudible</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(inaudible) </a:documentation>
-                        <value>faded</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(faded) </a:documentation>
-                        <value>background_noise</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(background_noise) </a:documentation>
-                        <value>eccentric_ductus</value>
-                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(eccentric_ductus) indicates illegibility due to an unusual, awkward, or incompetent execution of a glyph or glyphs </a:documentation>
-                        <data type="token">
-                           <param name="pattern">[^\p{C}\p{Z}]+</param>
-                        </data>
-                     </choice>
-                  </oneOrMore>
-               </list>
-            </attribute>
-         </optional>
+         <attribute name="cert">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(certainty) indicates the certainty (for a proposition)</a:documentation>
+            <choice>
+               <value>low</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">low certainty</a:documentation>
+               <value>high</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">high certainty</a:documentation>
+            </choice>
+         </attribute>
+         <attribute name="reason">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <choice>
+               <value>damage</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Physical damage</a:documentation>
+               <value>illegible</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Traces of text remains on the surface but are hard to interpret</a:documentation>
+               <value>retraced</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Text is unclear due to retracing</a:documentation>
+            </choice>
+         </attribute>
          <optional>
             <attribute name="agent">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Where the difficulty in transcription arises from damage, categorizes the cause of the damage, if it can be identified.
@@ -11780,8 +11795,6 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                <choice>
                   <value>low</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">low certainty</a:documentation>
-                  <value>medium</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">medium certainty</a:documentation>
                   <value>high</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">high certainty</a:documentation>
                </choice>
