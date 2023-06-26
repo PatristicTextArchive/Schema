@@ -279,7 +279,7 @@
                 </valList>
               </attDef>
               <attDef ident="cert" mode="change" usage="req">
-                <desc>indicates the certainty (for a proposition)</desc>
+                <desc>indicates the certainty (for the proposed text)</desc>
                 <valList type="closed" mode="replace">
                   <valItem ident="low">
                     <desc>low certainty</desc>
@@ -374,6 +374,16 @@
                 </valList>
               </attDef>
             </attList>
+          </elementSpec>          
+          <elementSpec ident="ref" module="core" mode="change">
+            <constraintSpec ident="ref" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:ref">
+                  <sch:report test="ancestor::tei:text and not(@cRef or @source)">in the edition ref needs @cRef or @source</sch:report>
+                  <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if ref has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>
           <elementSpec ident="note" module="core" mode="change">
             <attList>
