@@ -266,10 +266,10 @@
           <elementSpec ident="unclear" module="core" mode="change">
             <constraintSpec ident="unclear" scheme="isoschematron">
               <constraint>
-                <sch:rule context="tei:unclear[not(parent::tei:rdg) and not(parent::tei:lem)]">
+                <sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
                   <sch:assert test="@reason and @cert">@reason and @cert are to be used in unclear</sch:assert>
                 </sch:rule>
-                <sch:rule context="tei:unclear[parent::tei:rdg or parent::tei:lem]">
+                <sch:rule context="tei:unclear[ancestor::tei:rdg or ancestor::tei:lem]">
                   <sch:report test="@reason or @cert">@reason and @cert are not to be used in rdg or lem</sch:report>
                 </sch:rule>
               </constraint>
