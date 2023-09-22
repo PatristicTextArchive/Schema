@@ -223,11 +223,11 @@ Nomina sacra *can be* marked-up. For this purpose, within a `<choice>` element, 
 @import "examples/nomSac_transcr.xml" {class="line-numbers"}
 
 
-#### Abbreviations
+#### Other abbreviations
 
-If the circumstance of the abbreviation is to be noted, but not the abbreviated form itself, the element `<expan>` can be used.
+Other abbreviations are encoded similar to the nomina sacra. For this purpose, within a `<choice>` element, the abbreviation is included in the element `<abbr>` with the attribute `@type` of the value `suspension` and the expanded form is noted in the `<expan>` element.
 
-> The BBAW deliberately refrains from noting the abbreviated form for reasons of practicability and the time required otherwise; if abbreviations are to be included comprehensively, proceed analogously to the nomina sacra.
+> The BBAW deliberately refrains from noting other abbreviations for the most part for reasons of practicability and the time required otherwise.
 
 @import "examples/expan_transcr.xml" {class="line-numbers"}
 
@@ -400,6 +400,9 @@ Within the element `<div type="edition">` the text structure reconstructed by th
 
 -   Fragment:
     `<div type="textpart" subtype="fragment" n="1">`
+
+-   Testimonium:
+    `<div type="textpart" subtype="testimonium" n="1">`
 
 -   Commented text:
     `<div type="textpart" subtype="commented" n="Gen_1_1">`

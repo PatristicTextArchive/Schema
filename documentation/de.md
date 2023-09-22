@@ -234,11 +234,11 @@ Nomina sacra *können* ausgezeichnet werden. Dafür wird innerhalb eines `<choic
 
 @import "examples/nomSac_transcr.xml" {class="line-numbers"}
 
-#### Abkürzungen
+#### Andere Abkürzungen
 
-Soll der Umstand der Abkürzung, nicht aber die abgekürzte Form selbst vermerkt werden, so kann das Element `<expan>` verwendet werden.  
+ Andere Abkürzungen werden analog zu den Nomina sacra notiert. Dafür wird innerhalb eines `<choice>`-Elementes das Kürzel mit `<abbr>` mit dem Attribut `@type` vom Wert `suspension` aufgenommen und die aufgelöste Form im Element `<expan>` notiert.
 
-> Auf die Notierung der abgekürzten Form wird an der BBAW aus Gründen der Umsetzbarkeit und des andernfalls anzusetzenden Zeitaufwandes bewußt verzichtet; sollen Abkürzungen umfassend aufgenommen werden, so ist analog zu den Nomina sacra vorzugehen.
+> Andere Abkürzungen werden an der BBAW aus Gründen des dafür anzusetzenden Zeitaufwandes nur in Ausnahmefällen kodiert.
 
 @import "examples/expan_transcr.xml" {class="line-numbers"}
 
@@ -365,7 +365,7 @@ Schließlich erhält das Element `<revisionDesc>` ein Attribut `@status`, in dem
 - `approved`: Freigegebene, finale Version
 ### Edition
 
-Die gesamte kritische Edition steht im `<text>`-Teil der Datei. Sie besteht mindestens aus einem Element `<div>`, das den edierten Text enthält. Das Element hat die folgenden Attrribute: 
+Die gesamte kritische Edition steht im `<text>`-Teil der Datei. Sie besteht mindestens aus einem Element `<div>`, das den edierten Text enthält. Das Element hat die folgenden Attribute: 
 - `type="edition"`
 - `@xml:lang` mit der Angabe der Sprache des edierten Textes unter Verwendung von [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
 - `@n` mit der URN der Datei, s. [unten](#dateien-struktur-jeder-edition).
@@ -415,12 +415,15 @@ Innerhalb des Elements `<div type="edition">` wird die vom Editor rekonstruierte
 -   Fragment:
     `<div type="textpart" subtype="fragment" n="1">`
 
+-   Testimonium:
+    `<div type="textpart" subtype="testimonium" n="1">`
+
 -   Kommentierter Text: `<div type="textpart" subtype="commented" n="Gen_1_1">` 
 
 -   Kommentierung:
     `<div type="textpart" subtype="commentary" n="Gen_1_1">` (vgl. auch die Ausführungen [oben](#auszeichnung-der-textstruktur))
 
-Das Attribute `@n` enthält die Stellenreferenz, normalerweise eine Zahl, sie kann aber auch Text wie “pr”, “hypopsalmos”, “hypothesis”, “perioche” usw. enthalten. Sie darf aber kein Leerzeichen enthalten, sondern nur Buchstaben, Zahlen, Symbole und Interpunktionszeichen. 
+Das Attribute `@n` enthält die Stellenreferenz, normalerweise eine Zahl, sie kann aber auch Text wie „pr”, „hypopsalmos”, „hypothesis”, „perioche” usw. enthalten. Sie darf aber kein Leerzeichen enthalten, sondern nur Buchstaben, Zahlen, Symbole und Interpunktionszeichen. 
 
 Absätze innerhalb dieser Unterabschnitte werden mit Hilfe des Elements `<p>` ausgezeichnet. Jedes Element `<div>` enthält mindestens ein Element `<p>`. Listen sind ebenfalls erlaubt: Sie werden (anstelle von `<p>`) mit dem Element `<list>`, die einzelnen Listeneinträge mit dem Element `<item>` ausgezeichnet. Hat eine Liste eine Überschrift, so wird diese mit Hilfe des Elementes `<head>` ausgezeichnet. 
 

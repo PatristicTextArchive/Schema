@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 3.0. Last updated on 2022-06-20.</edition>
+        <edition>Version 3.0. Last updated on 2023-09-22.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr; new value "testimonium" for @subtype</change>
       <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and @cert for unclear</change>
       <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines - v3. Other more minor changes and updates</change>
       <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
@@ -232,6 +233,9 @@
                   </valItem>
                   <valItem ident="fragment">
                     <desc>Fragment</desc>
+                  </valItem>
+                  <valItem ident="testimonium">
+                    <desc>Testimonium</desc>
                   </valItem>
                   <valItem ident="commented">
                     <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary or scholia)</desc>
@@ -693,7 +697,7 @@
             <constraintSpec ident="del" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:del">
-                  <sch:report test="@repurposed and not(parent::tei:subst)">@repurposed may only used within a substitution</sch:report>
+                  <sch:report test="@rend='repurposed' and not(parent::tei:subst)">repurposed may only used within a substitution</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -722,6 +726,14 @@
             </attList>
           </elementSpec>
           <elementSpec ident="abbr" module="core" mode="change">
+            <!-- testing for siglum: only to be used within <witness> -->
+            <constraintSpec ident="abbr" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:abbr">
+                  <sch:report test="@type='siglum' and not(parent::tei:witness)">siglum may only used within a witness</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="type" mode="change" usage="req">
                 <valList type="closed" mode="replace">
@@ -737,6 +749,16 @@
                 </valList>
               </attDef>
             </attList>
+          </elementSpec>
+          <elementSpec ident="expan" module="core" mode="change">
+            <!-- testing for expan: only to be used within <choice> -->
+            <constraintSpec ident="expan" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:expan">
+                  <sch:report test="not(parent::tei:choice)">expan may only be used within a choice element</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>
 	        <elementSpec ident="msIdentifier" module="msdescription" mode="change">
             <attList>
