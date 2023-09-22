@@ -13,7 +13,7 @@ In any case, the advantages of a critical digital edition, as defined and exempl
 
 4.  Due to the strict separation of data (with a focus on completeness) and presentation of the data (in a selection of presented phenomena made for the respective medium and the respective purpose or question), quite different modes of presentation can be chosen on the basis of a data set, which can additionally be enriched by further data from other sources.
 
-## Building a digital edition according to TEI {#aufbau}
+## Building a digital edition according to TEI
 
 > The following writing conventions are used in these guidelines: `<element>` means XML elements, `@attribute` means XML attributes, and `value` means the values attributed to the attributes; `#` in a value means that it is an identifier defined elsewhere in the TEI file, usually the `<teiHeader>`, which is referenced at this point.
 
@@ -32,7 +32,7 @@ The section `<fileDesc>` contains the bibliographical information on the file, i
 The `<encodingDesc>` section provides all the information concerning the
 encoding of the file and in each case contains an element `<refsDecl>`,
 which defines the outline structure of the file according to the
-[“CapiTainS Guidelines”](http://capitains.org/) ([cf. below](#dateistruktur)). The section ends with the element `<schemaRef>` which references the version and the used schema.
+[“CapiTainS Guidelines”](http://capitains.org/) ([cf. below](#file-structure-of-each-edition)). The section ends with the element `<schemaRef>` which references the version and the used schema.
 
 Information on the dating (`<date>`) and location (`placeName`) of the text is provided in the `<creation>` element and on the genre (using the text type classification of <https://www.comphistsem.org/46.html>) in the `<textClass>` element within the `<profileDesc>` section.
 
@@ -48,7 +48,7 @@ The transcriptions are thus also editions and the result of interpretation. Howe
 
 If necessary, the metadata of the transcriptions can provide more detailed information on the extent to which phenomena are included or not.
 
-### Transcription metadata {#meta_transkription}
+### Transcription metadata
 
 In addition to the metadata mentioned above, the header of the transcription file contains short information about the manuscript in the `<msDesc>` element within the `<sourceDesc>` section, which includes at least the `<msIdentifier>` element. The element receives its own `@xml:id`, which is read e.g. for the identification of the manuscript during collation. If several scribes can be identified in a manuscript, it is also useful to briefly describe these scribes in the `<handNote>` element within a `<handDesc>` subsection in another section `<physDesc>`, which serves to describe the physical nature of the manuscript. The attribute `@xml:id` is referenced in the edition as an identifier and must be set in any case; in addition, other attributes are available, e.g. the attribute `@scribe` can be used if the scribe is known by name.
 
@@ -56,14 +56,14 @@ For example, if the handwriting is a marginal catena, the layout can be describe
 
 @import "examples/transc_metadata.xml" {class="line-numbers"}
 
-### Edition {#transcription-edition}
+### Edition of the transcription
 
 The entire transcription is in the `<text>` part of the file in a `<div>` element. The element has the following attributes:
 - `@type="edition"`
 - `@xml:lang` indicating the language of the edited text using [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php).
-- `@n` indicating the URN of the file, see [below](#dateistruktur).
+- `@n` indicating the URN of the file, see [below](#file-structure-of-each-edition).
 
-#### Mark-up of the structure of the text {#markup-transcription}
+#### Mark-up of the structure of the text
 
 Within this section, at least one subsection `<div>` with the attribute `@type="textpart"` is to be used, whereby the attribute `@subtype` may take the following values: `section` for continuous texts, `fragment` for fragmentary transmission, `commented` and `commentary` for commentaries or comparable texts where a distinction is made between a commented and a commentary text.
 
@@ -134,22 +134,22 @@ Text highlighted with a *line above* the letter or word is marked up with `<hi r
 
 Text in capitals (for example the lemmata in commentaries) is martked up with `<hi rend="majuscule">`.
 
-#### Marginalia {#marginalia}
+#### Marginalia
 
 Marginalia are marked in the transcription as `<note>`, the element being introduced in the text as close as possible to the place where the marginalia is found.
 
 The position is specified in the `@place `attribute. Permitted values are `top` (if necessary, specified in more detail: `top_inner`, `top_center`, `top_outer`), `bottom` (`bottom_inner`, `bottom_center`, `bottom_outer`), `margin_inner`, `margin_outer` and `intercolumn`.
 
-If a note does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr` for *manus recentior*; for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a note has been made, the attribute is assigned the value `unknown`.
+If a note does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr` for *manus recentior*; for the indication of hands in the metadata see [above](#transcription-metadata)). If it is not possible to decide by which hand a note has been made, the attribute is assigned the value `unknown`.
 
 @import "examples/notes_transcr.xml" {class="line-numbers"}
 
 
-#### Deleted text {#deletion}
+#### Deleted text
 
 Text deleted by the writer or a later corrector is marked with `<del>`. The type of deletion is specified in the `@rend` attribute. Permitted values are `erasure`, `strikethrough`, `overwrite` and `expunction`.
 
-If a deletion does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr` for *manus recentior*; for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
+If a deletion does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr` for *manus recentior*; for the indication of hands in the metadata see [above](#transcription-metadata)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
 
 @import "examples/del_transcr.xml" {class="line-numbers"}
 
@@ -158,11 +158,11 @@ If a deletion does not originate from the scribe, this can be indicated by the a
 
 Corrections (words, but also individual letters) are marked with the `<subst>` element.
 
-If a correction does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*, for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
+If a correction does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*, for the indication of hands in the metadata see [above](#transcription-metadata)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
 
 Within this element, the deleted *text* is marked with `<del>`. The type of deletion is specified in the `@rend` attribute. Permitted values are `unmarked` (the text to be replaced is not explicitly marked at all), `marker` (the text to be replaced is marked with a character, e.g. an obelus or similar), `erasure`, `strikethrough`, `overwrite` and `expunction`.
 
-The *added text* is marked with `<add>`. The place of the addition is specified with the help of the `@place` attribute. Permitted values are `above`, `inline` and `margin`.
+The *added text* is marked with `<add>`. The place of the addition is specified with the help of the `@place` attribute. Permitted values are `above`, `below`, `inline` and `margin`.
 
 @import "examples/subst_transcr.xml" {class="line-numbers"}
 
@@ -174,44 +174,44 @@ If the correction is an overwriting or retracing of the original text without co
 
 @import "examples/retrace.xml" {class="line-numbers"}
 
-#### Added text {#addition}
+#### Added text
 
-Added text that is not accompanied by a correction is marked with the `<add>` element. The location of the addition is specified in the `@place` attribute. Permitted values are `above`, `inline` and `margin`.
+Added text that is not accompanied by a correction is marked with the `<add>` element. The location of the addition is specified in the `@place` attribute. Permitted values are `above`, `below`, `inline` and `margin`.
 
-If a correction does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*; for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
+If a correction does not originate from the scribe, this can be indicated by the attribute `@hand`, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*; for the indication of hands in the metadata see [above](#transcription-metadata)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
 
 @import "examples/add_transcr.xml" {class="line-numbers"}
 
 
-#### Unreadable text {#unreadable}
+#### Unreadable text
 
-Unreadable text is specified with the self-closing element `<gap>` (for other uses of this element, see [the next entry](#transcr_gap)). The attribute `@reason` is assigned the value `illegible`. The (estimated) size (`@quantity`) is given in letters (`@unit="character"`), if necessary lines (`@unit="line"`).  
+Unreadable text is specified with the self-closing element `<gap>` (for other uses of this element, see [the next entry](#gap-in-the-text)). The attribute `@reason` is assigned the value `illegible`. The (estimated) size (`@quantity`) is given in letters (`@unit="character"`), if necessary lines (`@unit="line"`).  
 
 @import "examples/illegible_transcr.xml" {class="line-numbers"}
 
 
-#### Gap in the text {#transcr_gap}
+#### Gap in the text
 
-A gap in the text is also indicated with the `<gap>` element. The attribute `@reason` is in this case assigned the value `damage` (physical damage) or `fenestra` (left blank by the writer). The (estimated) amount (`@quantity`) is indicated in letters, lines or pages (`@unit` with value `character`, `line` or `page`). 
+A gap in the text is also indicated with the `<gap>` element. The attribute `@reason` is in this case assigned the value `damage` (physical damage) or `fenestra` (left blank by the writer). The (estimated) amount (`@quantity`) is indicated in letters, lines or pages (`@unit` with value `character`, `word`, `line` or `page`). 
 
 @import "examples/gap_transcr.xml" {class="line-numbers"}
 
 
-If, however, a gap has been created by the destruction of text by the scribe (sc. erasure: `@rend="erasure"`), it is marked with the element `<del>`; if necessary, in the case of destruction by another hand, the attribute `@hand` is to be indicated, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*; for the indication of hands in the metadata see [above](#meta_transkription)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
+If, however, a gap has been created by the destruction of text by the scribe (sc. erasure: `@rend="erasure"`), it is marked with the element `<del>`; if necessary, in the case of destruction by another hand, the attribute `@hand` is to be indicated, whereby the correctors should be distinguished (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*; for the indication of hands in the metadata see [above](#transcription-metadata)). If it is not possible to decide by which hand a correction has been made, the attribute is assigned the value `unknown`.
 
 @import "examples/erasure_transcr.xml" {class="line-numbers"}
 
 
-#### Unclear reading {#unclear}
+#### Unclear reading
 
-If a text cannot be deciphered with certainty, it is marked with the `<unclear>` element.
+If a text cannot be deciphered with certainty, it is marked with the `<unclear>` element. The attribute `@reason` indicates the reason for the uncertain reading by the values `damage` (physical damage), `illegible` (not readable) or `retraced` (text traced). How secure the reading is is indicated by means of the attribute `@cert`, which can take the values `low` and `high`.
 
 @import "examples/unclear_transcr.xml" {class="line-numbers"}
 
 
 #### Change of scribe
 
-If the writer changes in the text, the `<handShift/>` element is inserted at the position of the change. The scribe can be identified by the attributes `@medium` (characteristic of the ink or the writing material used), `@scribeRef` or `@scriptRef`, whereby for the latter attributes reference should be made to the corresponding `@xml:id` in the `<teiHeader>` (`<handDesc>`, see [above](#meta_transkription)).
+If the writer changes in the text, the `<handShift/>` element is inserted at the position of the change. The scribe can be identified by the attributes `@medium` (characteristic of the ink or the writing material used), `@scribeRef` or `@scriptRef`, whereby for the latter attributes reference should be made to the corresponding `@xml:id` in the `<teiHeader>` (`<handDesc>`, see [above](#transcription-metadata)).
 
 @import "examples/handshift_transcr.xml" {class="line-numbers"}
 
@@ -223,11 +223,11 @@ Nomina sacra *can be* marked-up. For this purpose, within a `<choice>` element, 
 @import "examples/nomSac_transcr.xml" {class="line-numbers"}
 
 
-#### Abbreviations
+#### Other abbreviations
 
-If the circumstance of the abbreviation is to be noted, but not the abbreviated form itself, the element `<expan>` can be used.
+Other abbreviations are encoded similar to the nomina sacra. For this purpose, within a `<choice>` element, the abbreviation is included in the element `<abbr>` with the attribute `@type` of the value `suspension` and the expanded form is noted in the `<expan>` element.
 
-> The BBAW deliberately refrains from noting the abbreviated form for reasons of practicability and the time required otherwise; if abbreviations are to be included comprehensively, proceed analogously to the nomina sacra.
+> The BBAW deliberately refrains from noting other abbreviations for the most part for reasons of practicability and the time required otherwise.
 
 @import "examples/expan_transcr.xml" {class="line-numbers"}
 
@@ -252,9 +252,9 @@ Lines marked in the manuscript with a paragraphos in the margin are noted using 
 
 ### Metadata of the critical edition
 
-#### Handwritten witnesses and earlier editions {#sourceDesc}
+#### Handwritten witnesses and earlier editions
 
-In addition to the [metadata mentioned above](#aufbau), the header of the file for the edition contains a list of the manuscripts used within the section `<sourceDesc>` in a subsection `<listWit>`. The information on the individual manuscripts is provided with the help of the element `<witness>`. The transcription of the manuscript should be linked in the attribute `@corresp` (in the form of its URN, see [below](#dateistruktur)).
+In addition to the [metadata mentioned above](#building-a-digital-edition-according-to-tei), the header of the file for the edition contains a list of the manuscripts used within the section `<sourceDesc>` in a subsection `<listWit>`. The information on the individual manuscripts is provided with the help of the element `<witness>`. The transcription of the manuscript should be linked in the attribute `@corresp` (in the form of its URN, see [below](#file-structure-of-each-edition)).
 
 All entries receive a machine-readable ID in the `@xml-id` attribute, to which a human-readable siglum, which may also contain further formatting, corresponds in the `<witness> `subordinate element `<abbr type="siglum">`.
 
@@ -332,7 +332,7 @@ The last element in the `<encodingDesc>` section is the type of marking up of th
 @import "examples/ed_variantencoding.xml" {class="line-numbers"}
 
 
-#### Type of edition {#editionstatus}
+#### Type of edition
 
 Within the `<profileDesc>` section, the type of edition is provided in the  `<textClass>` subsection in `<keywords scheme="#editionstatus">`. The element `<term>` has one of the following phrases:
 
@@ -357,7 +357,7 @@ Finally, the element `<revisionDesc>` receives an attribute `@status`, in which 
 The entire critical edition is in the `<text>` part of the file. It consists of at least one element `<div>`, which contains the edited text. The element has the following attributes:
 - `type="edition"`
 - `@xml:lang` indicating the language of the edited text using [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php)
-- `@n` indicating the URN of the file, see [below](#dateistruktur).
+- `@n` indicating the URN of the file, see [below](#file-structure-of-each-edition).
 
 @import "examples/ed_div-edition.xml" {class="line-numbers"}
 
@@ -401,11 +401,14 @@ Within the element `<div type="edition">` the text structure reconstructed by th
 -   Fragment:
     `<div type="textpart" subtype="fragment" n="1">`
 
+-   Testimonium:
+    `<div type="textpart" subtype="testimonium" n="1">`
+
 -   Commented text:
     `<div type="textpart" subtype="commented" n="Gen_1_1">`
 
 -   Commentary:
-    `<div type="textpart" subtype="commentary" n="Gen_1_1">` (cf. [above](#markup-transcription))
+    `<div type="textpart" subtype="commentary" n="Gen_1_1">` (cf. [above](#mark-up-of-the-structure-of-the-text))
 
 The `@n` attribute receives the reference indicator (which is used for citing the respective passage), usually a number, but text like “pr”, “hypopsalmos”, “hypothesis”, “perioche” etc. are also possible. Please note that the attribute may not contain whitespace, but only letters, numbers, symbols and punctuation signs.
 
@@ -486,7 +489,7 @@ At each point in the text that has survived in different versions, the variants 
 
 In the case of a printed edition, one would thus speak of a positive apparatus, with the particularity that in the case of the digital critical edition, the readings of codices descripti are also indicated. The step of elimination or the reduction of the positive apparatus to a negative apparatus can, but does not have to, be carried out when preparing the data for presentation (in print or online). The categorical difference between the traditional critical edition in print and the critical digital edition lies in this distinction between the complete recording of data, which makes the traceability and verifiability of editorial decisions possible to a much greater extent than before, and, if necessary, selective presentation.
 
-The values of the elements `@wit`, `@source` and `@resp` refer to the values of the attribute `@xml:id` of the element `<witness>`, `<bibl>` or `<person>` specified in the element `<sourceDesc>` (in the `<teiHeader>`, [see above](#sourceDesc)).
+The values of the elements `@wit`, `@source` and `@resp` refer to the values of the attribute `@xml:id` of the element `<witness>`, `<bibl>` or `<person>` specified in the element `<sourceDesc>` (in the `<teiHeader>`, [see above](#handwritten-witnesses-and-earlier-editions)).
 
 To increase readability for human recipients of the edition, all variant carriers within the `@wit` attribute should be presented in a consistent order (and taking stemmatic relationships into account).
 
@@ -564,7 +567,7 @@ If a variant created by correction is identical to another variant, this other v
 
 The element `<rdg>` can additionally contain the attribute `@hand`, whereby the scribe (`#m1`) and the correctors (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*) should be distinguished. If it is not possible to decide by which hand a correction has been made, the attribute is given the value `unknown`. 
 
-The location of the correction is specified by using the respective elements for deletion, addition, etc. together with their attributes, [see above](#transcription-edition). 
+The location of the correction is specified by using the respective elements for deletion, addition, etc. together with their attributes, [see above](#edition-of-the-transcription). 
 
 @import "examples/ed_hand.xml" {class="line-numbers"}
 
@@ -668,7 +671,7 @@ If it seems necessary or feasible to expand on text-critical considerations that
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 
 
-## File structure of each edition {#dateistruktur}
+## File structure of each edition
 
 Finally, in order to make reuse as easy as possible, it also makes sense to have uniform naming of the individual files and a structured file repository. The Patristic Text Archive follows the [CapiTainS Guidelines](http://capitains.org) (cf. [Thibault Clérice, Matthew Munson, & Bridget Almas. (2017, May 2). Capitains/Capitains.github.io: 2.0.0 (Version 2.0.0). Zenodo.](http://doi.org/10.5281/zenodo.570516)) and uses [CTS URNs](http://www.homermultitext.org/hmt-docs/cite/cts-urn-overview.html) (cf. [Christopher W. Blackwell und Neel Smith, “The CITE Architecture: a Conceptual and Practical Overview”, in Monica Berti, ed., Digital Classical Philology. Ancient Greek and Latin in the Digital Revolution (Age of Access? Grundfragen der Informationsgesellschaft 10; Berlin, 2019), 73–93](https://doi.org/10.1515/9783110599572-006)).
 

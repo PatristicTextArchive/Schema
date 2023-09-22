@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 3.0. Last updated on 2022-05-22.</edition>
+        <edition>Version 3.0. Last updated on 2023-09-22.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr; new value "testimonium" for @subtype</change>
+      <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and @cert for unclear</change>
       <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines - v3. Other more minor changes and updates</change>
       <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
       <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
@@ -112,6 +114,7 @@
               <attDef ident="place" mode="change">
                 <valList type="closed">
                   <valItem ident="above"/>
+                  <valItem ident="below"/>
                   <valItem ident="inline"/>
                   <valItem ident="margin"/>
                 </valList>
@@ -231,6 +234,9 @@
                   <valItem ident="fragment">
                     <desc>Fragment</desc>
                   </valItem>
+                  <valItem ident="testimonium">
+                    <desc>Testimonium</desc>
+                  </valItem>
                   <valItem ident="commented">
                     <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary or scholia)</desc>
                   </valItem>
@@ -256,6 +262,44 @@
                   </valItem>
                   <valItem ident="hexaplaric">
                     <desc>Hexaplaric readings</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="unclear" module="core" mode="change">
+            <constraintSpec ident="unclear" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
+                  <sch:assert test="@reason and @cert">@reason and @cert are to be used in unclear</sch:assert>
+                </sch:rule>
+                <sch:rule context="tei:unclear[ancestor::tei:rdg or ancestor::tei:lem]">
+                  <sch:report test="@reason or @cert">@reason and @cert are not to be used in rdg or lem</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <attList>
+              <attDef ident="reason" mode="replace" usage="rec">
+                <valList type="closed">
+                  <valItem ident="damage">
+                    <desc>Physical damage</desc>
+                  </valItem>
+                  <valItem ident="illegible">
+                    <desc>Traces of text remains on the surface but are hard to interpret</desc>
+                  </valItem>
+                  <valItem ident="retraced">
+                    <desc>Text is unclear due to retracing</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="cert" mode="change" usage="rec">
+                <desc>indicates the certainty (for the proposed text)</desc>
+                <valList type="closed" mode="replace">
+                  <valItem ident="low">
+                    <desc>low certainty</desc>
+                  </valItem>
+                  <valItem ident="high">
+                    <desc>high certainty</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -344,6 +388,16 @@
                 </valList>
               </attDef>
             </attList>
+          </elementSpec>          
+          <elementSpec ident="ref" module="core" mode="change">
+            <constraintSpec ident="ref" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:ref">
+                  <sch:report test="ancestor::tei:text and not(@cRef or @source)">in the edition ref needs @cRef or @source</sch:report>
+                  <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if ref has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>
           <elementSpec ident="note" module="core" mode="change">
             <attList>
@@ -612,9 +666,6 @@
                   <valItem ident="low">
                     <desc>low certainty</desc>
                   </valItem>
-                  <valItem ident="medium">
-                    <desc>medium certainty</desc>
-                  </valItem>
                   <valItem ident="high">
                     <desc>high certainty</desc>
                   </valItem>
@@ -646,7 +697,7 @@
             <constraintSpec ident="del" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:del">
-                  <sch:report test="@repurposed and not(parent::tei:subst)">@repurposed may only used within a substitution</sch:report>
+                  <sch:report test="@rend='repurposed' and not(parent::tei:subst)">repurposed may only used within a substitution</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -675,6 +726,14 @@
             </attList>
           </elementSpec>
           <elementSpec ident="abbr" module="core" mode="change">
+            <!-- testing for siglum: only to be used within <witness> -->
+            <constraintSpec ident="abbr" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:abbr">
+                  <sch:report test="@type='siglum' and not(parent::tei:witness)">siglum may only used within a witness</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="type" mode="change" usage="req">
                 <valList type="closed" mode="replace">
@@ -690,6 +749,16 @@
                 </valList>
               </attDef>
             </attList>
+          </elementSpec>
+          <elementSpec ident="expan" module="core" mode="change">
+            <!-- testing for expan: only to be used within <choice> -->
+            <constraintSpec ident="expan" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:expan">
+                  <sch:report test="not(parent::tei:choice)">expan may only be used within a choice element</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>
 	        <elementSpec ident="msIdentifier" module="msdescription" mode="change">
             <attList>

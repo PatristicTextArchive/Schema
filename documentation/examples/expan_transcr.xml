@@ -1,6 +1,8 @@
 <choice>
-    <expan>κύριε</expan>
-    <abbr type="nomSac">
-        <hi rend="overline">κε</hi>
+    <expan>εὐλόγησον</expan>
+    <abbr type="suspension">
+        <hi rend="overline">εὐ
+            <hi rend="superscript">ο</hi>
+        </hi>
     </abbr>
-</choice> <expan>εὐλόγησον</expan>
+</choice>
