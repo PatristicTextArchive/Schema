@@ -47,6 +47,11 @@
             Biblical quotations are fully/partially annotated and/but not fully/partially referenced. References follow the scheme declared <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#biblical"</xsl:attribute>above</xsl:element>.
           </xsl:element>
           <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
+            <xsl:attribute name="xml:id">other-references</xsl:attribute>
+            <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
+            Other quotations are fully/partially annotated and/but not fully/partially referenced. References follow the scheme declared as <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#pta"</xsl:attribute>pta</xsl:element> or as <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#perseus"</xsl:attribute>perseus</xsl:element> above.
+          </xsl:element>
+          <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
             <xsl:attribute name="xml:id">persons</xsl:attribute>
             <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
             Persons are fully/partially annotated and/but not fully/partially referenced with IDs according to the <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/tipnr_data</xsl:attribute>TIPNR - Tyndale Individualised Proper Names with all References</xsl:element> list for biblical persons and IDs of <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json</xsl:attribute>PTA persons index</xsl:element> for all other persons.

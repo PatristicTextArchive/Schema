@@ -4,6 +4,8 @@
     <p xml:id="biblical-quotations"
        ana="fully/partially/not-annotated fully/partially/not-identified">Biblical quotations are fully/partially annotated and/but not fully/partially referenced. References follow the scheme declared <ref target="#biblical">above</ref>. 
              </p>
+    <p xml:id="other-quotations"
+      ana="not-annotated not-identified">Other quotations are not annotated and not referenced. References follow the scheme declared as <ref target="#pta">pta</ref> or as <ref target="#perseus">perseus</ref> above.</p>
     <p xml:id="places"
        ana="fully/partially/not-annotated fully/partially/not-identified">Places are fully/partially annotated and/but not fully/partially referenced with <ref target="https://pleiades.stoa.org/">Pleiades Gazetteer</ref> IDs.</p>
     <p xml:id="persons"
