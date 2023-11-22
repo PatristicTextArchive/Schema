@@ -692,3 +692,5 @@ Within a folder `data`, each author (or textgroup) is in a folder named accordin
 The file names follow the CTS URNs and are structured as follows: The abbreviation “pta0013” stands for the author Amphilochius and “pta003” for the work “Epistula synodalis”. The last part of the URN identifies the specific “edition” of a work: in the example, these are the critical edition of the Greek text (pta-grc1), the German translation (pta-deu1) and the transcriptions of the four manuscripts (pta-MsLa, pta-MsPg, pta-MsPs, pta-MsVi).
 
 If you need new PTA-IDs for yet not existant authors/textgroups and/or works, please get into [contact](mailto:annette.von_stockhausen@bbaw.de) with us.
+
+Author: [Annette von Stockhausen](mailto:annette.von_stockhausen@bbaw.de)
