@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2023-10-06">add rules for modern commentary on text</change>
       <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr; new value "testimonium" for @subtype</change>
       <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and @cert for unclear</change>
       <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines - v3. Other more minor changes and updates</change>

@@ -297,16 +297,18 @@ Im Abschnitt `<encodingDesc>` wird in einem weiteren Element
 
 @import "examples/ed_refsDecl.xml" {class="line-numbers"}
 
-Die im PTA verwendeten Abkürzungen für die Bücher des Alten Testamentes (LXX) sind:
+Die im PTA verwendeten Abkürzungen für die Bücher des Alten Testamentes sind:
 
 @import "examples/abbr_LXX.txt"
+
+Bei der Septuaginta (LLX) wird bei Sus, Dn, Bel zwischen der Septuaginta-Version (mit »-LXX«) und der Theodotion-Version unterschieden.
 
 Die im PTA verwendeten Abkürzungen für die Bücher des Neuen Testamentes sind:
 
 @import "examples/abbr_NT.txt"
 
 Die Stellenangaben werden folgendermaßen gebildet:
-Bibl. Korpus (LXX, Hexapla, Vg = Vulgate oder NA = New Testament [Nestle-Aland]):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
+Bibl. Korpus (LXX, PES [= Peshitta], Hexapla, Vg [= Vulgata] oder NA [= Neues Testament = Nestle-Aland]):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
 
 #### Angabe der ausgezeichneten Phänomene
 

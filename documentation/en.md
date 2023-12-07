@@ -298,7 +298,7 @@ The abbreviations used in the PTA for the books of the New Testament are:
 
 @import "examples/abbr_NT.txt"
 
-The passages are formed as follows: Biblical corpus (LXX, Hexapla, Vg [= Vulgata] or NA [= Nestle-Aland]):Book:Chapter:Verse (e.g.: 1,1-2,1.4), e.g. `LXX:Gn:1:1-3`.
+The passages are formed as follows: Biblical corpus (LXX, PES [= Peshitta], Hexapla, Vg [= Vulgata] or NA [= Nestle-Aland]):Book:Chapter:Verse (e.g.: 1,1-2,1.4), e.g. `LXX:Gn:1:1-3`.
 
 #### Indication of the encoded phenomena
 
