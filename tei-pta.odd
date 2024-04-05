@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 3.0. Last updated on 2023-09-22.</edition>
+        <edition>Version 3.0. Last updated on 2024-03-05.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2024-03-05">add type values for quote</change>
       <change who="#AvS" when="2023-10-06">add rules for modern commentary on text</change>
       <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr; new value "testimonium" for @subtype</change>
       <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and @cert for unclear</change>
@@ -442,6 +443,26 @@
               </attDef>
               <attDef ident="ana" mode="delete"/>
               <attDef ident="rendition" mode="delete"/>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="quote" module="core" mode="change">
+            <attList>
+              <attDef ident="type" mode="replace" usage="opt">
+                <valList type="closed">
+                  <valItem ident="lemma">
+                    <desc>Lemma quotation in editions of biblical commentaries (the text commented on)</desc>
+                  </valItem>
+                  <valItem ident="marked">
+                    <desc>Quotation which are introduced or otherwise marked</desc>
+                  </valItem>
+                  <valItem ident="unmarked">
+                    <desc>Quotation not marked by the author as quotation</desc>
+                  </valItem>
+                  <valItem ident="paraphrasis">
+                    <desc>Paraphrastic quotation (most times better not marked as quotation at all, but as allusion)</desc>
+                  </valItem>
+                </valList>
+              </attDef>
             </attList>
           </elementSpec>
           <!-- suggested attribute values for origDate/@evidence -->

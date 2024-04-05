@@ -282,6 +282,8 @@ Authors of conjectures that cannot be bibliographed in the above sense because, 
 
 @import "examples/ed_list_edd.xml" {class="line-numbers"}
 
+The person should be identified by a link to relevant norm data ([GND](https://explore.gnd.network/), [ORCID](https://orcid.org/), [LCCN](https://lccn.loc.gov/), for example) in the attribute `@ref` of the element `<persName>`.
+
 
 #### Encoding of biblical references
 
@@ -423,7 +425,7 @@ The page breaks in the manuscripts and earlier editions are indicated as require
 
 ##### Encoding of biblical and other quotations (and allusions)
 
-Quotations are marked with the help of the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrase` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
+Quotations are marked with the help of the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrasis` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
 
 Explicit quotations citing the author of the quotation are marked with the element `<cit>` and the phrase in it leading the quotation is marked with the element `<ref>`. Insertions in the quotation (such as “said”) are marked with the help of `<seg type="insertion">` within the quotation.
 
@@ -666,7 +668,7 @@ If a variant exceeds a division level, it must be given priority and the `<app>`
 
 ##### Commenting on text-critical decisions
 
-If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or  typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element. In this case, the `<app>`, `<lem>` or `<rdg>` element receives an attribute `@xml:id`, which is referred to in the `<note>` or `<witDetail>` element in an attribute `@target`.
+If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or  typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element. In this case, the `<app>` element receives an attribute `@xml:id`, which is referred to in the `<note>` in an attribute `@target`. In case of an annotation in `<witDetail>`, the element receives an attribute `@wit` with the ID of the manuscript.
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 

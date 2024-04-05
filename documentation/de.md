@@ -290,6 +290,8 @@ Konjektoren, die nicht im obigen Sinne bibliographiert werden können, weil z.B.
 
 @import "examples/ed_list_edd.xml" {class="line-numbers"}
 
+Die Person sollte durch Angabe eines Normdatenlinks ([GND](https://explore.gnd.network/), [ORCID](https://orcid.org/), [LCCN](https://lccn.loc.gov/), o.ä.) im Attribut `@ref` des `<persName>`-Elementes eindeutig identifiziert werden.
+
 #### Kodierung von Bibelstellenangaben
 
 Im Abschnitt `<encodingDesc>` wird in einem weiteren Element
@@ -438,7 +440,7 @@ Die Seitenumbrüche in den Handschriften und früheren Editionen werden nach Bed
 
 ##### Auszeichnung von Bibel- und anderen Zitaten (und Anspielungen)
 
-Zitate werden mit Hilfe des Elementes `<quote>` ausgezeichnet und können ein Attribut `@type` erhalten, so dass zwischen markierten (`marked`) und nicht-markierten (`unmarked`) Zitaten unterschieden werden kann; für paraphrasierende Zitate – soweit sie überhaupt als Zitat markiert werden – kann der Wert `paraphrase` verwendet werden. Bei Editionen biblischer Kommentare erhalten Lemma-Zitate den Wert `lemma`, um sie von anderen Zitaten zu differenzieren.
+Zitate werden mit Hilfe des Elementes `<quote>` ausgezeichnet und können ein Attribut `@type` erhalten, so dass zwischen markierten (`marked`) und nicht-markierten (`unmarked`) Zitaten unterschieden werden kann; für paraphrasierende Zitate – soweit sie überhaupt als Zitat markiert werden – kann der Wert `paraphrasis` verwendet werden. Bei Editionen biblischer Kommentare erhalten Lemma-Zitate den Wert `lemma`, um sie von anderen Zitaten zu differenzieren.
 
 Explizite Zitate unter Anführung des Autors des Zitates werden mit dem Element `<cit>` ausgezeichnet und die das Zitat anführende Phrase darin mit dem Element `<ref>`. Einschübe im Zitat (wie z.B. „sagte“) werden mit Hilfe von `<seg type="insertion">` innerhalb des Zitates ausgezeichnet.
 
@@ -673,7 +675,7 @@ aufgeteilt und untereinander verlinkt werden.
 
 ##### Kommentierung textkritischer Entscheidungen
 
-Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden. Das Element `<app>`, `<lem>` oder `<rdg>` erhält in diesem Fall ein Attribut `@xml:id`, auf das im Element `<note>` oder `<witDetail>` in einem Attribut `@target` verwiesen wird. Im Falle von `<witDetail>` wird außerdem in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
+Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden. Das Element `<app>` erhält in diesem Fall ein Attribut `@xml:id`, auf das im Element `<note>` in einem Attribut `@target` verwiesen wird; im Falle von `<witDetail>` wird in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 
