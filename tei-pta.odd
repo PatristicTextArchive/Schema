@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2024-07-25">table allowed</change>
       <change who="#AvS" when="2024-03-05">add type values for quote</change>
       <change who="#AvS" when="2023-10-06">add rules for modern commentary on text</change>
       <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr; new value "testimonium" for @subtype</change>
@@ -80,7 +81,7 @@
             key="namesdates"
             except="affiliation age bloc climate district education faith langKnowledge langKnown listNym listObject listOrg listRelation nameLink nationality nym occupation offset org population persPronouns region residence sex socecStatus state terrain trait"/>
           <moduleRef key="textcrit" except="wit"/>
-          <moduleRef key="figures" except="cell formula notatedMusic row table"/>
+          <moduleRef key="figures" except="formula notatedMusic"/>
           <!-- CHANGED ELEMENT SPECS -->
           <elementSpec ident="TEI" mode="change">
             <attList>
