@@ -1,7 +1,8 @@
 <app type="variants">
  <lem wit="#Pa #Be #Pb #Va #Ha #Pt #Pc #Pd #Ma #My #Ab">ἔχωμεν</lem>
- <rdg wit="#Ha">ἔχ<subst hand="#m2">
+ <rdg wit="#Ha" varSeq="2">ἔχ<subst hand="#m2">
    <del>ο</del>
    <add place="above">ω</add>
   </subst>μεν</rdg>
+ <rdg wit="#Ha" varSeq="1">ἔχομεν</rdg>
 </app>

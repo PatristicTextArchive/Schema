@@ -44,22 +44,27 @@
           <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
             <xsl:attribute name="xml:id">biblical-quotations</xsl:attribute>
             <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
-            Biblical quotations are fully/partially annotated and/but not fully/partially referenced. References follow the scheme declared <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#biblical"</xsl:attribute>above</xsl:element>.
+            Biblical quotations are fully/partially/not annotated and/but not fully/partially referenced. References follow the scheme declared <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#biblical</xsl:attribute>above</xsl:element>.
+          </xsl:element>
+          <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
+            <xsl:attribute name="xml:id">other-references</xsl:attribute>
+            <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
+            Other references are fully/partially/not annotated and/but not fully/partially referenced. References to texts in the PTA follow the scheme declared <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#pta</xsl:attribute>above (pta)</xsl:element>, references to texts available in the <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://scaife.perseus.org/</xsl:attribute>Perseus Digital Library</xsl:element> follow the scheme declared <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">#perseus</xsl:attribute>above (perseus)</xsl:element>. If the referenced text is not available in either repository, the reference for the referenced text is given in the attribute @source in the form “Authorabbrev_Workabbrev_Location”; ancient Greek authors should be referenced according to the lists of H. G. Liddell/R. Scott/H. S. Jones, A Greek - English Lexicon, Oxford 1968 (9th edition) and G. W. H. Lampe, A Patristic Greek Lexicon, Oxford 1987 (3rd edition), for Latin ones the abbreviations of the Thesaurus Linguae Latinae (cf. Index librorum scriptorum inscriptionum ex quibus exempla afferuntur) should be used, with dots in the abbreviations deleted without replacement.
           </xsl:element>
           <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
             <xsl:attribute name="xml:id">persons</xsl:attribute>
             <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
-            Persons are fully/partially annotated and/but not fully/partially referenced with IDs according to the <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/tipnr_data</xsl:attribute>TIPNR - Tyndale Individualised Proper Names with all References</xsl:element> list for biblical persons and IDs of <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json</xsl:attribute>PTA persons index</xsl:element> for all other persons.
+            Persons are fully/partially/not annotated and/but not fully/partially referenced with IDs according to the <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/tipnr_data</xsl:attribute>TIPNR - Tyndale Individualised Proper Names with all References</xsl:element> list for biblical persons and IDs of <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json</xsl:attribute>PTA persons index</xsl:element> for all other persons.
           </xsl:element>
           <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
             <xsl:attribute name="xml:id">groups</xsl:attribute>
             <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
-            Groups of persons and organisations are fully/partially annotated and/but not fully/partially referenced with IDs according to the IDs of <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_groups.json"</xsl:attribute>PTA groups index</xsl:element> for all other groups.
+            Groups of persons and organisations are fully/partially/not annotated and/but not fully/partially referenced with IDs according to the IDs of <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_groups.json</xsl:attribute>PTA groups index</xsl:element> for all other groups.
           </xsl:element>
           <xsl:element name="p" namespace="http://www.tei-c.org/ns/1.0">
             <xsl:attribute name="xml:id">places</xsl:attribute>
             <xsl:attribute name="ana">fully/partially/not-annotated fully/partially/not-identified</xsl:attribute>
-            Places are fully/partially annotated and/but not fully/partially referenced with <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://pleiades.stoa.org/</xsl:attribute>Pleiades Gazetteer</xsl:element> IDs.
+            Places are fully/partially/not annotated and/but not fully/partially referenced with <xsl:element name="ref" namespace="http://www.tei-c.org/ns/1.0"><xsl:attribute name="target">https://pleiades.stoa.org/</xsl:attribute>Pleiades Gazetteer</xsl:element> IDs.
           </xsl:element>
         </xsl:element>       
         <xsl:element name="normalization" namespace="http://www.tei-c.org/ns/1.0">

@@ -42,7 +42,7 @@ Da es sich bei digitalen Editionen im Gegensatz zu gedruckten Editionen um poten
 
 Handschriften sind Zeugen eines spezifischen Überlieferungsstadiums eines Textes. Im Gegensatz zum klassischen „Lachmannschen“ Ansatz, bei dem in der Praxis nur die Varianten zu einem Vorlagentext notiert werden, ist es für digitale Editionen – durchaus auch unter Aufnahme des Grundgedankens der „New Philology” einer Wertschätzung jedes einzelnen Überlieferungsträgers – angebracht und zudem auch arbeitsökonomisch durchaus sinnvoll, jeweils den gesamten Text zu transkribieren und dann in einem zweiten Schritt die Kollation der Zeugen mit Hilfe des Computers durchzuführen. 
 
-> Im Berliner Akademienvorhaben „Die alexandrinische und antiochenische Bibelexegese in der Spätantike“, dessen digitale Publikationsplattform das PTA ist, wird dafür das Programm [CollateX](https://web.archive.org/web/20200329141404/https://collatex.net/) verwendet, wobei die Transkriptionsdateien mit Hilfe eines Python-Skripts (<https://github.com/PatristicTextArchive/collator>) in das für CollateX nötige Eingabeformat konvertiert werden. Kleinere Fehler bei der Ausrichtung der Kollationstabelle können dabei nachträglich manuell korrigiert werden.
+> Im Berliner Akademienvorhaben „Die alexandrinische und antiochenische Bibelexegese in der Spätantike“, dessen digitale Publikationsplattform das PTA ist, wird dafür das Programm [CollateX](https://collatex.net/) verwendet, wobei die Transkriptionsdateien mit Hilfe eines Python-Skripts (<https://github.com/PatristicTextArchive/collator>) in das für CollateX nötige Eingabeformat konvertiert werden. Kleinere Fehler bei der Ausrichtung der Kollationstabelle können dabei nachträglich manuell korrigiert werden.
 
 Auch die Transkriptionen sind somit Editionen und das Ergebnis von Interpretation. Sie unterscheiden sich von der kritischen Edition (s.u.) aber dadurch, dass sie einem diplomatischen (dokumentarischen) Editionsparadigma folgen: Die in der Handschrift vorfindlichen Phänomene wie Schreibung der Worte, Akzentsetzung, Interpunktion und Worttrennung werden bei der Transkription grundsätzlich nicht normalisiert, d.h. nicht ggfs. korrigiert. Außerdem werden Seiten-, Columnen- und Zeilenumbrüche, Initialen und Ektheseis, Marginalien, Abkürzungen, Markierungen, Rubriken, Tilgungen, Hinzufügungen – auch in diachroner Betrachtung (sc. im Blick auf Schreiberwechsel) – aufgenommen, dabei aber nicht entsprechend ihrer visuellen Erscheinung, sondern entsprechend ihrer Semantik ausgezeichnet und das heißt einer Deutung unterzogen. Auch Phänomene, die nicht gedeutet werden können, wie z.B. nicht zu entziffernder Text, werden als solche markiert und damit auch Unsicherheiten nicht verdeckt.
 
@@ -290,6 +290,8 @@ Konjektoren, die nicht im obigen Sinne bibliographiert werden können, weil z.B.
 
 @import "examples/ed_list_edd.xml" {class="line-numbers"}
 
+Die Person sollte durch Angabe eines Normdatenlinks ([GND](https://explore.gnd.network/), [ORCID](https://orcid.org/), [LCCN](https://lccn.loc.gov/), o.ä.) im Attribut `@ref` des `<persName>`-Elementes eindeutig identifiziert werden.
+
 #### Kodierung von Bibelstellenangaben
 
 Im Abschnitt `<encodingDesc>` wird in einem weiteren Element
@@ -297,16 +299,18 @@ Im Abschnitt `<encodingDesc>` wird in einem weiteren Element
 
 @import "examples/ed_refsDecl.xml" {class="line-numbers"}
 
-Die im PTA verwendeten Abkürzungen für die Bücher des Alten Testamentes (LXX) sind:
+Die im PTA verwendeten Abkürzungen für die Bücher des Alten Testamentes sind:
 
 @import "examples/abbr_LXX.txt"
+
+Bei der Septuaginta (LLX) wird bei Sus, Dn, Bel zwischen der Septuaginta-Version (mit »-LXX«) und der Theodotion-Version unterschieden.
 
 Die im PTA verwendeten Abkürzungen für die Bücher des Neuen Testamentes sind:
 
 @import "examples/abbr_NT.txt"
 
 Die Stellenangaben werden folgendermaßen gebildet:
-Bibl. Korpus (LXX, Hexapla, Vg = Vulgate oder NA = New Testament [Nestle-Aland]):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
+Bibl. Korpus (LXX, PES [= Peshitta], Hexapla, Vg [= Vulgata] oder NA [= Neues Testament = Nestle-Aland]):Buch:Kapitel:Vers (z.B.: 1,1-2,1.4), z.B. `LXX:Gn:1:1-3`.
 
 #### Angabe der ausgezeichneten Phänomene
 
@@ -436,7 +440,7 @@ Die Seitenumbrüche in den Handschriften und früheren Editionen werden nach Bed
 
 ##### Auszeichnung von Bibel- und anderen Zitaten (und Anspielungen)
 
-Zitate werden mit Hilfe des Elementes `<quote>` ausgezeichnet und können ein Attribut `@type` erhalten, so dass zwischen markierten (`marked`) und nicht-markierten (`unmarked`) Zitaten unterschieden werden kann; für paraphrasierende Zitate – soweit sie überhaupt als Zitat markiert werden – kann der Wert `paraphrase` verwendet werden. Bei Editionen biblischer Kommentare erhalten Lemma-Zitate den Wert `lemma`, um sie von anderen Zitaten zu differenzieren.
+Zitate werden mit Hilfe des Elementes `<quote>` ausgezeichnet und können ein Attribut `@type` erhalten, so dass zwischen markierten (`marked`) und nicht-markierten (`unmarked`) Zitaten unterschieden werden kann; für paraphrasierende Zitate – soweit sie überhaupt als Zitat markiert werden – kann der Wert `paraphrasis` verwendet werden. Bei Editionen biblischer Kommentare erhalten Lemma-Zitate den Wert `lemma`, um sie von anderen Zitaten zu differenzieren.
 
 Explizite Zitate unter Anführung des Autors des Zitates werden mit dem Element `<cit>` ausgezeichnet und die das Zitat anführende Phrase darin mit dem Element `<ref>`. Einschübe im Zitat (wie z.B. „sagte“) werden mit Hilfe von `<seg type="insertion">` innerhalb des Zitates ausgezeichnet.
 
@@ -671,7 +675,7 @@ aufgeteilt und untereinander verlinkt werden.
 
 ##### Kommentierung textkritischer Entscheidungen
 
-Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden. Das Element `<app>`, `<lem>` oder `<rdg>` erhält in diesem Fall ein Attribut `@xml:id`, auf das im Element `<note>` oder `<witDetail>` in einem Attribut `@target` verwiesen wird. Im Falle von `<witDetail>` wird außerdem in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
+Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden. Das Element `<app>` erhält in diesem Fall ein Attribut `@xml:id`, auf das im Element `<note>` in einem Attribut `@target` verwiesen wird; im Falle von `<witDetail>` wird in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 
@@ -698,3 +702,5 @@ Die Dateinamen folgen den CTS URNs und sind folgendermaßen aufgebaut: Das Kürz
 kritische Edition des griechischen Textes (pta-grc1), die deutsche Übersetzung (pta-deu1) und die Transkriptionen der vier Handschriften (pta-MsLa, pta-MsPg, pta-MsPs, pta-MsVi).
 
 Die Zuteilung neuer IDs für bisher nicht vorhandene Autoren und/oder Werke erfolgt nach [Rücksprache](mailto:annette.von_stockhausen@bbaw.de).
+
+Autor: [Annette von Stockhausen](mailto:annette.von_stockhausen@bbaw.de)

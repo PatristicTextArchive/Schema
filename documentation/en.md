@@ -42,7 +42,7 @@ Since digital editions, unlike printed editions, can be potentially very fluid d
 
 Manuscripts are witnesses to a specific stage in the transmission of a text. In contrast to the classical “Lachmannian” approach, in which in practice only the variants of the master copy of the text (the archetype) are noted, it is appropriate for digital editions - also taking into account the basic idea of the “New Philology” of valuing each individual transmission medium - and also makes sense in terms of labour economy to transcribe the entire text and then, in a second step, to carry out the collation of the witnesses with the help of the computer.
 
-> In the Berlin academy project “Die alexandrinische und antiochenische Bibelexegese in der Spätantike” which uses the PTA as its digital publication platform, the [CollateX](https://web.archive.org/web/20200329141404/https://collatex.net/) programme is used for this purpose, whereby the transcription files are converted into the input format required for CollateX with the help of a Python script (<https://github.com/PatristicTextArchive/collator>). Minor errors in the alignment of the collation table can be corrected manually afterwards.
+> In the Berlin academy project “Die alexandrinische und antiochenische Bibelexegese in der Spätantike” which uses the PTA as its digital publication platform, the [CollateX](https://collatex.net/) programme is used for this purpose, whereby the transcription files are converted into the input format required for CollateX with the help of a Python script (<https://github.com/PatristicTextArchive/collator>). Minor errors in the alignment of the collation table can be corrected manually afterwards.
 
 The transcriptions are thus also editions and the result of interpretation. However, they differ from the critical edition (see below) in that they follow a diplomatic (documentary) edition paradigm: The phenomena found in the manuscript, such as the spelling of words, accentuation, punctuation and word division, are in principle not normalised in the transcription, i.e. not corrected if necessary. In addition, page, column and line breaks, initials and ektheseis, marginalia, abbreviations, markings, rubrics, erasures, additions - also from a diachronic point of view (sc. in view of scribe changes) - are recorded, but not marked according to their visual appearance, but according to their semantics, i.e. subjected to an interpretation. Even phenomena that cannot be interpreted, such as text that cannot be deciphered, are marked as such and thus uncertainties are not concealed.
 
@@ -282,6 +282,8 @@ Authors of conjectures that cannot be bibliographed in the above sense because, 
 
 @import "examples/ed_list_edd.xml" {class="line-numbers"}
 
+The person should be identified by a link to relevant norm data ([GND](https://explore.gnd.network/), [ORCID](https://orcid.org/), [LCCN](https://lccn.loc.gov/), for example) in the attribute `@ref` of the element `<persName>`.
+
 
 #### Encoding of biblical references
 
@@ -298,7 +300,7 @@ The abbreviations used in the PTA for the books of the New Testament are:
 
 @import "examples/abbr_NT.txt"
 
-The passages are formed as follows: Biblical corpus (LXX, Hexapla, Vg [= Vulgata] or NA [= Nestle-Aland]):Book:Chapter:Verse (e.g.: 1,1-2,1.4), e.g. `LXX:Gn:1:1-3`.
+The passages are formed as follows: Biblical corpus (LXX, PES [= Peshitta], Hexapla, Vg [= Vulgata] or NA [= Nestle-Aland]):Book:Chapter:Verse (e.g.: 1,1-2,1.4), e.g. `LXX:Gn:1:1-3`.
 
 #### Indication of the encoded phenomena
 
@@ -423,7 +425,7 @@ The page breaks in the manuscripts and earlier editions are indicated as require
 
 ##### Encoding of biblical and other quotations (and allusions)
 
-Quotations are marked with the help of the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrase` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
+Quotations are marked with the help of the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrasis` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
 
 Explicit quotations citing the author of the quotation are marked with the element `<cit>` and the phrase in it leading the quotation is marked with the element `<ref>`. Insertions in the quotation (such as “said”) are marked with the help of `<seg type="insertion">` within the quotation.
 
@@ -666,7 +668,7 @@ If a variant exceeds a division level, it must be given priority and the `<app>`
 
 ##### Commenting on text-critical decisions
 
-If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or  typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element. In this case, the `<app>`, `<lem>` or `<rdg>` element receives an attribute `@xml:id`, which is referred to in the `<note>` or `<witDetail>` element in an attribute `@target`.
+If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or  typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element. In this case, the `<app>` element receives an attribute `@xml:id`, which is referred to in the `<note>` in an attribute `@target`. In case of an annotation in `<witDetail>`, the element receives an attribute `@wit` with the ID of the manuscript.
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 
@@ -692,3 +694,5 @@ Within a folder `data`, each author (or textgroup) is in a folder named accordin
 The file names follow the CTS URNs and are structured as follows: The abbreviation “pta0013” stands for the author Amphilochius and “pta003” for the work “Epistula synodalis”. The last part of the URN identifies the specific “edition” of a work: in the example, these are the critical edition of the Greek text (pta-grc1), the German translation (pta-deu1) and the transcriptions of the four manuscripts (pta-MsLa, pta-MsPg, pta-MsPs, pta-MsVi).
 
 If you need new PTA-IDs for yet not existant authors/textgroups and/or works, please get into [contact](mailto:annette.von_stockhausen@bbaw.de) with us.
+
+Author: [Annette von Stockhausen](mailto:annette.von_stockhausen@bbaw.de)
