@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+  xmlns:rng="http://relaxng.org/ns/structure/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -15,14 +16,19 @@
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
         <date>2020</date>
         <availability>
-          <licence target="https://www.gnu.org/licenses/agpl.html">Distributed under a GNU Affero General Public License.</licence>
+          <licence target="https://www.gnu.org/licenses/agpl.html">Distributed under a GNU Affero
+            General Public License.</licence>
 
-          <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+          <p>This program is free software: you can redistribute it and/or modify it under the terms
+            of the GNU Affero General Public License as published by the Free Software Foundation,
+            either version 3 of the License, or (at your option) any later version.</p>
 
-          <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
+          <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY
+            WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+            PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
 
-          <p>You should have received a copy of the GNU Affero General Public License along with this program. If not, see
-            <ptr target="https://www.gnu.org/licenses/"/>.</p>
+          <p>You should have received a copy of the GNU Affero General Public License along with
+            this program. If not, see <ptr target="https://www.gnu.org/licenses/"/>.</p>
         </availability>
       </publicationStmt>
       <sourceDesc>
@@ -33,52 +39,70 @@
       <change who="#AvS" when="2024-07-25">table allowed</change>
       <change who="#AvS" when="2024-03-05">add type values for quote</change>
       <change who="#AvS" when="2023-10-06">add rules for modern commentary on text</change>
-      <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr; new value "testimonium" for @subtype</change>
-      <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and @cert for unclear</change>
-      <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by each other to be more faithful to TEI guidelines - v3. Other more minor changes and updates</change>
-      <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions and annotations</change>
-      <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc history)</change>
-      <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra for cause</change>
+      <change who="#AvS" when="2023-09-22">corr and add schematron rules for del, expan and abbr;
+        new value "testimonium" for @subtype</change>
+      <change who="#AvS" when="2023-06-20">add new value to @place (add), new attributes @reason and
+        @cert for unclear</change>
+      <change who="#AvS" when="2023-05-22">breaking change: @type and @cause for rdg/lem replaced by
+        each other to be more faithful to TEI guidelines - v3. Other more minor changes and
+        updates</change>
+      <change who="#AvS" when="2023-01-11">allow catDesc catRef category for taxonomy of editions
+        and annotations</change>
+      <change who="#AvS" when="2022-11-28">removing restriction for unclear (coming from EpiDoc
+        history)</change>
+      <change who="#AvS" when="2022-10-24">add saut_du_meme for type as well as damage and fenestra
+        for cause</change>
       <change who="#AvS" when="2022-08-23">allow subsection for praefatio</change>
-      <change who="#AvS" when="2022-02-25">del commentaryfragment as value for subtype, delete some attributes</change>
+      <change who="#AvS" when="2022-02-25">del commentaryfragment as value for subtype, delete some
+        attributes</change>
       <change who="#AvS" when="2022-02-18">underline as attr for del allowed</change>
       <change who="#AvS" when="2022-01-10">stamp allowed</change>
       <change who="#AvS" when="2021-07-20">add telota:doctype as allowed </change>
-      <change who="#AvS" when="2021-02-04">edition, am, ex, damage, damageSpan allowed; new attributes for div and hi; corrected encoding errors</change>
-      <change who="#AvS" when="2020-07-30">charDecl, classDecl, taxonomy, textClass, keywords, orig, corr, ab allowed; new attributes for div; added values for hi and usage changed from req to rec</change>
+      <change who="#AvS" when="2021-02-04">edition, am, ex, damage, damageSpan allowed; new
+        attributes for div and hi; corrected encoding errors</change>
+      <change who="#AvS" when="2020-07-30">charDecl, classDecl, taxonomy, textClass, keywords, orig,
+        corr, ab allowed; new attributes for div; added values for hi and usage changed from req to
+        rec</change>
       <change who="#AvS" when="2020-04-02">(Temporarily) removed guidelines from ODD.</change>
       <change who="#AvS" when="2020-03-25">Language for descriptions changed to English.</change>
-      <change who="#AvS" when="2020-03-04">Reworked documentation; small changes on elements.</change>
-      <change who="#AvS" when="2019-12-17">Reworked documentation; small changes on elements.</change>
-      <change who="#AvS" when="2019-10-25">Added new documentation prior missing; changes in setup of edition</change>
+      <change who="#AvS" when="2020-03-04">Reworked documentation; small changes on
+        elements.</change>
+      <change who="#AvS" when="2019-12-17">Reworked documentation; small changes on
+        elements.</change>
+      <change who="#AvS" when="2019-10-25">Added new documentation prior missing; changes in setup
+        of edition</change>
       <change who="#AvS" when="2019-07-01">Documentation completed.</change>
-      <change who="#AvS" when="2019-05-16">Added documentation; removed all elements not used.</change>
-      <change who="#AvS" when="2019-05-09">Additions and corrections, added descriptions of elements</change>
-      <change who="#AvS" when="2018-08-30">Adapted from EpiDoc Schema (added textcrit module)</change>
+      <change who="#AvS" when="2019-05-16">Added documentation; removed all elements not
+        used.</change>
+      <change who="#AvS" when="2019-05-09">Additions and corrections, added descriptions of
+        elements</change>
+      <change who="#AvS" when="2018-08-30">Adapted from EpiDoc Schema (added textcrit
+        module)</change>
     </revisionDesc>
   </teiHeader>
   <text>
     <body>
       <div xml:id="elemente">
         <head>Dokumentation des Schemas</head>
-        <schemaSpec ident="tei-pta" docLang="en" prefix="tei_" start="TEI" xml:lang="en" source="https://www.tei-c.org/Vault/P5/4.2.1/xml/tei/odd/p5subset.xml">
+        <schemaSpec ident="tei-pta" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
+          source="https://www.tei-c.org/Vault/P5/4.2.1/xml/tei/odd/p5subset.xml">
           <!-- MODULES USED BY THE PTA SCHEMA -->
-          <moduleRef key="core" except="binaryObject email headItem headLabel measureGrp media meeting postBox postCode q rb rt ruby textLang"/>
+          <moduleRef key="core"
+            except="binaryObject email headItem headLabel measureGrp media meeting postBox postCode q rb rt ruby textLang"/>
           <moduleRef key="tei"/>
-          <moduleRef
-            key="header"
+          <moduleRef key="header"
             except="abstract appInfo application classCode hyphenation namespace rendition samplingDecl styleDefDecl tagUsage tagsDecl xenoData"/>
-          <moduleRef
-            key="textstructure"
+          <moduleRef key="textstructure"
             except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText imprimatur opener postscript salute signed titlePage titlePart trailer"/>
-          <moduleRef key="transcr" except="fw line listTranspose metamark mod redo restore secl sourceDoc transpose undo"/>
+          <moduleRef key="transcr"
+            except="fw line listTranspose metamark mod redo restore secl sourceDoc transpose undo"/>
           <moduleRef key="analysis" except="cl interp interpGrp span spanGrp"/>
           <moduleRef key="certainty"/>
           <moduleRef key="gaiji" except="char charName charProp localName mapping unicodeName value"/>
           <moduleRef key="linking" except="alt altGrp joinGrp link linkGrp timeline when"/>
-          <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry musicNotation objectType seal sealDesc summary typeDesc typeNote"/>
-          <moduleRef
-            key="namesdates"
+          <moduleRef key="msdescription"
+            except="accMat adminInfo depth dim heraldry musicNotation objectType seal sealDesc summary typeDesc typeNote"/>
+          <moduleRef key="namesdates"
             except="affiliation age bloc climate district education faith langKnowledge langKnown listNym listObject listOrg listRelation nameLink nationality nym occupation offset org population persPronouns region residence sex socecStatus state terrain trait"/>
           <moduleRef key="textcrit" except="wit"/>
           <moduleRef key="figures" except="formula notatedMusic"/>
@@ -166,12 +190,10 @@
             <constraintSpec scheme="isoschematron" ident="div">
               <constraint>
                 <sch:rule context="tei:div">
-                  <sch:report test="@subtype and not(@type='textpart')">
-                    @subtype may only be used together with @type=textpart
-                  </sch:report>
-                  <sch:report test="@ana and not(@subtype='commentary')">
-                    @ana may only be used together with @subtype=commentary
-                  </sch:report>
+                  <sch:report test="@subtype and not(@type='textpart')"> @subtype may only be used
+                    together with @type=textpart </sch:report>
+                  <sch:report test="@ana and not(@subtype='commentary')"> @ana may only be used
+                    together with @subtype=commentary </sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -185,10 +207,12 @@
                     <desc>to contain the transcription of a text in a manuscript</desc>
                   </valItem>
                   <valItem ident="edition">
-                    <desc>to contain the text of the edition itself; may include multiple text-parts</desc>
+                    <desc>to contain the text of the edition itself; may include multiple
+                      text-parts</desc>
                   </valItem>
                   <valItem ident="translation">
-                    <desc>to contain a translation of the text into one or more modern languages</desc>
+                    <desc>to contain a translation of the text into one or more modern
+                      languages</desc>
                   </valItem>
                   <valItem ident="praefatio">
                     <desc>to contain the Praefatio to an edition</desc>
@@ -197,10 +221,12 @@
                     <desc>used to divide a div[type=praefatio] into multiple parts</desc>
                   </valItem>
                   <valItem ident="subsection">
-                    <desc>used to divide a div[type=praefatio]/div[type=section] into multiple parts</desc>
+                    <desc>used to divide a div[type=praefatio]/div[type=section] into multiple
+                      parts</desc>
                   </valItem>
                   <valItem ident="textpart">
-                    <desc>used to divide a div[type=edition] into multiple parts (fragments, columns, faces, etc.)</desc>
+                    <desc>used to divide a div[type=edition] into multiple parts (fragments,
+                      columns, faces, etc.)</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -241,7 +267,8 @@
                     <desc>Testimonium</desc>
                   </valItem>
                   <valItem ident="commented">
-                    <desc>Biblical verses or text, which is commented on (comment in @subtype=commentary or scholia)</desc>
+                    <desc>Biblical verses or text, which is commented on (comment in
+                      @subtype=commentary or scholia)</desc>
                   </valItem>
                   <valItem ident="commentary">
                     <desc>Exegesis of a Biblical verse or a commentary to a text</desc>
@@ -274,10 +301,12 @@
             <constraintSpec ident="unclear" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
-                  <sch:assert test="@reason and @cert">@reason and @cert are to be used in unclear</sch:assert>
+                  <sch:assert test="@reason and @cert">@reason and @cert are to be used in
+                    unclear</sch:assert>
                 </sch:rule>
                 <sch:rule context="tei:unclear[ancestor::tei:rdg or ancestor::tei:lem]">
-                  <sch:report test="@reason or @cert">@reason and @cert are not to be used in rdg or lem</sch:report>
+                  <sch:report test="@reason or @cert">@reason and @cert are not to be used in rdg or
+                    lem</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -313,9 +342,13 @@
             <constraintSpec ident="gap" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:gap">
-                  <sch:report test="@quantity and @extent">gap may have @quantity (a figure) or @extent (a descriptive text value) but not both</sch:report>
-                  <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is required</sch:report>
-                  <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
+                  <sch:report test="@quantity and @extent">gap may have @quantity (a figure) or
+                    @extent (a descriptive text value) but not both</sch:report>
+                  <sch:report test="@quantity and not(@unit)">If gap has @quantity then @unit is
+                    required</sch:report>
+                  <sch:report
+                    test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]"
+                    >gap may not appear within supplied text</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -333,7 +366,8 @@
                     <desc>Traces of text remains on the surface but cannot be interpreted</desc>
                   </valItem>
                   <valItem ident="missing">
-                    <desc>Editor thinks that there is text missing, even if there are no physical traces in a manuscript</desc>
+                    <desc>Editor thinks that there is text missing, even if there are no physical
+                      traces in a manuscript</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -358,7 +392,7 @@
                   <valItem ident="majuscule">
                     <desc>Word in uppercase/capitals</desc>
                   </valItem>
-		              <valItem ident="rubricated">
+                  <valItem ident="rubricated">
                     <desc>Word or letter is rubricated</desc>
                   </valItem>
                   <valItem ident="overline">
@@ -367,10 +401,10 @@
                   <valItem ident="underline">
                     <desc>Line under a letter</desc>
                   </valItem>
-		              <valItem ident="subscript">
+                  <valItem ident="subscript">
                     <desc>rendition as subscript</desc>
                   </valItem>
-		              <valItem ident="superscript">
+                  <valItem ident="superscript">
                     <desc>rendition as superscript</desc>
                   </valItem>
                 </valList>
@@ -386,18 +420,23 @@
                 </datatype>
                 <valList type="semi">
                   <valItem ident="no">
-                    <desc>this linebreak should not be taken as a word-break, i.e. word would be hyphenated in a printed text</desc>
+                    <desc>this linebreak should not be taken as a word-break, i.e. word would be
+                      hyphenated in a printed text</desc>
                   </valItem>
                 </valList>
               </attDef>
             </attList>
-          </elementSpec>          
+          </elementSpec>
           <elementSpec ident="ref" module="core" mode="change">
             <constraintSpec ident="ref" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:ref">
-                  <sch:report test="ancestor::tei:text and not(@cRef or @source)">in the edition ref needs @cRef or @source</sch:report>
-                  <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if ref has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
+                  <sch:report test="ancestor::tei:text and not(@cRef or @source)">in the edition ref
+                    needs @cRef or @source</sch:report>
+                  <sch:report
+                    test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')"
+                    >if ref has @cRef, it also needs @decls (#biblical, #pta or
+                    #perseus)</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -451,7 +490,12 @@
               <attDef ident="type" mode="replace" usage="opt">
                 <valList type="closed">
                   <valItem ident="lemma">
-                    <desc>Lemma quotation in editions of biblical commentaries (the text commented on)</desc>
+                    <desc>Lemma quotation in editions of biblical commentaries (the text commented
+                      on)</desc>
+                  </valItem>
+                  <valItem ident="hexaplaric">
+                    <desc>Quotation in editions of biblical commentaries (quotations from the
+                      Hexapla)</desc>
                   </valItem>
                   <valItem ident="marked">
                     <desc>Quotation which are introduced or otherwise marked</desc>
@@ -460,7 +504,8 @@
                     <desc>Quotation not marked by the author as quotation</desc>
                   </valItem>
                   <valItem ident="paraphrasis">
-                    <desc>Paraphrastic quotation (most times better not marked as quotation at all, but as allusion)</desc>
+                    <desc>Paraphrastic quotation (most times better not marked as quotation at all,
+                      but as allusion)</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -493,7 +538,8 @@
                     <desc>Text dated by explicit internal date</desc>
                   </valItem>
                   <valItem ident="context">
-                    <desc>Archaeological, epigraphic, iconographic or other context of the text support</desc>
+                    <desc>Archaeological, epigraphic, iconographic or other context of the text
+                      support</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -504,8 +550,10 @@
             <constraintSpec ident="space" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:space">
-                  <sch:report test="@quantity and @extent">space may have @quantity (a figure) or @extent (a descriptive text value) but not both</sch:report>
-                  <sch:report test="@quantity and not(@unit)">If space has @quantity then @unit is required</sch:report>
+                  <sch:report test="@quantity and @extent">space may have @quantity (a figure) or
+                    @extent (a descriptive text value) but not both</sch:report>
+                  <sch:report test="@quantity and not(@unit)">If space has @quantity then @unit is
+                    required</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -548,7 +596,8 @@
                     <desc>for indication of text variation</desc>
                   </valItem>
                   <valItem ident="witnesses">
-                    <desc>for indication of witnesses (especially for the indication of change of witnesses in the text)</desc>
+                    <desc>for indication of witnesses (especially for the indication of change of
+                      witnesses in the text)</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -558,7 +607,8 @@
             <constraintSpec ident="lem" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:lem">
-                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of <sch:name/> is required.</sch:assert>
+                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of
+                    <sch:name/> is required.</sch:assert>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -570,13 +620,16 @@
                     <desc>variant is a conjecture (sc. /coniecit/)</desc>
                   </valItem>
                   <valItem ident="correction">
-                    <desc>variant is a correction of an error (for example spelling error), not as far reaching as a conjecture (sc. /correxit/)</desc>
+                    <desc>variant is a correction of an error (for example spelling error), not as
+                      far reaching as a conjecture (sc. /correxit/)</desc>
                   </valItem>
                   <valItem ident="proposition">
-                    <desc>variant is a proposition of a conjecture (sc. /proposuit/ oder /dubitanter/)</desc>
+                    <desc>variant is a proposition of a conjecture (sc. /proposuit/ oder
+                      /dubitanter/)</desc>
                   </valItem>
                   <valItem ident="deletion">
-                    <desc>variant is a deletion (by an editor or a scribe in contrast to an omission)</desc>
+                    <desc>variant is a deletion (by an editor or a scribe in contrast to an
+                      omission)</desc>
                   </valItem>
                   <valItem ident="addition">
                     <desc>variant is an addition</desc>
@@ -605,15 +658,20 @@
             </attList>
           </elementSpec>
           <elementSpec ident="rdg" module="textcrit" mode="change">
-              <!-- testing for <persName>, <orgName>, <placeName> within <rdg> and usage of @cert-->
+            <!-- testing for <persName>, <orgName>, <placeName> within <rdg> and usage of @cert-->
             <constraintSpec ident="rdg" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:rdg">
-                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of <sch:name/> is required.</sch:assert>
-                  <sch:report test="descendant::tei:persName">rdg may not contain a annotated person</sch:report>
-                  <sch:report test="descendant::tei:placeName">rdg may not contain a annotated place</sch:report>
-                  <sch:report test="descendant::tei:orgName">rdg may not contain a annotated organisation</sch:report>
-                  <sch:report test="@cert and not(@type='proposition')">cert may only be used in case of a proposition</sch:report>
+                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of
+                    <sch:name/> is required.</sch:assert>
+                  <sch:report test="descendant::tei:persName">rdg may not contain a annotated
+                    person</sch:report>
+                  <sch:report test="descendant::tei:placeName">rdg may not contain a annotated
+                    place</sch:report>
+                  <sch:report test="descendant::tei:orgName">rdg may not contain a annotated
+                    organisation</sch:report>
+                  <sch:report test="@cert and not(@type='proposition')">cert may only be used in
+                    case of a proposition</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -642,7 +700,8 @@
                     <desc>cause for variant is a transposition</desc>
                   </valItem>
                   <valItem ident="correction">
-                    <desc>cause for variant is a correction (of a small error in the manuscript tradition)</desc>
+                    <desc>cause for variant is a correction (of a small error in the manuscript
+                      tradition)</desc>
                   </valItem>
                   <valItem ident="conjecture">
                     <desc>cause for variant is a conjecture</desc>
@@ -658,7 +717,8 @@
               <attDef ident="cause" mode="change">
                 <valList type="closed" mode="replace">
                   <valItem ident="orthographic">
-                    <desc>marks a variant which is only orthographic (for example because of itacism)</desc>
+                    <desc>marks a variant which is only orthographic (for example because of
+                      itacism)</desc>
                   </valItem>
                   <valItem ident="homoiarkton">
                     <desc>marks a variant which is probably caused by homoiarkton</desc>
@@ -720,21 +780,23 @@
             <constraintSpec ident="del" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:del">
-                  <sch:report test="@rend='repurposed' and not(parent::tei:subst)">repurposed may only used within a substitution</sch:report>
+                  <sch:report test="@rend='repurposed' and not(parent::tei:subst)">repurposed may
+                    only used within a substitution</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
             <attList>
               <attDef ident="rend" mode="change">
                 <valList type="closed" mode="replace">
-		              <valItem ident="unmarked">
-		                <desc>text to be replaced is not marked explicitly</desc>
-		              </valItem>
-		              <valItem ident="marker">
-		                <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
-		              </valItem>
+                  <valItem ident="unmarked">
+                    <desc>text to be replaced is not marked explicitly</desc>
+                  </valItem>
+                  <valItem ident="marker">
+                    <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
+                  </valItem>
                   <valItem ident="repurposed">
-                    <desc>for use with added diacritics: letter before correction, without diacritics</desc>
+                    <desc>for use with added diacritics: letter before correction, without
+                      diacritics</desc>
                   </valItem>
                   <valItem ident="erasure"/>
                   <valItem ident="strikethrough"/>
@@ -753,7 +815,8 @@
             <constraintSpec ident="abbr" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:abbr">
-                  <sch:report test="@type='siglum' and not(parent::tei:witness)">siglum may only used within a witness</sch:report>
+                  <sch:report test="@type='siglum' and not(parent::tei:witness)">siglum may only
+                    used within a witness</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -762,13 +825,14 @@
                 <valList type="closed" mode="replace">
                   <valItem ident="siglum">
                     <desc>classifies abbreviation as siglum</desc>
-		              </valItem>
+                  </valItem>
                   <valItem ident="nomSac">
                     <desc>classifies an abbreviation as nomen sacrum</desc>
-		              </valItem>
+                  </valItem>
                   <valItem ident="suspension">
-                    <desc>classifies an abbreviation as suspension (providing only the first letters and omitting the rest)</desc>
-		              </valItem>
+                    <desc>classifies an abbreviation as suspension (providing only the first letters
+                      and omitting the rest)</desc>
+                  </valItem>
                 </valList>
               </attDef>
             </attList>
@@ -778,15 +842,16 @@
             <constraintSpec ident="expan" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:expan">
-                  <sch:report test="not(parent::tei:choice)">expan may only be used within a choice element</sch:report>
+                  <sch:report test="not(parent::tei:choice)">expan may only be used within a choice
+                    element</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
           </elementSpec>
-	        <elementSpec ident="msIdentifier" module="msdescription" mode="change">
+          <elementSpec ident="msIdentifier" module="msdescription" mode="change">
             <attList>
               <attDef ident="xml:id" mode="change" usage="req">
-	            	<desc>needs an id to be used by CollateX</desc>
+                <desc>needs an id to be used by CollateX</desc>
               </attDef>
             </attList>
           </elementSpec>
