@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 3.0. Last updated on 2024-03-05.</edition>
+        <edition>Version 3.1. Last updated on 2024-07-25.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -452,6 +452,9 @@
                 <valList type="closed">
                   <valItem ident="lemma">
                     <desc>Lemma quotation in editions of biblical commentaries (the text commented on)</desc>
+                  </valItem>
+                  <valItem ident="hexaplarix">
+                    <desc>Quotation in editions of biblical commentaries (quotations from the Hexapla)</desc>
                   </valItem>
                   <valItem ident="marked">
                     <desc>Quotation which are introduced or otherwise marked</desc>

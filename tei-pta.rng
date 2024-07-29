@@ -3710,6 +3710,8 @@ Suggested values include: 1] initial; 2] ekthesis; 3] majuscule; 4] rubricated; 
                <choice>
                   <value>lemma</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Lemma quotation in editions of biblical commentaries (the text commented on)</a:documentation>
+                  <value>hexaplaric</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Quotation in editions of biblical commentaries (quotations from the Hexapla)</a:documentation>
                   <value>marked</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Quotation which are introduced or otherwise marked</a:documentation>
                   <value>unmarked</value>
