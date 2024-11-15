@@ -9,7 +9,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 3.1. Last updated on 2024-07-25.</edition>
+        <edition>Version 3.1. Last updated on 2024-11-15.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -30,6 +30,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2024-11-15">new value for revisionDesc @status and new element label (@type=attribution)</change>
       <change who="#AvS" when="2024-07-25">table allowed</change>
       <change who="#AvS" when="2024-03-05">add type values for quote</change>
       <change who="#AvS" when="2023-10-06">add rules for modern commentary on text</change>
@@ -94,15 +95,18 @@
               </attDef>
             </attList>
           </elementSpec>
-          <elementSpec ident="revisionDesc" mode="change">
+          <elementSpec ident="revisionDesc" module="header" mode="change">
             <attList>
-              <attDef ident="status" mode="change">
-                <valList type="closed">
+              <attDef ident="status" mode="change" usage="req">
+                <valList type="closed" mode="replace">
                   <valItem ident="draft">
                     <desc>Draft version: work in progress</desc>
                   </valItem>
                   <valItem ident="unfinished">
                     <desc>Work not yet finished: for example annotations need to be done</desc>
+                  </valItem>
+                  <valItem ident="final">
+                    <desc>Final Version, not (yet) approved</desc>
                   </valItem>
                   <valItem ident="approved">
                     <desc>Approved (final) version</desc>
@@ -270,6 +274,18 @@
               </attDef>
             </attList>
           </elementSpec>
+          <elementSpec ident="label" module="core" mode="change">
+            <attList>
+              <attDef ident="type" mode="replace" usage="req">
+                <valList type="closed" mode="replace">
+                  <valItem ident="attribution">
+                    <desc>Contains a label or heading used to attribute text
+                      (for example a quote in a catena) to an author</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
           <elementSpec ident="unclear" module="core" mode="change">
             <constraintSpec ident="unclear" scheme="isoschematron">
               <constraint>
@@ -358,7 +374,7 @@
                   <valItem ident="majuscule">
                     <desc>Word in uppercase/capitals</desc>
                   </valItem>
-		              <valItem ident="rubricated">
+                  <valItem ident="rubricated">
                     <desc>Word or letter is rubricated</desc>
                   </valItem>
                   <valItem ident="overline">
@@ -367,10 +383,10 @@
                   <valItem ident="underline">
                     <desc>Line under a letter</desc>
                   </valItem>
-		              <valItem ident="subscript">
+                  <valItem ident="subscript">
                     <desc>rendition as subscript</desc>
                   </valItem>
-		              <valItem ident="superscript">
+                  <valItem ident="superscript">
                     <desc>rendition as superscript</desc>
                   </valItem>
                 </valList>
@@ -391,7 +407,7 @@
                 </valList>
               </attDef>
             </attList>
-          </elementSpec>          
+          </elementSpec>
           <elementSpec ident="ref" module="core" mode="change">
             <constraintSpec ident="ref" scheme="isoschematron">
               <constraint>
@@ -453,7 +469,7 @@
                   <valItem ident="lemma">
                     <desc>Lemma quotation in editions of biblical commentaries (the text commented on)</desc>
                   </valItem>
-                  <valItem ident="hexaplarix">
+                  <valItem ident="hexaplaric">
                     <desc>Quotation in editions of biblical commentaries (quotations from the Hexapla)</desc>
                   </valItem>
                   <valItem ident="marked">
@@ -608,7 +624,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="rdg" module="textcrit" mode="change">
-              <!-- testing for <persName>, <orgName>, <placeName> within <rdg> and usage of @cert-->
+            <!-- testing for <persName>, <orgName>, <placeName> within <rdg> and usage of @cert-->
             <constraintSpec ident="rdg" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:rdg">
@@ -730,12 +746,12 @@
             <attList>
               <attDef ident="rend" mode="change">
                 <valList type="closed" mode="replace">
-		              <valItem ident="unmarked">
-		                <desc>text to be replaced is not marked explicitly</desc>
-		              </valItem>
-		              <valItem ident="marker">
+                  <valItem ident="unmarked">
+                    <desc>text to be replaced is not marked explicitly</desc>
+                  </valItem>
+                  <valItem ident="marker">
 		                <desc>text to be replaced is marked only (by an dotted obelus or sim.)</desc>
-		              </valItem>
+                  </valItem>
                   <valItem ident="repurposed">
                     <desc>for use with added diacritics: letter before correction, without diacritics</desc>
                   </valItem>
@@ -765,13 +781,13 @@
                 <valList type="closed" mode="replace">
                   <valItem ident="siglum">
                     <desc>classifies abbreviation as siglum</desc>
-		              </valItem>
+                  </valItem>
                   <valItem ident="nomSac">
                     <desc>classifies an abbreviation as nomen sacrum</desc>
-		              </valItem>
+                  </valItem>
                   <valItem ident="suspension">
                     <desc>classifies an abbreviation as suspension (providing only the first letters and omitting the rest)</desc>
-		              </valItem>
+                  </valItem>
                 </valList>
               </attDef>
             </attList>
@@ -786,10 +802,10 @@
               </constraint>
             </constraintSpec>
           </elementSpec>
-	        <elementSpec ident="msIdentifier" module="msdescription" mode="change">
+          <elementSpec ident="msIdentifier" module="msdescription" mode="change">
             <attList>
               <attDef ident="xml:id" mode="change" usage="req">
-	            	<desc>needs an id to be used by CollateX</desc>
+                <desc>needs an id to be used by CollateX</desc>
               </attDef>
             </attList>
           </elementSpec>

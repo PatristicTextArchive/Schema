@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2024-07-25T11:25:18Z. . 
+Schema generated from ODD source 2024-11-15T15:39:41Z. . 
 TEI Edition: Version 4.2.1. Last updated on 1st March 2021, revision 654a5c551 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.2.1/ 
   
@@ -4487,9 +4487,16 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(label) contains any label or heading used to identify part of a text, typically but not exclusively in a list or glossary. [3.8. Lists]</a:documentation>
          <ref name="tei_macro.phraseSeq"/>
          <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
+         <ref name="tei_att.typed.attribute.subtype"/>
          <ref name="tei_att.placement.attributes"/>
          <ref name="tei_att.written.attributes"/>
+         <attribute name="type">
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+            <choice>
+               <value>attribution</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a label or heading used to attribute text (for example a quote in a catena) to an author</a:documentation>
+            </choice>
+         </attribute>
          <empty/>
       </element>
    </define>
@@ -6508,17 +6515,21 @@ Suggested values include: 1] sent; 2] received; 3] transmitted; 4] redirected; 5
             </oneOrMore>
          </choice>
          <ref name="tei_att.global.attributes"/>
-         <optional>
-            <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-                       name="status"
-                       a:defaultValue="draft">
-               <a:documentation>describes the status of a document either currently or, when associated with a dated element, at the time indicated.
-Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] draft; 6] embargoed; 7] expired; 8] frozen; 9] galley; 10] proposed; 11] published; 12] recommendation; 13] submitted; 14] unfinished; 15] withdrawn</a:documentation>
-               <data type="token">
-                  <param name="pattern">[^\p{C}\p{Z}]+</param>
-               </data>
-            </attribute>
-         </optional>
+         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+                    name="status"
+                    a:defaultValue="draft">
+            <a:documentation>describes the status of a document either currently or, when associated with a dated element, at the time indicated.</a:documentation>
+            <choice>
+               <value>draft</value>
+               <a:documentation>Draft version: work in progress</a:documentation>
+               <value>unfinished</value>
+               <a:documentation>Work not yet finished: for example annotations need to be done</a:documentation>
+               <value>final</value>
+               <a:documentation>Final Version, not (yet) approved</a:documentation>
+               <value>approved</value>
+               <a:documentation>Approved (final) version</a:documentation>
+            </choice>
+         </attribute>
          <empty/>
       </element>
    </define>
