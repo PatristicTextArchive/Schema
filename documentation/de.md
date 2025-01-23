@@ -506,7 +506,7 @@ Im Attribut `@key` wird die `org_id` der [PTA-Oranganisationen-Liste](https://gi
 
 ##### Bezeugung des Textes
 
-Die handschriftliche Bezeugung des Textes wird im Element `<app>`, das ein Attribut `@type` mit dem Wert `witnesses` erhält, dokumentiert. Das Element erhält im Attribut `@xml:id` einen eindeutigen Identifikator, im Attribut `@prev` bzw. `@next` wird auf den korrespondierenden Eintrag (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` und umgekehrt) verwiesen. Gegegebenenfalls kann im Attribut `@corresp` auf eine entsprechende textkritische Variante oder Lesart verwiesen werden, die dann ebenfalls einen eindeutigen Identifikator benötigt.
+Die handschriftliche Bezeugung des Textes wird im Element `<app>`, das ein Attribut `@type` mit dem Wert `witnesses` erhält, dokumentiert. Das Element erhält im Attribut `@xml:id` einen eindeutigen Identifikator, im optionalen Attribut `@prev` bzw. `@next` wird auf den korrespondierenden Eintrag (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` und umgekehrt) verwiesen. Gegegebenenfalls kann im Attribut `@corresp` auf eine entsprechende textkritische Variante oder Lesart verwiesen werden, die dann ebenfalls einen eindeutigen Identifikator benötigt.
 Das Element enthält nur das Element `<rdg>` mit dem Attribut `@wit`, in dem eines der selbst-schließenden Elemente `<witStart/>` (= Beginn eines Zeugen), `<witEnd/>` (= Ende eines Zeugen), `<lacunaStart/>` (= Beginn einer Lücke) oder `<lacunaEnd/>` (= Ende einer Lücke) eingefügt wird. Das Element enthält keinen Text, sondern wird (vergleichbar mit einem Milestone-Element wie `<pb>`) an der passenden Stelle im Text eingefügt: In Fall von `<witStart>` und `<lacunaEnd>` steht es vor dem ersten Wort, das im Zeugen vorhanden ist bzw. nachdem die Lücke zu Ende ist, im Fall von `<witEnd>` und `<lacunaStart>` steht es nach dem letzten Wort, das im Zeugen vorhanden ist bzw. vor dem die Lücke beginnt. 
 
 @import "examples/ed_witnesses.xml" {class="line-numbers"}
@@ -691,7 +691,7 @@ aufgeteilt und untereinander verlinkt werden.
 
 ##### Kommentierung textkritischer Entscheidungen
 
-Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden. Das Element `<app>` erhält in diesem Fall ein Attribut `@xml:id`, auf das im Element `<note>` in einem Attribut `@target` verwiesen wird; im Falle von `<witDetail>` wird in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
+Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden; im Falle von `<witDetail>` wird in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 

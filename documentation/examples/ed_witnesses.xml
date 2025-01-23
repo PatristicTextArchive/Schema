@@ -1,4 +1,4 @@
-<app type="textcritical">
+<app type="variants">
     <lem wit="#Pt #Pc #Pb #Pd #My #Ma #Ha #Va #Ab">ἀπαστράπτει</lem>
     <rdg wit="#Pa #Be" xml:id="lac-Pa">ἀ</rdg>
     <witDetail wit="#Pa" target="#lac-Pa">Blattausfall.</witDetail>

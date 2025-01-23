@@ -474,7 +474,7 @@ Direct speech is marked up with the help of the `<said>` element.
 
 Dialogue is marked up with the help of `<sp>` (instead of `<p>`). For the person speaking `<speaker>` is used, the spoken text is marked up with `<p>`.
 
-@import “examples/ed_speech.xml” {class=“lines-numbers”}
+@import "examples/ed_speech.xml" {class="lines-numbers"}
 
 ##### Encoding of people, organisations and places
 
@@ -489,7 +489,7 @@ Dialogue is marked up with the help of `<sp>` (instead of `<p>`). For the person
 
 ##### Text witnesses
 
-The manuscripts witnessing the text are documented in the element `<app>` with the attribute `@type="witnesses"`. The element receives a unique identifier in the attribute `@xml:id`, in the attribute `@prev` or `@next` reference is made to the corresponding entry (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` and vice versa). If necessary, a reference to a corresponding text-critical variant or reading can be made in the attribute `@corresp`.
+The manuscripts witnessing the text are documented in the element `<app>` with the attribute `@type="witnesses"`. The element receives a unique identifier in the attribute `@xml:id`, in the optional attribute `@prev` or `@next` reference is made to the corresponding entry (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` and vice versa). If necessary, a reference to a corresponding text-critical variant or reading can be made in the attribute `@corresp`.
 The element contains only the element `<rdg>` with the attribute `@wit`, in which one of the self-closing elements `<witStart/>` (= beginning of a witness), `<witEnd/>` (= end of a witness), `<lacunaStart/>` (= beginning of a gap) or `<lacunaEnd/>` (= end of a gap) is inserted. The element does not contain any text, but is inserted (comparable to a milestone element like `<pb>`) at the appropriate place in the text: In the case of `<witStart>` and `<lacunaEnd>` it comes before the first word present in the witness or after the gap ends, in the case of `<witEnd>` and `<lacunaStart>` it comes after the last word present in the witness or before which the gap begins. 
 
 @import "examples/ed_witnesses.xml" {class="line-numbers"}
@@ -684,7 +684,7 @@ If a variant exceeds a division level, it must be given priority and the `<app>`
 
 ##### Commenting on text-critical decisions
 
-If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or  typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element. In this case, the `<app>` element receives an attribute `@xml:id`, which is referred to in the `<note>` in an attribute `@target`. In case of an annotation in `<witDetail>`, the element receives an attribute `@wit` with the ID of the manuscript.
+If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element; in that case, the element `<witDetail>` receives an attribute `@wit` with the ID of the manuscript.
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 
