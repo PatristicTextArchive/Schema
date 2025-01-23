@@ -112,6 +112,10 @@ Titel werden mit dem Element `<title>` innerhalb des Elementes
 
 @import "examples/title_head.xml" {class="line-numbers"}
 
+Überschriftsähnliche Elemente, wie z.B. die Zuschreibung eines Zitates zu einem am Rand angeführten oder im Text hervorgehobenen Autors, werden mit dem Element `<label>` ausgezeichnet, das ein Attribut `@type` mit dem Wert `attribution` erhält.
+
+@import "examples/label.xml" {class="line-numbers"}
+
 #### Zeilen-, Spalten-, Seiten-, Bogenanfänge
 
 Zeilenanfänge werden mit `<lb/>`, Spaltenanfänge mit `<cb/>`, 
@@ -366,7 +370,9 @@ Schließlich erhält das Element `<revisionDesc>` ein Attribut `@status`, in dem
 
 - `draft`: Entwurf, Edition in Arbeit
 - `unfinished`: Noch in Bearbeitung, zum Beispiel fehlen noch Annotationen
+- `final`: Finale, (noch) nicht freigegebene Version
 - `approved`: Freigegebene, finale Version
+
 ### Edition
 
 Die gesamte kritische Edition steht im `<text>`-Teil der Datei. Sie besteht mindestens aus einem Element `<div>`, das den edierten Text enthält. Das Element hat die folgenden Attribute: 
@@ -430,6 +436,16 @@ Innerhalb des Elements `<div type="edition">` wird die vom Editor rekonstruierte
 Das Attribute `@n` enthält die Stellenreferenz, normalerweise eine Zahl, sie kann aber auch Text wie „pr”, „hypopsalmos”, „hypothesis”, „perioche” usw. enthalten. Sie darf aber kein Leerzeichen enthalten, sondern nur Buchstaben, Zahlen, Symbole und Interpunktionszeichen. 
 
 Absätze innerhalb dieser Unterabschnitte werden mit Hilfe des Elements `<p>` ausgezeichnet. Jedes Element `<div>` enthält mindestens ein Element `<p>`. Listen sind ebenfalls erlaubt: Sie werden (anstelle von `<p>`) mit dem Element `<list>`, die einzelnen Listeneinträge mit dem Element `<item>` ausgezeichnet. Hat eine Liste eine Überschrift, so wird diese mit Hilfe des Elementes `<head>` ausgezeichnet. 
+
+#### Titel und titelähnliche Elemente
+
+Titel werden mit dem Element `<title>` innerhalb des Elementes `<head>` ausgezeichnet:
+
+@import "examples/title_head.xml" {class="line-numbers"}
+
+Überschriftsähnliche Elemente, wie z.B. die Zuschreibung eines Zitates zu einem am Rand angeführten oder im Text hervorgehobenen Autors, werden mit dem Element `<label>` ausgezeichnet, das ein Attribut `@type` mit dem Wert `attribution` erhält. (Für die Auszeichnung von Sprechern in Dialogen siehe [unten](#auszeichnung-von-dialogen).)
+
+@import "examples/label.xml" {class="line-numbers"}
 
 
 ##### Auszeichnung weiterer struktureller Elemente

@@ -94,6 +94,10 @@ Titles are marked with the element `<title>` within the element
 
 @import "examples/title_head.xml" {class="line-numbers"}
 
+Heading-like elements, such as the attribution of a quote to an author listed in the margin or highlighted in the text, are marked with the element `<label>`, which is given an attribute `@type` with the value `attribution`.
+
+@import "examples/label.xml" {class="line-numbers"}
+
 
 #### Line, column, page, gathering beginnings
 
@@ -352,6 +356,7 @@ A special case is `metacritical-edition-with-app`, which is used for the [SBLGNT
 Finally, the element `<revisionDesc>` receives an attribute `@status`, in which the status of the edition is specified. The following values are possible:
 - `draft`: Draft version, work in progress
 - `unfinished`: Work not yet finished, for example annotations need to be done
+- `final`: Final Version, not (yet) approved
 - `approved`: Approved (final) version
 
 ### Edition
@@ -415,6 +420,17 @@ Within the element `<div type="edition">` the text structure reconstructed by th
 The `@n` attribute receives the reference indicator (which is used for citing the respective passage), usually a number, but text like “pr”, “hypopsalmos”, “hypothesis”, “perioche” etc. are also possible. Please note that the attribute may not contain whitespace, but only letters, numbers, symbols and punctuation signs.
 
 Paragraphs within these subsections are marked with the help of the `<p>` element. Each `<div>` element contains at least one `<p>` element. Lists are also allowed: They are marked (instead of `<p>`) with the element `<list>`,  the individual list entries with the element `<item>`. If a list has a heading,  it is marked with the help of the element `<head>`.
+
+##### Title and title-like elements
+
+Titles are marked with the element `<title>` within the element
+`<head>`:
+
+@import "examples/title_head.xml" {class="line-numbers"}
+
+Heading-like elements, such as the attribution of a quote to an author listed in the margin or highlighted in the text, are marked with the element `<label>`, which is given an attribute `@type` with the value `attribution`. (For the encoding of speakers in dialogues see [below](#encoding-of-direct-speech).)
+
+@import "examples/label.xml" {class="line-numbers"}
 
 ##### Marking up further structural elements
 
