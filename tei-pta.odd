@@ -10,7 +10,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 3.2. Last updated on 2025-01-22.</edition>
+        <edition>Version 4.0. Last updated on 2025-01-22.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -36,7 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-01-22">Sort by module; add more schematron rules; remove desc, orig and corr</change>
+      <change who="#AvS" when="2025-01-23">Major rewrite: Sort by module; used elements explicitly stated; add many schematron rules</change>
       <change who="#AvS" when="2024-11-15">new value for revisionDesc @status and new element label (@type=attribution)</change>
       <change who="#AvS" when="2024-07-25">table allowed</change>
       <change who="#AvS" when="2024-03-05">add type values for quote</change>
@@ -85,36 +85,29 @@
   <text>
     <body>
       <div xml:id="elemente">
-        <head>Dokumentation des Schemas</head>
         <schemaSpec ident="tei-pta" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
           source="https://www.tei-c.org/Vault/P5/4.2.1/xml/tei/odd/p5subset.xml">
-          <!-- MODULES USED BY THE PTA SCHEMA -->
+          <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
-          <moduleRef key="header"
-            except="abstract appInfo application classCode hyphenation namespace rendition samplingDecl styleDefDecl tagUsage tagsDecl xenoData"/>
-          <moduleRef key="core" except="binaryObject corr desc email headItem headLabel measureGrp media meeting orig postBox postCode q rb rt ruby textLang"/>
-          <moduleRef
-            key="textstructure"
-            except="argument byline closer dateline div1 div2 div3 div4 div5 div6 div7 docAuthor docDate docEdition docImprint docTitle epigraph floatingText imprimatur opener postscript salute signed titlePage titlePart trailer"/>
-          <moduleRef key="gaiji" except="char charName charProp localName mapping unicodeName value"/>
-          <moduleRef key="msdescription" except="accMat adminInfo depth dim heraldry musicNotation objectType seal sealDesc summary typeDesc typeNote"/>
-          <moduleRef
-            key="namesdates"
-            except="affiliation age bloc climate district education faith langKnowledge langKnown listNym listObject listOrg listRelation nameLink nationality nym occupation offset org population persPronouns region residence sex socecStatus state terrain trait"/>
-          <moduleRef key="transcr" except="fw line listTranspose metamark mod redo restore secl sourceDoc transpose undo"/>
-          <moduleRef key="textcrit" except="wit"/>
-          <moduleRef key="figures" except="formula notatedMusic"/>
-          <moduleRef key="linking" except="alt altGrp joinGrp link linkGrp timeline when"/>
-          <moduleRef key="analysis" except="cl interp interpGrp span spanGrp"/>
-          <moduleRef key="certainty"/>
+          <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl creation distributor edition editionStmt editorialDecl encodingDesc fileDesc funder handNote hyphenation idno interpretation keywords licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
+          <moduleRef key="core" include="abbr add author bibl biblScope biblStruct cb choice cit date del editor expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb pubPlace publisher quote ref resp respStmt said series sic sp speaker term title unclear unit"/>
+          <moduleRef key="textstructure" include="TEI body div text"/>
+          <moduleRef key="gaiji" include="g"/>
+          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier origDate repository"/>
+          <moduleRef key="namesdates" include="forename orgName persName placeName roleName settlement surname"/>
+          <moduleRef key="transcr" include="damage ex handNotes handShift retrace subst supplied surplus"/>
+          <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
+          <moduleRef key="figures" include="cell row table"/>
+          <moduleRef key="linking" include="seg"/>
+          <moduleRef key="analysis" include="pc w"/>
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
           <elementSpec ident="sourceDesc" module="header" mode="change">
             <constraintSpec scheme="isoschematron" ident="sourceDesc">
               <constraint>
                 <sch:rule context="tei:sourceDesc">
-                  <sch:assert test="child::tei:msDesc or child::tei:listWit or child::tei:listBibl">
-                   Needs msDesc (in a ms transcription) or listWit/listBibl (in an edition) as child
+                  <sch:assert test="child::tei:msDesc or child::tei:listWit or child::tei:listBibl or child::tei:p">
+                   Needs msDesc (in a ms transcription) or listWit/listBibl (in an edition) or p (in a translation) as child
                   </sch:assert>
                 </sch:rule>
               </constraint>
@@ -124,7 +117,7 @@
             <constraintSpec scheme="isoschematron" ident="witness">
               <constraint>
                 <sch:rule context="tei:witness">
-                  <sch:assert test="child::tei:abbr and child::tei:name or child::tei:origDate and child::tei:locus">
+                  <sch:assert test="child::tei:abbr and child::tei:name and child::tei:origDate and child::tei:locus">
                    Needs abbr, name, origDate and locus as children
                   </sch:assert>
                 </sch:rule>
@@ -151,6 +144,61 @@
                   </valItem>
                   <valItem ident="approved">
                     <desc>Approved (final) version</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          <elementSpec ident="profileDesc" module="header" mode="change">
+            <constraintSpec ident="profileDesc" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:profileDesc">
+                  <sch:assert test="child::tei:creation and child::tei:textClass">
+                   Needs creation and textClass as children
+                  </sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+          </elementSpec>
+          <elementSpec ident="creation" module="header" mode="change">
+            <constraintSpec ident="creation" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:creation">
+                  <sch:assert test="child::tei:date and child::tei:placeName">
+                   Needs date and placeName as children
+                  </sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+          </elementSpec>
+          <elementSpec ident="textClass" module="header" mode="change">
+            <constraintSpec ident="textClass" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:textClass">
+                  <sch:report test="count(tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit) > 0 and not(child::tei:keywords[@scheme='#comphistsem'] and child::tei:keywords[@scheme='#editionstatus'])">
+                   Edition needs keyword schemes for text type classification and edition status as children</sch:report>
+                  <sch:report test="count(tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc) > 0 and not(child::tei:keywords[@scheme='#comphistsem'])">
+                   Transcription needs keyword scheme for text type classification as child</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+          </elementSpec>
+          <elementSpec ident="keywords" module="header" mode="change">
+            <constraintSpec ident="keywords" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:keywords">
+                  <sch:assert test="child::tei:term">Needs term as child</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+            <attList>
+              <attDef ident="scheme" mode="change" usage="req">
+                <valList type="closed" mode="replace">
+                  <valItem ident="#comphistsem">
+                    <desc>Value one of: Biblical, Theological (Bible Exegesis, Dogmatic Treatise, Polemics), Liturgical, Paraenetic (Sermon, Treatise), Religious Practical, Legal, Administrative, Scholarly (Florilegium, Commentary, Treatise), Educational, Medical, Polemic, Oratory, Historiography, Biographical (Hagiography, Biography, Autobiography), Letters, Inscriptions. (Values in parentheses as second term.)</desc>
+                  </valItem>
+                  <valItem ident="#editionstatus">
+                    <desc>Value one of: critical-edition, critical-edition-no-app, critical-edition-outdated, pre-critical-edition</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -187,12 +235,14 @@
                   <sch:report test="@type='textpart' and not(@n)">
                     @type=textpart needs to be numbered
                   </sch:report>
+                  <sch:report test="@type='praefatio' and not(count(child::tei:div[@type='section']) > 0) and count(child::tei:div[not(@type='section' or @type='subsection')]) = 0">Praefatio should contain sections and/or subsections, and must not contain divs without a type.</sch:report>
                   <sch:report test="@subtype and not(@type='textpart')">
                     @subtype may only be used together with @type=textpart
                   </sch:report>
                   <sch:report test="@ana and not(@subtype='commentary')">
                     @ana may only be used together with @subtype=commentary
                   </sch:report>
+                  <sch:report test="@type='edition' and count(descendant::tei:app[@type='variants']) > 0 and not(count(descendant::tei:app[@type='witnesses']) > 0)">If variants are encoded, also witnesses must be encoded (missing app[@type='witnesses'])</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -480,7 +530,9 @@
               <constraint>
                 <sch:rule context="tei:ref">
                   <sch:report test="ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary'] and not(@cRef or @source)">in the edition ref needs @cRef or @source</sch:report>
-                  <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if ref has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report><sch:report test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))">Check correct abbreviation of biblical version. Must be one of: LXX, Hexapla, Peshitta, NA, Vg</sch:report>
+                  <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if ref has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
+                  <sch:report test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))">Check that a reference to PTA or Perseus library is an URN</sch:report>
+                  <sch:report test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))">Check correct abbreviation of biblical version. Must be one of: LXX, Hexapla, Peshitta, NA, Vg</sch:report>
                   <sch:report test="@decls='#biblical' and not(contains(@cRef, 'Gn:') or contains(@cRef, 'Ex:') or contains(@cRef, 'Lv:') or contains(@cRef, 'Num:') or contains(@cRef, 'Dt:') or contains(@cRef, 'Jos:') or contains(@cRef, 'Judg:') or contains(@cRef, 'Rt:') or contains(@cRef, '1Sa:') or contains(@cRef, '2Sa:') or contains(@cRef, '1Ko:') or contains(@cRef, '2Ko:') or contains(@cRef, '1Chr:') or contains(@cRef, '2Chr:') or contains(@cRef, '3Esr:') or contains(@cRef, 'Esr:') or contains(@cRef, 'Est:') or contains(@cRef, 'Jdt:') or contains(@cRef, 'Tob:') or contains(@cRef, '1Mak:') or contains(@cRef, '2Mak:') or contains(@cRef, '3Mak:') or contains(@cRef, '4Mak:') or contains(@cRef, 'Ps:') or contains(@cRef, 'Oden:') or contains(@cRef, 'Prov:') or contains(@cRef, 'Eccl:') or contains(@cRef, 'Song:') or contains(@cRef, 'Job:') or contains(@cRef, 'Wis:') or contains(@cRef, 'Sir:') or contains(@cRef, 'PsSal:') or contains(@cRef, 'Hos:') or contains(@cRef, 'Am:') or contains(@cRef, 'Mi:') or contains(@cRef, 'Joel:') or contains(@cRef, 'Ob:') or contains(@cRef, 'Jon:') or contains(@cRef, 'Nah:') or contains(@cRef, 'Hab:') or contains(@cRef, 'Zeph:') or contains(@cRef, 'Hag:') or contains(@cRef, 'Sach:') or contains(@cRef, 'Mal:') or contains(@cRef, 'Is:') or contains(@cRef, 'Jr:') or contains(@cRef, 'Bar:') or contains(@cRef, 'Lam:') or contains(@cRef, 'EpistJer:') or contains(@cRef, 'Hes:') or contains(@cRef, 'Sus:') or contains(@cRef, 'Sus-LXX:') or contains(@cRef, 'Dn:') or contains(@cRef, 'Dn-LXX:') or contains(@cRef, 'Bel:') or contains(@cRef, 'Bel-LXX:') or contains(@cRef, 'Mt:') or contains(@cRef, 'Mk:') or contains(@cRef, 'Lk:') or contains(@cRef, 'Jn:') or contains(@cRef, 'Act:') or contains(@cRef, 'Rom:') or contains(@cRef, '1Cor:') or contains(@cRef, '2Cor:') or contains(@cRef, 'Gal:') or contains(@cRef, 'Eph:') or contains(@cRef, 'Phil:') or contains(@cRef, 'Col:') or contains(@cRef, '1Th:') or contains(@cRef, '2Th:') or contains(@cRef, '1Tim:') or contains(@cRef, '2Tim:') or contains(@cRef, 'Tt:') or contains(@cRef, 'Phm:') or contains(@cRef, 'Heb:') or contains(@cRef, 'Jak:') or contains(@cRef, '1P:') or contains(@cRef, '2P:') or contains(@cRef, '1Jn:') or contains(@cRef, '2Jn:') or contains(@cRef, '3Jn:') or contains(@cRef, 'Jud:') or contains(@cRef, 'Rev:'))">Check correct abbreviation of biblical books. Must be one of: Gn, Ex, Lv, Num, Dt, Jos, Judg, Rt, 1Sa, 2Sa, 1Ko, 2Ko, 1Chr, 2Chr, 3Esr, Esr, Est, Jdt, Tob, 1Mak, 2Mak, 3Mak, 4Mak, Ps, Oden, Prov, Eccl, Song, Job, Wis, Sir, PsSal, Hos, Am, Mi, Joel, Ob, Jon, Nah, Hab, Zeph, Hag, Sach, Mal, Is, Jr, Bar, Lam, EpistJer, Hes, Sus, Sus-LXX, Dn, Dn-LXX, Bel, Bel-LXX, Mt, Mk, Lk, Jn, Act, Rom, 1Cor, 2Cor, Gal, Eph, Phil, Col, 1Th, 2Th, 1Tim, 2Tim, Tt, Phm, Heb, Jak, 1P, 2P, 1Jn, 2Jn, 3Jn, Jud, Rev</sch:report>
                 </sch:rule>
               </constraint>
@@ -492,6 +544,7 @@
                 <sch:rule context="tei:note">
                   <sch:report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</sch:report>
                   <sch:report test="@place and @type">@place (i.e. in transcriptions annotating notes in the manuscript) and @type (i.e. note is a commenting note) may not be used together</sch:report>
+                  <sch:report test="ancestor::tei:div[@type='praefatio'] and @*">Notes in the praefatio are not allowed to have attributes.</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -578,6 +631,33 @@
             <attList>
               <attDef ident="n" mode="change" usage="req"/>
               <attDef ident="facs" mode="change" usage="opt"/>
+              <attDef ident="edRef" mode="change" usage="opt"/>
+              <attDef ident="xml:id" mode="change" usage="opt"/> 
+              <attDef ident="break" mode="change" usage="opt"/> 
+              <attDef ident="xml:lang" mode="delete"/>
+              <attDef ident="xml:base" mode="delete"/>
+              <attDef ident="xml:space" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
+              <attDef ident="style" mode="delete"/>
+              <attDef ident="rendition" mode="delete"/>
+              <attDef ident="corresp" mode="delete"/>
+              <attDef ident="synch" mode="delete"/>
+              <attDef ident="sameAs" mode="delete"/>
+              <attDef ident="copyOf" mode="delete"/>
+              <attDef ident="next" mode="delete"/>
+              <attDef ident="prev" mode="delete"/>
+              <attDef ident="exclude" mode="delete"/>
+              <attDef ident="select" mode="delete"/>
+              <attDef ident="ana" mode="delete"/>
+              <attDef ident="change" mode="delete"/>
+              <attDef ident="cert" mode="delete"/>
+              <attDef ident="resp" mode="delete"/>
+              <attDef ident="source" mode="delete"/>
+              <attDef ident="type" mode="delete"/>
+              <attDef ident="subtype" mode="delete"/>
+              <attDef ident="ed" mode="delete"/>
+              <attDef ident="spanTo" mode="delete"/>
+              <attDef ident="generatedBy" mode="delete"/>
             </attList>
           </elementSpec>
           <elementSpec ident="subst" module="core" mode="change">
@@ -739,7 +819,13 @@
           </elementSpec>
           <!-- textcrit -->
           <elementSpec ident="app" module="textcrit" mode="change">
-            <!-- Changing attribute list: only @type is allowed -->
+            <constraintSpec ident="app" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:app">
+                  <sch:report test="@type='witnesses' and (child::tei:lem or not(child::tei:rdg))">Attestation of witness needs rdg, but no lem</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="ana" mode="delete"/>
               <attDef ident="resp" mode="delete"/>
@@ -766,7 +852,6 @@
                 </sch:rule>
               </constraint>
             </constraintSpec>
-            <!-- Changing attribute list: only @type is allowed -->
             <attList>
               <attDef ident="type" mode="change">
                 <valList type="closed" mode="replace">
@@ -812,12 +897,12 @@
             </attList>
           </elementSpec>
           <elementSpec ident="rdg" module="textcrit" mode="change">
-            <!-- testing for <persName>, <orgName>, <placeName> within <rdg> and usage of @cert-->
             <constraintSpec ident="rdg" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:rdg">
-                  <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of
-                    <sch:name/> is required.</sch:assert>
+                  <sch:report test="parent::tei:app[@type='witnesses'] and not(child::tei:witStart or child::tei:witEnd or child::tei:lacunaStart or child::tei:lacunaEnd)">Witnesses needs witStart, witEnd, lacunaStart or lacunaEnd</sch:report>
+                  <sch:report test="parent::tei:app[@type='witnesses'] and (@resp or @source) and not(@wit)">resp or source are not allowed in witnesses attestation, only wit</sch:report>
+                  <sch:report test="parent::tei:app[@type='variants'] and not(@wit or @resp or @source)">The wit, resp, or source attribute of <sch:name/> is required in variants.</sch:report>
                   <sch:report test="descendant::tei:persName">rdg may not contain a annotated
                     person</sch:report>
                   <sch:report test="descendant::tei:placeName">rdg may not contain a annotated
@@ -910,6 +995,17 @@
               </attDef>
               <attDef ident="style" mode="delete"/>
             </attList>
+          </elementSpec>
+          <!-- linking -->
+          <elementSpec ident="seg" module="linking" mode="change">
+            <constraintSpec ident="seg" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:seg">
+                  <sch:assert test="@type='insertion' or @type='allusion' or @type='similar' or @type='source' or @type='psq'">The type attribute of <sch:name/> should be "insertion", "allusion", "similar", "source" or "psq"</sch:assert>
+                  <sch:report test="(@type='allusion' or @type='similar' or @type='source') and not(child::tei:ref)">If it's an allusion, a reference needs to be added</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>         
           <!-- CHANGING ATTRIBUTE CLASSES -->
           <classSpec type="atts" ident="att.breaking" mode="change">
