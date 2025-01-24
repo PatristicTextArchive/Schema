@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-24T13:39:37Z. . 
+Schema generated from ODD source 2025-01-24T15:03:15Z. . 
 TEI Edition: P5 Version 4.8.0. Last updated on 8th July 2024, revision 1f9891a87 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.8.0/ 
   
@@ -6923,6 +6923,9 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
                <optional>
                   <ref name="tei_supportDesc"/>
                </optional>
+               <optional>
+                  <ref name="tei_layoutDesc"/>
+               </optional>
             </group>
          </choice>
          <ref name="tei_att.global.attributes"/>
@@ -6968,6 +6971,19 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                </choice>
             </attribute>
          </optional>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_layoutDesc">
+      <element name="layoutDesc">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(layout description) collects the set of layout descriptions applicable to a manuscript or other object. [11.7.2. Writing, Decoration, and Other Notations]</a:documentation>
+         <choice>
+            <oneOrMore>
+               <ref name="tei_model.pLike"/>
+            </oneOrMore>
+            <empty/>
+         </choice>
+         <ref name="tei_att.global.attributes"/>
          <empty/>
       </element>
    </define>
