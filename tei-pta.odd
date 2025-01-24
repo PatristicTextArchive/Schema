@@ -98,7 +98,7 @@
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
-          <moduleRef key="linking" include="seg"/>
+          <moduleRef key="linking" include="ab seg"/>
           <moduleRef key="analysis" include="pc w"/>
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
