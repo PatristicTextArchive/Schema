@@ -88,17 +88,17 @@
         <schemaSpec ident="tei-pta" docLang="en" prefix="tei_" start="TEI" xml:lang="en">
           <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
-          <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl creation distributor edition editionStmt editorialDecl encodingDesc fileDesc funder handNote hyphenation idno interpretation keywords licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
+          <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl creation distributor edition editionStmt editorialDecl encodingDesc extent fileDesc funder handNote hyphenation idno interpretation keywords licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
           <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
-          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier objectDesc origDate physDesc repository scriptDesc stamp"/>
+          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier objectDesc origDate physDesc repository scriptDesc stamp supportDesc"/>
           <moduleRef key="namesdates" include="forename listPerson orgName persName person placeName roleName settlement surname"/>
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
           <moduleRef key="linking" include="ab seg"/>
-          <moduleRef key="analysis" include="pc w"/>
+          <moduleRef key="analysis" include="pc s w"/>
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
           <elementSpec ident="teiHeader" module="header" mode="change">
