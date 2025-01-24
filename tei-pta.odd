@@ -86,15 +86,15 @@
     <body>
       <div xml:id="elemente">
         <schemaSpec ident="tei-pta" docLang="en" prefix="tei_" start="TEI" xml:lang="en"
-          source="https://www.tei-c.org/Vault/P5/4.2.1/xml/tei/odd/p5subset.xml">
+          source="https://www.tei-c.org/Vault/P5/4.8.1/xml/tei/odd/p5subset.xml">
           <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
           <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl creation distributor edition editionStmt editorialDecl encodingDesc fileDesc funder handNote hyphenation idno interpretation keywords licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
           <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
-          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier origDate physDesc repository"/>
-          <moduleRef key="namesdates" include="forename listPerson orgName persName placeName roleName settlement surname"/>
+          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier objectDesc origDate physDesc repository scriptDesc"/>
+          <moduleRef key="namesdates" include="forename listPerson orgName persName person placeName roleName settlement surname"/>
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
@@ -114,11 +114,14 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="witness" module="header" mode="change">
+            <classes mode="change">
+              <memberOf key="att.sortable" mode="delete"/>
+            </classes>
             <constraintSpec scheme="isoschematron" ident="witness">
               <constraint>
                 <sch:rule context="tei:witness">
                   <sch:assert test="child::tei:abbr and child::tei:name and child::tei:origDate and child::tei:locus">
-                   Needs abbr, name, origDate and locus as children
+                    Needs abbr, name, origDate and locus as children
                   </sch:assert>
                 </sch:rule>
               </constraint>
@@ -127,6 +130,14 @@
               <attDef ident="xml:id" mode="change" usage="req"/>
               <attDef ident="corresp" mode="change" usage="rec"/>
               <attDef ident="source" mode="change" usage="opt"/>
+              <attDef ident="ana" mode="delete"/>
+              <attDef ident="change" mode="delete"/>
+              <attDef ident="facs" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
+              <attDef ident="style" mode="delete"/>
+              <attDef ident="rendition" mode="delete"/>
+              <attDef ident="cert" mode="delete"/>
+              <attDef ident="resp" mode="delete"/>
             </attList>
           </elementSpec>
           <elementSpec ident="revisionDesc" module="header" mode="change">
