@@ -92,7 +92,7 @@
           <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
-          <moduleRef key="msdescription" include="altIdentifier handDesc layoutDesc locus locusGrp msDesc msIdentifier objectDesc origDate physDesc repository scriptDesc stamp supportDesc"/>
+          <moduleRef key="msdescription" include="altIdentifier handDesc layout layoutDesc locus locusGrp msDesc msIdentifier objectDesc origDate physDesc repository scriptDesc stamp supportDesc"/>
           <moduleRef key="namesdates" include="forename listPerson orgName persName person placeName roleName settlement surname"/>
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
