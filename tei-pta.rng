@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-01-24T09:48:33Z. . 
+Schema generated from ODD source 2025-01-24T10:33:07Z. . 
 TEI Edition: Version 4.2.1. Last updated on 1st March 2021, revision 654a5c551 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.2.1/ 
   
@@ -1569,6 +1569,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.emphLike">
       <choice>
          <ref name="tei_foreign"/>
+         <ref name="tei_emph"/>
          <ref name="tei_term"/>
          <ref name="tei_title"/>
       </choice>
@@ -1576,18 +1577,23 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.emphLike_alternation">
       <choice>
          <ref name="tei_foreign"/>
+         <ref name="tei_emph"/>
          <ref name="tei_term"/>
          <ref name="tei_title"/>
       </choice>
    </define>
    <define name="tei_model.emphLike_sequence">
       <ref name="tei_foreign"/>
+      <ref name="tei_emph"/>
       <ref name="tei_term"/>
       <ref name="tei_title"/>
    </define>
    <define name="tei_model.emphLike_sequenceOptional">
       <optional>
          <ref name="tei_foreign"/>
+      </optional>
+      <optional>
+         <ref name="tei_emph"/>
       </optional>
       <optional>
          <ref name="tei_term"/>
@@ -1601,6 +1607,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <ref name="tei_foreign"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tei_emph"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_term"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -1610,6 +1619,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.emphLike_sequenceRepeatable">
       <oneOrMore>
          <ref name="tei_foreign"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_emph"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_term"/>
@@ -1946,6 +1958,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    </define>
    <define name="tei_model.ptrLike">
       <choice>
+         <ref name="tei_ptr"/>
          <ref name="tei_ref"/>
       </choice>
    </define>
@@ -2116,6 +2129,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.listLike">
       <choice>
          <ref name="tei_list"/>
+         <ref name="tei_listPerson"/>
          <ref name="tei_listApp"/>
          <ref name="tei_listWit"/>
          <ref name="tei_table"/>
@@ -2124,6 +2138,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.listLike_alternation">
       <choice>
          <ref name="tei_list"/>
+         <ref name="tei_listPerson"/>
          <ref name="tei_listApp"/>
          <ref name="tei_listWit"/>
          <ref name="tei_table"/>
@@ -2131,6 +2146,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    </define>
    <define name="tei_model.listLike_sequence">
       <ref name="tei_list"/>
+      <ref name="tei_listPerson"/>
       <ref name="tei_listApp"/>
       <ref name="tei_listWit"/>
       <ref name="tei_table"/>
@@ -2138,6 +2154,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.listLike_sequenceOptional">
       <optional>
          <ref name="tei_list"/>
+      </optional>
+      <optional>
+         <ref name="tei_listPerson"/>
       </optional>
       <optional>
          <ref name="tei_listApp"/>
@@ -2154,6 +2173,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <ref name="tei_list"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tei_listPerson"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_listApp"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -2166,6 +2188,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.listLike_sequenceRepeatable">
       <oneOrMore>
          <ref name="tei_list"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_listPerson"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_listApp"/>
@@ -2274,6 +2299,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
    <define name="tei_model.global.edit">
       <choice>
          <ref name="tei_gap"/>
+         <ref name="tei_space"/>
          <ref name="tei_app"/>
          <ref name="tei_witDetail"/>
       </choice>
@@ -2285,6 +2311,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <ref name="tei_lg"/>
          <ref name="tei_sp"/>
       </choice>
+   </define>
+   <define name="tei_model.personLike">
+      <notAllowed/>
    </define>
    <define name="tei_model.placeNamePart">
       <choice>
@@ -2539,6 +2568,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <ref name="tei_model.nameLike.agent"/>
          <ref name="tei_model.offsetLike"/>
          <ref name="tei_model.placeStateLike"/>
+         <ref name="tei_rs"/>
          <ref name="tei_idno"/>
          <ref name="tei_model.persNamePart"/>
       </choice>
@@ -2548,6 +2578,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <ref name="tei_model.nameLike.agent_alternation"/>
          <ref name="tei_model.offsetLike_alternation"/>
          <ref name="tei_model.placeStateLike_alternation"/>
+         <ref name="tei_rs"/>
          <ref name="tei_idno"/>
          <ref name="tei_model.persNamePart_alternation"/>
       </choice>
@@ -2556,6 +2587,7 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       <ref name="tei_model.nameLike.agent_sequence"/>
       <ref name="tei_model.offsetLike_sequence"/>
       <ref name="tei_model.placeStateLike_sequence"/>
+      <ref name="tei_rs"/>
       <ref name="tei_idno"/>
       <ref name="tei_model.persNamePart_sequence"/>
    </define>
@@ -2568,6 +2600,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       </optional>
       <optional>
          <ref name="tei_model.placeStateLike_sequenceOptional"/>
+      </optional>
+      <optional>
+         <ref name="tei_rs"/>
       </optional>
       <optional>
          <ref name="tei_idno"/>
@@ -2587,6 +2622,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
          <ref name="tei_model.placeStateLike_sequenceOptionalRepeatable"/>
       </zeroOrMore>
       <zeroOrMore>
+         <ref name="tei_rs"/>
+      </zeroOrMore>
+      <zeroOrMore>
          <ref name="tei_idno"/>
       </zeroOrMore>
       <zeroOrMore>
@@ -2602,6 +2640,9 @@ Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line;
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_model.placeStateLike_sequenceRepeatable"/>
+      </oneOrMore>
+      <oneOrMore>
+         <ref name="tei_rs"/>
       </oneOrMore>
       <oneOrMore>
          <ref name="tei_idno"/>
@@ -3314,6 +3355,16 @@ Sample values include: 1] rubbing; 2] mildew; 3] smoke</a:documentation>
          <empty/>
       </element>
    </define>
+   <define name="tei_rs">
+      <element name="rs">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(referencing string) contains a general purpose name or referring string. [13.2.1. Personal Names 3.6.1. Referring Strings]</a:documentation>
+         <ref name="tei_macro.phraseSeq"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.naming.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_num">
       <element name="num">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(number) contains a number, written in any form. [3.6.3. Numbers and
@@ -3434,6 +3485,27 @@ Measures]</a:documentation>
          <empty/>
       </element>
    </define>
+   <define name="tei_ptr">
+      <element name="ptr">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(pointer) defines a pointer to another location. [3.7. Simple Links and Cross-References 16.1. Links]</a:documentation>
+         <empty/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="tei-pta-ptr-ptrAtts-constraint-report-17">
+            <rule context="tei:ptr">
+               <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@target and @cRef">Only one of the
+attributes @target and @cRef may be supplied on <name/>.</report>
+            </rule>
+         </pattern>
+         <ref name="tei_att.cReferencing.attributes"/>
+         <ref name="tei_att.declaring.attributes"/>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.internetMedia.attributes"/>
+         <ref name="tei_att.pointing.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_ref">
       <element name="ref">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(reference) defines a reference to another location, possibly modified by additional text or comment. [3.7. Simple Links and Cross-References 16.1. Links]</a:documentation>
@@ -3453,7 +3525,7 @@ Measures]</a:documentation>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-ref-refAtts-constraint-report-22">
+                  id="tei-pta-ref-refAtts-constraint-report-23">
             <rule context="tei:ref">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="@target and @cRef">Only one of the
 	attributes @target' and @cRef' may be supplied on <name/>
@@ -3772,6 +3844,25 @@ Elements]</a:documentation>
          <empty/>
       </element>
    </define>
+   <define name="tei_analytic">
+      <element name="analytic">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(analytic level) contains bibliographic elements describing an item (e.g. an article or poem) published within a monograph or journal and not as an independent publication. [3.12.2.1. Analytic, Monographic, and Series Levels]</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <ref name="tei_author"/>
+               <ref name="tei_editor"/>
+               <ref name="tei_respStmt"/>
+               <ref name="tei_title"/>
+               <ref name="tei_model.ptrLike"/>
+               <ref name="tei_date"/>
+               <ref name="tei_idno"/>
+               <ref name="tei_availability"/>
+            </choice>
+         </zeroOrMore>
+         <ref name="tei_att.global.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_monogr">
       <element name="monogr">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(monographic level) contains bibliographic elements describing an item (e.g. a book or journal) published as an independent item (i.e. as a separate physical object). [3.12.2.1. Analytic, Monographic, and Series Levels]</a:documentation>
@@ -4054,6 +4145,9 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
       <element name="biblStruct">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(structured bibliographic citation) contains a structured bibliographic citation, in which only bibliographic sub-elements appear and in a specified order. [3.12.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements]</a:documentation>
          <group>
+            <zeroOrMore>
+               <ref name="tei_analytic"/>
+            </zeroOrMore>
             <oneOrMore>
                <ref name="tei_monogr"/>
                <zeroOrMore>
@@ -4119,7 +4213,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-l-abstractModel-structure-l-constraint-report-26">
+                  id="tei-pta-l-abstractModel-structure-l-constraint-report-27">
             <rule context="tei:l">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:l[. = current()])]">
@@ -4176,7 +4270,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-lg-abstractModel-structure-l-constraint-report-27">
+                  id="tei-pta-lg-abstractModel-structure-l-constraint-report-28">
             <rule context="tei:lg">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:l[not(.//tei:note//tei:lg[. = current()])]">
@@ -5219,7 +5313,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-div-abstractModel-structure-l-constraint-report-39">
+                  id="tei-pta-div-abstractModel-structure-l-constraint-report-40">
             <rule context="tei:div">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron" test="ancestor::tei:l">
         Abstract model violation: Lines may not contain higher-level structural elements such as div.
@@ -5228,7 +5322,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-div-abstractModel-structure-p-constraint-report-40">
+                  id="tei-pta-div-abstractModel-structure-p-constraint-report-41">
             <rule context="tei:div">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="ancestor::tei:p or ancestor::tei:ab and not(ancestor::tei:floatingText)">
@@ -5406,7 +5500,12 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
                <oneOrMore>
                   <ref name="tei_model.pLike"/>
                </oneOrMore>
-               <empty/>
+               <group>
+                  <optional>
+                     <ref name="tei_physDesc"/>
+                  </optional>
+                  <empty/>
+               </group>
             </choice>
          </group>
          <ref name="tei_att.global.attributes"/>
@@ -5562,7 +5661,7 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-msIdentifier-msId_minimal-constraint-report-43">
+                  id="tei-pta-msIdentifier-msId_minimal-constraint-report-44">
             <rule context="tei:msIdentifier">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        test="not(parent::tei:msPart) and (local-name(*[1])='idno' or local-name(*[1])='altIdentifier' or normalize-space(.)='')">An msIdentifier must contain either a repository or location.</report>
@@ -5626,6 +5725,44 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          <ref name="tei_att.global.attributes"/>
          <ref name="tei_att.typed.attributes"/>
          <ref name="tei_att.datable.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_physDesc">
+      <element name="physDesc">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(physical description) contains a full physical description of a manuscript, manuscript part, or other object optionally subdivided using more specialized elements from the model.physDescPart class. [10.7. Physical Description]</a:documentation>
+         <group>
+            <zeroOrMore>
+               <ref name="tei_model.pLike"/>
+            </zeroOrMore>
+            <optional>
+               <ref name="tei_handDesc"/>
+            </optional>
+         </group>
+         <ref name="tei_att.global.attributes"/>
+         <empty/>
+      </element>
+   </define>
+   <define name="tei_handDesc">
+      <element name="handDesc">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(description of hands) contains a description of all the different hands used in a manuscript or other object. [10.7.2. Writing, Decoration, and Other Notations]</a:documentation>
+         <choice>
+            <oneOrMore>
+               <ref name="tei_model.pLike"/>
+            </oneOrMore>
+            <group>
+               <oneOrMore>
+                  <ref name="tei_handNote"/>
+               </oneOrMore>
+            </group>
+         </choice>
+         <ref name="tei_att.global.attributes"/>
+         <optional>
+            <attribute name="hands">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(hands) specifies the number of distinct hands identified within the manuscript</a:documentation>
+               <data type="nonNegativeInteger"/>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -5961,6 +6098,35 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          <empty/>
       </element>
    </define>
+   <define name="tei_listPerson">
+      <element name="listPerson">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(list of persons) contains a list of descriptions, each of which provides information about an identifiable person or a group of people, for example the participants in a language interaction, or the people referred to in a historical source. [13.3.2. The Person Element 15.2. Contextual Information 2.4. The Profile Description 15.3.2. Declarable Elements]</a:documentation>
+         <group>
+            <zeroOrMore>
+               <ref name="tei_model.headLike"/>
+            </zeroOrMore>
+            <zeroOrMore>
+               <empty/>
+            </zeroOrMore>
+            <oneOrMore>
+               <oneOrMore>
+                  <choice>
+                     <ref name="tei_model.personLike"/>
+                     <ref name="tei_listPerson"/>
+                  </choice>
+               </oneOrMore>
+               <zeroOrMore>
+                  <empty/>
+               </zeroOrMore>
+            </oneOrMore>
+         </group>
+         <ref name="tei_att.global.attributes"/>
+         <ref name="tei_att.typed.attributes"/>
+         <ref name="tei_att.declarable.attributes"/>
+         <ref name="tei_att.sortable.attributes"/>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_att.global.facs.attributes">
       <ref name="tei_att.global.facs.attribute.facs"/>
    </define>
@@ -6049,6 +6215,75 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          <empty/>
       </element>
    </define>
+   <define name="tei_space">
+      <element name="space">
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(space) indicates the location of a significant space in the text. [11.4.1. Space]</a:documentation>
+         <zeroOrMore>
+            <choice>
+               <ref name="tei_model.descLike"/>
+               <ref name="tei_model.certLike"/>
+            </choice>
+         </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="tei-pta-space-space-constraint-rule-27">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      xmlns:xi="http://www.w3.org/2001/XInclude"
+                      context="tei:space">
+               <sch:report test="@quantity and @extent">space may have @quantity (a figure) or
+                    @extent (a descriptive text value) but not both</sch:report>
+               <sch:report test="@quantity and not(@unit)">If space has @quantity then @unit is
+                    required</sch:report>
+            </sch:rule>
+         </pattern>
+         <ref name="tei_att.global.attribute.xmlid"/>
+         <ref name="tei_att.global.attribute.n"/>
+         <ref name="tei_att.global.attribute.xmllang"/>
+         <ref name="tei_att.global.attribute.xmlbase"/>
+         <ref name="tei_att.global.attribute.xmlspace"/>
+         <ref name="tei_att.global.rendition.attribute.rend"/>
+         <ref name="tei_att.global.rendition.attribute.style"/>
+         <ref name="tei_att.global.rendition.attribute.rendition"/>
+         <ref name="tei_att.global.linking.attribute.corresp"/>
+         <ref name="tei_att.global.linking.attribute.synch"/>
+         <ref name="tei_att.global.linking.attribute.sameAs"/>
+         <ref name="tei_att.global.linking.attribute.copyOf"/>
+         <ref name="tei_att.global.linking.attribute.next"/>
+         <ref name="tei_att.global.linking.attribute.prev"/>
+         <ref name="tei_att.global.linking.attribute.exclude"/>
+         <ref name="tei_att.global.linking.attribute.select"/>
+         <ref name="tei_att.global.analytic.attribute.ana"/>
+         <ref name="tei_att.global.facs.attribute.facs"/>
+         <ref name="tei_att.global.change.attribute.change"/>
+         <ref name="tei_att.global.responsibility.attribute.cert"/>
+         <ref name="tei_att.global.source.attribute.source"/>
+         <ref name="tei_att.typed.attributes"/>
+         <ref name="tei_att.dimensions.attributes"/>
+         <optional>
+            <attribute name="resp">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(responsible party) (responsible party) indicates the individual responsible for identifying and measuring the space</a:documentation>
+               <list>
+                  <oneOrMore>
+                     <data type="anyURI"/>
+                  </oneOrMore>
+               </list>
+            </attribute>
+         </optional>
+         <optional>
+            <attribute name="dim">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(dimension) indicates whether the space is horizontal or vertical.</a:documentation>
+               <choice>
+                  <value>horizontal</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the space is horizontal.</a:documentation>
+                  <value>vertical</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the space is vertical.</a:documentation>
+               </choice>
+            </attribute>
+         </optional>
+         <empty/>
+      </element>
+   </define>
    <define name="tei_subst">
       <element name="subst">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(substitution) groups one or more deletions (or surplus text) with one or more additions when the combination is to be regarded as a single intervention in the text. [11.3.1.5. Substitutions]</a:documentation>
@@ -6062,7 +6297,7 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-subst-del-constraint-rule-27">
+                  id="tei-pta-subst-del-constraint-rule-28">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6237,7 +6472,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-app-app-constraint-rule-28">
+                  id="tei-pta-app-app-constraint-rule-29">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:app">
@@ -6335,7 +6570,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-lem-lem-constraint-rule-29">
+                  id="tei-pta-lem-lem-constraint-rule-30">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem">
@@ -6424,7 +6659,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-rdg-rdg-constraint-rule-30">
+                  id="tei-pta-rdg-rdg-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg">
@@ -6649,7 +6884,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-witness-witness-constraint-rule-31">
+                  id="tei-pta-witness-witness-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:witness">
@@ -6768,7 +7003,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-variantEncoding-location-variantEncodingLocation-constraint-rule-32">
+                  id="tei-pta-variantEncoding-location-variantEncodingLocation-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:variantEncoding">
@@ -6988,7 +7223,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-ab-abstractModel-structure-ab-constraint-report-52">
+                  id="tei-pta-ab-abstractModel-structure-ab-constraint-report-55">
             <rule context="tei:ab">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6999,7 +7234,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-ab-abstractModel-structure-l-constraint-report-53">
+                  id="tei-pta-ab-abstractModel-structure-l-constraint-report-56">
             <rule context="tei:ab">
                <report xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                        xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7022,7 +7257,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="tei_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-seg-seg-constraint-rule-33">
+                  id="tei-pta-seg-seg-constraint-rule-34">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"

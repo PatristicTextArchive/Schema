@@ -90,12 +90,12 @@
           <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
           <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl creation distributor edition editionStmt editorialDecl encodingDesc fileDesc funder handNote hyphenation idno interpretation keywords licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
-          <moduleRef key="core" include="abbr add author bibl biblScope biblStruct cb choice cit date del editor expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb pubPlace publisher quote ref resp respStmt said series sic sp speaker term title unclear unit"/>
+          <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
-          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier origDate repository"/>
-          <moduleRef key="namesdates" include="forename orgName persName placeName roleName settlement surname"/>
-          <moduleRef key="transcr" include="damage ex handNotes handShift retrace subst supplied surplus"/>
+          <moduleRef key="msdescription" include="altIdentifier handDesc locus locusGrp msDesc msIdentifier origDate physDesc repository"/>
+          <moduleRef key="namesdates" include="forename listPerson orgName persName placeName roleName settlement surname"/>
+          <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
           <moduleRef key="linking" include="ab seg"/>
@@ -404,6 +404,15 @@
               <attDef ident="xml:lang" mode="delete"/>
               <attDef ident="xml:space" mode="delete"/>
             </attList>
+          </elementSpec>
+          <elementSpec ident="emph">
+            <constraintSpec ident="emph" scheme="isoschematron">
+              <constraint>
+                <sch:rule context="tei:emph">
+                  <sch:report test="not(ancestor::tei:div[@type='praefatio' or @type='translation'])"><sch:name/> may only be used in the praefatio of an edition or in an translation</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
           </elementSpec>
           <elementSpec ident="label" module="core" mode="change">
             <attList>
