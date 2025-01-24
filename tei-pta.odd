@@ -405,7 +405,7 @@
               <attDef ident="xml:space" mode="delete"/>
             </attList>
           </elementSpec>
-          <elementSpec ident="emph">
+          <elementSpec ident="emph" module="core" mode="change">
             <constraintSpec ident="emph" scheme="isoschematron">
               <constraint>
                 <sch:rule context="tei:emph">
