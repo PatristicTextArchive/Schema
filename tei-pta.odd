@@ -36,6 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2025-02-17">add intern as value for @status in revisionDesc</change>
       <change who="#AvS" when="2025-01-23">Major rewrite: Sort by module; used elements explicitly stated; add many schematron rules</change>
       <change who="#AvS" when="2024-11-15">new value for revisionDesc @status and new element label (@type=attribution)</change>
       <change who="#AvS" when="2024-07-25">table allowed</change>
@@ -188,6 +189,9 @@
             <attList>
               <attDef ident="status" mode="change" usage="req">
                 <valList type="closed" mode="replace">
+                  <valItem ident="intern">
+                    <desc>Internal version, not published</desc>
+                  </valItem>
                   <valItem ident="draft">
                     <desc>Draft version: work in progress</desc>
                   </valItem>
