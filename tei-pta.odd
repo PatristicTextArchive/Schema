@@ -10,7 +10,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 4.0. Last updated on 2025-01-22.</edition>
+        <edition>Version 4.0. Last updated on 2025-02-17.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -36,7 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-02-17">add intern as value for @status in revisionDesc</change>
+      <change who="#AvS" when="2025-02-17">add intern as value for @status in revisionDesc, remove constraint for editionStmt</change>
       <change who="#AvS" when="2025-01-23">Major rewrite: Sort by module; used elements explicitly stated; add many schematron rules</change>
       <change who="#AvS" when="2024-11-15">new value for revisionDesc @status and new element label (@type=attribution)</change>
       <change who="#AvS" when="2024-07-25">table allowed</change>
@@ -103,7 +103,7 @@
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
           <elementSpec ident="teiHeader" module="header" mode="change">
-            <constraintSpec scheme="isoschematron" ident="teiHeader">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="teiHeader">
               <constraint>
                 <sch:rule context="tei:teiHeader">
                   <sch:assert test="child::tei:fileDesc and child::tei:encodingDesc and child::tei:profileDesc and child::tei:revisionDesc">
@@ -114,18 +114,18 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="fileDesc" module="header" mode="change">
-            <constraintSpec scheme="isoschematron" ident="fileDesc">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="fileDesc">
               <constraint>
                 <sch:rule context="tei:fileDesc">
-                  <sch:assert test="child::tei:titleStmt and child::tei:editionStmt and child::tei:publicationStmt and child::tei:sourceDesc">
-                    Needs titleStmt, editionStmt, publicationStmt and sourceDesc
+                  <sch:assert test="child::tei:titleStmt and child::tei:publicationStmt and child::tei:sourceDesc">
+                    Needs titleStmt, publicationStmt and sourceDesc
                   </sch:assert>
                 </sch:rule>
               </constraint>
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="sourceDesc" module="header" mode="change">
-            <constraintSpec scheme="isoschematron" ident="sourceDesc">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="sourceDesc">
               <constraint>
                 <sch:rule context="tei:sourceDesc">
                   <sch:assert test="child::tei:msDesc or child::tei:listWit or child::tei:listBibl or child::tei:p">
@@ -139,7 +139,7 @@
             <classes mode="change">
               <memberOf key="att.sortable" mode="delete"/>
             </classes>
-            <constraintSpec scheme="isoschematron" ident="witness">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="witness">
               <constraint>
                 <sch:rule context="tei:witness">
                   <sch:assert test="child::tei:abbr and child::tei:name and child::tei:origDate and child::tei:locus">
@@ -163,7 +163,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="encodingDesc" module="header" mode="change">
-            <constraintSpec scheme="isoschematron" ident="encodingDesc">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="encodingDesc">
               <constraint>
                 <sch:rule context="tei:encodingDesc">
                   <sch:assert test="child::tei:refsDecl[@n='CTS'] and child::tei:refsDecl[@xml:id='biblical'] and child::tei:refsDecl[@xml:id='pta'] and child::tei:refsDecl[@xml:id='perseus'] and child::tei:editorialDecl and child::tei:classDecl and child::tei:schemaRef">
@@ -177,7 +177,7 @@
             <classes mode="change">
             <memberOf key="att.global" mode="delete"/>
             </classes>
-            <constraintSpec scheme="isoschematron" ident="witness">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="witness">
               <constraint>
                 <sch:rule context="tei:revisionDesc">
                   <sch:assert test="count(child::tei:change) > 0">
@@ -209,7 +209,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="profileDesc" module="header" mode="change">
-            <constraintSpec ident="profileDesc" scheme="isoschematron">
+            <constraintSpec ident="profileDesc" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:profileDesc">
                   <sch:assert test="child::tei:creation and child::tei:textClass">
@@ -220,7 +220,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="creation" module="header" mode="change">
-            <constraintSpec ident="creation" scheme="isoschematron">
+            <constraintSpec ident="creation" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:creation">
                   <sch:assert test="child::tei:date and child::tei:placeName">
@@ -231,7 +231,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="textClass" module="header" mode="change">
-            <constraintSpec ident="textClass" scheme="isoschematron">
+            <constraintSpec ident="textClass" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:textClass">
                   <sch:report test="count(tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit) > 0 and not(child::tei:keywords[@scheme='#comphistsem'] and child::tei:keywords[@scheme='#editionstatus'])">
@@ -243,7 +243,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="keywords" module="header" mode="change">
-            <constraintSpec ident="keywords" scheme="isoschematron">
+            <constraintSpec ident="keywords" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:keywords">
                   <sch:assert test="child::tei:term">Needs term as child</sch:assert>
@@ -276,7 +276,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="div" mode="change" module="textstructure">
-            <constraintSpec scheme="isoschematron" ident="div">
+            <constraintSpec scheme="schematron"  xml:lang="eng" ident="div">
               <constraint>
                 <sch:rule context="tei:div">
                   <sch:report test="(@type='edition' or @type='translation' or type='commentary') and not(parent::tei:body)">
@@ -466,7 +466,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="emph" module="core" mode="change">
-            <constraintSpec ident="emph" scheme="isoschematron">
+            <constraintSpec ident="emph" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:emph">
                   <sch:report test="not(ancestor::tei:div[@type='praefatio' or @type='translation'])"><sch:name/> may only be used in the praefatio of an edition or in an translation</sch:report>
@@ -487,7 +487,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="unclear" module="core" mode="change">
-            <constraintSpec ident="unclear" scheme="isoschematron">
+            <constraintSpec ident="unclear" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
                   <sch:report test="not(@reason and @cert)">@reason and @cert are to be used in
@@ -528,7 +528,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="gap" module="core" mode="change">
-            <constraintSpec ident="gap" scheme="isoschematron">
+            <constraintSpec ident="gap" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:gap">
                   <sch:report test="@quantity and @extent">gap may have @quantity (a figure) or
@@ -595,7 +595,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="ref" module="core" mode="change">
-            <constraintSpec ident="ref" scheme="isoschematron">
+            <constraintSpec ident="ref" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:ref">
                   <sch:report test="ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary'] and not(@cRef or @source)">in the edition <sch:name/> needs @cRef or @source</sch:report>
@@ -608,7 +608,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="note" module="core" mode="change">
-            <constraintSpec ident="note" scheme="isoschematron">
+            <constraintSpec ident="note" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:note">
                   <sch:report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</sch:report>
@@ -730,7 +730,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="subst" module="core" mode="change">
-            <constraintSpec ident="del" scheme="isoschematron">
+            <constraintSpec ident="del" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:subst">
                   <sch:assert test="child::tei:del and child::tei:add">Needs del and add as children</sch:assert>
@@ -739,7 +739,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="del" module="core" mode="change">
-            <constraintSpec ident="del" scheme="isoschematron">
+            <constraintSpec ident="del" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:del">
                   <sch:report test="@rend='repurposed' and not(parent::tei:subst)">repurposed may only used within a substitution</sch:report>
@@ -774,7 +774,7 @@
           </elementSpec>
           <elementSpec ident="abbr" module="core" mode="change">
             <!-- testing for siglum: only to be used within <witness> -->
-            <constraintSpec ident="abbr" scheme="isoschematron">
+            <constraintSpec ident="abbr" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:abbr">
                   <sch:report test="@type='siglum' and not(parent::tei:witness or parent::tei:head[parent::tei:listWit])">siglum may only used within a witness</sch:report>
@@ -798,7 +798,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="expan" module="core" mode="change">
-            <constraintSpec ident="expan" scheme="isoschematron">
+            <constraintSpec ident="expan" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:expan">
                   <sch:report test="not(parent::tei:choice)">expan may only be used within a choice element</sch:report>
@@ -807,7 +807,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="name" module="core" mode="change">
-            <constraintSpec ident="name" scheme="isoschematron">
+            <constraintSpec ident="name" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:name">
                   <sch:report test="@key and not(contains(@key,'PTAMS'))">Key needs to be a PTAMS-ID</sch:report>
@@ -849,7 +849,7 @@
             </attList>
           </elementSpec> 
           <elementSpec ident="origDate" module="msdescription" mode="change">
-            <constraintSpec ident="origDate" scheme="isoschematron">
+            <constraintSpec ident="origDate" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:origDate">
                   <sch:report test="@notBefore and not(@notAfter)">notBefore and notAfter need to be used together</sch:report>
@@ -866,7 +866,7 @@
           </elementSpec>
           <!-- transscr -->
           <elementSpec ident="space" module="transcr" mode="change">
-            <constraintSpec ident="space" scheme="isoschematron">
+            <constraintSpec ident="space" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:space">
                   <sch:report test="@quantity and @extent">space may have @quantity (a figure) or
@@ -878,7 +878,7 @@
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="handShift" module="transcr" mode="change">
-            <constraintSpec ident="handShift" scheme="isoschematron">
+            <constraintSpec ident="handShift" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:handShift">
                   <sch:assert test="@medium or @scribeRef or @scriptRef">On of medium, scribeRef or scriptRef is needed.</sch:assert>
@@ -888,7 +888,7 @@
           </elementSpec>
           <!-- textcrit -->
           <elementSpec ident="app" module="textcrit" mode="change">
-            <constraintSpec ident="app" scheme="isoschematron">
+            <constraintSpec ident="app" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:app">
                   <sch:report test="@type='witnesses' and (child::tei:lem or not(child::tei:rdg))">Attestation of witness needs rdg, but no lem</sch:report>
@@ -914,7 +914,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="lem" module="textcrit" mode="change">
-            <constraintSpec ident="lem" scheme="isoschematron">
+            <constraintSpec ident="lem" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:lem">
                   <sch:assert test="@wit|@resp|@source">The wit, resp, or source attribute of
@@ -967,7 +967,7 @@
             </attList>
           </elementSpec>
           <elementSpec ident="rdg" module="textcrit" mode="change">
-            <constraintSpec ident="rdg" scheme="isoschematron">
+            <constraintSpec ident="rdg" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:rdg">
                   <sch:report test="parent::tei:app[@type='witnesses'] and not(child::tei:witStart or child::tei:witEnd or child::tei:lacunaStart or child::tei:lacunaEnd)">Witnesses needs witStart, witEnd, lacunaStart or lacunaEnd</sch:report>
@@ -1068,7 +1068,7 @@
           </elementSpec>
           <!-- linking -->
           <elementSpec ident="seg" module="linking" mode="change">
-            <constraintSpec ident="seg" scheme="isoschematron">
+            <constraintSpec ident="seg" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:seg">
                   <sch:assert test="@type='insertion' or @type='allusion' or @type='similar' or @type='source' or @type='psq'">The type attribute of <sch:name/> should be "insertion", "allusion", "similar", "source" or "psq"</sch:assert>

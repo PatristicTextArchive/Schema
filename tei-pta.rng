@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-02-17T16:06:00Z. . 
+Schema generated from ODD source 2025-04-14T14:33:09Z. . 
 TEI Edition: P5 Version 4.9.0. Last updated on 24th January 2025, revision f73186978 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.9.0/ 
   
@@ -5130,8 +5130,8 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:fileDesc">
-               <sch:assert test="child::tei:titleStmt and child::tei:editionStmt and child::tei:publicationStmt and child::tei:sourceDesc">
-                    Needs titleStmt, editionStmt, publicationStmt and sourceDesc
+               <sch:assert test="child::tei:titleStmt and child::tei:publicationStmt and child::tei:sourceDesc">
+                    Needs titleStmt, publicationStmt and sourceDesc
                   </sch:assert>
             </sch:rule>
          </pattern>
