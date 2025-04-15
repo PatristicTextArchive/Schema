@@ -312,6 +312,10 @@ Also in the `<encodingDesc>` section, the `<editorialDecl>` section within the `
 
 @import "examples/ed_interpretation.xml" {class="line-numbers"}
 
+All categories used are defined in the `<classDecl>` element in a `<taxonomy>` with `@xml:id="annotationstatus"` and `@xml:id="analysisstatus"`. 
+
+@import "examples/classdecl_annotation.xml" {class="line-numbers"}
+
 The annotation status is defined as follows:
 
 - `fully-annotated`: All instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.
@@ -324,6 +328,16 @@ The extent to which the annotations are identified with norm data is defined as 
 - `partially-identified`: Some encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 - `not-identified`: No encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 
+The status of linguistic analysis is defined as follows:
+
+- `automatically-tagged`: Words are automatically tagged.
+- `manually-tagged`: Words are manually tagged.
+- `not-tagged`: Words are not tagged.
+- `automatically-analyzed`: Words are automatically analyzed.
+- `manually-analyzed`: Words are manually analyzed.
+- `not-analyzed`: Words are not analyzed.
+
+Normally, words are automatically tagged and analyzed in the course of publication in the PTA web frontend.
 
 #### Normalisation
 
@@ -350,7 +364,12 @@ Within the `<profileDesc>` section, the type of edition is provided in the  `<te
 
 -   `pre-critical-edition` for pre-modern editions (e.g. in the Patrologia Graeca or Latina).
 
+The terms are defined in `<classDecl>` element in a `<taxonomy>` with `@xml:id="editionstatus"`
+
+@import "examples/classdecl_editionstatus.xml" {class="line-numbers"}
+
 A special case is `metacritical-edition-with-app`, which is used for the [SBLGNT edition](https://www.sblgnt.com/) of the New Testament.
+
 #### Status of edition
 
 Finally, the element `<revisionDesc>` receives an attribute `@status`, in which the status of the edition is specified. The following values are possible:

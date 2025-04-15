@@ -1,0 +1,19 @@
+<classDecl>
+    ...
+    <taxonomy xml:id="editionstatus">
+       <bibl>Patristic Text Archive Status of edition</bibl>
+       <category xml:id="critical-edition">
+          <catDesc>Critical edition in which the text-critical variants have been encoded.</catDesc>
+       </category>
+       <category xml:id="critical-edition-no-app">
+          <catDesc>Critical edition in which the text-critical variants have not been encoded, e.g. because it is a retro-digitisation of a printed critical edition and for copyright reasons the apparatus cannot be included in the retro-digitisation.</catDesc>
+       </category>
+       <category xml:id="critical-edition-outdated">
+          <catDesc>Edition which notes text-critical variants, but does not, for example, comprehensively include the manuscripts.</catDesc>
+       </category>
+       <category xml:id="pre-critical-edition">
+          <catDesc>Pre-modern editions (e.g. editions in the Patrologia Graeca or Latina)</catDesc>
+       </category>
+    </taxonomy>
+    ...
+ </classDecl>

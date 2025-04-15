@@ -1,0 +1,42 @@
+<classDecl>
+    ...
+    <taxonomy xml:id="annotationstatus">
+       <bibl>Patristic Text Archive Status of annotation</bibl>
+       <category xml:id="fully-annotated">
+          <catDesc>All instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.</catDesc>
+       </category>
+       <category xml:id="partially-annotated">
+          <catDesc>Some instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.</catDesc>
+       </category>
+       <category xml:id="fully-identified">
+          <catDesc>All encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.</catDesc>
+       </category>
+       <category xml:id="partially-identified">
+          <catDesc>Some encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.</catDesc>
+       </category>
+       <category xml:id="not-identified">
+          <catDesc>No encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.</catDesc>
+       </category>
+    </taxonomy>
+    <taxonomy xml:id="analysisstatus">
+       <bibl>Patristic Text Archive Status of linguistic analysis</bibl>
+       <category xml:id="automatically-tagged">
+          <catDesc>Words are automatically tagged.</catDesc>
+       </category>
+       <category xml:id="manually-tagged">
+          <catDesc>Words are manually tagged.</catDesc>
+       </category>
+       <category xml:id="not-tagged">
+          <catDesc>Words are not tagged.</catDesc>
+       </category>
+       <category xml:id="automatically-analyzed">
+          <catDesc>Words are automatically analyzed.</catDesc>
+       </category>
+       <category xml:id="manually-analyzed">
+          <catDesc>Words are manually analyzed.</catDesc>
+       </category>
+       <category xml:id="not-analyzed">
+          <catDesc>Words are not analyzed.</catDesc>
+       </category>
+    </taxonomy>
+ </classDecl>

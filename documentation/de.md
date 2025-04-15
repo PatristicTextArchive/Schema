@@ -325,6 +325,10 @@ wurden und in welchem Ausmaß. Dadurch können Nutzer der Edition schnell erkenn
 
 @import "examples/ed_interpretation.xml" {class="line-numbers"}
 
+Alle verwendeten Kategorien werden innerhalb des `<classDecl>`-Elements in einem `<taxonomy>`-Element mit `@xml:id="annotationstatus"` und `@xml:id="analysisstatus"` definiert. 
+
+@import "examples/classdecl_annotation.xml" {class="line-numbers"}
+
 Der Status der Annotationen ist folgendermaßen definiert:
 
 - `fully-annotated`: Alle Fälle eines Phänomens (z.B. Bibelzitate, Personen, Orte) werden mit dem entsprechenden Element markiert.
@@ -336,6 +340,17 @@ Der Umfang der Identifikation mit Normdaten ist folgendermaßen definiert:
 - `fully-identified`: Alle markierten Fälle eines Phänomens (z.B. biblische Zitate, Personen, Orte) werden mit den entsprechenden Normdaten identifiziert.
 - `partially-identified`: Einige markierte Fälle eines Phänomens (z.B. biblische Zitate, Personen, Orte) werden mit den entsprechenden Normdaten identifiziert.
 - `not-identified`: Keine markierten Fälle eines Phänomens (z.B. Bibelzitate, Personen, Orte) werden mit den entsprechenden Normdaten identifiziert.
+
+Der Status der sprachlichen Analyse ist folgendermaßen definiert:
+
+- `automatically-tagged`: Worte sind automatisch ausgezeichnet.
+- `manually-tagged`: Worte sind manuell ausgezeichnet.
+- `not-tagged`: Worte sind nicht ausgezeichnet.
+- `automatically-analyzed`: Worte sind automatisch analysiert.
+- `manually-analyzed`: Worte sind manuell analysiert.
+- `not-analyzed`: Worte sind nicht analysiert.
+
+Normalerweise werden Worte im Zuge der Publikation im Webfrontend des PTA automatisch ausgezeichnet und analysiert.
 
 #### Normalisierung
 
@@ -361,6 +376,10 @@ Die Art der Edition wird innerhalb des Abschnittes `<profileDesc>` im Unterabsch
 
 -   `pre-critical-edition` für vormoderne Editionen (z.B. in der
     Patrologia Graeca oder Latina).
+
+Die Kategorien sind innerhalb des `<classDecl>`-Elements in einem `<taxonomy>`-Element mit `@xml:id="editionstatus"` definiert:
+
+@import "examples/classdecl_editionstatus.xml" {class="line-numbers"}
 
 Ein Sonderfall ist `metacritical-edition-with-app`, das für die [SBLGNT-Edition](https://www.sblgnt.com/) des neuen Testamentes Verwendung findet.
 
