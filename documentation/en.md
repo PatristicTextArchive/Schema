@@ -318,7 +318,7 @@ The annotation status is defined as follows:
 - `partially-annotated`: Some instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.
 - `not-annotated`: No instance of a phenomenon (e.g. biblical quotations, persons, places) is encoded with the respective element.
 
-The extension to which the annotations are identified with norm data is defined as follows:
+The extent to which the annotations are identified with norm data is defined as follows:
 
 - `fully-identified`: All encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 - `partially-identified`: Some encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
