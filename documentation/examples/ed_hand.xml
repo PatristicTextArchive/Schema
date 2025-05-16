@@ -1,5 +1,19 @@
 <app type="variants">
- <rdgGrp><lem wit="#Pa #Pb #Ha #Va">ὁ γενναῖος ἐκεῖνος</lem>
- <rdg wit="#Be" varSeq="2" hand="m2"><add place="above">ὁ γενναῖος ἐκεῖνος</add></rdg></rdgGrp>
- <rdg wit="#Be" varSeq="1" type="transposition">ἐκεῖνος ὁ γενναῖος</rdg>
+    <rdgGrp>
+        <lem wit="#Pa #Pb #Ha #Va">ὁ γενναῖος ἐκεῖνος</lem>
+        <rdg wit="#Be" varSeq="2" hand="m2"><add place="above">ὁ γενναῖος ἐκεῖνος</add></rdg>
+    </rdgGrp>
+    <rdg wit="#Be" varSeq="1" type="transposition">ἐκεῖνος ὁ γενναῖος</rdg>
 </app>
+<app type="variants">
+    <lem wit="#Ax #Be #Eb #Is #Kc #Ox #Pa #Pu #Sm #Sn #To"/>
+    <rdg wit="#Ad #Af #Ap #Ga #Hb #Ka #Mp #Mz #Oe #Pb #Pc #Pd #Pt #St #Vf #Vl" type="addition">τὴν</rdg>
+    <rdg wit="#Pi" varSeq="2">
+        <subst>
+            <del type="strikethrough">τῆς</del>
+            <add place="above">τὴν</add>
+        </subst>
+    </rdg>
+    <rdg wit="#Pi" varSeq="1">τῆς</rdg>
+    <rdg wit="#Mo"><gap reason="illegible" unit="character" quantity="6"/></rdg>
+</app> 
