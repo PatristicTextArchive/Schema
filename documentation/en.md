@@ -600,8 +600,6 @@ Rearrangements that affect longer passages of text - especially if they span str
 
 Corrections of the text by the scribe or a later corrector are distinguished in such a way that the order of the different stages of transmission is indicated in the `<rdg>` element with the help of the `@varSeq` attribute.
 
-If a variant created by correction is identical to another variant, this other variant can be given a unique identifier in the `@xml:id` attribute and the correcting variant can refer to this identifier in the `@copyOf` attribute; the `<rdg>` element is empty (“self-closing”) in this case.
-
 The element `<rdg>` can additionally contain the attribute `@hand`, whereby the scribe (`#m1`) and the correctors (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*) should be distinguished. If it is not possible to decide by which hand a correction has been made, the attribute is given the value `unknown`. 
 
 The location of the correction is specified by using the respective elements for deletion, addition, etc. together with their attributes, [see above](#edition-of-the-transcription). 
