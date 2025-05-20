@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.0. Last updated on 2025-03-13.</edition>
+        <edition>Version 1.0. Last updated on 2025-05-19.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,7 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-03-13">Copied tei-pta (version 4.0) into new
+      <change who="#AvS" when="2025-05-19">Copied tei-pta (version 4.1) into new
         schema for dependency annotated PTA files (add new attributes not extant
         in TEI: not TEI-conformant)</change>
     </revisionDesc>
@@ -55,7 +55,7 @@
           <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
           <moduleRef key="header"
-            include="authority availability cRefPattern catDesc category change classDecl creation distributor edition editionStmt editorialDecl encodingDesc extent fileDesc funder handNote hyphenation idno interpretation keywords licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
+            include="authority availability cRefPattern catDesc category change classDecl correction creation distributor edition editionStmt editorialDecl encodingDesc extent fileDesc funder handNote hyphenation idno interpretation keywords language langUsage licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
           <moduleRef key="core"
             include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
@@ -622,6 +622,7 @@
                     test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))"
                     >Check that a reference to PTA or Perseus library is an
                     URN</sch:report>
+                  <sch:report test="current()[ancestor::tei:div[not(@type='praefatio')]]/text() and not(parent::tei:cit)"><sch:name/> may only contain text as child of cit.</sch:report>
                   <sch:report
                     test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))"
                     >Check correct abbreviation of biblical version. Must be one
@@ -654,6 +655,7 @@
                   <sch:report test="ancestor::tei:div[@type='praefatio'] and @*"
                     >Notes in the praefatio are not allowed to have
                     attributes.</sch:report>
+                <sch:report test="ancestor::tei:div[@type='edition'] and @type='explanation'">Notes in the edition are not allowed to have the "explanation" attribute.</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -701,6 +703,9 @@
                 <valList type="closed">
                   <valItem ident="commentary">
                     <desc>Commenting note</desc>
+                  </valItem>
+                  <valItem ident="explanation">
+                    <desc>Explanatory note (to be used in translations)</desc>
                   </valItem>
                   <valItem ident="footnote">
                     <desc>Footnote</desc>
@@ -898,9 +903,20 @@
           </elementSpec>
           <!-- msdescription -->
           <elementSpec ident="msIdentifier" module="msdescription" mode="change">
-            <attList>
+            <constraintSpec ident="msIdentifier" scheme="schematron"  xml:lang="eng">
+              <constraint>
+                <sch:rule context="tei:msIdentifier">
+                  <sch:assert test="@xml:id">Manuscript identifier needs a @xml:id</sch:assert>
+                  <sch:assert test="@corresp">Manuscript identifier needs a reference to the manuscript database</sch:assert>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
+          <attList>
               <attDef ident="xml:id" mode="change" usage="req">
-                <desc>needs an id to be used by CollateX</desc>
+	            	<desc>needs an id to be used by CollateX</desc>
+              </attDef>
+              <attDef ident="corresp" mode="change" usage="req">
+	            	<desc>needs a reference to a PTA manuscript database ID</desc>
               </attDef>
             </attList>
           </elementSpec>
@@ -1154,10 +1170,7 @@
             <constraintSpec ident="seg" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:seg">
-                  <sch:assert
-                    test="@type='insertion' or @type='allusion' or @type='similar' or @type='source' or @type='psq'"
-                    >The type attribute of <sch:name/> should be "insertion",
-                    "allusion", "similar", "source" or "psq"</sch:assert>
+                  <sch:report test="@type='insertion' and not(parent::tei:quote)">Only to be used in a quote</sch:report>
                   <sch:report
                     test="(@type='allusion' or @type='similar' or @type='source') and not(child::tei:ref)"
                     >If it's an allusion, a reference needs to be
@@ -1165,6 +1178,28 @@
                 </sch:rule>
               </constraint>
             </constraintSpec>
+          <attList> 
+             <attDef ident="type" mode="change">
+              <desc>indicates the type</desc>
+              <valList type="closed" mode="replace">
+                <valItem ident="allusion">
+                  <desc>is an allusion to another text or story</desc>
+                </valItem>
+                <valItem ident="insertion">
+                  <desc>is an insertion into a quote</desc>
+                </valItem>
+                <valItem ident="psq">
+                  <desc>is a pseudo-quote</desc>
+                </valItem>
+                <valItem ident="similar">
+                  <desc>is similar to another text or story</desc>
+                </valItem>
+                <valItem ident="source">
+                  <desc>is source of something</desc>
+                </valItem>
+              </valList>
+            </attDef>
+           </attList>
           </elementSpec>
           <!-- CHANGING ATTRIBUTE CLASSES -->
           <classSpec type="atts" ident="att.breaking" mode="change">
