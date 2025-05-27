@@ -3,9 +3,11 @@
 
 TEI-derived schema against which PTA XML should be validated.
 
-The master file is tei-pta.odd.
+The master file is `tei-pta.odd`.
 
-Derived from this file is tei-pta.rng.
+Derived from this file is `tei-pta.rng` and `tei-pta.sch`.
+
+For linguistically annotated PTA XML files, the schema to be used is (the non-TEI-conformant) `tei-pta_linguistic.odd` (and the derived `tei-pta_linguistic.rng`).
 
 The schema is a living document and open for changes: notifications of errors, ideas for additions or adaptions for other edition scenaria are welcome.
 

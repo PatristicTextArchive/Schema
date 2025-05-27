@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-05-19T15:32:44Z. . 
+Schema generated from ODD source 2025-05-27T15:14:38Z. . 
 TEI Edition: P5 Version 4.9.0. Last updated on 24th January 2025, revision f73186978 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.9.0/ 
   
@@ -3792,7 +3792,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
                     but not both</sch:report>
                <sch:report test="@quantity and not(@unit)">If gap has
                     @quantity then @unit is required</sch:report>
-               <sch:report test="not(@reason='ellipsis') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
+               <sch:report test="not(@reason='missing') and ancestor::tei:supplied[not(@reason='undefined')]">gap may not appear within supplied text</sch:report>
             </sch:rule>
          </pattern>
          <ref name="pta_att.global.attributes"/>
@@ -4226,11 +4226,11 @@ Measures]</a:documentation>
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:ref">
-               <sch:report test="ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary'] and not(@cRef or @source)">in the edition <sch:name/> needs @cRef or @source</sch:report>
+               <sch:report test="ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary'] and not(@cRef or @source or @target)">in the edition <sch:name/> needs @cRef or @source (or has a @target)</sch:report>
                <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if <sch:name/> has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
                <sch:report test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))">Check that a reference to PTA or Perseus library is an
                     URN</sch:report>
-               <sch:report test="current()[ancestor::tei:div[not(@type='praefatio')]]/text() and not(parent::tei:cit)">
+               <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary']]/text() and not(parent::tei:cit)">
                   <sch:name/> may only contain text as child of cit.</sch:report>
                <sch:report test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))">Check correct abbreviation of biblical version. Must be one
                     of: LXX, Hexapla, Peshitta, NA, Vg</sch:report>
@@ -7430,8 +7430,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:handShift">
-               <sch:assert test="@medium or @scribeRef or @scriptRef">On of
-                    medium, scribeRef or scriptRef is needed.</sch:assert>
+               <sch:assert test="@medium or @scribeRef or @scriptRef">medium, scribeRef or scriptRef is needed.</sch:assert>
             </sch:rule>
          </pattern>
          <ref name="pta_att.global.attributes"/>
@@ -8576,8 +8575,8 @@ Suggested values include: 1] label; 2] data</a:documentation>
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:seg">
-               <sch:report test="@type='insertion' and not(parent::tei:quote)">Only to be used in a quote</sch:report>
-               <sch:report test="(@type='allusion' or @type='similar' or @type='source') and not(child::tei:ref)">If it's an allusion, a reference needs to be
+               <sch:report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote</sch:report>
+               <sch:report test="(@type='allusion' or @type='similar' or @type='source') and not(@next or child::tei:ref)">If it's an allusion, a reference needs to be
                     added</sch:report>
             </sch:rule>
          </pattern>
