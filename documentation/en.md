@@ -312,18 +312,32 @@ Also in the `<encodingDesc>` section, the `<editorialDecl>` section within the `
 
 @import "examples/ed_interpretation.xml" {class="line-numbers"}
 
+All categories used are defined in the `<classDecl>` element in a `<taxonomy>` with `@xml:id="annotationstatus"` and `@xml:id="analysisstatus"`. 
+
+@import "examples/classdecl_annotation.xml" {class="line-numbers"}
+
 The annotation status is defined as follows:
 
 - `fully-annotated`: All instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.
 - `partially-annotated`: Some instances of a phenomenon (e.g. biblical quotations, persons, places) are encoded with the respective element.
 - `not-annotated`: No instance of a phenomenon (e.g. biblical quotations, persons, places) is encoded with the respective element.
 
-The extension to which the annotations are identified with norm data is defined as follows:
+The extent to which the annotations are identified with norm data is defined as follows:
 
 - `fully-identified`: All encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 - `partially-identified`: Some encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 - `not-identified`: No encoded instances of a phenomenon (e.g. biblical quotations, persons, places) are identified with the respective norm data.
 
+The status of linguistic analysis is defined as follows:
+
+- `automatically-tagged`: Words are automatically tagged.
+- `manually-tagged`: Words are manually tagged.
+- `not-tagged`: Words are not tagged.
+- `automatically-analyzed`: Words are automatically analyzed.
+- `manually-analyzed`: Words are manually analyzed.
+- `not-analyzed`: Words are not analyzed.
+
+Normally, words are automatically tagged and analyzed in the course of publication in the PTA web frontend.
 
 #### Normalisation
 
@@ -350,7 +364,12 @@ Within the `<profileDesc>` section, the type of edition is provided in the  `<te
 
 -   `pre-critical-edition` for pre-modern editions (e.g. in the Patrologia Graeca or Latina).
 
+The terms are defined in `<classDecl>` element in a `<taxonomy>` with `@xml:id="editionstatus"`
+
+@import "examples/classdecl_editionstatus.xml" {class="line-numbers"}
+
 A special case is `metacritical-edition-with-app`, which is used for the [SBLGNT edition](https://www.sblgnt.com/) of the New Testament.
+
 #### Status of edition
 
 Finally, the element `<revisionDesc>` receives an attribute `@status`, in which the status of the edition is specified. The following values are possible:
@@ -580,8 +599,6 @@ Rearrangements that affect longer passages of text - especially if they span str
 ###### Corrections by scribe
 
 Corrections of the text by the scribe or a later corrector are distinguished in such a way that the order of the different stages of transmission is indicated in the `<rdg>` element with the help of the `@varSeq` attribute.
-
-If a variant created by correction is identical to another variant, this other variant can be given a unique identifier in the `@xml:id` attribute and the correcting variant can refer to this identifier in the `@copyOf` attribute; the `<rdg>` element is empty (“self-closing”) in this case.
 
 The element `<rdg>` can additionally contain the attribute `@hand`, whereby the scribe (`#m1`) and the correctors (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*) should be distinguished. If it is not possible to decide by which hand a correction has been made, the attribute is given the value `unknown`. 
 

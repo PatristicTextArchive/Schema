@@ -12,6 +12,8 @@
        ana="fully/partially/not-annotated fully/partially/not-identified">Persons are fully/partially annotated and/but not fully/partially referenced with IDs according to the <ref target="https://github.com/PatristicTextArchive/tipnr_data">TIPNR - Tyndale Individualised Proper Names with all References</ref> list for biblical persons and IDs of <ref target="https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json">PTA persons index</ref> for all other persons.</p>
     <p xml:id="groups"
        ana="fully/partially/not-annotated fully/partially/not-identified">Groups of persons and organisations are fully/partially annotated and/but not fully/partially referenced with IDs according to the IDs of <ref target="https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_groups.json">PTA groups index</ref> for all other groups.</p>
+    <p xml:id="text-analysis" 
+       ana="automatically/manually/not-tagged automatically/manually/not-analyzed">Words are automatically/manually/not tagged and automatically/manually/not analyzed.</p>
  </interpretation>
   ...
 </editorialDecl>
