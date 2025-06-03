@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.0. Last updated on 2025-05-27.</edition>
+        <edition>Version 1.1. Last updated on 2025-06-03.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,6 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2025-06-03">Updated to current tei-pta</change>
       <change who="#AvS" when="2025-05-27">Copied tei-pta (version 4.1) into new
         schema for dependency annotated PTA files (add new attributes not extant
         in TEI: not TEI-conformant)</change>
@@ -620,7 +621,7 @@
                     test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))"
                     >Check that a reference to PTA or Perseus library is an
                     URN</sch:report>
-                  <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary']]/text() and not(parent::tei:cit)"><sch:name/> may only contain text as child of cit.</sch:report>
+                  <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary']]/text() and not(parent::tei:cit or @target)"><sch:name/> may only contain text as child of cit.</sch:report>
                   <sch:report
                     test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))"
                     >Check correct abbreviation of biblical version. Must be one
@@ -774,16 +775,6 @@
               <attDef ident="spanTo" mode="delete"/>
               <attDef ident="generatedBy" mode="delete"/>
             </attList>
-          </elementSpec>
-          <elementSpec ident="subst" module="core" mode="change">
-            <constraintSpec ident="del" scheme="schematron"  xml:lang="eng">
-              <constraint>
-                <sch:rule context="tei:subst">
-                  <sch:assert test="child::tei:del and child::tei:add">Needs del
-                    and add as children</sch:assert>
-                </sch:rule>
-              </constraint>
-            </constraintSpec>
           </elementSpec>
           <elementSpec ident="del" module="core" mode="change">
             <constraintSpec ident="del" scheme="schematron"  xml:lang="eng">
@@ -1170,6 +1161,7 @@
                   <sch:report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote</sch:report>
                   <sch:report test="(@type='allusion' or @type='similar' or @type='source') and not(@next or child::tei:ref)">If it's an allusion, a reference needs to be
                     added</sch:report>
+                <sch:report test="(@type='textpart') and not(@subtype and @n)">If it's a textpart, a subtype needs to be added. The segment needs also to be numbered.</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -1192,8 +1184,56 @@
                 <valItem ident="source">
                   <desc>is source of something</desc>
                 </valItem>
+              <valItem ident="textpart">
+                  <desc>is a textpart (below a paragraph)</desc>
+                </valItem>
               </valList>
             </attDef>
+           <attDef ident="subtype" mode="change">
+              <desc>for the description of the text structure</desc>
+              <valList type="closed" mode="replace">
+                <valItem ident="part">
+                  <desc>Part</desc>
+                </valItem>
+                <valItem ident="book">
+                  <desc>Book</desc>
+                </valItem>
+                <valItem ident="homily">
+                  <desc>Homily</desc>
+                </valItem>
+                <valItem ident="chapter">
+                  <desc>Chapter</desc>
+                </valItem>
+                <valItem ident="verse">
+                  <desc>Verse</desc>
+                </valItem>
+                <valItem ident="subdok">
+                  <desc>Document belonging to a document of higher-order</desc>
+                </valItem>
+                <valItem ident="praefatio">
+                  <desc>Preface to a book (n="praefatio")</desc>
+                </valItem>
+                <valItem ident="section">
+                  <desc>Section</desc>
+                </valItem>
+                <valItem ident="subsection">
+                  <desc>Subsection</desc>
+                </valItem>
+                <valItem ident="fragment">
+                  <desc>Fragment</desc>
+                </valItem>
+                <valItem ident="testimonium">
+                  <desc>Testimonium</desc>
+                </valItem>
+                <valItem ident="commented">
+                  <desc>Biblical verses or text, which is commented on (comment in
+                    @subtype=commentary or scholia)</desc>
+                </valItem>
+                <valItem ident="commentary">
+                  <desc>Exegesis of a Biblical verse or a commentary to a text</desc>
+                </valItem>
+              </valList>
+           </attDef>
            </attList>
           </elementSpec>
           <!-- CHANGING ATTRIBUTE CLASSES -->
