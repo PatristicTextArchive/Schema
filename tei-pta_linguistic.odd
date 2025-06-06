@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.1. Last updated on 2025-06-03.</edition>
+        <edition>Version 1.1. Last updated on 2025-06-06.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,7 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-06-03">Updated to current tei-pta</change>
+      <change who="#AvS" when="2025-06-06">Updated to current tei-pta</change>
       <change who="#AvS" when="2025-05-27">Copied tei-pta (version 4.1) into new
         schema for dependency annotated PTA files (add new attributes not extant
         in TEI: not TEI-conformant)</change>
@@ -1017,6 +1017,7 @@
               <attDef ident="cert" mode="delete"/>
               <attDef ident="change" mode="delete"/>
               <attDef ident="exclude" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
               <attDef ident="rendition" mode="delete"/>
               <attDef ident="require" mode="delete"/>
               <attDef ident="select" mode="delete"/>
@@ -1151,6 +1152,7 @@
                 </valList>
               </attDef>
               <attDef ident="style" mode="delete"/>
+            <attDef ident="rend" mode="delete"/>
             </attList>
           </elementSpec>
           <!-- linking -->

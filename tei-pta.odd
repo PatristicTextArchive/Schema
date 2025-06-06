@@ -10,7 +10,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 4.2. Last updated on 2025-06-03.</edition>
+        <edition>Version 4.2. Last updated on 2025-06-06.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -36,7 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-06-03">allow @type='textpart' for seg; deleted, added and corrected schematron rules.</change>
+      <change who="#AvS" when="2025-06-06">allow @type='textpart' for seg; remove @rend from rdg and lem; deleted, added and corrected schematron rules.</change>
       <change who="#AvS" when="2025-05-27">allow langUsage and language; allow note type='explanation'; force link to PTA manuscript database in msIdentifier; add further schematron rules; correction to schematron rules</change>
       <change who="#AvS" when="2025-02-17">add intern as value for @status in revisionDesc, remove constraint for editionStmt, allow correction for editorialDecl</change>
       <change who="#AvS" when="2025-01-23">Major rewrite: Sort by module; used elements explicitly stated; add many schematron rules</change>
@@ -959,6 +959,7 @@
               <attDef ident="cert" mode="delete"/>
               <attDef ident="change" mode="delete"/>
               <attDef ident="exclude" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
               <attDef ident="rendition" mode="delete"/>
               <attDef ident="require" mode="delete"/>
               <attDef ident="select" mode="delete"/>
@@ -1073,6 +1074,7 @@
                 </valList>
               </attDef>
               <attDef ident="style" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
             </attList>
           </elementSpec>
           <!-- linking -->
