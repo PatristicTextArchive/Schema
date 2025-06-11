@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.1. Last updated on 2025-06-06.</edition>
+        <edition>Version 1.1. Last updated on 2025-06-11.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,7 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-06-06">Updated to current tei-pta</change>
+      <change who="#AvS" when="2025-06-11">Updated to current tei-pta</change>
       <change who="#AvS" when="2025-05-27">Copied tei-pta (version 4.1) into new
         schema for dependency annotated PTA files (add new attributes not extant
         in TEI: not TEI-conformant)</change>
@@ -58,7 +58,7 @@
           <moduleRef key="header"
             include="authority availability cRefPattern catDesc category change classDecl correction creation distributor edition editionStmt editorialDecl encodingDesc extent fileDesc funder handNote hyphenation idno interpretation keywords language langUsage licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
           <moduleRef key="core"
-            include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
+            include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl mentioned milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
           <moduleRef key="msdescription"
@@ -70,7 +70,7 @@
           <moduleRef key="textcrit"
             include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
-          <moduleRef key="linking" include="ab seg"/>
+          <moduleRef key="linking" include="ab anchor seg"/>
           <moduleRef key="analysis" include="pc s w"/>
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
@@ -413,6 +413,9 @@
             </attList>
           </elementSpec>
           <!-- core -->
+          <elementSpec ident="mentioned" module="core" mode="change">
+            <desc>mentioned is an element in legacy texts (converted from CTE files): do not use!</desc>
+          </elementSpec>
           <elementSpec ident="add" module="core" mode="change">
             <attList>
               <attDef ident="place" mode="change">
@@ -708,6 +711,9 @@
                   </valItem>
                   <valItem ident="footnote">
                     <desc>Footnote</desc>
+                  </valItem>
+                <valItem ident="attestation">
+                    <desc>Attestation to text (legacy for CTE-converted text; do not use!)</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -1156,6 +1162,9 @@
             </attList>
           </elementSpec>
           <!-- linking -->
+          <elementSpec ident="anchor" module="linking" mode="change">
+            <desc>anchor is an element in legacy texts (converted from CTE files): do not use!</desc>
+          </elementSpec>
           <elementSpec ident="seg" module="linking" mode="change">
             <constraintSpec ident="seg" scheme="schematron"  xml:lang="eng">
               <constraint>

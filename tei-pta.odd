@@ -36,6 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS"  when="2025-06-11">temporary allow anchor, mentioned and @type="attestation" for note for legacy CTE-converted texts</change>
       <change who="#AvS" when="2025-06-06">allow @type='textpart' for seg; remove @rend from rdg and lem; deleted, added and corrected schematron rules.</change>
       <change who="#AvS" when="2025-05-27">allow langUsage and language; allow note type='explanation'; force link to PTA manuscript database in msIdentifier; add further schematron rules; correction to schematron rules</change>
       <change who="#AvS" when="2025-02-17">add intern as value for @status in revisionDesc, remove constraint for editionStmt, allow correction for editorialDecl</change>
@@ -92,7 +93,7 @@
           <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
           <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl correction creation distributor edition editionStmt editorialDecl encodingDesc extent fileDesc funder handNote hyphenation idno interpretation keywords language langUsage licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
-          <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
+          <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl mentioned milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
           <moduleRef key="msdescription" include="altIdentifier handDesc history layout layoutDesc locus locusGrp msDesc msIdentifier objectDesc origDate origin provenance physDesc repository scriptDesc stamp supportDesc"/>
@@ -100,7 +101,7 @@
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
-          <moduleRef key="linking" include="ab seg"/>
+          <moduleRef key="linking" include="ab anchor seg"/>
           <moduleRef key="analysis" include="pc s w"/>
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
@@ -409,6 +410,9 @@
             </attList>
           </elementSpec>
           <!-- core -->
+          <elementSpec ident="mentioned" module="core" mode="change">
+            <desc>mentioned is an element in legacy texts (converted from CTE files): do not use!</desc>
+          </elementSpec>
           <elementSpec ident="add" module="core" mode="change">
             <attList>
               <attDef ident="place" mode="change">
@@ -670,6 +674,9 @@
                   </valItem>
                   <valItem ident="footnote">
                     <desc>Footnote</desc>
+                  </valItem>
+                  <valItem ident="attestation">
+                    <desc>Attestation to text (legacy for CTE-converted text; do not use!)</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -1078,6 +1085,9 @@
             </attList>
           </elementSpec>
           <!-- linking -->
+          <elementSpec ident="anchor" module="linking" mode="change">
+            <desc>anchor is an element in legacy texts (converted from CTE files): do not use!</desc>
+          </elementSpec>
           <elementSpec ident="seg" module="linking" mode="change">
             <constraintSpec ident="seg" scheme="schematron"  xml:lang="eng">
               <constraint>
