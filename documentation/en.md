@@ -701,7 +701,7 @@ If a variant exceeds a division level, it must be given priority and the `<app>`
 
 ##### Commenting on text-critical decisions
 
-If it seems necessary or feasible to expand on text-critical considerations that go beyond the indication of causes (with the help of the `@cause` attribute) or typification (with the help of the `@type` attribute), an element `<note>` for remarks that concern the entire `<app>` element or an element `<witDetail>` for remarks that refer to a specific manuscript can be added within the `<app>` element; in that case, the element `<witDetail>` receives an attribute `@wit` with the ID of the manuscript.
+If it seems necessary or useful to elaborate on text-critical considerations that go beyond typification (using the attribute `@type`) or the indication of causes (using the attribute `@cause`), an element `<note>` can be added within the element `<app>` for remarks concerning the entire `<app>` element. If the note refers to a specific reading, the element `<note>` additionally receives an attribute `@corresp`, in which the ID used in the attribute `@wit`, `@resp` or `@source` of the reading is referenced. The author of the annotation is specified in the `@resp` attribute.
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 

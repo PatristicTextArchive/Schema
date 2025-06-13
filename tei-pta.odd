@@ -10,7 +10,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 4.2. Last updated on 2025-06-06.</edition>
+        <edition>Version 4.2. Last updated on 2025-06-13.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -36,7 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS"  when="2025-06-11">temporary allow anchor, mentioned and @type="attestation" for note for legacy CTE-converted texts</change>
+      <change who="#AvS"  when="2025-06-13">temporary allow anchor, mentioned and @type="attestation" for note for legacy CTE-converted texts; del witDetail (use note instead).</change>
       <change who="#AvS" when="2025-06-06">allow @type='textpart' for seg; remove @rend from rdg and lem; deleted, added and corrected schematron rules.</change>
       <change who="#AvS" when="2025-05-27">allow langUsage and language; allow note type='explanation'; force link to PTA manuscript database in msIdentifier; add further schematron rules; correction to schematron rules</change>
       <change who="#AvS" when="2025-02-17">add intern as value for @status in revisionDesc, remove constraint for editionStmt, allow correction for editorialDecl</change>
@@ -99,7 +99,7 @@
           <moduleRef key="msdescription" include="altIdentifier handDesc history layout layoutDesc locus locusGrp msDesc msIdentifier objectDesc origDate origin provenance physDesc repository scriptDesc stamp supportDesc"/>
           <moduleRef key="namesdates" include="forename listPerson orgName persName person placeName roleName settlement surname"/>
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
-          <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
+          <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
           <moduleRef key="linking" include="ab anchor seg"/>
           <moduleRef key="analysis" include="pc s w"/>
@@ -618,6 +618,8 @@
             <constraintSpec ident="note" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:note">
+                  <sch:report test="parent::tei:app[@type='variants'] and not(@resp)">If it is a note to a variant, it needs a @resp</sch:report>
+                  <sch:report test="@corresp and not(parent::tei:app[@type='variants'])">@corresp may only be used in a note in a variant apparatus.</sch:report>
                   <sch:report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</sch:report>
                   <sch:report test="@place and @type">@place (i.e. in transcriptions annotating notes in the manuscript) and @type (i.e. note is a commenting note) may not be used together</sch:report>
                   <sch:report test="ancestor::tei:div[@type='praefatio'] and @*">Notes in the praefatio are not allowed to have attributes.</sch:report>
@@ -679,6 +681,9 @@
                     <desc>Attestation to text (legacy for CTE-converted text; do not use!)</desc>
                   </valItem>
                 </valList>
+              </attDef>
+              <attDef ident="corresp" mode="replace" usage="opt">
+                <desc>References the variant the note comments on.</desc>
               </attDef>
               <attDef ident="ana" mode="delete"/>
               <attDef ident="rendition" mode="delete"/>

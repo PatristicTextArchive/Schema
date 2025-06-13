@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.1. Last updated on 2025-06-11.</edition>
+        <edition>Version 1.1. Last updated on 2025-06-13.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,7 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-06-11">Updated to current tei-pta</change>
+      <change who="#AvS" when="2025-06-13">Updated to current tei-pta</change>
       <change who="#AvS" when="2025-05-27">Copied tei-pta (version 4.1) into new
         schema for dependency annotated PTA files (add new attributes not extant
         in TEI: not TEI-conformant)</change>
@@ -68,7 +68,7 @@
           <moduleRef key="transcr"
             include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit"
-            include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witDetail witEnd witStart witness"/>
+            include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
           <moduleRef key="linking" include="ab anchor seg"/>
           <moduleRef key="analysis" include="pc s w"/>
@@ -648,6 +648,8 @@
             <constraintSpec ident="note" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:note">
+                  <sch:report test="parent::tei:app[@type='variants'] and not(@resp)">If it is a note to a variant, it needs a @resp</sch:report>
+                  <sch:report test="@corresp and not(parent::tei:app[@type='variants'])">@corresp may only be used in a note in a variant apparatus.</sch:report>
                   <sch:report test="@type='commentary' and not(@resp)">If it is
                     a commenting note, it needs a @resp</sch:report>
                   <sch:report test="@place and @type">@place (i.e. in
@@ -716,6 +718,9 @@
                     <desc>Attestation to text (legacy for CTE-converted text; do not use!)</desc>
                   </valItem>
                 </valList>
+              </attDef>
+              <attDef ident="corresp" mode="replace" usage="opt">
+                <desc>References the variant the note comments on.</desc>
               </attDef>
               <attDef ident="ana" mode="delete"/>
               <attDef ident="rendition" mode="delete"/>

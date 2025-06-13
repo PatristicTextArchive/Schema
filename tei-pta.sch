@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt">
    <title>ISO Schematron rules</title>
-   <!-- This file generated 2025-06-11T16:35:42Z by 'extract-isosch.xsl'. -->
+   <!-- This file generated 2025-06-13T11:13:20Z by 'extract-isosch.xsl'. -->
    <!-- ********************* -->
    <!-- namespaces, implicit: -->
    <!-- ********************* -->
@@ -110,6 +110,8 @@
    </pattern>
    <pattern id="schematron-constraint-note-17">
       <rule context="tei:note">
+         <report test="parent::tei:app[@type='variants'] and not(@resp)">If it is a note to a variant, it needs a @resp</report>
+         <report test="@corresp and not(parent::tei:app[@type='variants'])">@corresp may only be used in a note in a variant apparatus.</report>
          <report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</report>
          <report test="@place and @type">@place (i.e. in transcriptions annotating notes in the manuscript) and @type (i.e. note is a commenting note) may not be used together</report>
          <report test="ancestor::tei:div[@type='praefatio'] and @*">Notes in the praefatio are not allowed to have attributes.</report>

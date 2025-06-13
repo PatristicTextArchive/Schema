@@ -707,7 +707,7 @@ aufgeteilt und untereinander verlinkt werden.
 
 ##### Kommentierung textkritischer Entscheidungen
 
-Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, oder ein Element `<witDetail>` für Bemerkungen, die sich auf eine spezielle Handschrift bezieht, angefügt werden; im Falle von `<witDetail>` wird in einem Attribut `@wit` auf die ID der Handschrift verwiesen. 
+Erscheint es nötig oder sinnvoll, textkritische Überlegungen, die über die Typisierung (mit Hilfe des Attributes `@type`) oder die Angabe von Ursachen (mit Hilfe des Attributes `@cause`) hinausgehen, auszuführen, so kann dafür an Ort und Stelle innerhalb des Elementes `<app>` ein Element `<note>` für Bemerkungen, die das gesamte `<app>`-Element betreffen, angefügt werden. Bezieht sich die Anmerkung auf eine spezielle Lesart innerhalb des Apparats, erhält das Element `<note>` zusätzlich ein Attribut `@corresp`, in dem auf die im Attribut `@wit`, `@resp` oder `@source` dieser Lesart verwendete ID verwiesen wird. Der Urheber der Kommentierung wird im Attribut `@resp` angegeben. 
 
 @import "examples/ed_witDetail.xml" {class="line-numbers"}
 
