@@ -42,7 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2025-06-13">Updated to current tei-pta</change>
+      <change who="#AvS" when="2025-11-24">Updated to current tei-pta</change>
       <change who="#AvS" when="2025-05-27">Copied tei-pta (version 4.1) into new
         schema for dependency annotated PTA files (add new attributes not extant
         in TEI: not TEI-conformant)</change>
@@ -272,21 +272,13 @@
             <constraintSpec scheme="schematron"  xml:lang="eng" ident="div">
               <constraint>
                 <sch:rule context="tei:div">
-                  <sch:report
-                    test="(@type='edition' or @type='translation' or type='commentary') and not(parent::tei:body)"
-                    > body element needs a child div of
+                  <sch:report test="(@type='edition' or @type='translation' or @type='commentary') and not(parent::tei:body)"> body element needs a child div of
                     @type="edition|translation|commentary" </sch:report>
-                  <sch:report
-                    test="@type='textpart' and not(parent::tei:div/@type='textpart' or parent::tei:div/@type='edition' or parent::tei:div/@type='translation' or parent::tei:div/type='commentary')"
-                    > div of @type="textpart" needs a parent div of
+                  <sch:report test="@type='textpart' and not(parent::tei:div/@type='textpart' or parent::tei:div/@type='edition' or parent::tei:div/@type='translation' or parent::tei:div/@type='commentary')"> div of @type="textpart" needs a parent div of
                     @type="textpart" or @type="edition|translation|commentary" </sch:report>
-                  <sch:report
-                    test="(@type='edition' or @type='translation' or type='commentary') and not(@xml:lang)"
-                    > div of @type="edition|translation|commentary" needs an
+                  <sch:report test="(@type='edition' or @type='translation' or @type='commentary') and not(@xml:lang)"> div of @type="edition|translation|commentary" needs an
                     language attribute </sch:report>
-                  <sch:report
-                    test="(@type='edition' or @type='translation' or type='commentary') and not(contains(@n,'urn:cts:pta'))"
-                    > div of @type="edition|translation|commentary" needs a
+                  <sch:report test="(@type='edition' or @type='translation' or @type='commentary') and not(contains(@n,'urn:cts:pta'))"> div of @type="edition|translation|commentary" needs a
                     reference to the URN </sch:report>
                   <sch:report test="@type='textpart' and not(@n)">
                     @type=textpart needs to be numbered </sch:report>
@@ -478,21 +470,30 @@
             <constraintSpec ident="emph" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:emph">
-                  <sch:report
-                    test="not(ancestor::tei:div[@type='praefatio' or @type='translation'])"
-                    ><sch:name/> may only be used in the praefatio of an edition
-                    or in an translation</sch:report>
+                  <sch:report test="not(ancestor::tei:div[@type='praefatio' or @type='translation' or @type='commentary'])">
+                    <sch:name/> may only be used in the praefatio of an edition, in a translation or in a commentary</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
           </elementSpec>
           <elementSpec ident="label" module="core" mode="change">
+            <constraintSpec ident="label" scheme="schematron"  xml:lang="eng">
+              <constraint>
+                <sch:rule context="tei:label">
+                  <sch:report test="@type='attribution' and not(ancestor::tei:div[@type='edition'])">attribution is only to be used in editions</sch:report>
+                  <sch:report test="@type='lemma' and not(ancestor::tei:div[@type='commentary'])">commentary is only to be used in commentaries</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="type" mode="replace" usage="req">
                 <valList type="closed" mode="replace">
                   <valItem ident="attribution">
                     <desc>Contains a label or heading used to attribute text
                       (for example a quote in a catena) to an author</desc>
+                  </valItem>
+                  <valItem ident="lemma">
+                    <desc>Contains a label or heading used to mark up the lemma a commentary comments on.</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -624,7 +625,7 @@
                     test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))"
                     >Check that a reference to PTA or Perseus library is an
                     URN</sch:report>
-                  <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary']]/text() and not(parent::tei:cit or @target)"><sch:name/> may only contain text as child of cit.</sch:report>
+                  <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation']]/text() and not(parent::tei:cit or @target)"><sch:name/> may only contain text as child of cit.</sch:report>
                   <sch:report
                     test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))"
                     >Check correct abbreviation of biblical version. Must be one
@@ -704,7 +705,7 @@
                 </valList>
               </attDef>
               <attDef ident="type" mode="replace" usage="opt">
-                <valList type="closed">
+                <valList type="semi">
                   <valItem ident="commentary">
                     <desc>Commenting note</desc>
                   </valItem>

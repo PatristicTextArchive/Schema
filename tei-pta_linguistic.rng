@@ -5,9 +5,9 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-06-13T11:13:33Z. . 
-TEI Edition: P5 Version 4.9.0. Last updated on 24th January 2025, revision f73186978 
-TEI Edition Location: https://www.tei-c.org/Vault/P5/4.9.0/ 
+Schema generated from ODD source 2025-11-25T11:51:02Z. . 
+TEI Edition: P5 Version 4.10.2. Last updated on 4th September 2025, revision bcfa98f42 
+TEI Edition Location: https://www.tei-c.org/Vault/P5/4.10.2/ 
   
 --><!--[https://www.gnu.org/licenses/agpl.html] Distributed under a GNU Affero General Public License. This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details. You should have received a copy of the GNU Affero General Public License along with this program. If not, see .-->
    <define name="pta_macro.abContent">
@@ -172,7 +172,7 @@ TEI Edition Location: https://www.tei-c.org/Vault/P5/4.9.0/
    <define name="pta_att.citing.attribute.unit">
       <optional>
          <attribute name="unit">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the unit of information conveyed by the element, e.g. columns, pages, volume, entry.
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">identifies the unit of information conveyed by the element.
 Suggested values include: 1] volume (volume); 2] issue; 3] page (page); 4] line; 5] chapter (chapter); 6] part; 7] column; 8] entry</a:documentation>
             <choice>
                <value>volume</value>
@@ -3586,9 +3586,8 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:emph">
-               <sch:report test="not(ancestor::tei:div[@type='praefatio' or @type='translation'])">
-                  <sch:name/> may only be used in the praefatio of an edition
-                    or in an translation</sch:report>
+               <sch:report test="not(ancestor::tei:div[@type='praefatio' or @type='translation' or @type='commentary'])">
+                  <sch:name/> may only be used in the praefatio of an edition, in a translation or in a commentary</sch:report>
             </sch:rule>
          </pattern>
          <ref name="pta_att.global.attributes"/>
@@ -4251,7 +4250,7 @@ Measures]</a:documentation>
                <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if <sch:name/> has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
                <sch:report test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))">Check that a reference to PTA or Perseus library is an
                     URN</sch:report>
-               <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary']]/text() and not(parent::tei:cit or @target)">
+               <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation']]/text() and not(parent::tei:cit or @target)">
                   <sch:name/> may only contain text as child of cit.</sch:report>
                <sch:report test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))">Check correct abbreviation of biblical version. Must be one
                     of: LXX, Hexapla, Peshitta, NA, Vg</sch:report>
@@ -4373,6 +4372,16 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
       <element name="label">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(label) contains any label or heading used to identify part of a text, typically but not exclusively in a list or glossary. [3.8. Lists]</a:documentation>
          <ref name="pta_macro.phraseSeq"/>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="tei-pta_linguistic-label-label-constraint-rule-25">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:label">
+               <sch:report test="@type='attribution' and not(ancestor::tei:div[@type='edition'])">attribution is only to be used in editions</sch:report>
+               <sch:report test="@type='lemma' and not(ancestor::tei:div[@type='commentary'])">commentary is only to be used in commentaries</sch:report>
+            </sch:rule>
+         </pattern>
          <ref name="pta_att.global.attributes"/>
          <ref name="pta_att.cmc.attributes"/>
          <ref name="pta_att.placement.attributes"/>
@@ -4383,6 +4392,8 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
             <choice>
                <value>attribution</value>
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a label or heading used to attribute text (for example a quote in a catena) to an author</a:documentation>
+               <value>lemma</value>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Contains a label or heading used to mark up the lemma a commentary comments on.</a:documentation>
             </choice>
          </attribute>
          <empty/>
@@ -4416,7 +4427,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <ref name="pta_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-note-note-constraint-rule-25">
+                  id="tei-pta_linguistic-note-note-constraint-rule-26">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note">
@@ -4493,7 +4504,8 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          </optional>
          <optional>
             <attribute name="type">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+Suggested values include: 1] commentary; 2] explanation; 3] footnote; 4] attestation</a:documentation>
                <choice>
                   <value>commentary</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Commenting note</a:documentation>
@@ -4503,6 +4515,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Footnote</a:documentation>
                   <value>attestation</value>
                   <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Attestation to text (legacy for CTE-converted text; do not use!)</a:documentation>
+                  <data type="Name"/>
                </choice>
             </attribute>
          </optional>
@@ -4993,7 +5006,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-l-abstractModel-structure-l-in-l-constraint-rule-26">
+                  id="tei-pta_linguistic-l-abstractModel-structure-l-in-l-constraint-rule-27">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l">
@@ -5042,7 +5055,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-lg-atleast1oflggapl-constraint-rule-27">
+                  id="tei-pta_linguistic-lg-atleast1oflggapl-constraint-rule-28">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lg">
@@ -5051,7 +5064,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-lg-abstractModel-structure-lg-in-l-constraint-rule-28">
+                  id="tei-pta_linguistic-lg-abstractModel-structure-lg-in-l-constraint-rule-29">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lg">
@@ -5073,29 +5086,60 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
             <zeroOrMore>
                <ref name="pta_model.global"/>
             </zeroOrMore>
-            <rng:optional xmlns:rng="http://relaxng.org/ns/structure/1.0">
-               <rng:group>
-                  <rng:ref name="pta_speaker"/>
-                  <rng:zeroOrMore>
-                     <rng:ref name="pta_model.global"/>
-                  </rng:zeroOrMore>
-               </rng:group>
-            </rng:optional>
-            <oneOrMore>
+            <zeroOrMore>
+               <ref name="pta_model.stageLike"/>
+               <zeroOrMore>
+                  <ref name="pta_model.global"/>
+               </zeroOrMore>
+            </zeroOrMore>
+            <choice>
+               <group>
+                  <group>
+                     <ref name="pta_speaker"/>
+                     <zeroOrMore>
+                        <ref name="pta_model.global"/>
+                     </zeroOrMore>
+                  </group>
+                  <group>
+                     <choice>
+                        <ref name="pta_lg"/>
+                        <ref name="pta_model.lLike"/>
+                        <ref name="pta_model.pLike"/>
+                        <ref name="pta_model.listLike"/>
+                        <ref name="pta_model.attributable"/>
+                        <ref name="pta_model.stageLike"/>
+                     </choice>
+                     <zeroOrMore>
+                        <ref name="pta_model.global"/>
+                     </zeroOrMore>
+                  </group>
+               </group>
+               <group>
+                  <choice>
+                     <ref name="pta_lg"/>
+                     <ref name="pta_model.lLike"/>
+                     <ref name="pta_model.pLike"/>
+                     <ref name="pta_model.listLike"/>
+                     <ref name="pta_model.attributable"/>
+                  </choice>
+                  <zeroOrMore>
+                     <ref name="pta_model.global"/>
+                  </zeroOrMore>
+               </group>
+            </choice>
+            <zeroOrMore>
                <choice>
                   <ref name="pta_lg"/>
                   <ref name="pta_model.lLike"/>
                   <ref name="pta_model.pLike"/>
                   <ref name="pta_model.listLike"/>
-                  <ref name="pta_model.stageLike"/>
                   <ref name="pta_model.attributable"/>
+                  <ref name="pta_model.stageLike"/>
                </choice>
-               <choice>
-                  <zeroOrMore>
-                     <ref name="pta_model.global"/>
-                  </zeroOrMore>
-               </choice>
-            </oneOrMore>
+               <zeroOrMore>
+                  <ref name="pta_model.global"/>
+               </zeroOrMore>
+            </zeroOrMore>
          </group>
          <ref name="pta_att.global.attributes"/>
          <ref name="pta_att.ascribed.directed.attributes"/>
@@ -5145,7 +5189,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-teiHeader-teiHeader-constraint-rule-29">
+                  id="tei-pta_linguistic-teiHeader-teiHeader-constraint-rule-30">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5181,7 +5225,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-fileDesc-fileDesc-constraint-rule-30">
+                  id="tei-pta_linguistic-fileDesc-fileDesc-constraint-rule-31">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5442,7 +5486,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-sourceDesc-sourceDesc-constraint-rule-31">
+                  id="tei-pta_linguistic-sourceDesc-sourceDesc-constraint-rule-32">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5468,7 +5512,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-encodingDesc-encodingDesc-constraint-rule-32">
+                  id="tei-pta_linguistic-encodingDesc-encodingDesc-constraint-rule-33">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5775,7 +5819,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-profileDesc-profileDesc-constraint-rule-33">
+                  id="tei-pta_linguistic-profileDesc-profileDesc-constraint-rule-34">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5808,7 +5852,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-creation-creation-constraint-rule-34">
+                  id="tei-pta_linguistic-creation-creation-constraint-rule-35">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5876,7 +5920,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-textClass-textClass-constraint-rule-35">
+                  id="tei-pta_linguistic-textClass-textClass-constraint-rule-36">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5903,7 +5947,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-keywords-keywords-constraint-rule-36">
+                  id="tei-pta_linguistic-keywords-keywords-constraint-rule-37">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -5939,7 +5983,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </choice>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-revisionDesc-witness-constraint-rule-37">
+                  id="tei-pta_linguistic-revisionDesc-witness-constraint-rule-38">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6212,17 +6256,17 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-div-div-constraint-rule-38">
+                  id="tei-pta_linguistic-div-div-constraint-rule-39">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:div">
-               <sch:report test="(@type='edition' or @type='translation' or type='commentary') and not(parent::tei:body)"> body element needs a child div of
+               <sch:report test="(@type='edition' or @type='translation' or @type='commentary') and not(parent::tei:body)"> body element needs a child div of
                     @type="edition|translation|commentary" </sch:report>
-               <sch:report test="@type='textpart' and not(parent::tei:div/@type='textpart' or parent::tei:div/@type='edition' or parent::tei:div/@type='translation' or parent::tei:div/type='commentary')"> div of @type="textpart" needs a parent div of
+               <sch:report test="@type='textpart' and not(parent::tei:div/@type='textpart' or parent::tei:div/@type='edition' or parent::tei:div/@type='translation' or parent::tei:div/@type='commentary')"> div of @type="textpart" needs a parent div of
                     @type="textpart" or @type="edition|translation|commentary" </sch:report>
-               <sch:report test="(@type='edition' or @type='translation' or type='commentary') and not(@xml:lang)"> div of @type="edition|translation|commentary" needs an
+               <sch:report test="(@type='edition' or @type='translation' or @type='commentary') and not(@xml:lang)"> div of @type="edition|translation|commentary" needs an
                     language attribute </sch:report>
-               <sch:report test="(@type='edition' or @type='translation' or type='commentary') and not(contains(@n,'urn:cts:pta'))"> div of @type="edition|translation|commentary" needs a
+               <sch:report test="(@type='edition' or @type='translation' or @type='commentary') and not(contains(@n,'urn:cts:pta'))"> div of @type="edition|translation|commentary" needs a
                     reference to the URN </sch:report>
                <sch:report test="@type='textpart' and not(@n)">
                     @type=textpart needs to be numbered </sch:report>
@@ -6238,7 +6282,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-div-abstractModel-structure-div-in-l-constraint-rule-39">
+                  id="tei-pta_linguistic-div-abstractModel-structure-div-in-l-constraint-rule-40">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l//tei:div">
@@ -6249,7 +6293,7 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-40">
+                  id="tei-pta_linguistic-div-abstractModel-structure-div-in-ab-or-p-constraint-rule-41">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:div">
@@ -6443,7 +6487,7 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-msDesc-one_ms_singleton_max-constraint-rule-41">
+                  id="tei-pta_linguistic-msDesc-one_ms_singleton_max-constraint-rule-42">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6536,7 +6580,7 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-origDate-origDate-constraint-rule-42">
+                  id="tei-pta_linguistic-origDate-origDate-constraint-rule-43">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6624,7 +6668,7 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-msIdentifier-msIdentifier-constraint-rule-43">
+                  id="tei-pta_linguistic-msIdentifier-msIdentifier-constraint-rule-44">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -6635,7 +6679,7 @@ Suggested values include: 1] diple; 2] doubled_diple; 3] obelos; 4] paragraphos<
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-msIdentifier-msId_minimal-constraint-rule-44">
+                  id="tei-pta_linguistic-msIdentifier-msId_minimal-constraint-rule-45">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7329,7 +7373,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
                <choice>
                   <ref name="pta_model.personPart"/>
                   <ref name="pta_model.global"/>
-                  <ref name="pta_ptr"/>
+                  <ref name="pta_model.ptrLike"/>
                </choice>
             </zeroOrMore>
          </choice>
@@ -7455,7 +7499,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-handShift-handShift-constraint-rule-45">
+                  id="tei-pta_linguistic-handShift-handShift-constraint-rule-46">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7488,7 +7532,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-space-space-constraint-rule-46">
+                  id="tei-pta_linguistic-space-space-constraint-rule-47">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7562,7 +7606,7 @@ Suggested values include: 1] paper; 2] parch (parchment); 3] mixed</a:documentat
          </oneOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-subst-substContents1-constraint-rule-47">
+                  id="tei-pta_linguistic-subst-substContents1-constraint-rule-48">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7731,7 +7775,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-app-app-constraint-rule-48">
+                  id="tei-pta_linguistic-app-app-constraint-rule-49">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:app">
@@ -7837,7 +7881,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-lem-lem-constraint-rule-49">
+                  id="tei-pta_linguistic-lem-lem-constraint-rule-50">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:lem">
@@ -7884,7 +7928,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-lem-source-only_1_ODD_source-constraint-rule-50">
+                  id="tei-pta_linguistic-lem-source-only_1_ODD_source-constraint-rule-51">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -7946,7 +7990,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-rdg-rdg-constraint-rule-51">
+                  id="tei-pta_linguistic-rdg-rdg-constraint-rule-52">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdg">
@@ -8023,7 +8067,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-rdg-source-only_1_ODD_source-constraint-rule-52">
+                  id="tei-pta_linguistic-rdg-source-only_1_ODD_source-constraint-rule-53">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8114,7 +8158,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-rdgGrp-only1lem-constraint-rule-53">
+                  id="tei-pta_linguistic-rdgGrp-only1lem-constraint-rule-54">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:rdgGrp">
@@ -8158,7 +8202,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-witness-witness-constraint-rule-54">
+                  id="tei-pta_linguistic-witness-witness-constraint-rule-55">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:witness">
@@ -8207,7 +8251,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </optional>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-witness-source-only_1_ODD_source-constraint-rule-55">
+                  id="tei-pta_linguistic-witness-source-only_1_ODD_source-constraint-rule-56">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8286,7 +8330,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
          </attribute>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-variantEncoding-location-variantEncodingLocation-constraint-rule-56">
+                  id="tei-pta_linguistic-variantEncoding-location-variantEncodingLocation-constraint-rule-57">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:variantEncoding">
@@ -8472,7 +8516,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
    <define name="pta_att.global.linking.attribute.next">
       <optional>
          <attribute name="next">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">points to the next element of a virtual aggregate of which the current element is part.</a:documentation>
+            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(next) points to the next element of a virtual aggregate of which the current element is part.</a:documentation>
             <data type="anyURI">
                <param name="pattern">\S+</param>
             </data>
@@ -8523,7 +8567,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="pta_macro.abContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-ab-abstractModel-structure-ab-in-l-constraint-rule-57">
+                  id="tei-pta_linguistic-ab-abstractModel-structure-ab-in-l-constraint-rule-58">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8558,7 +8602,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-seg-seg-constraint-rule-58">
+                  id="tei-pta_linguistic-seg-seg-constraint-rule-59">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -8756,7 +8800,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="pta_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-s-noNestedS-constraint-rule-59">
+                  id="tei-pta_linguistic-s-noNestedS-constraint-rule-60">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:s">
