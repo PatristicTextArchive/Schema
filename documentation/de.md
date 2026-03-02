@@ -456,7 +456,7 @@ Das Attribute `@n` enthält die Stellenreferenz, normalerweise eine Zahl, sie ka
 
 Absätze innerhalb dieser Unterabschnitte werden mit Hilfe des Elements `<p>` ausgezeichnet. Jedes Element `<div>` enthält mindestens ein Element `<p>`. Listen sind ebenfalls erlaubt: Sie werden (anstelle von `<p>`) mit dem Element `<list>`, die einzelnen Listeneinträge mit dem Element `<item>` ausgezeichnet. Hat eine Liste eine Überschrift, so wird diese mit Hilfe des Elementes `<head>` ausgezeichnet. 
 
-#### Titel und titelähnliche Elemente
+##### Titel und titelähnliche Elemente
 
 Titel werden mit dem Element `<title>` innerhalb des Elementes `<head>` ausgezeichnet:
 
