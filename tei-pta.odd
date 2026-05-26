@@ -527,10 +527,10 @@
           <elementSpec ident="unclear" module="core" mode="change">
             <constraintSpec ident="unclear" scheme="schematron"  xml:lang="eng">
               <constraint>
-                <sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
+                <!--<sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
                   <sch:report test="not(@reason and @cert)">@reason and @cert are to be used in
                     unclear</sch:report>
-                </sch:rule>
+                </sch:rule>-->
                 <sch:rule context="tei:unclear[ancestor::tei:rdg or ancestor::tei:lem]">
                   <sch:report test="@reason or @cert">@reason and @cert are not to be used in rdg or
                     lem</sch:report>
@@ -654,7 +654,7 @@
                   <sch:report test="@corresp and not(parent::tei:app)">@corresp may only be used in a note in an apparatus.</sch:report>
                   <sch:report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</sch:report>
                   <sch:report test="@place and @type">@place (i.e. in transcriptions annotating notes in the manuscript) and @type (i.e. note is a commenting note) may not be used together</sch:report>
-                  <sch:report test="ancestor::tei:div[@type='praefatio'] and @*">Notes in the praefatio are not allowed to have attributes.</sch:report>
+                  <sch:report test="ancestor::tei:div[@type='praefatio'] and (@type or @resp or @corresp)">Notes in the praefatio are not allowed to have attributes.</sch:report>
                   <sch:report test="ancestor::tei:div[@type='edition'] and @type='explanation'">Notes in the edition are not allowed to have the "explanation" attribute.</sch:report>
                 </sch:rule>
               </constraint>
