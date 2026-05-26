@@ -5,9 +5,9 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2025-11-25T11:51:02Z. . 
-TEI Edition: P5 Version 4.10.2. Last updated on 4th September 2025, revision bcfa98f42 
-TEI Edition Location: https://www.tei-c.org/Vault/P5/4.10.2/ 
+Schema generated from ODD source 2026-05-15T14:12:51Z. . 
+TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
+TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
 --><!--[https://www.gnu.org/licenses/agpl.html] Distributed under a GNU Affero General Public License. This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details. You should have received a copy of the GNU Affero General Public License along with this program. If not, see .-->
    <define name="pta_macro.abContent">
@@ -809,16 +809,6 @@ Suggested values include: 1] m (metre); 2] kg (kilogram); 3] s (second); 4] Hz (
          </attribute>
       </optional>
    </define>
-   <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tei-pta_linguistic-att.measurement-att-measurement-unitRef-constraint-rule-6">
-      <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                xmlns:xi="http://www.w3.org/2001/XInclude"
-                context="tei:*[@unitRef]">
-         <sch:report test="@unit" role="info">The @unit attribute may be unnecessary when @unitRef is present.</sch:report>
-      </sch:rule>
-   </pattern>
    <define name="pta_att.notated.attributes">
       <ref name="pta_att.notated.attribute.notation"/>
    </define>
@@ -899,7 +889,7 @@ Suggested values include: 1] top; 2] bottom; 3] margin; 4] opposite; 5] overleaf
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tei-pta_linguistic-att.pointing-targetLang-targetLang-constraint-rule-7">
+            id="tei-pta_linguistic-att.pointing-targetLang-targetLang-constraint-rule-6">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -1073,7 +1063,7 @@ Suggested values include: 1] sole; 2] major; 3] minor</a:documentation>
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tei-pta_linguistic-att.spanning-spanTo-spanTo-points-to-following-constraint-rule-8">
+            id="tei-pta_linguistic-att.spanning-spanTo-spanTo-points-to-following-constraint-rule-7">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -1109,7 +1099,7 @@ Suggested values include: 1] sole; 2] major; 3] minor</a:documentation>
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tei-pta_linguistic-att.typed-subtypeTyped-constraint-rule-9">
+            id="tei-pta_linguistic-att.typed-subtypeTyped-constraint-rule-8">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -1269,6 +1259,8 @@ Sample values include: 1] all; 2] most; 3] range</a:documentation>
             <choice>
                <value>composite</value>
                <a:documentation>no claim is made about the sequence in which the immediate contents of this division are to be processed, or their inter-relationships.</a:documentation>
+               <value>parallel</value>
+               <a:documentation>the contents of this element are intended to represent simultaneous or side-by-side delivery.</a:documentation>
                <value>uniform</value>
                <a:documentation>the immediate contents of this element are regarded as forming a logical unit, to be processed in sequence.</a:documentation>
             </choice>
@@ -3480,7 +3472,7 @@ Sample values include: 1] rubbing; 2] mildew; 3] smoke</a:documentation>
       </optional>
    </define>
    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-            id="tei-pta_linguistic-att.calendarSystem-calendar-calendar_attr_on_empty_element-constraint-rule-10">
+            id="tei-pta_linguistic-att.calendarSystem-calendar-calendar_attr_on_empty_element-constraint-rule-9">
       <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
                 xmlns:sch="http://purl.oclc.org/dsdl/schematron"
@@ -3535,11 +3527,11 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
    </define>
    <define name="pta_p">
       <element name="p">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.6. Speech Contents]</a:documentation>
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-p-abstractModel-structure-p-in-ab-or-p-constraint-rule-11">
+                  id="tei-pta_linguistic-p-abstractModel-structure-p-in-ab-or-p-constraint-rule-10">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:p">
@@ -3550,7 +3542,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-p-abstractModel-structure-p-in-l-constraint-rule-12">
+                  id="tei-pta_linguistic-p-abstractModel-structure-p-in-l-constraint-rule-11">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:l//tei:p">
@@ -3582,7 +3574,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-emph-emph-constraint-rule-13">
+                  id="tei-pta_linguistic-emph-emph-constraint-rule-12">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:emph">
@@ -3803,7 +3795,7 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
          </zeroOrMore>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-gap-gap-constraint-rule-14">
+                  id="tei-pta_linguistic-gap-gap-constraint-rule-13">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:gap">
@@ -3880,7 +3872,7 @@ Sample values include: 1] rubbing (rubbing); 2] mildew (mildew); 3] smoke (smoke
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-del-del-constraint-rule-15">
+                  id="tei-pta_linguistic-del-del-constraint-rule-14">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:del">
@@ -3967,13 +3959,7 @@ Sample values include: 1] #m1; 2] unknown; 3] mr</a:documentation>
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-unclear-unclear-constraint-rule-16">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
-               <sch:report test="not(@reason and @cert)">@reason and @cert are to
-                    be used in unclear</sch:report>
-            </sch:rule>
+                  id="tei-pta_linguistic-unclear-unclear-constraint-rule-15">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:unclear[ancestor::tei:rdg or ancestor::tei:lem]">
@@ -4046,7 +4032,7 @@ Sample values include: 1] rubbing; 2] mildew; 3] smoke</a:documentation>
          <ref name="pta_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-name-name-constraint-rule-18">
+                  id="tei-pta_linguistic-name-name-constraint-rule-16">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:name">
@@ -4169,7 +4155,7 @@ Measures]</a:documentation>
          <ref name="pta_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-abbr-abbr-constraint-rule-19">
+                  id="tei-pta_linguistic-abbr-abbr-constraint-rule-17">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:abbr">
@@ -4199,7 +4185,7 @@ Measures]</a:documentation>
          <ref name="pta_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-expan-expan-constraint-rule-20">
+                  id="tei-pta_linguistic-expan-expan-constraint-rule-18">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:expan">
@@ -4219,7 +4205,7 @@ Measures]</a:documentation>
          <empty/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-ptr-ptrAtts-constraint-rule-21">
+                  id="tei-pta_linguistic-ptr-ptrAtts-constraint-rule-19">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:ptr">
@@ -4242,19 +4228,18 @@ Measures]</a:documentation>
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-ref-ref-constraint-rule-22">
+                  id="tei-pta_linguistic-ref-ref-constraint-rule-20">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:ref">
                <sch:report test="ancestor::tei:div[@type='edition' or @type='translation' or @type='commentary'] and not(@cRef or @source or @target)">in the edition <sch:name/> needs @cRef or @source (or has a @target)</sch:report>
-               <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus')">if <sch:name/> has @cRef, it also needs @decls (#biblical, #pta or #perseus)</sch:report>
-               <sch:report test="(@decls='#pta' or @decls='#perseus') and not(starts-with(@cRef, 'urn:cts:'))">Check that a reference to PTA or Perseus library is an
-                    URN</sch:report>
+               <sch:report test="@cRef and not(@decls='#biblical' or @decls='#pta' or @decls='#perseus' or @decls='#cllg')">if <sch:name/> has @cRef, it also needs @decls (#biblical, #pta, #perseus or #cllg)</sch:report>
+               <sch:report test="(@decls='#pta' or @decls='#perseus' or @decls='#cllg') and not(starts-with(@cRef, 'urn:cts:'))">Check that a reference to PTA or Perseus library is an URN</sch:report>
                <sch:report test="current()[ancestor::tei:div[@type='edition' or @type='translation']]/text() and not(parent::tei:cit or @target)">
                   <sch:name/> may only contain text as child of cit.</sch:report>
                <sch:report test="@decls='#biblical' and not(contains(@cRef, 'LXX:') or contains(@cRef, 'Hexapla:') or contains(@cRef, 'Peshitta:') or contains(@cRef, 'NA:') or contains(@cRef, 'Vg:'))">Check correct abbreviation of biblical version. Must be one
                     of: LXX, Hexapla, Peshitta, NA, Vg</sch:report>
-               <sch:report test="@decls='#biblical' and not(contains(@cRef, 'Gn:') or contains(@cRef, 'Ex:') or contains(@cRef, 'Lv:') or contains(@cRef, 'Num:') or contains(@cRef, 'Dt:') or contains(@cRef, 'Jos:') or contains(@cRef, 'Judg:') or contains(@cRef, 'Rt:') or contains(@cRef, '1Sa:') or contains(@cRef, '2Sa:') or contains(@cRef, '1Ko:') or contains(@cRef, '2Ko:') or contains(@cRef, '1Chr:') or contains(@cRef, '2Chr:') or contains(@cRef, '3Esr:') or contains(@cRef, 'Esr:') or contains(@cRef, 'Est:') or contains(@cRef, 'Jdt:') or contains(@cRef, 'Tob:') or contains(@cRef, '1Mak:') or contains(@cRef, '2Mak:') or contains(@cRef, '3Mak:') or contains(@cRef, '4Mak:') or contains(@cRef, 'Ps:') or contains(@cRef, 'Oden:') or contains(@cRef, 'Prov:') or contains(@cRef, 'Eccl:') or contains(@cRef, 'Song:') or contains(@cRef, 'Job:') or contains(@cRef, 'Wis:') or contains(@cRef, 'Sir:') or contains(@cRef, 'PsSal:') or contains(@cRef, 'Hos:') or contains(@cRef, 'Am:') or contains(@cRef, 'Mi:') or contains(@cRef, 'Joel:') or contains(@cRef, 'Ob:') or contains(@cRef, 'Jon:') or contains(@cRef, 'Nah:') or contains(@cRef, 'Hab:') or contains(@cRef, 'Zeph:') or contains(@cRef, 'Hag:') or contains(@cRef, 'Sach:') or contains(@cRef, 'Mal:') or contains(@cRef, 'Is:') or contains(@cRef, 'Jr:') or contains(@cRef, 'Bar:') or contains(@cRef, 'Lam:') or contains(@cRef, 'EpistJer:') or contains(@cRef, 'Hes:') or contains(@cRef, 'Sus:') or contains(@cRef, 'Sus-LXX:') or contains(@cRef, 'Dn:') or contains(@cRef, 'Dn-LXX:') or contains(@cRef, 'Bel:') or contains(@cRef, 'Bel-LXX:') or contains(@cRef, 'Mt:') or contains(@cRef, 'Mk:') or contains(@cRef, 'Lk:') or contains(@cRef, 'Jn:') or contains(@cRef, 'Act:') or contains(@cRef, 'Rom:') or contains(@cRef, '1Cor:') or contains(@cRef, '2Cor:') or contains(@cRef, 'Gal:') or contains(@cRef, 'Eph:') or contains(@cRef, 'Phil:') or contains(@cRef, 'Col:') or contains(@cRef, '1Th:') or contains(@cRef, '2Th:') or contains(@cRef, '1Tim:') or contains(@cRef, '2Tim:') or contains(@cRef, 'Tt:') or contains(@cRef, 'Phm:') or contains(@cRef, 'Heb:') or contains(@cRef, 'Jak:') or contains(@cRef, '1P:') or contains(@cRef, '2P:') or contains(@cRef, '1Jn:') or contains(@cRef, '2Jn:') or contains(@cRef, '3Jn:') or contains(@cRef, 'Jud:') or contains(@cRef, 'Rev:'))">Check correct abbreviation of biblical books. Must be one
+               <sch:report test="@decls='#biblical' and not(contains(@cRef, 'Gn') or contains(@cRef, 'Ex') or contains(@cRef, 'Lv') or contains(@cRef, 'Num') or contains(@cRef, 'Dt') or contains(@cRef, 'Jos') or contains(@cRef, 'Judg') or contains(@cRef, 'Rt') or contains(@cRef, '1Sa') or contains(@cRef, '2Sa') or contains(@cRef, '1Ko') or contains(@cRef, '2Ko') or contains(@cRef, '1Chr') or contains(@cRef, '2Chr') or contains(@cRef, '3Esr') or contains(@cRef, 'Esr') or contains(@cRef, 'Est') or contains(@cRef, 'Jdt') or contains(@cRef, 'Tob') or contains(@cRef, '1Mak') or contains(@cRef, '2Mak') or contains(@cRef, '3Mak') or contains(@cRef, '4Mak') or contains(@cRef, 'Ps') or contains(@cRef, 'Oden') or contains(@cRef, 'Prov') or contains(@cRef, 'Eccl') or contains(@cRef, 'Song') or contains(@cRef, 'Job') or contains(@cRef, 'Wis') or contains(@cRef, 'Sir') or contains(@cRef, 'PsSal') or contains(@cRef, 'Hos') or contains(@cRef, 'Am') or contains(@cRef, 'Mi') or contains(@cRef, 'Joel') or contains(@cRef, 'Ob') or contains(@cRef, 'Jon') or contains(@cRef, 'Nah') or contains(@cRef, 'Hab') or contains(@cRef, 'Zeph') or contains(@cRef, 'Hag') or contains(@cRef, 'Sach') or contains(@cRef, 'Mal') or contains(@cRef, 'Is') or contains(@cRef, 'Jr') or contains(@cRef, 'Bar') or contains(@cRef, 'Lam') or contains(@cRef, 'EpistJer') or contains(@cRef, 'Hes') or contains(@cRef, 'Sus') or contains(@cRef, 'Sus-LXX') or contains(@cRef, 'Dn') or contains(@cRef, 'Dn-LXX') or contains(@cRef, 'Bel') or contains(@cRef, 'Bel-LXX') or contains(@cRef, 'Mt') or contains(@cRef, 'Mk') or contains(@cRef, 'Lk') or contains(@cRef, 'Jn') or contains(@cRef, 'Act') or contains(@cRef, 'Rom') or contains(@cRef, '1Cor') or contains(@cRef, '2Cor') or contains(@cRef, 'Gal') or contains(@cRef, 'Eph') or contains(@cRef, 'Phil') or contains(@cRef, 'Col') or contains(@cRef, '1Th') or contains(@cRef, '2Th') or contains(@cRef, '1Tim') or contains(@cRef, '2Tim') or contains(@cRef, 'Tt') or contains(@cRef, 'Phm') or contains(@cRef, 'Heb') or contains(@cRef, 'Jak') or contains(@cRef, '1P') or contains(@cRef, '2P') or contains(@cRef, '1Jn') or contains(@cRef, '2Jn') or contains(@cRef, '3Jn') or contains(@cRef, 'Jud') or contains(@cRef, 'Rev'))">Check correct abbreviation of biblical books. Must be one
                     of: Gn, Ex, Lv, Num, Dt, Jos, Judg, Rt, 1Sa, 2Sa, 1Ko, 2Ko,
                     1Chr, 2Chr, 3Esr, Esr, Est, Jdt, Tob, 1Mak, 2Mak, 3Mak,
                     4Mak, Ps, Oden, Prov, Eccl, Song, Job, Wis, Sir, PsSal, Hos,
@@ -4267,7 +4252,7 @@ Measures]</a:documentation>
          </pattern>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-ref-refAtts-constraint-rule-23">
+                  id="tei-pta_linguistic-ref-refAtts-constraint-rule-21">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:ref">
@@ -4323,7 +4308,7 @@ Measures]</a:documentation>
          </group>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-list-gloss-list-must-have-labels-constraint-rule-24">
+                  id="tei-pta_linguistic-list-gloss-list-must-have-labels-constraint-rule-22">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:list[@type='gloss']">
@@ -4374,7 +4359,7 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <ref name="pta_macro.phraseSeq"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-label-label-constraint-rule-25">
+                  id="tei-pta_linguistic-label-label-constraint-rule-23">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:label">
@@ -4427,19 +4412,19 @@ Suggested values include: 1] gloss (gloss); 2] index (index); 3] instructions (i
          <ref name="pta_macro.specialPara"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta_linguistic-note-note-constraint-rule-26">
+                  id="tei-pta_linguistic-note-note-constraint-rule-24">
             <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       context="tei:note">
                <sch:report test="parent::tei:app[@type='variants'] and not(@resp)">If it is a note to a variant, it needs a @resp</sch:report>
-               <sch:report test="@corresp and not(parent::tei:app[@type='variants'])">@corresp may only be used in a note in a variant apparatus.</sch:report>
+               <sch:report test="@corresp and not(parent::tei:app)">@corresp may only be used in a note in an apparatus.</sch:report>
                <sch:report test="@type='commentary' and not(@resp)">If it is
                     a commenting note, it needs a @resp</sch:report>
                <sch:report test="@place and @type">@place (i.e. in
                     transcriptions annotating notes in the manuscript) and @type
                     (i.e. note is a commenting note) may not be used
                     together</sch:report>
-               <sch:report test="ancestor::tei:div[@type='praefatio'] and @*">Notes in the praefatio are not allowed to have
+               <sch:report test="ancestor::tei:div[@type='praefatio'] and (@type or @resp or @corresp)">Notes in the praefatio are not allowed to have
                     attributes.</sch:report>
                <sch:report test="ancestor::tei:div[@type='edition'] and @type='explanation'">Notes in the edition are not allowed to have the "explanation" attribute.</sch:report>
             </sch:rule>
@@ -4605,7 +4590,7 @@ Elements]</a:documentation>
    <define name="pta_lb">
       <element name="lb">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(line beginning) marks the beginning of a topographic line in some edition or version of a text. [3.11.3. Milestone
-Elements 7.2.5. Speech Contents]</a:documentation>
+Elements 7.2.6. Speech Contents]</a:documentation>
          <empty/>
          <ref name="pta_att.global.attributes"/>
          <ref name="pta_att.breaking.attributes"/>
@@ -4921,6 +4906,16 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                <ref name="pta_model.global"/>
             </choice>
          </zeroOrMore>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="tei-pta_linguistic-bibl-bibl-constraint-rule-25">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:bibl">
+               <sch:report test="current()[preceding-sibling::tei:listBibl or following-sibling::tei:listBibl]">
+                  <sch:name/> needs to be child of a listBibl (sibling to the following or preceding listBibl)</sch:report>
+            </sch:rule>
+         </pattern>
          <ref name="pta_att.global.attributes"/>
          <ref name="pta_att.canonical.attributes"/>
          <ref name="pta_att.cmc.attributes"/>
@@ -4951,6 +4946,16 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
                </choice>
             </zeroOrMore>
          </group>
+         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                  id="tei-pta_linguistic-biblStruct-biblStruct-constraint-rule-26">
+            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
+                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+                      context="tei:biblStruct">
+               <sch:report test="current()[preceding-sibling::tei:listBibl or following-sibling::tei:listBibl]">
+                  <sch:name/> needs to be child of a listBibl (sibling to the following or preceding listBibl)</sch:report>
+            </sch:rule>
+         </pattern>
          <ref name="pta_att.global.attributes"/>
          <ref name="pta_att.canonical.attributes"/>
          <ref name="pta_att.cmc.attributes"/>
@@ -4994,7 +4999,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
    </define>
    <define name="pta_l">
       <element name="l">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(verse line) contains a single, possibly incomplete, line of verse. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.5. Speech Contents]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(verse line) contains a single, possibly incomplete, line of verse. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.6. Speech Contents]</a:documentation>
          <zeroOrMore>
             <choice>
                <text/>
@@ -5021,7 +5026,7 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
    </define>
    <define name="pta_lg">
       <element name="lg">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(line group) contains one or more verse lines functioning as a formal unit, e.g. a stanza, refrain, verse paragraph, etc. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.5. Speech Contents]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(line group) contains one or more verse lines functioning as a formal unit, e.g. a stanza, refrain, verse paragraph, etc. [3.13.1. Core Tags for Verse 3.13. Passages of Verse or Drama 7.2.6. Speech Contents]</a:documentation>
          <group>
             <zeroOrMore>
                <choice>
@@ -5082,65 +5087,18 @@ Sample values include: 1] main; 2] sub (subordinate); 3] alt (alternate); 4] sho
    <define name="pta_sp">
       <element name="sp">
          <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(speech) contains an individual speech in a performance text, or a passage presented as such in a prose or verse text. [3.13.2. Core Tags for Drama 3.13. Passages of Verse or Drama 7.2.2. Speeches and Speakers]</a:documentation>
-         <group>
-            <zeroOrMore>
-               <ref name="pta_model.global"/>
-            </zeroOrMore>
-            <zeroOrMore>
-               <ref name="pta_model.stageLike"/>
-               <zeroOrMore>
-                  <ref name="pta_model.global"/>
-               </zeroOrMore>
-            </zeroOrMore>
+         <zeroOrMore>
             <choice>
-               <group>
-                  <group>
-                     <ref name="pta_speaker"/>
-                     <zeroOrMore>
-                        <ref name="pta_model.global"/>
-                     </zeroOrMore>
-                  </group>
-                  <group>
-                     <choice>
-                        <ref name="pta_lg"/>
-                        <ref name="pta_model.lLike"/>
-                        <ref name="pta_model.pLike"/>
-                        <ref name="pta_model.listLike"/>
-                        <ref name="pta_model.attributable"/>
-                        <ref name="pta_model.stageLike"/>
-                     </choice>
-                     <zeroOrMore>
-                        <ref name="pta_model.global"/>
-                     </zeroOrMore>
-                  </group>
-               </group>
-               <group>
-                  <choice>
-                     <ref name="pta_lg"/>
-                     <ref name="pta_model.lLike"/>
-                     <ref name="pta_model.pLike"/>
-                     <ref name="pta_model.listLike"/>
-                     <ref name="pta_model.attributable"/>
-                  </choice>
-                  <zeroOrMore>
-                     <ref name="pta_model.global"/>
-                  </zeroOrMore>
-               </group>
+               <ref name="pta_model.stageLike"/>
+               <ref name="pta_model.global"/>
+               <ref name="pta_model.lLike"/>
+               <ref name="pta_model.pLike"/>
+               <ref name="pta_model.listLike"/>
+               <ref name="pta_model.attributable"/>
+               <ref name="pta_speaker"/>
+               <ref name="pta_lg"/>
             </choice>
-            <zeroOrMore>
-               <choice>
-                  <ref name="pta_lg"/>
-                  <ref name="pta_model.lLike"/>
-                  <ref name="pta_model.pLike"/>
-                  <ref name="pta_model.listLike"/>
-                  <ref name="pta_model.attributable"/>
-                  <ref name="pta_model.stageLike"/>
-               </choice>
-               <zeroOrMore>
-                  <ref name="pta_model.global"/>
-               </zeroOrMore>
-            </zeroOrMore>
-         </group>
+         </zeroOrMore>
          <ref name="pta_att.global.attributes"/>
          <ref name="pta_att.ascribed.directed.attributes"/>
          <ref name="pta_att.placement.attributes"/>
@@ -5517,8 +5475,8 @@ Suggested values include: 1] ISBN; 2] ISSN; 3] DOI; 4] URI; 5] VIAF; 6] ESTC; 7]
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:encodingDesc">
-               <sch:assert test="child::tei:refsDecl[@n='CTS'] and child::tei:refsDecl[@xml:id='biblical'] and child::tei:refsDecl[@xml:id='pta'] and child::tei:refsDecl[@xml:id='perseus'] and child::tei:editorialDecl and child::tei:classDecl and child::tei:schemaRef"> Needs refDecl for CTS, biblical, PTA and Perseus library
-                    references, editorialDecl, classDecl and schemaRef
+               <sch:assert test="child::tei:refsDecl[@n='CTS'] and child::tei:refsDecl[@xml:id='biblical'] and child::tei:refsDecl[@xml:id='pta'] and child::tei:refsDecl[@xml:id='perseus'] and child::tei:refsDecl[@xml:id='cllg'] and child::tei:editorialDecl and child::tei:classDecl and child::tei:schemaRef">
+                    Needs refDecl for CTS, biblical, PTA, Perseus library and CLLG references, editorialDecl, classDecl and schemaRef
                   </sch:assert>
             </sch:rule>
          </pattern>
@@ -7872,6 +7830,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                <text/>
                <ref name="pta_model.divLike"/>
                <ref name="pta_model.divPart"/>
+               <ref name="pta_speaker"/>
                <ref name="pta_model.gLike"/>
                <ref name="pta_model.phrase"/>
                <ref name="pta_model.inter"/>
@@ -7996,8 +7955,7 @@ Sample values include: 1] homeoteleuton; 2] homeoarchy; 3] paleographicConfusion
                       context="tei:rdg">
                <sch:report test="parent::tei:app[@type='witnesses'] and not(child::tei:witStart or child::tei:witEnd or child::tei:lacunaStart or child::tei:lacunaEnd)">Witnesses needs witStart, witEnd, lacunaStart or
                     lacunaEnd</sch:report>
-               <sch:report test="parent::tei:app[@type='witnesses'] and (@resp or @source) and not(@wit)">resp or source are not allowed in witnesses attestation,
-                    only wit</sch:report>
+               <sch:report test="parent::tei:app[@type='witnesses'] and @resp and not(@wit or @source)">resp is not allowed in witnesses attestation, only source or wit</sch:report>
                <sch:report test="parent::tei:app[@type='variants'] and not(@wit or @resp or @source)">The wit, resp, or source attribute of <sch:name/> is
                     required in variants.</sch:report>
                <sch:report test="descendant::tei:persName">rdg may not
@@ -8598,7 +8556,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
    </define>
    <define name="pta_seg">
       <element name="seg">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [17.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.5. Speech Contents]</a:documentation>
+         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(arbitrary segment) represents any segmentation of text below the chunk level. [17.3. Blocks, Segments, and Anchors 6.2. Components of the Verse Line 7.2.6. Speech Contents]</a:documentation>
          <ref name="pta_macro.paraContent"/>
          <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
                   xmlns:rng="http://relaxng.org/ns/structure/1.0"
@@ -8837,6 +8795,15 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <ref name="pta_att.notated.attributes"/>
          <ref name="pta_att.segLike.attributes"/>
          <ref name="pta_att.typed.attributes"/>
+         <optional>
+            <attribute name="status" ns="https://pta.bbaw.de/ns">
+               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+               <choice>
+                  <value>deleted</value>
+                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides the status of the analyzed word (as deleted)</a:documentation>
+               </choice>
+            </attribute>
+         </optional>
          <empty/>
       </element>
    </define>
@@ -8921,3 +8888,4 @@ Suggested values include: 1] label; 2] data</a:documentation>
            prefix="sch1x"
            uri="http://www.ascc.net/xml/schematron"/>
 </grammar>
+
