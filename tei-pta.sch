@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt">
    <title>ISO Schematron rules</title>
-   <!-- This file generated 2026-05-15T14:10:54Z by 'extract-isosch.xsl'. -->
+   <!-- This file generated 2026-05-26T14:13:03Z by 'extract-isosch.xsl'. -->
    <!-- ********************* -->
    <!-- namespaces, implicit: -->
    <!-- ********************* -->
-   <ns prefix="esp-d3e456" uri="http://www.telota.de"/>
+   <ns prefix="esp-d4e457" uri="http://www.telota.de"/>
    <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
    <!-- ******************************************************** -->
    <!-- constraints in eng, und, mul, zxx, of which there are 31 -->
@@ -210,4 +210,3 @@
       </rule>
    </pattern>
 </schema>
-

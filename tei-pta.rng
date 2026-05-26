@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-15T14:10:53Z. . 
+Schema generated from ODD source 2026-05-26T14:13:01Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -1647,65 +1647,29 @@ Sample values include: 1] rubbing; 2] mildew; 3] smoke</a:documentation>
    <define name="tei_model.segLike">
       <choice>
          <ref name="tei_seg"/>
-         <ref name="tei_s"/>
-         <ref name="tei_w"/>
-         <ref name="tei_pc"/>
       </choice>
    </define>
    <define name="tei_model.segLike_alternation">
       <choice>
          <ref name="tei_seg"/>
-         <ref name="tei_s"/>
-         <ref name="tei_w"/>
-         <ref name="tei_pc"/>
       </choice>
    </define>
    <define name="tei_model.segLike_sequence">
       <ref name="tei_seg"/>
-      <ref name="tei_s"/>
-      <ref name="tei_w"/>
-      <ref name="tei_pc"/>
    </define>
    <define name="tei_model.segLike_sequenceOptional">
       <optional>
          <ref name="tei_seg"/>
-      </optional>
-      <optional>
-         <ref name="tei_s"/>
-      </optional>
-      <optional>
-         <ref name="tei_w"/>
-      </optional>
-      <optional>
-         <ref name="tei_pc"/>
       </optional>
    </define>
    <define name="tei_model.segLike_sequenceOptionalRepeatable">
       <zeroOrMore>
          <ref name="tei_seg"/>
       </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tei_s"/>
-      </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tei_w"/>
-      </zeroOrMore>
-      <zeroOrMore>
-         <ref name="tei_pc"/>
-      </zeroOrMore>
    </define>
    <define name="tei_model.segLike_sequenceRepeatable">
       <oneOrMore>
          <ref name="tei_seg"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tei_s"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tei_w"/>
-      </oneOrMore>
-      <oneOrMore>
-         <ref name="tei_pc"/>
       </oneOrMore>
    </define>
    <define name="tei_model.hiLike">
@@ -3720,7 +3684,6 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
                <ref name="tei_model.graphicLike"/>
                <ref name="tei_model.ptrLike"/>
                <ref name="tei_model.attributable"/>
-               <ref name="tei_pc"/>
             </choice>
          </oneOrMore>
          <ref name="tei_att.global.attributes"/>
@@ -8616,91 +8579,6 @@ Suggested values include: 1] label; 2] data</a:documentation>
          <empty/>
       </element>
    </define>
-   <define name="tei_att.lexicographic.normalized.attributes">
-      <ref name="tei_att.lexicographic.normalized.attribute.norm"/>
-      <ref name="tei_att.lexicographic.normalized.attribute.orig"/>
-   </define>
-   <define name="tei_att.lexicographic.normalized.attribute.norm">
-      <optional>
-         <attribute name="norm">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(normalized) provides the normalized/standardized form of information present in the source text in a non-normalized form.</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.lexicographic.normalized.attribute.orig">
-      <optional>
-         <attribute name="orig">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(original) gives the original string or is the empty string when the element does not appear in the source text.</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.linguistic.attributes">
-      <ref name="tei_att.lexicographic.normalized.attributes"/>
-      <ref name="tei_att.linguistic.attribute.lemma"/>
-      <ref name="tei_att.linguistic.attribute.lemmaRef"/>
-      <ref name="tei_att.linguistic.attribute.pos"/>
-      <ref name="tei_att.linguistic.attribute.msd"/>
-      <ref name="tei_att.linguistic.attribute.join"/>
-   </define>
-   <define name="tei_att.linguistic.attribute.lemma">
-      <optional>
-         <attribute name="lemma">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a lemma (base form) for the word, typically uninflected and serving both as an identifier (e.g. in dictionary contexts, as a headword), and as a basis for potential inflections.</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.linguistic.attribute.lemmaRef">
-      <optional>
-         <attribute name="lemmaRef">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a pointer to a definition of the lemma for the word, for example in an online lexicon.</a:documentation>
-            <data type="anyURI">
-               <param name="pattern">\S+</param>
-            </data>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.linguistic.attribute.pos">
-      <optional>
-         <attribute name="pos">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(part of speech) indicates the part of speech assigned to a token (i.e. information on whether it is a noun, adjective, or verb), usually according to some official reference vocabulary (e.g. for German: STTS, for English: CLAWS, for Polish: NKJP, etc.).</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.linguistic.attribute.msd">
-      <optional>
-         <attribute name="msd">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(morphosyntactic description) supplies morphosyntactic information for a token, usually according to some official reference vocabulary (e.g. for German: <a xmlns="http://www.w3.org/1999/xhtml"
-                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  href="http://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/TagSets/stts-1999.pdf">STTS-large tagset</a>; for a feature description system designed as (pragmatically) universal, see <a xmlns="http://www.w3.org/1999/xhtml"
-                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  href="http://universaldependencies.org/u/feat/index.html">Universal Features</a>).</a:documentation>
-            <data type="string"/>
-         </attribute>
-      </optional>
-   </define>
-   <define name="tei_att.linguistic.attribute.join">
-      <optional>
-         <attribute name="join">
-            <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">when present, provides information on whether the token in question is adjacent to another, and if so, on which side.</a:documentation>
-            <choice>
-               <value>no</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the token is not adjacent to another</a:documentation>
-               <value>left</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">there is no whitespace on the left side of the token</a:documentation>
-               <value>right</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">there is no whitespace on the right side of the token</a:documentation>
-               <value>both</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">there is no whitespace on either side of the token</a:documentation>
-               <value>overlap</value>
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the token overlaps with another; other devices (specifying the extent and the area of overlap) are needed to more precisely locate this token in the character stream</a:documentation>
-            </choice>
-         </attribute>
-      </optional>
-   </define>
    <define name="tei_att.global.analytic.attributes">
       <ref name="tei_att.global.analytic.attribute.ana"/>
    </define>
@@ -8718,97 +8596,6 @@ Suggested values include: 1] label; 2] data</a:documentation>
             </list>
          </attribute>
       </optional>
-   </define>
-   <define name="tei_s">
-      <element name="s">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(s-unit) contains a sentence-like division of a text. [18.1. Linguistic Segment Categories 8.4.1. Segmentation]</a:documentation>
-         <ref name="tei_macro.phraseSeq"/>
-         <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
-                  xmlns:rng="http://relaxng.org/ns/structure/1.0"
-                  id="tei-pta-s-noNestedS-constraint-rule-60">
-            <sch:rule xmlns="http://www.tei-c.org/ns/1.0"
-                      xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-                      context="tei:s">
-               <sch:report test="tei:s">You may not nest one s element within another: use seg instead</sch:report>
-            </sch:rule>
-         </pattern>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.cmc.attributes"/>
-         <ref name="tei_att.notated.attributes"/>
-         <ref name="tei_att.segLike.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tei_w">
-      <element name="w">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(word) represents a grammatical (not necessarily orthographic) word. [18.1. Linguistic Segment Categories 18.4.2. Lightweight Linguistic Annotation]</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tei_model.gLike"/>
-               <ref name="tei_seg"/>
-               <ref name="tei_w"/>
-               <ref name="tei_pc"/>
-               <ref name="tei_model.global"/>
-               <ref name="tei_model.lPart"/>
-               <ref name="tei_model.hiLike"/>
-               <ref name="tei_model.pPart.edit"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.cmc.attributes"/>
-         <ref name="tei_att.linguistic.attributes"/>
-         <ref name="tei_att.notated.attributes"/>
-         <ref name="tei_att.segLike.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
-         <empty/>
-      </element>
-   </define>
-   <define name="tei_pc">
-      <element name="pc">
-         <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">(punctuation character) contains a character or string of characters regarded as constituting a single punctuation mark. [18.1.2. Below the Word Level 18.4.2. Lightweight Linguistic Annotation]</a:documentation>
-         <zeroOrMore>
-            <choice>
-               <text/>
-               <ref name="tei_model.gLike"/>
-               <ref name="tei_model.pPart.edit"/>
-            </choice>
-         </zeroOrMore>
-         <ref name="tei_att.global.attributes"/>
-         <ref name="tei_att.cmc.attributes"/>
-         <ref name="tei_att.linguistic.attributes"/>
-         <ref name="tei_att.segLike.attributes"/>
-         <ref name="tei_att.typed.attributes"/>
-         <optional>
-            <attribute name="force">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates the extent to which this punctuation mark conventionally separates words or phrases.</a:documentation>
-               <choice>
-                  <value>strong</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the punctuation mark is a word separator</a:documentation>
-                  <value>weak</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the punctuation mark is not a word separator</a:documentation>
-                  <value>inter</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">the punctuation mark may or may not be a word separator</a:documentation>
-               </choice>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="unit">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">provides a name for the kind of unit delimited by this punctuation mark.</a:documentation>
-               <data type="token">
-                  <param name="pattern">[^\p{C}\p{Z}]+</param>
-               </data>
-            </attribute>
-         </optional>
-         <optional>
-            <attribute name="pre">
-               <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">indicates whether this punctuation mark precedes or follows the unit it delimits.</a:documentation>
-               <data type="boolean"/>
-            </attribute>
-         </optional>
-         <empty/>
-      </element>
    </define>
    <start>
       <choice>
@@ -8846,4 +8633,3 @@ Suggested values include: 1] label; 2] data</a:documentation>
            prefix="sch1x"
            uri="http://www.ascc.net/xml/schematron"/>
 </grammar>
-

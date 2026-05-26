@@ -36,6 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2026-05-26">remove analysis module</change>
       <change who="#AvS" when="2026-05-13">add constraints for bibl and biblStruct for correct nesting of bibliography</change>
       <change who="#AvS" when="2026-03-10">add rules for references from CLLG corpus (additional to PTA and Perseus library)</change>
       <change who="#AvS" when="2025-11-24">new value for label (@type=lemma); adapt constraints for commentary</change>
@@ -105,7 +106,9 @@
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
           <moduleRef key="linking" include="ab anchor seg"/>
-          <moduleRef key="analysis" include="pc s w"/>
+          <!--<moduleRef key="analysis" include="pc s w"/>-->
+          <classRef key="att.global.analytic"
+            include="ana"/>
           <!-- CHANGED ELEMENT SPECS -->
           <!-- header -->
           <elementSpec ident="teiHeader" module="header" mode="change">
