@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.1. Last updated on 2026-05-13.</edition>
+        <edition>Version 1.1. Last updated on 2026-06-02.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,6 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2026-06-02">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-05-13">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-03-10">Updated to current tei-pta</change>
       <change who="#AvS" when="2025-11-24">Updated to current tei-pta</change>
@@ -1185,7 +1186,7 @@
             <constraintSpec ident="seg" scheme="schematron"  xml:lang="eng">
               <constraint>
                 <sch:rule context="tei:seg">
-                  <sch:report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote</sch:report>
+                  <sch:report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:said or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote or a speech</sch:report>
                   <sch:report test="(@type='allusion' or @type='similar' or @type='source') and not(@next or child::tei:ref)">If it's an allusion, a reference needs to be
                     added</sch:report>
                 <sch:report test="(@type='textpart') and not(@subtype and @n)">If it's a textpart, a subtype needs to be added. The segment needs also to be numbered.</sch:report>

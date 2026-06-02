@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-05-26T14:13:01Z. . 
+Schema generated from ODD source 2026-06-02T13:27:34Z. . 
 TEI Edition: P5 Version 4.11.0. Last updated on 18th February 2026, revision 358d2e48e 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.11.0/ 
   
@@ -8514,7 +8514,7 @@ Suggested values include: 1] label; 2] data</a:documentation>
                       xmlns:sch="http://purl.oclc.org/dsdl/schematron"
                       xmlns:xi="http://www.w3.org/2001/XInclude"
                       context="tei:seg">
-               <sch:report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote</sch:report>
+               <sch:report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:said or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote or a speech</sch:report>
                <sch:report test="(@type='allusion' or @type='similar' or @type='source') and not(@next or child::tei:ref)">If it's an allusion, a reference needs to be added</sch:report>
                <sch:report test="(@type='textpart') and not(@subtype and @n)">If it's a textpart, a subtype needs to be added. The segment needs also to be numbered.</sch:report>
             </sch:rule>

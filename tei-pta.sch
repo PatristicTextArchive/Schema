@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt">
    <title>ISO Schematron rules</title>
-   <!-- This file generated 2026-05-26T14:13:03Z by 'extract-isosch.xsl'. -->
+   <!-- This file generated 2026-06-02T13:27:37Z by 'extract-isosch.xsl'. -->
    <!-- ********************* -->
    <!-- namespaces, implicit: -->
    <!-- ********************* -->
-   <ns prefix="esp-d4e457" uri="http://www.telota.de"/>
+   <ns prefix="esp-d3e461" uri="http://www.telota.de"/>
    <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
    <!-- ******************************************************** -->
    <!-- constraints in eng, und, mul, zxx, of which there are 31 -->
@@ -204,7 +204,7 @@
    </pattern>
    <pattern id="schematron-constraint-seg-31">
       <rule context="tei:seg">
-         <report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote</report>
+         <report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:said or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote or a speech</report>
          <report test="(@type='allusion' or @type='similar' or @type='source') and not(@next or child::tei:ref)">If it's an allusion, a reference needs to be added</report>
          <report test="(@type='textpart') and not(@subtype and @n)">If it's a textpart, a subtype needs to be added. The segment needs also to be numbered.</report>
       </rule>
