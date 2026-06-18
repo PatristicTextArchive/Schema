@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.1. Last updated on 2026-06-02.</edition>
+        <edition>Version 1.2. Last updated on 2026-07-08.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,6 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2026-07-08">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-06-02">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-05-13">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-03-10">Updated to current tei-pta</change>
@@ -363,6 +364,9 @@
                   </valItem>
                   <valItem ident="subsection">
                     <desc>Subsection</desc>
+                  </valItem>
+                  <valItem ident="letter">
+                    <desc>Letter</desc>
                   </valItem>
                   <valItem ident="fragment">
                     <desc>Fragment</desc>
@@ -1232,6 +1236,9 @@
                 <valItem ident="chapter">
                   <desc>Chapter</desc>
                 </valItem>
+                <valItem ident="letter">
+                  <desc>Letter</desc>
+                </valItem>
                 <valItem ident="verse">
                   <desc>Verse</desc>
                 </valItem>
@@ -1352,4 +1359,3 @@
     </body>
   </text>
 </TEI>
-
