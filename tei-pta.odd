@@ -10,7 +10,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 4.3. Last updated on 2026-07-08.</edition>
+        <edition>Version 4.3. Last updated on 2026-09-23.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -36,6 +36,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2026-09-23">add 'testomonium' as type for 'seg'</change>
       <change who="#AvS" when="2026-07-08">add letter as subtype</change>
       <change who="#AvS" when="2026-06-02">change constraint for seg</change>
       <change who="#AvS" when="2026-05-26">remove analysis module</change>
@@ -1161,6 +1162,9 @@
                 </valItem>
                 <valItem ident="source">
                   <desc>is source of something</desc>
+                </valItem>
+                <valItem ident="testimonium">
+                  <desc>is a testimonium (a later, secondary testimony to the text)</desc>
                 </valItem>
                 <valItem ident="textpart">
                   <desc>is a textpart (below a paragraph)</desc>

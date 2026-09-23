@@ -491,9 +491,9 @@ Werden nicht-biblische Texte zitiert, so wird die Stellenreferenz ebenfalls mit 
 
 @import "examples/ed_quote_nonbiblical.xml" {class="line-numbers"}
 
-##### Auszeichnung von Similia und Quellen
+##### Auszeichnung von Similia, Testimonien und Quellen
 
-Similia werden mit Hilfe von `<seg type="similar">`, Quellen (soweit kein Zitat vorliegt) mit Hilfe von `<seg type="source>` ausgezeichnet. Die Fundstelle wird innerhalb des `<seg>`-Elementes in einem `<ref>`-Element angegeben. Bei den Stellenangaben wird wie bei den Zitaten vorgegangen.
+Similia werden mit Hilfe von `<seg type="similar">`, Testimonien mit Hilfe von `<seg type="testimonium">` und Quellen (soweit kein Zitat vorliegt) mit Hilfe von `<seg type="source>` ausgezeichnet. Die Fundstelle wird innerhalb des `<seg>`-Elementes in einem `<ref>`-Element angegeben. Bei den Stellenangaben wird wie bei den Zitaten vorgegangen.
 
 @import "examples/ed_similia.xml" {class="line-numbers"}
 

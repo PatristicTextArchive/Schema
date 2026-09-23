@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.2. Last updated on 2026-07-08.</edition>
+        <edition>Version 1.2. Last updated on 2026-09-23.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -42,6 +42,7 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change who="#AvS" when="2026-09-23">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-07-08">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-06-02">Updated to current tei-pta</change>
       <change who="#AvS" when="2026-05-13">Updated to current tei-pta</change>
@@ -1215,6 +1216,9 @@
                 </valItem>
                 <valItem ident="source">
                   <desc>is source of something</desc>
+                </valItem>
+                <valItem ident="testimonium">
+                  <desc>is a testimonium (a later, secondary testimony to the text)</desc>
                 </valItem>
               <valItem ident="textpart">
                   <desc>is a textpart (below a paragraph)</desc>

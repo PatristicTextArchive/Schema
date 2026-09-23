@@ -460,13 +460,13 @@ The page breaks in the manuscripts and earlier editions are indicated as require
 
 ##### Encoding of biblical and other quotations (and allusions)
 
-Quotations are marked with the help of the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrasis` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
+Quotations are marked up using the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrasis` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
 
-Explicit quotations citing the author of the quotation are marked with the element `<cit>` and the phrase in it leading the quotation is marked with the element `<ref>`. Insertions in the quotation (such as “said”) are marked with the help of `<seg type="insertion">` within the quotation.
+Explicit quotations citing the author of the quotation are marked with the element `<cit>` and the phrase in it leading the quotation is marked with the element `<ref>`. Insertions in the quotation (such as “said”) are marked up using `<seg type="insertion">` within the quotation.
 
-Allusions (e.g. to biblical stories and events) are marked with the help of `<seg type="allusion">`.
+Allusions (e.g. to biblical stories and events) are marked up using `<seg type="allusion">`.
 
-Pseudo-quotations can be marked with the help of `<seg type="psq">`.
+Pseudo-quotations can be marked up using `<seg type="psq">`.
 
 For bible quotations, the respective bible passage is given within the `<ref>` element with reference to the specifications in the `<teiHeader>` (`@decls="#biblical"`) in the `@cRef` attribute.
 
@@ -476,32 +476,32 @@ If non-biblical texts are cited, the passage reference is also indicated by mean
 
 @import "examples/ed_quote_nonbiblical.xml" {class="line-numbers"}
 
-##### Encoding of similia and sources
+##### Encoding of similia, testimonia and sources
 
-Similia are marked up with the help of `<seg type="similar">`, sources (as far as it is not a citation) with the help of `<seg type="source>`. The source is indicated within the `<seg>` element in a `<ref>` element.
+Similia are marked up using `<seg type="similar">`, testimonia using `<seg type="testimonium">`, and sources (as far as it is not a citation) using `<seg type="source>`. The source is indicated within the `<seg>` element in a `<ref>` element.
 
 @import "examples/ed_similia.xml" {class="line-numbers"}
 
 
 ##### Encoding of direct speech
 
-Direct speech is marked up with the help of the `<said>` element.
+Direct speech is marked up using the `<said>` element.
 
 @import "examples/ed_said.xml" {class="line-numbers"}
 
 ##### Encoding of dialogue
 
-Dialogue is marked up with the help of `<sp>` (instead of `<p>`). For the person speaking `<speaker>` is used, the spoken text is marked up with `<p>`.
+Dialogue is marked up using `<sp>` (instead of `<p>`). For the person speaking `<speaker>` is used, the spoken text is marked up with `<p>`.
 
 @import "examples/ed_speech.xml" {class="lines-numbers"}
 
 ##### Encoding of people, organisations and places
 
-**Persons** are marked up with the help of the element `<persName>`. In the case of biblical persons, the attribute `@type` with the value `biblical` is used, all other persons do not receive an attribute `@type`. In the attribute `@key`, the `person_id` in the [PTA person list](https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json) is specified, which in turn draws on the list [“Translators Individualised Proper Names with all References”](https://github.com/tyndale/STEPBible-Data) as well as its own register of non-biblical persons. Non-biblical persons who are missing from the PTA register can be added after [consultation](mailto:annette.von_stockhausen@bbaw.de).
+**Persons** are marked up using the element `<persName>`. In the case of biblical persons, the attribute `@type` with the value `biblical` is used, all other persons do not receive an attribute `@type`. In the attribute `@key`, the `person_id` in the [PTA person list](https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_persons.json) is specified, which in turn draws on the list [“Translators Individualised Proper Names with all References”](https://github.com/tyndale/STEPBible-Data) as well as its own register of non-biblical persons. Non-biblical persons who are missing from the PTA register can be added after [consultation](mailto:annette.von_stockhausen@bbaw.de).
 
 **Institutions (such as synods or theological groupings), peoples and other groups** are marked up using the `<orgName>` element. In the attribute `@key`, the `org_id` of the [PTA organisations list](https://github.com/PatristicTextArchive/pta_metadata/blob/main/pta_orgs.json) is specified. Organisations that are missing from the PTA register can be added after [consultation.](mailto:annette.von_stockhausen@bbaw.de)
 
-**Places** are marked with the help of the element `<placeName>`, in the attribute `@ref` the ID of the [Pleiades Gazetteer](https://pleiades.stoa.org/) (using the URL) is referred to. 
+**Places** are marked using the element `<placeName>`, in the attribute `@ref` the ID of the [Pleiades Gazetteer](https://pleiades.stoa.org/) (using the URL) is referred to. 
 
 @import "examples/ed_placeName.xml" {class="line-numbers"}
 
@@ -538,7 +538,7 @@ The text of the variation shall always be given in its full text and shall not b
 
 ##### Analysis of the causes for the variation
 
-Variants can have an attribute `@cause`, with the help of which the editor provides the recipient of the edition with an analysis of the probable cause for the variant and which can thus also be easily filtered for presentation. The following values of this attribute are possible:
+Variants can have an attribute `@cause`. Thus, the editor provides the recipient of the edition with an analysis of the probable cause for the variant. Those variants can then be easily filtered for presentation. The following values of this attribute are possible:
 
 -   `orthographic`, when a variant is interpreted by the editor as affecting only the spelling, i.e., in the case of Greek manuscripts, for example, as most likely being due to itacism.
 -   `homoioteleuton` or `homoiarkton` or `saut_du_meme` if, in the opinion of the editor, a variant is due to homoioteleuton or homoiarkton or a saut du même au même.
@@ -598,7 +598,7 @@ Rearrangements that affect longer passages of text - especially if they span str
 
 ###### Corrections by scribe
 
-Corrections of the text by the scribe or a later corrector are distinguished in such a way that the order of the different stages of transmission is indicated in the `<rdg>` element with the help of the `@varSeq` attribute.
+Corrections of the text by the scribe or a later corrector are distinguished in such a way that the order of the different stages of transmission is indicated in the `<rdg>` element using the `@varSeq` attribute.
 
 The element `<rdg>` can additionally contain the attribute `@hand`, whereby the scribe (`#m1`) and the correctors (`#m2`, `#m3`, … - generally `#mr `for *manus recentior*) should be distinguished. If it is not possible to decide by which hand a correction has been made, the attribute is given the value `unknown`. 
 
@@ -626,7 +626,7 @@ Proposals of conjectures (*proposuit* or *dubitanter*) are marked in the `<rdg>`
 @import "examples/ed_proposition.xml" {class="line-numbers"}
 
 
-Text deleted by the editor is marked with `<@type="deletion">` in the `<lem>` element. If the deleted text is to be quoted, it is marked with the help of the `<surplus>` element; otherwise the element remains without text content (“self-closing”). Deletions by other editors are also marked as `<@type="deletion">`.
+Text deleted by the editor is marked with `<@type="deletion">` in the `<lem>` element. If the deleted text is to be quoted, it is marked up using the `<surplus>` element; otherwise the element remains without text content (“self-closing”). Deletions by other editors are also marked as `<@type="deletion">`.
 
 @import "examples/ed_surplus.xml" {class="line-numbers"}
 
@@ -659,7 +659,7 @@ Gaps suspected by other editors but not taken over are marked in an apparatus en
 
 ###### Crux
 
-Text that cannot be emended by the editor but is certainly corrupted (“crux”) is marked up with the help of the `<sic>` element. The element can either enclose the corrupted text or mark the place of the corruption as a self-closing (“empty”) element.
+Text that cannot be emended by the editor but is certainly corrupted (“crux”) is marked up using the `<sic>` element. The element can either enclose the corrupted text or mark the place of the corruption as a self-closing (“empty”) element.
 
 @import "examples/ed_crux.xml" {class="line-numbers"}
 
