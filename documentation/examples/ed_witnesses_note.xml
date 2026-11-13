@@ -1,0 +1,11 @@
+<app type="witnesses">
+    <rdg wit="#P #A #Ca #Cb"><witStart/></rdg>
+    <note corresp="#A" resp="#FXR">110v–111r: Eusebius</note>
+    <note corresp="#P" resp="#FXR">113r: Eusebius</note>
+    <note corresp="#Ca" resp="#FXR">330r: Eusebius</note>
+    <note corresp="#Cb" resp="#FXR">312r: Eusebius</note>
+    <note resp="#FXR">Sich auf die gesamte Bezeugung beziehende Anmerkung</note>
+</app>Νοήσεις τὸν ἐνταῦθα λεγόμενον <quote type="lemma">πτωχὸν</quote> … κατὰ τὸν Σύμμαχον.
+<app type="witnesses">
+    <rdg wit="#P #A #Ca #Cb"><witEnd/></rdg>
+</app>

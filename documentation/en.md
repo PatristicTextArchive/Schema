@@ -170,7 +170,7 @@ The *added text* is marked with `<add>`. The place of the addition is specified 
 
 @import "examples/subst_transcr.xml" {class="line-numbers"}
 
-If the correction is the addition of diacritics to a letter, the letter without is marked with  `<del>` and the attribute `@rend` with the value `repurposed`, the letter with the added diacritic is marked with `<add>` and the attribute `@rend` with the value `inline`.
+If the correction is the addition of diacritics to a letter, the letter without is marked with  `<del>` and the attribute `@rend` with the value `repurposed`, the letter with the added diacritic is marked with `<add>` and the attribute `@place` with the value `inline`.
 
 @import "examples/subst_repurposed.xml" {class="line-numbers"}
 
@@ -304,7 +304,7 @@ The abbreviations used in the PTA for the books of the New Testament are:
 
 @import "examples/abbr_NT.txt"
 
-The passages are formed as follows: Biblical corpus (LXX, PES [= Peshitta], Hexapla, Vg [= Vulgata] or NA [= Nestle-Aland]):Book:Chapter:Verse (e.g.: 1,1-2,1.4), e.g. `LXX:Gn:1:1-3`.
+The passages are formed as follows: Biblical corpus (LXX, Peshitta, Hexapla, Vg [= Vulgata] or NA [= Nestle-Aland]):Book:Chapter:Verse (e.g.: 1,1-2,1.4), e.g. `LXX:Gn:1:1-3`. The reference text for biblical references (verse numbering and wording) is the Bible in the PTA (`urn:cts:pta:pta9999`).
 
 #### Indication of the encoded phenomena
 
@@ -460,7 +460,10 @@ The page breaks in the manuscripts and earlier editions are indicated as require
 
 ##### Encoding of biblical and other quotations (and allusions)
 
-Quotations are marked up using the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrasis` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations.
+Quotations are marked up using the `<quote>` element and can be given a `@type` attribute so that a distinction can be made between `marked` and `unmarked` quotations; for paraphrased quotations - insofar as they are marked as quotations at all - the value `paraphrasis` can be used. In editions of biblical commentaries, lemma quotations are given the value `lemma` to differentiate them from other quotations. Quotations from the Hexapla are given the value `hexaplaric`; the translator(s) quoted are recorded in the attribute `@ana` (`Secunda` = transliteration from Hebrew, `Ἀ` = Aquila, `Σ` = Symmachus, `Θ` = Theodotion, `εʹ` = Quinta, `ϛʹ` = Sexta); several values are separated by whitespace.
+
+@import "examples/ed_quote_hexaplaric.xml" {class="line-numbers"}
+
 
 Explicit quotations citing the author of the quotation are marked with the element `<cit>` and the phrase in it leading the quotation is marked with the element `<ref>`. Insertions in the quotation (such as “said”) are marked up using `<seg type="insertion">` within the quotation.
 
@@ -508,12 +511,16 @@ Dialogue is marked up using `<sp>` (instead of `<p>`). For the person speaking `
 
 ##### Text witnesses
 
-The manuscripts witnessing the text are documented in the element `<app>` with the attribute `@type="witnesses"`. The element receives a unique identifier in the attribute `@xml:id`, in the optional attribute `@prev` or `@next` reference is made to the corresponding entry (`<witStart/>`/`<lacunaStart/>` -> `<witEnd/>`/`<lacunaEnd/>` and vice versa). If necessary, a reference to a corresponding text-critical variant or reading can be made in the attribute `@corresp`.
-The element contains only the element `<rdg>` with the attribute `@wit`, in which one of the self-closing elements `<witStart/>` (= beginning of a witness), `<witEnd/>` (= end of a witness), `<lacunaStart/>` (= beginning of a gap) or `<lacunaEnd/>` (= end of a gap) is inserted. The element does not contain any text, but is inserted (comparable to a milestone element like `<pb>`) at the appropriate place in the text: In the case of `<witStart>` and `<lacunaEnd>` it comes before the first word present in the witness or after the gap ends, in the case of `<witEnd>` and `<lacunaStart>` it comes after the last word present in the witness or before which the gap begins. 
-
+The manuscripts witnessing the text are documented in the element `<app>` with the attribute `@type="witnesses"`. 
+The element contains the element `<rdg>` with the attribute `@wit` (for manuscripts) or `@source` (for earlier editions on which the attestation is based), in which one of the self-closing elements `<witStart/>` (= beginning of a witness), `<witEnd/>` (= end of a witness), `<lacunaStart/>` (= beginning of a gap) or `<lacunaEnd/>` (= end of a gap) is inserted. The element does not contain any text, but is inserted (comparable to a milestone element like `<pb>`) at the appropriate place in the text: In the case of `<witStart>` and `<lacunaEnd>` it comes before the first word present in the witness or after the gap ends, in the case of `<witEnd>` and `<lacunaStart>` it comes after the last word present in the witness or before which the gap begins. 
+ 
 @import "examples/ed_witnesses.xml" {class="line-numbers"}
 
 (This somewhat awkward way of notation is necessary because according to the [TEI Guidelines](https://tei-c.org/Vault/P5/2.0.0/doc/tei-p5-doc/en/html/ref-model.rdgPart.html) the elements `<witStart/>`, `<lacunaStart/>`, `<witEnd/>`, `<lacunaEnd/>` are only allowed to be inside a `<rdg>` or `<lem>` in an `<app>` and the sensible [amendment request to allow these elements also outside in the text was rejected by the TEI Technical Council](https://github.com/TEIC/TEI/issues/301).)
+
+Further details on the attestation (e.g. folios, attribution of the excerpt in the manuscript, extent) are given – like the notes on variants in `<app type="variants">` – in `<note>` elements placed within the *opening* `<app type="witnesses">` (i.e. the entry containing `<witStart/>` or `<lacunaStart/>`), each after the `<rdg>` it refers to. A separate `<note>` is created for each manuscript or edition, referring in the attribute `@corresp` to the `@xml:id` of the witness (`<witness>`) or the edition (`<bibl>`); a note concerning the attestation as a whole has no `@corresp`. All notes receive a reference to the responsible person in the attribute `@resp`.
+
+@import "examples/ed_witnesses_note.xml" {class="line-numbers"}
 
 
 ##### Encoding the variants

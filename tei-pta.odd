@@ -10,7 +10,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 4.3. Last updated on 2026-09-23.</edition>
+        <edition>Version 4.3. Last updated on 2026-11-13.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der Wissenschaften</publisher>
@@ -36,7 +36,8 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change who="#AvS" when="2026-09-23">add 'testomonium' as type for 'seg'</change>
+      <change who="#AvS" when="2026-11-13">add values for @ana in hexaplaric quotations; notes on the attestation of witnesses; removed legacy elements for converted CTE texts</change>
+      <change who="#AvS" when="2026-09-23">add 'testimonium' as type for 'seg'</change>
       <change who="#AvS" when="2026-07-08">add letter as subtype</change>
       <change who="#AvS" when="2026-06-02">change constraint for seg</change>
       <change who="#AvS" when="2026-05-26">remove analysis module</change>
@@ -100,7 +101,7 @@
           <!-- MODULES AND ELEMENTS USED BY THE PTA SCHEMA -->
           <moduleRef key="tei"/>
           <moduleRef key="header" include="authority availability cRefPattern catDesc category change classDecl correction creation distributor edition editionStmt editorialDecl encodingDesc extent fileDesc funder handNote hyphenation idno interpretation keywords language langUsage licence normalization principal profileDesc publicationStmt punctuation refsDecl revisionDesc schemaRef scriptNote seriesStmt sourceDesc sponsor taxonomy teiHeader textClass titleStmt"/>
-          <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl mentioned milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
+          <moduleRef key="core" include="abbr add analytic author bibl biblScope biblStruct cb choice cit date del editor emph expan foreign gap gb head hi imprint item l label lb lg list listBibl milestone monogr name note num p pb ptr pubPlace publisher quote ref resp respStmt rs said series sic sp speaker term title unclear unit"/>
           <moduleRef key="textstructure" include="TEI body div text"/>
           <moduleRef key="gaiji" include="g"/>
           <moduleRef key="msdescription" include="altIdentifier handDesc history layout layoutDesc locus locusGrp msDesc msIdentifier objectDesc origDate origin provenance physDesc repository scriptDesc stamp supportDesc"/>
@@ -108,7 +109,7 @@
           <moduleRef key="transcr" include="damage ex handNotes handShift retrace space subst supplied surplus"/>
           <moduleRef key="textcrit" include="app lacunaEnd lacunaStart lem listApp listWit rdg rdgGrp variantEncoding witEnd witStart witness"/>
           <moduleRef key="figures" include="cell row table"/>
-          <moduleRef key="linking" include="ab anchor seg"/>
+          <moduleRef key="linking" include="ab seg"/>
           <!--<moduleRef key="analysis" include="pc s w"/>-->
           <classRef key="att.global.analytic"
             include="ana"/>
@@ -422,9 +423,6 @@
             </attList>
           </elementSpec>
           <!-- core -->
-          <elementSpec ident="mentioned" module="core" mode="change">
-            <desc>mentioned is an element in legacy texts (converted from CTE files): do not use!</desc>
-          </elementSpec>
           <elementSpec ident="add" module="core" mode="change">
             <attList>
               <attDef ident="place" mode="change">
@@ -515,7 +513,7 @@
               <constraint>
                 <sch:rule context="tei:label">
                   <sch:report test="@type='attribution' and not(ancestor::tei:div[@type='edition'])">attribution is only to be used in editions</sch:report>
-                  <sch:report test="@type='lemma' and not(ancestor::tei:div[@type='commentary'])">commentary is only to be used in commentaries</sch:report>
+                  <sch:report test="@type='lemma' and not(ancestor::tei:div[@type='commentary'])">lemma is only to be used in commentaries</sch:report>
                 </sch:rule>
               </constraint>
             </constraintSpec>
@@ -660,6 +658,8 @@
               <constraint>
                 <sch:rule context="tei:note">
                   <sch:report test="parent::tei:app[@type='variants'] and not(@resp)">If it is a note to a variant, it needs a @resp</sch:report>
+                  <sch:report test="parent::tei:app[@type='witnesses'] and not(@resp)">If it is a note to an attestation of witnesses, it needs a @resp</sch:report>
+                  <sch:report test="parent::tei:app[@type='witnesses'] and not(parent::tei:app/tei:rdg[tei:witStart or tei:lacunaStart])">A note to an attestation of witnesses belongs into the opening app[@type='witnesses'] (the one with witStart or lacunaStart)</sch:report>
                   <sch:report test="@corresp and not(parent::tei:app)">@corresp may only be used in a note in an apparatus.</sch:report>
                   <sch:report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</sch:report>
                   <sch:report test="@place and @type">@place (i.e. in transcriptions annotating notes in the manuscript) and @type (i.e. note is a commenting note) may not be used together</sch:report>
@@ -718,9 +718,6 @@
                   <valItem ident="footnote">
                     <desc>Footnote</desc>
                   </valItem>
-                  <valItem ident="attestation">
-                    <desc>Attestation to text (legacy for CTE-converted text; do not use!)</desc>
-                  </valItem>
                 </valList>
               </attDef>
               <attDef ident="corresp" mode="replace" usage="opt">
@@ -732,6 +729,13 @@
             </attList>
           </elementSpec>
           <elementSpec ident="quote" module="core" mode="change">
+            <constraintSpec ident="quote" scheme="schematron"  xml:lang="eng">
+              <constraint>
+                <sch:rule context="tei:quote">
+                  <sch:report test="@ana and not(@type='hexaplaric')">@ana may only be used to provide the translator of a hexaplaric quote.</sch:report>
+                </sch:rule>
+              </constraint>
+            </constraintSpec>
             <attList>
               <attDef ident="type" mode="replace" usage="opt">
                 <valList type="closed">
@@ -740,7 +744,7 @@
                       on)</desc>
                   </valItem>
                   <valItem ident="hexaplaric">
-                    <desc>Quotation in editions of biblical commentaries (quotations from the Hexapla)</desc>
+                    <desc>Quotation from the Hexapla; it may be further specified by @ana</desc>
                   </valItem>
                   <valItem ident="marked">
                     <desc>Quotation which are introduced or otherwise marked</desc>
@@ -751,6 +755,29 @@
                   <valItem ident="paraphrasis">
                     <desc>Paraphrastic quotation (most times better not marked as quotation at all,
                       but as allusion)</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+              <attDef ident="ana" mode="replace" usage="opt">
+                <desc>Only with @type="hexaplaric": the Hexaplaric columns quoted; several values may be separated by whitespace (e.g. ana="Ἀ Σ").</desc>
+                <valList type="closed">
+                  <valItem ident="Secunda">
+                    <desc>Hexaplaric quote: the Secunda (transliteration from Hebrew)</desc>
+                  </valItem>
+                  <valItem ident="Ἀ">
+                    <desc>Hexaplaric quote: Aquila's version</desc>
+                  </valItem>
+                  <valItem ident="Θ">
+                    <desc>Hexaplaric quote: Theodotion's version</desc>
+                  </valItem>
+                  <valItem ident="Σ">
+                    <desc>Hexaplaric quote: Symmachus' version</desc>
+                  </valItem>
+                  <valItem ident="εʹ">
+                    <desc>Hexaplaric quote: Quinta version</desc>
+                  </valItem>
+                  <valItem ident="ϛʹ">
+                    <desc>Hexaplaric quote: Sexta version</desc>
                   </valItem>
                 </valList>
               </attDef>
@@ -1131,9 +1158,6 @@
             </attList>
           </elementSpec>
           <!-- linking -->
-          <elementSpec ident="anchor" module="linking" mode="change">
-            <desc>anchor is an element in legacy texts (converted from CTE files): do not use!</desc>
-          </elementSpec>
           <elementSpec ident="seg" module="linking" mode="change">
             <constraintSpec ident="seg" scheme="schematron"  xml:lang="eng">
               <constraint>

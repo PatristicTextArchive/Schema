@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt">
    <title>ISO Schematron rules</title>
-   <!-- This file generated 2026-06-08T14:28:16Z by 'extract-isosch.xsl'. -->
+   <!-- This file generated 2026-11-13T14:51:18Z by 'extract-isosch.xsl'. -->
    <!-- ********************* -->
    <!-- namespaces, implicit: -->
    <!-- ********************* -->
-   <ns prefix="esp-d3e461" uri="http://www.telota.de"/>
+   <ns prefix="esp-d2e474" uri="http://www.telota.de"/>
    <ns prefix="tei" uri="http://www.tei-c.org/ns/1.0"/>
    <!-- ******************************************************** -->
-   <!-- constraints in eng, und, mul, zxx, of which there are 31 -->
+   <!-- constraints in eng, und, mul, zxx, of which there are 32 -->
    <!-- ******************************************************** -->
    <pattern id="schematron-constraint-teiHeader-1">
       <rule context="tei:teiHeader">
@@ -95,7 +95,7 @@
    <pattern id="schematron-constraint-label-15">
       <rule context="tei:label">
          <report test="@type='attribution' and not(ancestor::tei:div[@type='edition'])">attribution is only to be used in editions</report>
-         <report test="@type='lemma' and not(ancestor::tei:div[@type='commentary'])">commentary is only to be used in commentaries</report>
+         <report test="@type='lemma' and not(ancestor::tei:div[@type='commentary'])">lemma is only to be used in commentaries</report>
       </rule>
    </pattern>
    <!--<sch:rule context="tei:unclear[not(ancestor::tei:rdg) and not(ancestor::tei:lem)]">
@@ -128,6 +128,8 @@
    <pattern id="schematron-constraint-note-19">
       <rule context="tei:note">
          <report test="parent::tei:app[@type='variants'] and not(@resp)">If it is a note to a variant, it needs a @resp</report>
+         <report test="parent::tei:app[@type='witnesses'] and not(@resp)">If it is a note to an attestation of witnesses, it needs a @resp</report>
+         <report test="parent::tei:app[@type='witnesses'] and not(parent::tei:app/tei:rdg[tei:witStart or tei:lacunaStart])">A note to an attestation of witnesses belongs into the opening app[@type='witnesses'] (the one with witStart or lacunaStart)</report>
          <report test="@corresp and not(parent::tei:app)">@corresp may only be used in a note in an apparatus.</report>
          <report test="@type='commentary' and not(@resp)">If it is a commenting note, it needs a @resp</report>
          <report test="@place and @type">@place (i.e. in transcriptions annotating notes in the manuscript) and @type (i.e. note is a commenting note) may not be used together</report>
@@ -135,63 +137,68 @@
          <report test="ancestor::tei:div[@type='edition'] and @type='explanation'">Notes in the edition are not allowed to have the "explanation" attribute.</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-del-20">
+   <pattern id="schematron-constraint-quote-20">
+      <rule context="tei:quote">
+         <report test="@ana and not(@type='hexaplaric')">@ana may only be used to provide the translator of a hexaplaric quote.</report>
+      </rule>
+   </pattern>
+   <pattern id="schematron-constraint-del-21">
       <rule context="tei:del">
          <report test="@rend='repurposed' and not(parent::tei:subst)">repurposed may only used within a substitution</report>
          <report test="count(tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc) &gt; 0 and not(@rend)">rend attribute is needed in transcriptions</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-abbr-21">
+   <pattern id="schematron-constraint-abbr-22">
       <rule context="tei:abbr">
          <report test="@type='siglum' and not(parent::tei:witness or parent::tei:head[parent::tei:listWit])">siglum may only used within a witness</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-expan-22">
+   <pattern id="schematron-constraint-expan-23">
       <rule context="tei:expan">
          <report test="not(parent::tei:choice)">expan may only be used within a choice element</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-name-23">
+   <pattern id="schematron-constraint-name-24">
       <rule context="tei:name">
          <report test="@key and not(contains(@key,'PTAMS'))">Key needs to be a PTAMS-ID</report>
          <report test="not(parent::tei:witness)">name may only be used within a witness element</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-msIdentifier-24">
+   <pattern id="schematron-constraint-msIdentifier-25">
       <rule context="tei:msIdentifier">
          <assert test="@xml:id">Manuscript identifier needs a @xml:id</assert>
          <assert test="@corresp">Manuscript identifier needs a reference to the manuscript database</assert>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-origDate-25">
+   <pattern id="schematron-constraint-origDate-26">
       <rule context="tei:origDate">
          <report test="@notBefore and not(@notAfter)">notBefore and notAfter need to be used together</report>
          <report test="@notAfter and not(@notBefore)">notBefore and notAfter need to be used together</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-space-26">
+   <pattern id="schematron-constraint-space-27">
       <rule context="tei:space">
          <report test="@quantity and @extent">space may have @quantity (a figure) or @extent (a descriptive text value) but not both</report>
          <report test="@quantity and not(@unit)">If space has @quantity then @unit is required</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-handShift-27">
+   <pattern id="schematron-constraint-handShift-28">
       <rule context="tei:handShift">
          <assert test="@medium or @scribeRef or @scriptRef">medium, scribeRef or scriptRef is needed.</assert>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-app-28">
+   <pattern id="schematron-constraint-app-29">
       <rule context="tei:app">
          <report test="@type='witnesses' and (child::tei:lem or not(child::tei:rdg))">Attestation of witness needs rdg, but no lem</report>
          <report test="@type='variants' and not(child::tei:lem or child::tei:rdgGrp/tei:lem)">Variation needs a lem</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-lem-29">
+   <pattern id="schematron-constraint-lem-30">
       <rule context="tei:lem">
          <assert test="@wit|@resp|@source">The wit, resp, or source attribute of <name/> is required.</assert>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-rdg-30">
+   <pattern id="schematron-constraint-rdg-31">
       <rule context="tei:rdg">
          <report test="parent::tei:app[@type='witnesses'] and not(child::tei:witStart or child::tei:witEnd or child::tei:lacunaStart or child::tei:lacunaEnd)">Witnesses needs witStart, witEnd, lacunaStart or lacunaEnd</report>
          <report test="parent::tei:app[@type='witnesses'] and @resp and not(@wit or @source)">resp is not allowed in witnesses attestation, only source or wit</report>
@@ -202,7 +209,7 @@
          <report test="@cert and not(@type='proposition')">cert may only be used in case of a proposition</report>
       </rule>
    </pattern>
-   <pattern id="schematron-constraint-seg-31">
+   <pattern id="schematron-constraint-seg-32">
       <rule context="tei:seg">
          <report test="@type='insertion' and not(ancestor::tei:quote or ancestor::tei:said or ancestor::tei:seg[@type='psq'])">Only to be used in a quote or a pseudo-quote or a speech</report>
          <report test="(@type='allusion' or @type='similar' or @type='source') and not(@next or child::tei:ref)">If it's an allusion, a reference needs to be added</report>
