@@ -5,7 +5,7 @@
          xmlns:xlink="http://www.w3.org/1999/xlink"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://www.tei-c.org/ns/1.0"><!--
-Schema generated from ODD source 2026-11-13T14:47:40Z. . 
+Schema generated from ODD source 2026-11-17T10:07:20Z. . 
 TEI Edition: P5 Version 4.12.0. Last updated on 28th July 2026, revision 113e933e2 
 TEI Edition Location: https://www.tei-c.org/Vault/P5/4.12.0/ 
   
@@ -3662,20 +3662,24 @@ Suggested values include: 1] page; 2] column; 3] line; 4] book; 5] poem; 6] cant
          <optional>
             <attribute name="ana">
                <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Only with @type="hexaplaric": the Hexaplaric columns quoted; several values may be separated by whitespace (e.g. ana="Ἀ Σ").</a:documentation>
-               <choice>
-                  <value>Secunda</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: the Secunda (transliteration from Hebrew)</a:documentation>
-                  <value>Ἀ</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Aquila's version</a:documentation>
-                  <value>Θ</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Theodotion's version</a:documentation>
-                  <value>Σ</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Symmachus' version</a:documentation>
-                  <value>εʹ</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Quinta version</a:documentation>
-                  <value>ϛʹ</value>
-                  <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Sexta version</a:documentation>
-               </choice>
+               <list>
+                  <oneOrMore>
+                     <choice>
+                        <value>Secunda</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: the Secunda (transliteration from Hebrew)</a:documentation>
+                        <value>Ἀ</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Aquila's version</a:documentation>
+                        <value>Θ</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Theodotion's version</a:documentation>
+                        <value>Σ</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Symmachus' version</a:documentation>
+                        <value>εʹ</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Quinta version</a:documentation>
+                        <value>ϛʹ</value>
+                        <a:documentation xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">Hexaplaric quote: Sexta version</a:documentation>
+                     </choice>
+                  </oneOrMore>
+               </list>
             </attribute>
          </optional>
          <optional>

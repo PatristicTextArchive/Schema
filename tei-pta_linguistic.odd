@@ -12,7 +12,7 @@
         <author xml:id="AvS">Annette von Stockhausen</author>
       </titleStmt>
       <editionStmt>
-        <edition>Version 1.2. Last updated on 2026-11-13.</edition>
+        <edition>Version 1.2. Last updated on 2026-11-17.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Berlin-Brandenburgische Akademie der
@@ -777,6 +777,9 @@
               </attDef>
               <attDef ident="ana" mode="replace" usage="opt">
                 <desc>Only with @type="hexaplaric": the Hexaplaric columns quoted; several values may be separated by whitespace (e.g. ana="Ἀ Σ").</desc>
+                <datatype minOccurs="1" maxOccurs="unbounded">
+                  <dataRef key="teidata.enumerated"/>
+                </datatype>
                 <valList type="closed">
                   <valItem ident="Secunda">
                     <desc>Hexaplaric quote: the Secunda (transliteration from Hebrew)</desc>
@@ -790,7 +793,7 @@
                   <valItem ident="Σ">
                     <desc>Hexaplaric quote: Symmachus' version</desc>
                   </valItem>
-                  <valItem ident="εʹ">
+                  <valItem ident="εʹ">
                     <desc>Hexaplaric quote: Quinta version</desc>
                   </valItem>
                   <valItem ident="ϛʹ">
